@@ -1,0 +1,85 @@
+--------------------------------------------------------------------------------
+Release 10.1 Trace  (nt)
+Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+
+C:\Xilinx\10.1\ISE\bin\nt\unwrapped\trce.exe -ise
+E:/labsolutions/VHDL/lab1/Flow_Lab/Flow_Lab/Flow_Lab.ise -intstyle ise -e 3 -s
+4 -xml kcpsm3_int_test kcpsm3_int_test.ncd -o kcpsm3_int_test.twr
+kcpsm3_int_test.pcf
+
+Design file:              kcpsm3_int_test.ncd
+Physical constraint file: kcpsm3_int_test.pcf
+Device,package,speed:     xc3s500e,fg320,-4 (PRODUCTION 1.27 2008-01-09)
+Report level:             error report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:2698 - No timing constraints found, doing default enumeration.
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Setup/Hold to clock clk
+---------------+------------+------------+------------------+--------+
+               |  Setup to  |  Hold to   |                  | Clock  |
+Source         | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
+---------------+------------+------------+------------------+--------+
+interrupt_event|    1.185(R)|    0.485(R)|clk_BUFGP         |   0.000|
+---------------+------------+------------+------------------+--------+
+
+Clock clk to Pad
+------------+------------+------------------+--------+
+            | clk (edge) |                  | Clock  |
+Destination |   to PAD   |Internal Clock(s) | Phase  |
+------------+------------+------------------+--------+
+counter<0>  |    8.054(R)|clk_BUFGP         |   0.000|
+counter<1>  |    7.971(R)|clk_BUFGP         |   0.000|
+counter<2>  |    8.024(R)|clk_BUFGP         |   0.000|
+counter<3>  |    7.703(R)|clk_BUFGP         |   0.000|
+counter<4>  |    7.686(R)|clk_BUFGP         |   0.000|
+counter<5>  |    7.162(R)|clk_BUFGP         |   0.000|
+counter<6>  |    7.975(R)|clk_BUFGP         |   0.000|
+counter<7>  |    7.713(R)|clk_BUFGP         |   0.000|
+waveforms<0>|    7.753(R)|clk_BUFGP         |   0.000|
+waveforms<1>|    7.766(R)|clk_BUFGP         |   0.000|
+waveforms<2>|    7.207(R)|clk_BUFGP         |   0.000|
+waveforms<3>|    7.485(R)|clk_BUFGP         |   0.000|
+waveforms<4>|    7.749(R)|clk_BUFGP         |   0.000|
+waveforms<5>|    7.736(R)|clk_BUFGP         |   0.000|
+waveforms<6>|    7.757(R)|clk_BUFGP         |   0.000|
+waveforms<7>|    7.224(R)|clk_BUFGP         |   0.000|
+------------+------------+------------------+--------+
+
+Clock to Setup on destination clock clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |    9.622|         |         |         |
+---------------+---------+---------+---------+---------+
+
+
+Analysis completed Sat Feb 27 01:43:21 2010 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 99 MB
+
+
+

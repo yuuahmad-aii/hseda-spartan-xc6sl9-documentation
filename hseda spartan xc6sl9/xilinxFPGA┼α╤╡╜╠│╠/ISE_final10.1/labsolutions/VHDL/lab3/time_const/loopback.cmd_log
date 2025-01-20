@@ -1,0 +1,12 @@
+xst -ise "E:/labsolutions/VHDL/lab3/time_const/time_const.ise" -intstyle ise -ifn "E:/labsolutions/VHDL/lab3/time_const/loopback.xst" -ofn "E:/labsolutions/VHDL/lab3/time_const/loopback.syr"
+xst -ise "E:/labsolutions/VHDL/lab3/time_const/time_const.ise" -intstyle ise -ifn "E:/labsolutions/VHDL/lab3/time_const/loopback.xst" -ofn "E:/labsolutions/VHDL/lab3/time_const/loopback.syr"
+ngdbuild -ise "E:/labsolutions/VHDL/lab3/time_const/time_const.ise" -intstyle ise -dd _ngo  -nt timestamp -i -p xc3s500e-pq208-4 "loopback.ngc" loopback.ngd
+ngdbuild -ise "E:/labsolutions/VHDL/lab3/time_const/time_const.ise" -intstyle ise -dd _ngo  -nt timestamp -i -p xc3s500e-pq208-4 "loopback.ngc" loopback.ngd
+ngdbuild -ise "E:/labsolutions/VHDL/lab3/time_const/time_const.ise" -intstyle ise -dd _ngo  -nt timestamp -i -p xc3s500e-pq208-4 "loopback.ngc" loopback.ngd
+ngdbuild -ise "E:/labsolutions/VHDL/lab3/time_const/time_const.ise" -intstyle ise -dd _ngo  -nt timestamp -i -p xc3s500e-pq208-4 "loopback.ngc" loopback.ngd
+ngdbuild -ise "E:/labsolutions/VHDL/lab3/time_const/time_const.ise" -intstyle ise -dd _ngo  -nt timestamp -i -p xc3s500e-pq208-4 "loopback.ngc" loopback.ngd
+map -ise "E:/labsolutions/VHDL/lab3/time_const/time_const.ise" -intstyle ise -p xc3s500e-pq208-4 -cm area -pr off -k 4 -c 100 -o loopback_map.ncd loopback.ngd loopback.pcf
+trce -ise "E:/labsolutions/VHDL/lab3/time_const/time_const.ise" -intstyle ise -v 3 -s 4 -xml loopback_preroute loopback_map.ncd -o loopback_preroute.twr loopback.pcf -ucf loopback.ucf
+par -ise "E:/labsolutions/VHDL/lab3/time_const/time_const.ise" -w -intstyle ise -ol std -t 1 loopback_map.ncd loopback.ncd loopback.pcf
+trce -ise "E:/labsolutions/VHDL/lab3/time_const/time_const.ise" -intstyle ise -v 3 -s 4 -xml loopback loopback.ncd -o loopback.twr loopback.pcf -ucf loopback.ucf
+bitgen -ise "E:/labsolutions/VHDL/lab3/time_const/time_const.ise" -intstyle ise -f loopback.ut loopback.ncd

@@ -1,0 +1,13 @@
+# Output products list for <program>
+program.asy
+program.mif
+program.ngc
+program.sym
+program.v
+program.veo
+program.vhd
+program.vho
+program.xco
+program_blk_mem_gen_v2_7_xst_1.ngc_xst.xrpt
+program_flist.txt
+program_xmdf.tcl

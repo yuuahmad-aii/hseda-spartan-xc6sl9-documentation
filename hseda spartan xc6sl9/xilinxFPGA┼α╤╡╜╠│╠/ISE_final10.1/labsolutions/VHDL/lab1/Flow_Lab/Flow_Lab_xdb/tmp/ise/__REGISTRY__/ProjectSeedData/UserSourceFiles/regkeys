@@ -1,0 +1,15 @@
+NUM_USER_FILES
+4
+s
+user_file_1
+kcpsm3.vhd
+s
+user_file_2
+kcpsm3_int_test.vhd
+s
+user_file_3
+INT_TEST.VHD
+s
+user_file_4
+test_bench.vhd
+s

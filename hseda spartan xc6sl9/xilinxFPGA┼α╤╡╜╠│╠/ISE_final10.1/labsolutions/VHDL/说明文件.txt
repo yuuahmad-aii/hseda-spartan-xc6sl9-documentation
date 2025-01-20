@@ -1,0 +1,6 @@
+lab1   
+lab2   键入命令time ， alarm on ，alarm off 等命令。
+lab3   （复位按键已经修改）   在超级终端上显示键入的字符。
+lab4   （复位键已经修改）  先开超级终端，下载程序后就会显示Xilinx Rules！字符。
+lab5   （复位键已经修改）  先开超级终端，下载程序后就会显示Xilinx Rules！字符，并能回显键入的字符。
+lab6   采用chipscope

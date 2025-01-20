@@ -1,0 +1,7 @@
+WARNING:PhysDesignRules:781 - PULLUP on an active net. PULLUP of comp rs232_tx
+   is set but the tri state is not configured. 
+INFO:PhysDesignRules:772 - To achieve optimal frequency synthesis performance
+   with the CLKFX and CLKFX180 outputs of the DCM comp Inst_my_dcm/DCM_SP_INST,
+   consult the device Interactive Data Sheet.
+DRC detected 0 errors and 1 warnings.  Please see the previously displayed
+individual error or warning messages for more details.

@@ -1,0 +1,5 @@
+# begin LFP file E:\labsolutions\VHDL\lab3\loopback.lfp
+designfile loopback.vhd
+parttype xc3s500e-4-pq208
+bus_delimiter 8;
+set_busdelim_onsave 1;

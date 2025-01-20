@@ -1,0 +1,793 @@
+iMPACT Version: 10.1
+
+iMPACT log file Started on Fri Mar 26 15:31:14 2010
+
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : setMode -bs
+GUI --- Auto connect to cable...
+// *** BATCH CMD : setCable -port auto
+AutoDetecting cable. Please wait.
+PROGRESS_START - Starting Operation.
+Connecting to cable (Parallel Port - LPT1).
+Checking cable driver.
+ Driver windrvr6.sys version = 8.1.1.0. WinDriver v8.11 Jungo (c) 1997 - 2006 Build Date: Oct 16 2006 X86 32bit SYS12:35:07, version = 811.
+ LPT base address = 0378h.
+ ECP base address = 0778h.
+Cable connection failed.
+Connecting to cable (Parallel Port - LPT2).
+Checking cable driver.
+ Driver windrvr6.sys version = 8.1.1.0. WinDriver v8.11 Jungo (c) 1997 - 2006 Build Date: Oct 16 2006 X86 32bit SYS12:35:07, version = 811.
+Cable connection failed.
+Connecting to cable (Parallel Port - LPT3).
+Checking cable driver.
+ Driver windrvr6.sys version = 8.1.1.0. WinDriver v8.11 Jungo (c) 1997 - 2006 Build Date: Oct 16 2006 X86 32bit SYS12:35:07, version = 811.
+Cable connection failed.
+Connecting to cable (Parallel Port - LPT4).
+Checking cable driver.
+ Driver windrvr6.sys version = 8.1.1.0. WinDriver v8.11 Jungo (c) 1997 - 2006 Build Date: Oct 16 2006 X86 32bit SYS12:35:07, version = 811.
+Cable connection failed.
+Connecting to cable (Usb Port - USB21).
+Checking cable driver.
+ Driver file xusbdfwu.sys found.
+ Driver version: src=1027, dest=1027.
+ Driver windrvr6.sys version = 8.1.1.0. WinDriver v8.11 Jungo (c) 1997 - 2006 Build Date: Oct 16 2006 X86 32bit SYS12:35:07, version = 811.
+ Cable PID = 0008.
+ Max current requested during enumeration is 150 mA.
+Type = 0x0605.
+ Cable Type = 3, Revision = 0.
+ Setting cable speed to 6 MHz.
+Cable connection established.
+Firmware version = 1028.
+File version of C:/Xilinx/10.1/ISE/data/xusbdfwu.hex = 1028.
+Firmware hex file version = 1028.
+Type = 0x0605.
+ESN not available for this cable.
+PLD file version = 0012h.
+ PLD version = 0012h.
+PROGRESS_END - End Operation.
+Elapsed time =      3 sec.
+Attempting to identify devices in the boundary-scan chain configuration...// *** BATCH CMD : Identify 
+ERROR:iMPACT:2246 - A reference voltage has not been detected on the ribbon   cable
+   	interface to the target system ( pin 2 ).  Check that power is applied
+   	 to the target system and that the ribbon cable is properly seated at
+   	 both ends.  The status LED on Platform Cable USB will be GREEN if target
+   	 voltage is in the proper range and applied to the correct pin.
+// *** BATCH CMD : identifyMPM 
+ERROR:iMPACT:2246 - A reference voltage has not been detected on the ribbon   cable
+   	interface to the target system ( pin 2 ).  Check that power is applied
+   	 to the target system and that the ribbon cable is properly seated at
+   	 both ends.  The status LED on Platform Cable USB will be GREEN if target
+   	 voltage is in the proper range and applied to the correct pin.
+Attempting to identify devices in the boundary-scan chain configuration...// *** BATCH CMD : Identify 
+PROGRESS_START - Starting Operation.
+Identifying chain contents ....'1': : Manufacturer's ID =Xilinx xc3s500e, Version : 4
+INFO:iMPACT:1777 - 
+   Reading C:/Xilinx/10.1/ISE/spartan3e/data/xc3s500e.bsd...
+INFO:iMPACT:501 - '1': Added Device xc3s500e successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+'2': : Manufacturer's ID =Xilinx xcf04s, Version : 15
+INFO:iMPACT:1777 - 
+   Reading C:/Xilinx/10.1/ISE/xcf/data/xcf04s.bsd...
+INFO:iMPACT:501 - '1': Added Device xcf04s successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+done.
+PROGRESS_END - End Operation.
+Elapsed time =      0 sec.
+// *** BATCH CMD : identifyMPM 
+// *** BATCH CMD : assignFile -p 2 -file"E:/labsolutions/VHDL/lab2/uart_clock.bit"
+'2': Loading file 'E:/labsolutions/VHDL/lab2/uart_clock.bit' ...
+done.
+INFO:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream   stored in memory,
+   but the original bitstream file remains unchanged.
+----------------------------------------------------------------------
+INFO:iMPACT:501 - '2': Added Device xc3s500e successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+// *** BATCH CMD : Program -p 2 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+'2': Programming device...
+PROGRESS_START - Starting Operation.
+done.
+'2': Reading status register contents...
+CRC error                                         :         0
+Decryptor security set                            :         0
+DCM locked                                        :         1
+DCI matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         1
+status of GWE                                     :         1
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         1
+IDCODE not validated while trying to write FDRI   :         0
+write FDRI issued before or after decrypt operation:         0
+Decryptor keys not used in proper sequence        :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0111 0001 1000 0000 0000 0000 0000 
+INFO:iMPACT:579 - '2': Completed downloading bit file to device.
+INFO:iMPACT - '2': Checking done pin....done.
+'2': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      1 sec.
+// *** BATCH CMD : Program -p 2 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'2': Programming device...
+done.
+'2': Reading status register contents...
+CRC error                                         :         0
+Decryptor security set                            :         0
+DCM locked                                        :         1
+DCI matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         1
+status of GWE                                     :         1
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         1
+IDCODE not validated while trying to write FDRI   :         0
+write FDRI issued before or after decrypt operation:         0
+Decryptor keys not used in proper sequence        :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0111 0001 1000 0000 0000 0000 0000 
+INFO:iMPACT:579 - '2': Completed downloading bit file to device.
+INFO:iMPACT - '2': Checking done pin....done.
+'2': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      1 sec.
+// *** BATCH CMD : Program -p 2 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+'2': Programming device...
+PROGRESS_START - Starting Operation.
+done.
+'2': Reading status register contents...
+CRC error                                         :         0
+Decryptor security set                            :         0
+DCM locked                                        :         1
+DCI matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         1
+status of GWE                                     :         1
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         1
+IDCODE not validated while trying to write FDRI   :         0
+write FDRI issued before or after decrypt operation:         0
+Decryptor keys not used in proper sequence        :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0111 0001 1000 0000 0000 0000 0000 
+INFO:iMPACT:579 - '2': Completed downloading bit file to device.
+INFO:iMPACT - '2': Checking done pin....done.
+'2': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      1 sec.
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : deleteDevice -position 2
+----------------------------------------------------------------------
+// *** BATCH CMD : deleteDevice -position 1
+The following values are set for this run of the wizard
+SUBMODE_TYPE is SUBMODE_PFFSERIAL
+MULTIBOOT_DEVICE is DEVICE_NONE
+MULTIBOOT_TYPE is TYPE_NONE
+Downstream Daisy-Chain type is CHAINTYPE_NONE
+setMultiBootSelect is FALSE
+setSPISelect is FALSE
+// *** BATCH CMD : setMode -pff
+// *** BATCH CMD : setMode -pff
+// *** BATCH CMD : addConfigDevice  -name "lab3" -path"E:\labsolutions\VHDL\lab3\"
+// *** BATCH CMD : setSubmode -pffserial
+// *** BATCH CMD : setAttribute -configdevice -attr multibootBpiType -value ""
+// *** BATCH CMD : addDesign -version 0 -name ""
+// *** BATCH CMD : setMode -pff
+// *** BATCH CMD : addDeviceChain -index 0
+// *** BATCH CMD : setMode -pff
+// *** BATCH CMD : addDeviceChain -index 0
+Override chain at index 0.
+Overriding chain at index 0.
+// *** BATCH CMD : setAttribute -configdevice -attr compressed -value "FALSE"
+// *** BATCH CMD : setAttribute -configdevice -attr compressed -value "FALSE"
+// *** BATCH CMD : setAttribute -configdevice -attr autoSize -value "FALSE"
+// *** BATCH CMD : setAttribute -configdevice -attr fileFormat -value "mcs"
+// *** BATCH CMD : setAttribute -configdevice -attr fillValue -value "FF"
+// *** BATCH CMD : setAttribute -configdevice -attr swapBit -value "FALSE"
+// *** BATCH CMD : setAttribute -configdevice -attr dir -value "UP"
+// *** BATCH CMD : setAttribute -configdevice -attr multiboot -value "FALSE"
+// *** BATCH CMD : setAttribute -configdevice -attr multiboot -value "FALSE"
+// *** BATCH CMD : setAttribute -configdevice -attr spiSelected -value "FALSE"
+// *** BATCH CMD : setAttribute -configdevice -attr spiSelected -value "FALSE"
+// *** BATCH CMD : addPromDevice -p 1 -size 0 -name xcf04s
+'1': Added Device xcf04s successfully.
+----------------------------------------------------------------------
+// *** BATCH CMD : setMode -pff
+------------------------  GUI: PFFView Wizard Data Report ------------------------
+SubMode: PFF_SERIAL
+MB Master Device: 
+MB Mode: 
+MB Chain: 
+getMultiBootSelected(): FALSE
+getSPISelected(): FALSE
+------------------------  GUI: End PFFView Report  ------------------------
+// *** BATCH CMD : setMode -pff
+// *** BATCH CMD : deletePromDevice -position 1
+// *** BATCH CMD : setCurrentDesign -version 0
+// *** BATCH CMD : deleteDesign -version 0
+// *** BATCH CMD : setCurrentDesign -version -1
+// *** BATCH CMD : setMode -pff
+// *** BATCH CMD : addConfigDevice -size 512 -name "lab3" -path"E:\labsolutions\VHDL\lab3\/"
+// *** BATCH CMD : setSubmode -pffserial
+// *** BATCH CMD : setAttribute -configdevice -attr dir -value "UP"
+// *** BATCH CMD : setAttribute -configdevice -attr flashDataWidth -value "8"
+// *** BATCH CMD : addPromDevice -p 1 -size 0 -name xcf04s
+'1': Added Device xcf04s successfully.
+----------------------------------------------------------------------
+// *** BATCH CMD : setMode -pff
+// *** BATCH CMD : setSubmode -pffserial
+// *** BATCH CMD : setAttribute -configdevice -attr dir -value "UP"
+// *** BATCH CMD : addDesign -version 0 -name "0000"
+// *** BATCH CMD : setMode -pff
+// *** BATCH CMD : addDeviceChain -index 0
+------------------------  GUI: Wizard Data Report  ---------------------------
+      PROM Mode : Serial
+      Compression : false
+      Fill Value : FF
+      Output Format : mcs
+      Swap Bits : true
+      LoadDirection : UP
+      PROM Basename : lab3
+      File Location : E:\labsolutions\VHDL\lab3\/
+      Auto Selcet : false
+      Number of Data Stream : 1
+      Number of PROMs : 1
+      PROM Name : xcf04s		PROM Size : 524288 Bytes
+-------------------------- END of Report ----------------------------
+// *** BATCH CMD : setAttribute -design -attr name -value "0"
+// *** BATCH CMD : addDevice -p 1 -file "E:/labsolutions/VHDL/lab3/loopback.bit"
+'1': Loading file 'E:/labsolutions/VHDL/lab3/loopback.bit' ...
+INFO:iMPACT - Elapsed time =      0 sec.
+done.
+INFO:iMPACT:501 - '1': Added Device xc3s500e successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+Add one device.// *** BATCH CMD : addDevice -p 2 -file "E:/labsolutions/VHDL/lab3/loopback.bit"
+'2': Loading file 'E:/labsolutions/VHDL/lab3/loopback.bit' ...
+INFO:iMPACT - Elapsed time =      0 sec.
+done.
+INFO:iMPACT:501 - '2': Added Device xc3s500e successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+Add one device.Revision 0, Design 0 Device #1 is Selected.
+Revision 0, Design 0 Device #1 is Selected.
+// *** BATCH CMD : cutDevice -p 2
+----------------------------------------------------------------------
+---------------- Rev 0, DesignName 0 : -------------------
+dev#0 size:2270208 pn:xc3s500e  fn:E:/labsolutions/VHDL/lab3/loopback.bit
+// *** BATCH CMD : setMode -pff
+// *** BATCH CMD : setSubmode -pffserial
+// *** BATCH CMD : setAttribute -configdevice -attr fillValue -value "FF"
+// *** BATCH CMD : setAttribute -configdevice -attr fileFormat -value "mcs"
+// *** BATCH CMD : setAttribute -configdevice -attr dir -value "UP"
+// *** BATCH CMD : setAttribute -configdevice -attr path -value"E:\labsolutions\VHDL\lab3\/"
+// *** BATCH CMD : setAttribute -configdevice -attr name -value "lab3"
+Total configuration bit size = 2270208 bits.
+// *** BATCH CMD : generate
+Total configuration byte size = 283776 bytes.
+Swap bit can only be disabled in Hex file format only.
+// *** BATCH CMD : setCurrentDesign -version 0
+0x45480 (283776) bytes loaded up from 0x0
+Using user-specified prom size of 512K
+Writing file "E:\labsolutions\VHDL\lab3\//lab3.mcs".
+Writing file "E:\labsolutions\VHDL\lab3\//lab3.prm".
+Writing file "E:\labsolutions\VHDL\lab3\//lab3.sig".
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : setMode -bs
+GUI --- Auto connect to cable...
+// *** BATCH CMD : setCable -port auto
+AutoDetecting cable. Please wait.
+PROGRESS_START - Starting Operation.
+Connecting to cable (Parallel Port - LPT1).
+Checking cable driver.
+ Driver windrvr6.sys version = 8.1.1.0. WinDriver v8.11 Jungo (c) 1997 - 2006 Build Date: Oct 16 2006 X86 32bit SYS12:35:07, version = 811.
+ LPT base address = 0378h.
+ ECP base address = 0778h.
+Cable connection failed.
+Connecting to cable (Parallel Port - LPT2).
+Checking cable driver.
+ Driver windrvr6.sys version = 8.1.1.0. WinDriver v8.11 Jungo (c) 1997 - 2006 Build Date: Oct 16 2006 X86 32bit SYS12:35:07, version = 811.
+Cable connection failed.
+Connecting to cable (Parallel Port - LPT3).
+Checking cable driver.
+ Driver windrvr6.sys version = 8.1.1.0. WinDriver v8.11 Jungo (c) 1997 - 2006 Build Date: Oct 16 2006 X86 32bit SYS12:35:07, version = 811.
+Cable connection failed.
+Connecting to cable (Parallel Port - LPT4).
+Checking cable driver.
+ Driver windrvr6.sys version = 8.1.1.0. WinDriver v8.11 Jungo (c) 1997 - 2006 Build Date: Oct 16 2006 X86 32bit SYS12:35:07, version = 811.
+Cable connection failed.
+Connecting to cable (Usb Port - USB21).
+Checking cable driver.
+ Driver file xusbdfwu.sys found.
+ Driver version: src=1027, dest=1027.
+ Driver windrvr6.sys version = 8.1.1.0. WinDriver v8.11 Jungo (c) 1997 - 2006 Build Date: Oct 16 2006 X86 32bit SYS12:35:07, version = 811.
+ Cable PID = 0008.
+ Max current requested during enumeration is 150 mA.
+Type = 0x0605.
+ Cable Type = 3, Revision = 0.
+ Setting cable speed to 6 MHz.
+Cable connection established.
+Firmware version = 1028.
+File version of C:/Xilinx/10.1/ISE/data/xusbdfwu.hex = 1028.
+Firmware hex file version = 1028.
+Type = 0x0605.
+ESN not available for this cable.
+PLD file version = 0012h.
+ PLD version = 0012h.
+PROGRESS_END - End Operation.
+Elapsed time =      3 sec.
+Attempting to identify devices in the boundary-scan chain configuration...// *** BATCH CMD : Identify 
+PROGRESS_START - Starting Operation.
+Identifying chain contents ....'1': : Manufacturer's ID =Xilinx xc3s500e, Version : 4
+INFO:iMPACT:1777 - 
+   Reading C:/Xilinx/10.1/ISE/spartan3e/data/xc3s500e.bsd...
+INFO:iMPACT:501 - '1': Added Device xc3s500e successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+'2': : Manufacturer's ID =Xilinx xcf04s, Version : 15
+INFO:iMPACT:1777 - 
+   Reading C:/Xilinx/10.1/ISE/xcf/data/xcf04s.bsd...
+INFO:iMPACT:501 - '1': Added Device xcf04s successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+done.
+PROGRESS_END - End Operation.
+Elapsed time =      0 sec.
+// *** BATCH CMD : identifyMPM 
+// *** BATCH CMD : assignFile -p 1 -file "E:/labsolutions/VHDL/lab3/lab3.mcs"
+'1': Loading file 'E:/labsolutions/VHDL/lab3/lab3.mcs' ...
+done.
+// *** BATCH CMD : setAttribute -position 1 -attr readnextdevice -value "(null)"
+// *** BATCH CMD : assignFile -p 2 -file"E:/labsolutions/VHDL/lab3/loopback.bit"
+'2': Loading file 'E:/labsolutions/VHDL/lab3/loopback.bit' ...
+done.
+INFO:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream   stored in memory,
+   but the original bitstream file remains unchanged.
+----------------------------------------------------------------------
+INFO:iMPACT:501 - '2': Added Device xc3s500e successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+// *** BATCH CMD : Program -p 2 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+'2': Programming device...
+PROGRESS_START - Starting Operation.
+done.
+'2': Reading status register contents...
+CRC error                                         :         0
+Decryptor security set                            :         0
+DCM locked                                        :         1
+DCI matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         1
+status of GWE                                     :         1
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         1
+IDCODE not validated while trying to write FDRI   :         0
+write FDRI issued before or after decrypt operation:         0
+Decryptor keys not used in proper sequence        :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0111 0001 1000 0000 0000 0000 0000 
+INFO:iMPACT:579 - '2': Completed downloading bit file to device.
+INFO:iMPACT - '2': Checking done pin....done.
+'2': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      1 sec.
+// *** BATCH CMD : Program -p 2 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+'2': Programming device...
+PROGRESS_START - Starting Operation.
+done.
+'2': Reading status register contents...
+CRC error                                         :         0
+Decryptor security set                            :         0
+DCM locked                                        :         1
+DCI matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         1
+status of GWE                                     :         1
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         1
+IDCODE not validated while trying to write FDRI   :         0
+write FDRI issued before or after decrypt operation:         0
+Decryptor keys not used in proper sequence        :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0111 0001 1000 0000 0000 0000 0000 
+INFO:iMPACT:579 - '2': Completed downloading bit file to device.
+INFO:iMPACT - '2': Checking done pin....done.
+'2': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      1 sec.
+// *** BATCH CMD : Program -p 2 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'2': Programming device...
+done.
+'2': Reading status register contents...
+CRC error                                         :         0
+Decryptor security set                            :         0
+DCM locked                                        :         1
+DCI matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         1
+status of GWE                                     :         1
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         1
+IDCODE not validated while trying to write FDRI   :         0
+write FDRI issued before or after decrypt operation:         0
+Decryptor keys not used in proper sequence        :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0111 0001 1000 0000 0000 0000 0000 
+INFO:iMPACT:579 - '2': Completed downloading bit file to device.
+INFO:iMPACT - '2': Checking done pin....done.
+'2': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      2 sec.
+// *** BATCH CMD : Program -p 2 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+'2': Programming device...
+PROGRESS_START - Starting Operation.
+done.
+'2': Reading status register contents...
+CRC error                                         :         0
+Decryptor security set                            :         0
+DCM locked                                        :         1
+DCI matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         1
+status of GWE                                     :         1
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         1
+IDCODE not validated while trying to write FDRI   :         0
+write FDRI issued before or after decrypt operation:         0
+Decryptor keys not used in proper sequence        :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0111 0001 1000 0000 0000 0000 0000 
+INFO:iMPACT:579 - '2': Completed downloading bit file to device.
+INFO:iMPACT - '2': Checking done pin....done.
+'2': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      2 sec.
+Attempting to identify devices in the boundary-scan chain configuration...// *** BATCH CMD : Identify 
+PROGRESS_START - Starting Operation.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+Identifying chain contents ....'1': : Manufacturer's ID =Xilinx xc3s500e, Version : 4
+INFO:iMPACT:1777 - 
+   Reading C:/Xilinx/10.1/ISE/spartan3e/data/xc3s500e.bsd...
+INFO:iMPACT:501 - '1': Added Device xc3s500e successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+'2': : Manufacturer's ID =Xilinx xcf04s, Version : 15
+INFO:iMPACT:1777 - 
+   Reading C:/Xilinx/10.1/ISE/xcf/data/xcf04s.bsd...
+INFO:iMPACT:501 - '1': Added Device xcf04s successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+done.
+PROGRESS_END - End Operation.
+Elapsed time =      0 sec.
+// *** BATCH CMD : identifyMPM 
+// *** BATCH CMD : assignFile -p 1 -file "E:/labsolutions/VHDL/lab3/lab3.mcs"
+'1': Loading file 'E:/labsolutions/VHDL/lab3/lab3.mcs' ...
+done.
+// *** BATCH CMD : setAttribute -position 1 -attr readnextdevice -value "(null)"
+// *** BATCH CMD : assignFile -p 2 -file"E:/labsolutions/VHDL/lab3/loopback.bit"
+'2': Loading file 'E:/labsolutions/VHDL/lab3/loopback.bit' ...
+done.
+INFO:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream   stored in memory,
+   but the original bitstream file remains unchanged.
+----------------------------------------------------------------------
+INFO:iMPACT:501 - '2': Added Device xc3s500e successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+// *** BATCH CMD : Program -p 2 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+'2': Programming device...
+PROGRESS_START - Starting Operation.
+done.
+'2': Reading status register contents...
+CRC error                                         :         0
+Decryptor security set                            :         0
+DCM locked                                        :         1
+DCI matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         1
+status of GWE                                     :         1
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         1
+IDCODE not validated while trying to write FDRI   :         0
+write FDRI issued before or after decrypt operation:         0
+Decryptor keys not used in proper sequence        :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0111 0001 1000 0000 0000 0000 0000 
+INFO:iMPACT:579 - '2': Completed downloading bit file to device.
+INFO:iMPACT - '2': Checking done pin....done.
+'2': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      1 sec.
+// *** BATCH CMD : Program -p 2 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+'2': Programming device...
+PROGRESS_START - Starting Operation.
+done.
+'2': Reading status register contents...
+CRC error                                         :         0
+Decryptor security set                            :         0
+DCM locked                                        :         1
+DCI matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         1
+status of GWE                                     :         1
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         1
+IDCODE not validated while trying to write FDRI   :         0
+write FDRI issued before or after decrypt operation:         0
+Decryptor keys not used in proper sequence        :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0111 0001 1000 0000 0000 0000 0000 
+INFO:iMPACT:579 - '2': Completed downloading bit file to device.
+INFO:iMPACT - '2': Checking done pin....done.
+'2': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      1 sec.
+// *** BATCH CMD : Program -p 2 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'2': Programming device...
+done.
+'2': Reading status register contents...
+CRC error                                         :         0
+Decryptor security set                            :         0
+DCM locked                                        :         1
+DCI matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         1
+status of GWE                                     :         1
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         1
+IDCODE not validated while trying to write FDRI   :         0
+write FDRI issued before or after decrypt operation:         0
+Decryptor keys not used in proper sequence        :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0111 0001 1000 0000 0000 0000 0000 
+INFO:iMPACT:579 - '2': Completed downloading bit file to device.
+INFO:iMPACT - '2': Checking done pin....done.
+'2': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      2 sec.
+// *** BATCH CMD : assignFile -p 2 -file"E:/labsolutions/VHDL/lab4/synth_lab/loopback.bit"
+'2': Loading file 'E:/labsolutions/VHDL/lab4/synth_lab/loopback.bit' ...
+done.
+INFO:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream   stored in memory,
+   but the original bitstream file remains unchanged.
+----------------------------------------------------------------------
+INFO:iMPACT:501 - '2': Added Device xc3s500e successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+// *** BATCH CMD : Program -p 2 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+'2': Programming device...
+PROGRESS_START - Starting Operation.
+done.
+'2': Reading status register contents...
+CRC error                                         :         0
+Decryptor security set                            :         0
+DCM locked                                        :         1
+DCI matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         1
+status of GWE                                     :         1
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         1
+IDCODE not validated while trying to write FDRI   :         0
+write FDRI issued before or after decrypt operation:         0
+Decryptor keys not used in proper sequence        :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0111 0001 1000 0000 0000 0000 0000 
+INFO:iMPACT:579 - '2': Completed downloading bit file to device.
+INFO:iMPACT - '2': Checking done pin....done.
+'2': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      1 sec.
+// *** BATCH CMD : assignFile -p 2 -file"E:/labsolutions/VHDL/lab3/loopback.bit"
+'2': Loading file 'E:/labsolutions/VHDL/lab3/loopback.bit' ...
+done.
+INFO:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream   stored in memory,
+   but the original bitstream file remains unchanged.
+----------------------------------------------------------------------
+INFO:iMPACT:501 - '2': Added Device xc3s500e successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+// *** BATCH CMD : Program -p 2 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+PROGRESS_START - Starting Operation.
+'2': Programming device...
+done.
+'2': Reading status register contents...
+CRC error                                         :         0
+Decryptor security set                            :         0
+DCM locked                                        :         1
+DCI matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         1
+status of GWE                                     :         1
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         1
+IDCODE not validated while trying to write FDRI   :         0
+write FDRI issued before or after decrypt operation:         0
+Decryptor keys not used in proper sequence        :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0111 0001 1000 0000 0000 0000 0000 
+INFO:iMPACT:579 - '2': Completed downloading bit file to device.
+INFO:iMPACT - '2': Checking done pin....done.
+'2': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      2 sec.
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : deleteDevice -position 2
+----------------------------------------------------------------------
+// *** BATCH CMD : deleteDevice -position 1
+// *** BATCH CMD : setMode -pff
+// *** BATCH CMD : deletePromDevice -position 1
+// *** BATCH CMD : setCurrentDesign -version 0
+// *** BATCH CMD : deleteDevice -position 1
+// *** BATCH CMD : deleteDesign -version 0
+// *** BATCH CMD : setCurrentDesign -version -1
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : loadProjectFile -file"E:\labsolutions\VHDL\lab5\coregen/coregen.ipf"
+Connecting to cable (Usb Port - USB21).
+Checking cable driver.
+ Driver file xusbdfwu.sys found.
+ Driver version: src=1027, dest=1027.
+ Driver windrvr6.sys version = 8.1.1.0. WinDriver v8.11 Jungo (c) 1997 - 2006 Build Date: Oct 16 2006 X86 32bit SYS12:35:07, version = 811.
+ Cable PID = 0008.
+ Max current requested during enumeration is 150 mA.
+Type = 0x0605.
+ Cable Type = 3, Revision = 0.
+ Setting cable speed to 6 MHz.
+Cable connection established.
+Firmware version = 1028.
+File version of C:/Xilinx/10.1/ISE/data/xusbdfwu.hex = 1028.
+Firmware hex file version = 1028.
+Type = 0x0605.
+ESN not available for this cable.
+PLD file version = 0012h.
+ PLD version = 0012h.
+INFO:iMPACT:1777 - 
+   Reading C:/Xilinx/10.1/ISE/xcf/data/xcf04s.bsd...
+INFO:iMPACT:501 - '1': Added Device xcf04s successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+'2': Loading file 'E:/labsolutions/VHDL/lab5/coregen/loopback.bit' ...
+done.
+INFO:iMPACT:1777 - 
+   Reading C:/Xilinx/10.1/ISE/spartan3e/data/xc3s500e.bsd...
+INFO:iMPACT:2257 - Startup Clock has been changed to 'JtagClk' in the bitstream   stored in memory,
+   but the original bitstream file remains unchanged.
+INFO:iMPACT:501 - '2': Added Device xc3s500e successfully.
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+Active mode is BS
+// *** BATCH CMD : setMode -ss
+// *** BATCH CMD : setMode -sm
+// *** BATCH CMD : setMode -hw140
+// *** BATCH CMD : setMode -spi
+// *** BATCH CMD : setMode -acecf
+// *** BATCH CMD : setMode -acempm
+// *** BATCH CMD : setMode -pff
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : Program -p 2 
+Maximum TCK operating frequency for this device chain: 10000000.
+Validating chain...
+Boundary-scan chain validated successfully.
+'2': Programming device...
+PROGRESS_START - Starting Operation.
+done.
+'2': Reading status register contents...
+CRC error                                         :         0
+Decryptor security set                            :         0
+DCM locked                                        :         1
+DCI matched                                       :         1
+legacy input error                                :         0
+status of GTS_CFG_B                               :         1
+status of GWE                                     :         1
+status of GHIGH                                   :         1
+value of MODE pin M0                              :         0
+value of MODE pin M1                              :         0
+value of MODE pin M2                              :         0
+value of CFG_RDY (INIT_B)                         :         1
+DONEIN input from DONE pin                        :         1
+IDCODE not validated while trying to write FDRI   :         0
+write FDRI issued before or after decrypt operation:         0
+Decryptor keys not used in proper sequence        :         0
+INFO:iMPACT:2219 - Status register values:
+INFO:iMPACT - 0011 0111 0001 1000 0000 0000 0000 0000 
+INFO:iMPACT:579 - '2': Completed downloading bit file to device.
+INFO:iMPACT - '2': Checking done pin....done.
+'2': Programmed successfully.
+PROGRESS_END - End Operation.
+Elapsed time =      1 sec.
+// *** BATCH CMD : setMode -bs
+// *** BATCH CMD : deleteDevice -position 2
+----------------------------------------------------------------------
+// *** BATCH CMD : deleteDevice -position 1

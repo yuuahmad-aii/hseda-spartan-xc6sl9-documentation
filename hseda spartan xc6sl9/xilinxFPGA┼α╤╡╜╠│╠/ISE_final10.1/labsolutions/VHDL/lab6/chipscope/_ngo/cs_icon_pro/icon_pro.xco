@@ -1,0 +1,47 @@
+##############################################################
+#
+# Xilinx Core Generator version K.31
+# Date: Fri Mar 26 09:12:27 2010
+#
+##############################################################
+#
+#  This file contains the customisation parameters for a
+#  Xilinx CORE Generator IP GUI. It is strongly recommended
+#  that you do not manually alter this file as it may cause
+#  unexpected and unsupported behavior.
+#
+##############################################################
+#
+# BEGIN Project Options
+SET addpads = False
+SET asysymbol = False
+SET busformat = BusFormatAngleBracketNotRipped
+SET createndf = False
+SET designentry = VHDL
+SET device = xc3s100e
+SET devicefamily = spartan3e
+SET flowvendor = Other
+SET formalverification = False
+SET foundationsym = False
+SET implementationfiletype = Ngc
+SET package = vq100
+SET removerpms = False
+SET simulationfiles = structural
+SET speedgrade = -5
+SET verilogsim = False
+SET vhdlsim = True
+# END Project Options
+# BEGIN Select
+SELECT ICON_(ChipScope_Pro_-_Integrated_Controller) family Xilinx,_Inc. 1.02.a
+# END Select
+# BEGIN Parameters
+CSET component_name=icon_pro
+CSET number_control_ports=1
+CSET use_ext_bscan=false
+CSET use_jtag_bufg=false
+CSET use_unused_bscan=false
+CSET user_scan_chain=USER1
+# END Parameters
+GENERATE
+# CRC: 736d8eda
+

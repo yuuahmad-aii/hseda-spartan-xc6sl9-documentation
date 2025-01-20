@@ -1,0 +1,17 @@
+xst -ise "E:/labsolutions/VHDL/lab2/arwz_pace.ise" -intstyle ise -ifn "E:/labsolutions/VHDL/lab2/uart_clock.xst" -ofn "E:/labsolutions/VHDL/lab2/uart_clock.syr"
+ngdbuild -ise "E:/labsolutions/VHDL/lab2/arwz_pace.ise" -intstyle ise -dd _ngo  -nt timestamp -i -p xc3s500e-pq208-4 "uart_clock.ngc" uart_clock.ngd
+map -ise "E:/labsolutions/VHDL/lab2/arwz_pace.ise" -intstyle ise -p xc3s500e-pq208-4 -cm area -pr off -k 4 -c 100 -o uart_clock_map.ncd uart_clock.ngd uart_clock.pcf
+par -ise "E:/labsolutions/VHDL/lab2/arwz_pace.ise" -w -intstyle ise -ol std -t 1 uart_clock_map.ncd uart_clock.ncd uart_clock.pcf
+trce -ise "E:/labsolutions/VHDL/lab2/arwz_pace.ise" -intstyle ise -e 3 -s 4 -xml uart_clock uart_clock.ncd -o uart_clock.twr uart_clock.pcf -ucf E:/labsolutions/VHDL/lab2/arwz_pace/uart_clock.ucf
+bitgen -ise "E:/labsolutions/VHDL/lab2/arwz_pace.ise" -intstyle ise -f uart_clock.ut uart_clock.ncd
+xst -ise "E:/WGL_ceshi/labsolutions/VHDL/lab2/arwz_pace.ise" -intstyle ise -ifn "E:/WGL_ceshi/labsolutions/VHDL/lab2/uart_clock.xst" -ofn "E:/WGL_ceshi/labsolutions/VHDL/lab2/uart_clock.syr"
+ngdbuild -ise "E:/WGL_ceshi/labsolutions/VHDL/lab2/arwz_pace.ise" -intstyle ise -dd _ngo  -nt timestamp -i -p xc3s500e-pq208-4 "uart_clock.ngc" uart_clock.ngd
+map -ise "E:/WGL_ceshi/labsolutions/VHDL/lab2/arwz_pace.ise" -intstyle ise -p xc3s500e-pq208-4 -cm area -pr off -k 4 -c 100 -o uart_clock_map.ncd uart_clock.ngd uart_clock.pcf
+par -ise "E:/WGL_ceshi/labsolutions/VHDL/lab2/arwz_pace.ise" -w -intstyle ise -ol std -t 1 uart_clock_map.ncd uart_clock.ncd uart_clock.pcf
+trce -ise "E:/WGL_ceshi/labsolutions/VHDL/lab2/arwz_pace.ise" -intstyle ise -e 3 -s 4 -xml uart_clock uart_clock.ncd -o uart_clock.twr uart_clock.pcf -ucf E:/WGL_ceshi/labsolutions/VHDL/lab2/arwz_pace/uart_clock.ucf
+bitgen -ise "E:/WGL_ceshi/labsolutions/VHDL/lab2/arwz_pace.ise" -intstyle ise -f uart_clock.ut uart_clock.ncd
+ngdbuild -ise "E:/labsolutions/VHDL/lab2/arwz_pace.ise" -intstyle ise -dd _ngo  -nt timestamp -i -p xc3s500e-pq208-4 "uart_clock.ngc" uart_clock.ngd
+map -ise "E:/labsolutions/VHDL/lab2/arwz_pace.ise" -intstyle ise -p xc3s500e-pq208-4 -cm area -pr off -k 4 -c 100 -o uart_clock_map.ncd uart_clock.ngd uart_clock.pcf
+par -ise "E:/labsolutions/VHDL/lab2/arwz_pace.ise" -w -intstyle ise -ol std -t 1 uart_clock_map.ncd uart_clock.ncd uart_clock.pcf
+trce -ise "E:/labsolutions/VHDL/lab2/arwz_pace.ise" -intstyle ise -e 3 -s 4 -xml uart_clock uart_clock.ncd -o uart_clock.twr uart_clock.pcf -ucf E:/labsolutions/VHDL/lab2/arwz_pace/uart_clock.ucf
+bitgen -ise "E:/labsolutions/VHDL/lab2/arwz_pace.ise" -intstyle ise -f uart_clock.ut uart_clock.ncd

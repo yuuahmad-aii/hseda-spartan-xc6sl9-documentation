@@ -1,0 +1,32 @@
+xst -ise "E:/labsolutions/VHDL/lab6/chipscope/chipscope.ise" -intstyle ise -ifn "E:/labsolutions/VHDL/lab6/chipscope/loopback.xst" -ofn "E:/labsolutions/VHDL/lab6/chipscope/loopback.syr"
+xst -ise "E:/WGL_ceshi/labsolutions/VHDL/lab6/chipscope/chipscope.ise" -intstyle ise -ifn "E:/WGL_ceshi/labsolutions/VHDL/lab6/chipscope/loopback.xst" -ofn "E:/WGL_ceshi/labsolutions/VHDL/lab6/chipscope/loopback.syr"
+ngdbuild -ise "E:/WGL_ceshi/labsolutions/VHDL/lab6/chipscope/chipscope.ise" -intstyle ise -dd _ngo  -nt timestamp -i -p xc3s500e-pq208-4 "loopback_cs.ngc" loopback.ngd
+map -ise "E:/WGL_ceshi/labsolutions/VHDL/lab6/chipscope/chipscope.ise" -intstyle ise -p xc3s500e-pq208-4 -cm area -pr off -k 4 -c 100 -o loopback_map.ncd loopback.ngd loopback.pcf
+par -ise "E:/WGL_ceshi/labsolutions/VHDL/lab6/chipscope/chipscope.ise" -w -intstyle ise -ol std -t 1 loopback_map.ncd loopback.ncd loopback.pcf
+trce -ise "E:/WGL_ceshi/labsolutions/VHDL/lab6/chipscope/chipscope.ise" -intstyle ise -v 3 -s 4 -xml loopback loopback.ncd -o loopback.twr loopback.pcf -ucf loopback.ucf
+bitgen -ise "E:/WGL_ceshi/labsolutions/VHDL/lab6/chipscope/chipscope.ise" -intstyle ise -f loopback.ut loopback.ncd
+xst -ise "E:/WGL_ceshi/labsolutions/VHDL/lab6/chipscope/chipscope.ise" -intstyle ise -ifn "E:/WGL_ceshi/labsolutions/VHDL/lab6/chipscope/loopback.xst" -ofn "E:/WGL_ceshi/labsolutions/VHDL/lab6/chipscope/loopback.syr"
+ngdbuild -ise "E:/WGL_ceshi/labsolutions/VHDL/lab6/chipscope/chipscope.ise" -intstyle ise -dd _ngo  -nt timestamp -i -p xc3s500e-pq208-4 "loopback_cs.ngc" loopback.ngd
+map -ise "E:/WGL_ceshi/labsolutions/VHDL/lab6/chipscope/chipscope.ise" -intstyle ise -p xc3s500e-pq208-4 -cm area -pr off -k 4 -c 100 -o loopback_map.ncd loopback.ngd loopback.pcf
+par -ise "E:/WGL_ceshi/labsolutions/VHDL/lab6/chipscope/chipscope.ise" -w -intstyle ise -ol std -t 1 loopback_map.ncd loopback.ncd loopback.pcf
+trce -ise "E:/WGL_ceshi/labsolutions/VHDL/lab6/chipscope/chipscope.ise" -intstyle ise -v 3 -s 4 -xml loopback loopback.ncd -o loopback.twr loopback.pcf -ucf loopback.ucf
+bitgen -ise "E:/WGL_ceshi/labsolutions/VHDL/lab6/chipscope/chipscope.ise" -intstyle ise -f loopback.ut loopback.ncd
+ngdbuild -ise "E:/WGL_ceshi/labsolutions/lab6/chipscope/chipscope.ise" -intstyle ise -dd _ngo  -nt timestamp -i -p xc3s500e-pq208-4 "loopback_cs.ngc" loopback.ngd
+map -ise "E:/WGL_ceshi/labsolutions/lab6/chipscope/chipscope.ise" -intstyle ise -p xc3s500e-pq208-4 -cm area -pr off -k 4 -c 100 -o loopback_map.ncd loopback.ngd loopback.pcf
+par -ise "E:/WGL_ceshi/labsolutions/lab6/chipscope/chipscope.ise" -w -intstyle ise -ol std -t 1 loopback_map.ncd loopback.ncd loopback.pcf
+trce -ise "E:/WGL_ceshi/labsolutions/lab6/chipscope/chipscope.ise" -intstyle ise -v 3 -s 4 -xml loopback loopback.ncd -o loopback.twr loopback.pcf -ucf loopback.ucf
+bitgen -ise "E:/WGL_ceshi/labsolutions/lab6/chipscope/chipscope.ise" -intstyle ise -f loopback.ut loopback.ncd
+xst -ise "E:/labsolutions/VHDL/lab6/chipscope/chipscope.ise" -intstyle ise -ifn "E:/labsolutions/VHDL/lab6/chipscope/loopback.xst" -ofn "E:/labsolutions/VHDL/lab6/chipscope/loopback.syr"
+ngdbuild -ise "E:/labsolutions/VHDL/lab6/chipscope/chipscope.ise" -intstyle ise -dd _ngo  -nt timestamp -i -p xc3s500e-pq208-4 "loopback_cs.ngc" loopback.ngd
+map -ise "E:/labsolutions/VHDL/lab6/chipscope/chipscope.ise" -intstyle ise -p xc3s500e-pq208-4 -cm area -pr off -k 4 -c 100 -o loopback_map.ncd loopback.ngd loopback.pcf
+par -ise "E:/labsolutions/VHDL/lab6/chipscope/chipscope.ise" -w -intstyle ise -ol std -t 1 loopback_map.ncd loopback.ncd loopback.pcf
+trce -ise "E:/labsolutions/VHDL/lab6/chipscope/chipscope.ise" -intstyle ise -v 3 -s 4 -xml loopback loopback.ncd -o loopback.twr loopback.pcf -ucf loopback.ucf
+bitgen -ise "E:/labsolutions/VHDL/lab6/chipscope/chipscope.ise" -intstyle ise -f loopback.ut loopback.ncd
+par -ise "E:/labsolutions/VHDL/lab6/chipscope/chipscope.ise" -w -intstyle ise -ol std -t 1 loopback_map.ncd loopback.ncd loopback.pcf
+trce -ise "E:/labsolutions/VHDL/lab6/chipscope/chipscope.ise" -intstyle ise -v 3 -s 4 -xml loopback loopback.ncd -o loopback.twr loopback.pcf -ucf loopback.ucf
+bitgen -ise "E:/labsolutions/VHDL/lab6/chipscope/chipscope.ise" -intstyle ise -f loopback.ut loopback.ncd
+ngdbuild -ise "E:/labsolutions/VHDL/lab6/chipscope/chipscope.ise" -intstyle ise -dd _ngo  -nt timestamp -i -p xc3s500e-pq208-4 "loopback_cs.ngc" loopback.ngd
+map -ise "E:/labsolutions/VHDL/lab6/chipscope/chipscope.ise" -intstyle ise -p xc3s500e-pq208-4 -cm area -pr off -k 4 -c 100 -o loopback_map.ncd loopback.ngd loopback.pcf
+par -ise "E:/labsolutions/VHDL/lab6/chipscope/chipscope.ise" -w -intstyle ise -ol std -t 1 loopback_map.ncd loopback.ncd loopback.pcf
+trce -ise "E:/labsolutions/VHDL/lab6/chipscope/chipscope.ise" -intstyle ise -v 3 -s 4 -xml loopback loopback.ncd -o loopback.twr loopback.pcf -ucf loopback.ucf
+bitgen -ise "E:/labsolutions/VHDL/lab6/chipscope/chipscope.ise" -intstyle ise -f loopback.ut loopback.ncd

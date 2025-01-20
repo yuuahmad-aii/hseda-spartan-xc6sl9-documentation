@@ -1,0 +1,404 @@
+--------------------------------------------------------------------------------
+Release 10.1 Trace  (nt)
+Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+
+C:\Xilinx\10.1\ISE\bin\nt\unwrapped\trce.exe -ise
+E:/labsolutions/VHDL/lab3/time_const/time_const.ise -intstyle ise -v 3 -s 4
+-xml loopback loopback.ncd -o loopback.twr loopback.pcf -ucf loopback.ucf
+
+Design file:              loopback.ncd
+Physical constraint file: loopback.pcf
+Device,package,speed:     xc3s500e,pq208,-4 (PRODUCTION 1.27 2008-01-09)
+Report level:             verbose report
+
+Environment Variable      Effect 
+--------------------      ------ 
+NONE                      No environment variables were set
+--------------------------------------------------------------------------------
+
+INFO:Timing:3377 - Intersecting Constraints found and resolved.  For more 
+   information see the TSI report.
+INFO:Timing:2752 - To get complete path coverage, use the unconstrained paths 
+   option. All paths that are not constrained will be reported in the 
+   unconstrained paths section(s) of the report.
+INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on 
+   a 50 Ohm transmission line loading model.  For the details of this model, 
+   and for more information on accounting for different loading conditions, 
+   please see the device datasheet.
+
+================================================================================
+Timing constraint: TS_clk = PERIOD TIMEGRP "clk" 20 ns HIGH 50%;
+
+ 0 paths analyzed, 0 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: TS_Inst_my_dcm_CLKFX_BUF = PERIOD TIMEGRP 
+"Inst_my_dcm_CLKFX_BUF" TS_clk / 1.1         HIGH 50%;
+
+ 0 paths analyzed, 0 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: TS_Inst_my_dcm_CLKFX_BUF_0 = PERIOD TIMEGRP 
+"Inst_my_dcm_CLKFX_BUF_0" TS_clk /         1.1 HIGH 50%;
+
+ 0 paths analyzed, 0 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected.
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: TS_Inst_my_dcm_CLKFX_BUF_1 = PERIOD TIMEGRP 
+"Inst_my_dcm_CLKFX_BUF_1" TS_clk /         1.1 HIGH 50%;
+
+ 7282 paths analyzed, 1097 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected. (0 setup errors, 0 hold errors)
+ Minimum period is  14.548ns.
+--------------------------------------------------------------------------------
+Slack:                  3.633ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               my_program/ram_1024_x_18.A (RAM)
+  Destination:          transmit/buf/count_width_loop[3].register_bit (FF)
+  Requirement:          18.181ns
+  Data Path Delay:      14.507ns (Levels of Logic = 6)
+  Clock Path Skew:      -0.041ns (0.014 - 0.055)
+  Source Clock:         clk55MHz rising at 0.000ns
+  Destination Clock:    clk55MHz rising at 18.181ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: my_program/ram_1024_x_18.A to transmit/buf/count_width_loop[3].register_bit
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    RAMB16_X0Y3.DOA6     Tbcko                 2.812   my_program/ram_1024_x_18
+                                                       my_program/ram_1024_x_18.A
+    SLICE_X2Y45.F3       net (fanout=10)       2.784   instruction<6>
+    SLICE_X2Y45.X        Tilo                  0.759   my_kcpsm3/sy<0>
+                                                       my_kcpsm3/reg_loop[0].register_bit.SLICEM_F
+    SLICE_X2Y43.G2       net (fanout=1)        0.398   my_kcpsm3/sy<0>
+    SLICE_X2Y43.Y        Tilo                  0.759   N5
+                                                       my_kcpsm3/reg_loop[0].operand_select_mux
+    SLICE_X14Y29.G3      net (fanout=52)       2.061   port_id<0>
+    SLICE_X14Y29.Y       Tilo                  0.759   transmit/buf/valid_write
+                                                       write_to_uart1
+    SLICE_X14Y29.F3      net (fanout=6)        0.070   write_to_uart
+    SLICE_X14Y29.X       Tilo                  0.759   transmit/buf/valid_write
+                                                       transmit/buf/valid_lut
+    SLICE_X15Y28.BX      net (fanout=5)        0.462   transmit/buf/valid_write
+    SLICE_X15Y28.COUT    Tbxcy                 1.882   transmit/buf/pointer<0>
+                                                       transmit/buf/count_width_loop[0].lsb_count.count_muxcy
+                                                       transmit/buf/count_width_loop[1].mid_count.count_muxcy
+    SLICE_X15Y29.CIN     net (fanout=1)        0.000   transmit/buf/count_carry<1>
+    SLICE_X15Y29.CLK     Tcinck                1.002   transmit/buf/pointer<2>
+                                                       transmit/buf/count_width_loop[2].mid_count.count_muxcy
+                                                       transmit/buf/count_width_loop[3].upper_count.count_xor
+                                                       transmit/buf/count_width_loop[3].register_bit
+    -------------------------------------------------  ---------------------------
+    Total                                     14.507ns (8.732ns logic, 5.775ns route)
+                                                       (60.2% logic, 39.8% route)
+
+--------------------------------------------------------------------------------
+Slack:                  3.784ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               my_program/ram_1024_x_18.A (RAM)
+  Destination:          transmit/buf/count_width_loop[3].register_bit (FF)
+  Requirement:          18.181ns
+  Data Path Delay:      14.356ns (Levels of Logic = 6)
+  Clock Path Skew:      -0.041ns (0.014 - 0.055)
+  Source Clock:         clk55MHz rising at 0.000ns
+  Destination Clock:    clk55MHz rising at 18.181ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: my_program/ram_1024_x_18.A to transmit/buf/count_width_loop[3].register_bit
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    RAMB16_X0Y3.DOA4     Tbcko                 2.812   my_program/ram_1024_x_18
+                                                       my_program/ram_1024_x_18.A
+    SLICE_X2Y45.F1       net (fanout=10)       2.633   instruction<4>
+    SLICE_X2Y45.X        Tilo                  0.759   my_kcpsm3/sy<0>
+                                                       my_kcpsm3/reg_loop[0].register_bit.SLICEM_F
+    SLICE_X2Y43.G2       net (fanout=1)        0.398   my_kcpsm3/sy<0>
+    SLICE_X2Y43.Y        Tilo                  0.759   N5
+                                                       my_kcpsm3/reg_loop[0].operand_select_mux
+    SLICE_X14Y29.G3      net (fanout=52)       2.061   port_id<0>
+    SLICE_X14Y29.Y       Tilo                  0.759   transmit/buf/valid_write
+                                                       write_to_uart1
+    SLICE_X14Y29.F3      net (fanout=6)        0.070   write_to_uart
+    SLICE_X14Y29.X       Tilo                  0.759   transmit/buf/valid_write
+                                                       transmit/buf/valid_lut
+    SLICE_X15Y28.BX      net (fanout=5)        0.462   transmit/buf/valid_write
+    SLICE_X15Y28.COUT    Tbxcy                 1.882   transmit/buf/pointer<0>
+                                                       transmit/buf/count_width_loop[0].lsb_count.count_muxcy
+                                                       transmit/buf/count_width_loop[1].mid_count.count_muxcy
+    SLICE_X15Y29.CIN     net (fanout=1)        0.000   transmit/buf/count_carry<1>
+    SLICE_X15Y29.CLK     Tcinck                1.002   transmit/buf/pointer<2>
+                                                       transmit/buf/count_width_loop[2].mid_count.count_muxcy
+                                                       transmit/buf/count_width_loop[3].upper_count.count_xor
+                                                       transmit/buf/count_width_loop[3].register_bit
+    -------------------------------------------------  ---------------------------
+    Total                                     14.356ns (8.732ns logic, 5.624ns route)
+                                                       (60.8% logic, 39.2% route)
+
+--------------------------------------------------------------------------------
+Slack:                  4.040ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               my_program/ram_1024_x_18.A (RAM)
+  Destination:          transmit/buf/count_width_loop[2].register_bit (FF)
+  Requirement:          18.181ns
+  Data Path Delay:      14.100ns (Levels of Logic = 6)
+  Clock Path Skew:      -0.041ns (0.014 - 0.055)
+  Source Clock:         clk55MHz rising at 0.000ns
+  Destination Clock:    clk55MHz rising at 18.181ns
+  Clock Uncertainty:    0.000ns
+
+  Maximum Data Path: my_program/ram_1024_x_18.A to transmit/buf/count_width_loop[2].register_bit
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    RAMB16_X0Y3.DOA6     Tbcko                 2.812   my_program/ram_1024_x_18
+                                                       my_program/ram_1024_x_18.A
+    SLICE_X2Y45.F3       net (fanout=10)       2.784   instruction<6>
+    SLICE_X2Y45.X        Tilo                  0.759   my_kcpsm3/sy<0>
+                                                       my_kcpsm3/reg_loop[0].register_bit.SLICEM_F
+    SLICE_X2Y43.G2       net (fanout=1)        0.398   my_kcpsm3/sy<0>
+    SLICE_X2Y43.Y        Tilo                  0.759   N5
+                                                       my_kcpsm3/reg_loop[0].operand_select_mux
+    SLICE_X14Y29.G3      net (fanout=52)       2.061   port_id<0>
+    SLICE_X14Y29.Y       Tilo                  0.759   transmit/buf/valid_write
+                                                       write_to_uart1
+    SLICE_X14Y29.F3      net (fanout=6)        0.070   write_to_uart
+    SLICE_X14Y29.X       Tilo                  0.759   transmit/buf/valid_write
+                                                       transmit/buf/valid_lut
+    SLICE_X15Y28.BX      net (fanout=5)        0.462   transmit/buf/valid_write
+    SLICE_X15Y28.COUT    Tbxcy                 1.882   transmit/buf/pointer<0>
+                                                       transmit/buf/count_width_loop[0].lsb_count.count_muxcy
+                                                       transmit/buf/count_width_loop[1].mid_count.count_muxcy
+    SLICE_X15Y29.CIN     net (fanout=1)        0.000   transmit/buf/count_carry<1>
+    SLICE_X15Y29.CLK     Tcinck                0.595   transmit/buf/pointer<2>
+                                                       transmit/buf/count_width_loop[2].mid_count.count_xor
+                                                       transmit/buf/count_width_loop[2].register_bit
+    -------------------------------------------------  ---------------------------
+    Total                                     14.100ns (8.325ns logic, 5.775ns route)
+                                                       (59.0% logic, 41.0% route)
+
+--------------------------------------------------------------------------------
+
+================================================================================
+Timing constraint: OFFSET = OUT 7.5 ns AFTER COMP "clk";
+
+ 9 paths analyzed, 9 endpoints analyzed, 0 failing endpoints
+ 0 timing errors detected.
+ Minimum allowable offset is   6.586ns.
+--------------------------------------------------------------------------------
+Slack:                  0.914ns (requirement - (clock arrival + clock path + data path + uncertainty))
+  Source:               transmit/kcuart/pipeline_serial (FF)
+  Destination:          rs232_tx (PAD)
+  Source Clock:         clk55MHz rising at 0.000ns
+  Requirement:          7.500ns
+  Data Path Delay:      5.594ns (Levels of Logic = 1)
+  Clock Path Delay:     0.992ns (Levels of Logic = 3)
+  Clock Uncertainty:    0.000ns
+
+  Maximum Clock Path: clk to transmit/kcuart/pipeline_serial
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P80.I                Tiopi                 1.726   clk
+                                                       clk
+                                                       Inst_my_dcm/CLKIN_IBUFG_INST
+    DCM_X0Y0.CLKIN       net (fanout=1)        0.813   Inst_my_dcm/CLKIN_IBUFG_OUT
+    DCM_X0Y0.CLKFX       Tdcmino              -3.553   Inst_my_dcm/DCM_SP_INST
+                                                       Inst_my_dcm/DCM_SP_INST
+    BUFGMUX_X2Y0.I0      net (fanout=1)        0.416   Inst_my_dcm/CLKFX_BUF
+    BUFGMUX_X2Y0.O       Tgi0o                 1.457   Inst_my_dcm/CLKFX_BUFG_INST
+                                                       Inst_my_dcm/CLKFX_BUFG_INST
+    SLICE_X12Y31.CLK     net (fanout=125)      0.133   clk55MHz
+    -------------------------------------------------  ---------------------------
+    Total                                      0.992ns (-0.370ns logic, 1.362ns route)
+
+  Maximum Data Path: transmit/kcuart/pipeline_serial to rs232_tx
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X12Y31.XQ      Tcko                  0.592   rs232_tx_OBUF
+                                                       transmit/kcuart/pipeline_serial
+    P18.O1               net (fanout=1)        1.730   rs232_tx_OBUF
+    P18.PAD              Tioop                 3.272   rs232_tx
+                                                       rs232_tx_OBUF
+                                                       rs232_tx
+    -------------------------------------------------  ---------------------------
+    Total                                      5.594ns (3.864ns logic, 1.730ns route)
+                                                       (69.1% logic, 30.9% route)
+
+--------------------------------------------------------------------------------
+Slack:                  1.693ns (requirement - (clock arrival + clock path + data path + uncertainty))
+  Source:               leds_2 (FF)
+  Destination:          leds<2> (PAD)
+  Source Clock:         clk55MHz rising at 0.000ns
+  Requirement:          7.500ns
+  Data Path Delay:      4.764ns (Levels of Logic = 1)
+  Clock Path Delay:     1.043ns (Levels of Logic = 3)
+  Clock Uncertainty:    0.000ns
+
+  Maximum Clock Path: clk to leds_2
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P80.I                Tiopi                 1.726   clk
+                                                       clk
+                                                       Inst_my_dcm/CLKIN_IBUFG_INST
+    DCM_X0Y0.CLKIN       net (fanout=1)        0.813   Inst_my_dcm/CLKIN_IBUFG_OUT
+    DCM_X0Y0.CLKFX       Tdcmino              -3.553   Inst_my_dcm/DCM_SP_INST
+                                                       Inst_my_dcm/DCM_SP_INST
+    BUFGMUX_X2Y0.I0      net (fanout=1)        0.416   Inst_my_dcm/CLKFX_BUF
+    BUFGMUX_X2Y0.O       Tgi0o                 1.457   Inst_my_dcm/CLKFX_BUFG_INST
+                                                       Inst_my_dcm/CLKFX_BUFG_INST
+    SLICE_X0Y44.CLK      net (fanout=125)      0.184   clk55MHz
+    -------------------------------------------------  ---------------------------
+    Total                                      1.043ns (-0.370ns logic, 1.413ns route)
+
+  Maximum Data Path: leds_2 to leds<2>
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X0Y44.YQ       Tcko                  0.652   leds_3
+                                                       leds_2
+    P30.O1               net (fanout=1)        0.876   leds_2
+    P30.PAD              Tioop                 3.236   leds<2>
+                                                       leds_2_OBUF
+                                                       leds<2>
+    -------------------------------------------------  ---------------------------
+    Total                                      4.764ns (3.888ns logic, 0.876ns route)
+                                                       (81.6% logic, 18.4% route)
+
+--------------------------------------------------------------------------------
+Slack:                  1.694ns (requirement - (clock arrival + clock path + data path + uncertainty))
+  Source:               leds_0 (FF)
+  Destination:          leds<0> (PAD)
+  Source Clock:         clk55MHz rising at 0.000ns
+  Requirement:          7.500ns
+  Data Path Delay:      4.764ns (Levels of Logic = 1)
+  Clock Path Delay:     1.042ns (Levels of Logic = 3)
+  Clock Uncertainty:    0.000ns
+
+  Maximum Clock Path: clk to leds_0
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    P80.I                Tiopi                 1.726   clk
+                                                       clk
+                                                       Inst_my_dcm/CLKIN_IBUFG_INST
+    DCM_X0Y0.CLKIN       net (fanout=1)        0.813   Inst_my_dcm/CLKIN_IBUFG_OUT
+    DCM_X0Y0.CLKFX       Tdcmino              -3.553   Inst_my_dcm/DCM_SP_INST
+                                                       Inst_my_dcm/DCM_SP_INST
+    BUFGMUX_X2Y0.I0      net (fanout=1)        0.416   Inst_my_dcm/CLKFX_BUF
+    BUFGMUX_X2Y0.O       Tgi0o                 1.457   Inst_my_dcm/CLKFX_BUFG_INST
+                                                       Inst_my_dcm/CLKFX_BUFG_INST
+    SLICE_X0Y40.CLK      net (fanout=125)      0.183   clk55MHz
+    -------------------------------------------------  ---------------------------
+    Total                                      1.042ns (-0.370ns logic, 1.412ns route)
+
+  Maximum Data Path: leds_0 to leds<0>
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X0Y40.YQ       Tcko                  0.652   leds_1
+                                                       leds_0
+    P33.O1               net (fanout=1)        0.876   leds_0
+    P33.PAD              Tioop                 3.236   leds<0>
+                                                       leds_0_OBUF
+                                                       leds<0>
+    -------------------------------------------------  ---------------------------
+    Total                                      4.764ns (3.888ns logic, 0.876ns route)
+                                                       (81.6% logic, 18.4% route)
+
+--------------------------------------------------------------------------------
+
+
+Derived Constraint Report
+Derived Constraints for TS_clk
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
+|                               |   Period    |       Actual Period       |      Timing Errors        |      Paths Analyzed       |
+|           Constraint          | Requirement |-------------+-------------|-------------+-------------|-------------+-------------|
+|                               |             |   Direct    | Derivative  |   Direct    | Derivative  |   Direct    | Derivative  |
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
+|TS_clk                         |     20.000ns|          N/A|     16.003ns|            0|            0|            0|         7282|
+| TS_Inst_my_dcm_CLKFX_BUF      |     18.182ns|          N/A|          N/A|            0|            0|            0|            0|
+| TS_Inst_my_dcm_CLKFX_BUF_0    |     18.182ns|          N/A|          N/A|            0|            0|            0|            0|
+| TS_Inst_my_dcm_CLKFX_BUF_1    |     18.182ns|     14.548ns|          N/A|            0|            0|         7282|            0|
++-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
+
+All constraints were met.
+
+
+Data Sheet report:
+-----------------
+All values displayed in nanoseconds (ns)
+
+Clock clk to Pad
+------------+------------+------------------+--------+
+            | clk (edge) |                  | Clock  |
+Destination |   to PAD   |Internal Clock(s) | Phase  |
+------------+------------+------------------+--------+
+leds<0>     |    5.806(R)|clk55MHz          |   0.000|
+leds<1>     |    5.194(R)|clk55MHz          |   0.000|
+leds<2>     |    5.807(R)|clk55MHz          |   0.000|
+leds<3>     |    5.195(R)|clk55MHz          |   0.000|
+leds<4>     |    5.749(R)|clk55MHz          |   0.000|
+leds<5>     |    5.194(R)|clk55MHz          |   0.000|
+leds<6>     |    5.255(R)|clk55MHz          |   0.000|
+leds<7>     |    5.731(R)|clk55MHz          |   0.000|
+rs232_tx    |    6.586(R)|clk55MHz          |   0.000|
+------------+------------+------------------+--------+
+
+Clock to Setup on destination clock clk
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk            |   14.548|         |         |         |
+---------------+---------+---------+---------+---------+
+
+OFFSET = OUT 7.5 ns AFTER COMP "clk";
+Bus Skew: 1.392 ns; 
+-----------------------------------------------+-------------+-------------+
+PAD                                            | Delay (ns)  |Edge Skew (ns)|
+-----------------------------------------------+-------------+-------------+
+leds<0>                                        |        5.806|        0.612|
+leds<1>                                        |        5.194|        0.000|
+leds<2>                                        |        5.807|        0.613|
+leds<3>                                        |        5.195|        0.001|
+leds<4>                                        |        5.749|        0.555|
+leds<5>                                        |        5.194|        0.000|
+leds<6>                                        |        5.255|        0.061|
+leds<7>                                        |        5.731|        0.537|
+rs232_tx                                       |        6.586|        1.392|
+-----------------------------------------------+-------------+-------------+
+
+
+Timing summary:
+---------------
+
+Timing errors: 0  Score: 0
+
+Constraints cover 7291 paths, 0 nets, and 1371 connections
+
+Design statistics:
+   Minimum period:  14.548ns{1}   (Maximum frequency:  68.738MHz)
+   Minimum output required time after clock:   6.586ns
+
+
+------------------------------------Footnotes-----------------------------------
+1)  The minimum period statistic assumes all single cycle delays.
+
+Analysis completed Sun Feb 28 14:08:14 2010 
+--------------------------------------------------------------------------------
+
+Trace Settings:
+-------------------------
+Trace Settings 
+
+Peak Memory Usage: 101 MB
+
+
+

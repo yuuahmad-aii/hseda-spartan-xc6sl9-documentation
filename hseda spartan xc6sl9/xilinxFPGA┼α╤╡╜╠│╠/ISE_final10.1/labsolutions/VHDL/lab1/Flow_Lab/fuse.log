@@ -1,0 +1,154 @@
+Running : C:\Xilinx\10.1\ISE\bin\nt\unwrapped\fuse.exe -ise
+D:/WGL/PEIXUN/ISE_final10.1/labsolutions/VHDL/lab1/Flow_Lab/Flow_Lab.ise
+-intstyle ise -incremental -o testbench_isim_beh.exe -prj testbench_beh.prj -top
+testbench
+Determining compilation order of HDL files
+Analyzing VHDL file kcpsm3.vhd
+Restoring VHDL parse-tree ieee.std_logic_1164 from
+c:/xilinx/10.1/ise/vhdl/hdp/nt/ieee/std_logic_1164.vdb
+Restoring VHDL parse-tree std.standard from
+c:/xilinx/10.1/ise/vhdl/hdp/nt/std/standard.vdb
+Restoring VHDL parse-tree ieee.std_logic_arith from
+c:/xilinx/10.1/ise/vhdl/hdp/nt/ieee/std_logic_arith.vdb
+Restoring VHDL parse-tree ieee.std_logic_unsigned from
+c:/xilinx/10.1/ise/vhdl/hdp/nt/ieee/std_logic_unsigned.vdb
+Restoring VHDL parse-tree unisim.vcomponents from
+c:/xilinx/10.1/ise/vhdl/hdp/nt/unisim/unisim.vdbl
+Analyzing VHDL file INT_TEST.VHD
+Analyzing VHDL file kcpsm3_int_test.vhd
+Analyzing VHDL file test_bench.vhd
+Restoring VHDL parse-tree ieee.numeric_std from
+c:/xilinx/10.1/ise/vhdl/hdp/nt/ieee/numeric_std.vdb
+Saving VHDL parse-tree work.kcpsm3 into
+d:/wgl/peixun/ise_final10.1/labsolutions/vhdl/lab1/flow_lab/isim/work/kcpsm3.vdb
+Saving VHDL parse-tree work.int_test into
+d:/wgl/peixun/ise_final10.1/labsolutions/vhdl/lab1/flow_lab/isim/work/int_test.v
+db
+Saving VHDL parse-tree work.kcpsm3_int_test into
+d:/wgl/peixun/ise_final10.1/labsolutions/vhdl/lab1/flow_lab/isim/work/kcpsm3_int
+_test.vdb
+Saving VHDL parse-tree work.testbench into
+d:/wgl/peixun/ise_final10.1/labsolutions/vhdl/lab1/flow_lab/isim/work/testbench.
+vdb
+Starting static elaboration
+Restoring VHDL parse-tree unisim.lut1 from
+c:/xilinx/10.1/ise/vhdl/hdp/nt/unisim/unisim.vdbl
+Restoring VHDL parse-tree unisim.fdr from
+c:/xilinx/10.1/ise/vhdl/hdp/nt/unisim/unisim.vdbl
+Restoring VHDL parse-tree unisim.fds from
+c:/xilinx/10.1/ise/vhdl/hdp/nt/unisim/unisim.vdbl
+Restoring VHDL parse-tree unisim.lut4 from
+c:/xilinx/10.1/ise/vhdl/hdp/nt/unisim/unisim.vdbl
+Restoring VHDL parse-tree std.textio from
+c:/xilinx/10.1/ise/vhdl/hdp/nt/std/textio.vdb
+Restoring VHDL parse-tree ieee.vital_timing from
+c:/xilinx/10.1/ise/vhdl/hdp/nt/ieee/vital_timing.vdb
+Restoring VHDL parse-tree ieee.vital_primitives from
+c:/xilinx/10.1/ise/vhdl/hdp/nt/ieee/vital_primitives.vdb
+Restoring VHDL parse-tree unisim.vpkg from
+c:/xilinx/10.1/ise/vhdl/hdp/nt/unisim/unisim.vdbl
+Restoring VHDL parse-tree unisim.fd from
+c:/xilinx/10.1/ise/vhdl/hdp/nt/unisim/unisim.vdbl
+Restoring VHDL parse-tree unisim.fde from
+c:/xilinx/10.1/ise/vhdl/hdp/nt/unisim/unisim.vdbl
+Restoring VHDL parse-tree unisim.lut3 from
+c:/xilinx/10.1/ise/vhdl/hdp/nt/unisim/unisim.vdbl
+Restoring VHDL parse-tree unisim.fdre from
+c:/xilinx/10.1/ise/vhdl/hdp/nt/unisim/unisim.vdbl
+Restoring VHDL parse-tree unisim.lut2 from
+c:/xilinx/10.1/ise/vhdl/hdp/nt/unisim/unisim.vdbl
+Restoring VHDL parse-tree unisim.muxcy from
+c:/xilinx/10.1/ise/vhdl/hdp/nt/unisim/unisim.vdbl
+Restoring VHDL parse-tree unisim.xorcy from
+c:/xilinx/10.1/ise/vhdl/hdp/nt/unisim/unisim.vdbl
+Restoring VHDL parse-tree unisim.inv from
+c:/xilinx/10.1/ise/vhdl/hdp/nt/unisim/unisim.vdbl
+Restoring VHDL parse-tree unisim.fdrse from
+c:/xilinx/10.1/ise/vhdl/hdp/nt/unisim/unisim.vdbl
+Restoring VHDL parse-tree unisim.ram16x1d from
+c:/xilinx/10.1/ise/vhdl/hdp/nt/unisim/unisim.vdbl
+Restoring VHDL parse-tree unisim.ram64x1s from
+c:/xilinx/10.1/ise/vhdl/hdp/nt/unisim/unisim.vdbl
+Restoring VHDL parse-tree unisim.muxf5 from
+c:/xilinx/10.1/ise/vhdl/hdp/nt/unisim/unisim.vdbl
+Restoring VHDL parse-tree unisim.ram32x1s from
+c:/xilinx/10.1/ise/vhdl/hdp/nt/unisim/unisim.vdbl
+Restoring VHDL parse-tree unisim.ramb16_s18 from
+c:/xilinx/10.1/ise/vhdl/hdp/nt/unisim/unisim.vdbl
+Completed static elaboration
+Fuse Memory Usage: 67100 Kb
+Fuse CPU Usage: 32296 ms
+Using precompiled package standard from library std
+Using precompiled package std_logic_1164 from library ieee
+Using precompiled package numeric_std from library ieee
+Using precompiled package std_logic_arith from library ieee
+Using precompiled package std_logic_unsigned from library ieee
+Using precompiled package textio from library std
+Using precompiled package vital_timing from library ieee
+Using precompiled package vital_primitives from library ieee
+Compiling package vcomponents
+Compiling package vpkg
+Compiling architecture lut1_v of entity lut1 [\LUT1("0001")\]
+Compiling architecture lut1_v of entity lut1 [\LUT1("0010")\]
+Compiling architecture fdr_v of entity fdr [\FDR('0')\]
+Compiling architecture fds_v of entity fds [\FDS('1')\]
+Compiling architecture lut4_v of entity lut4 [\LUT4("0000000010000000")\]
+Compiling architecture lut4_v of entity lut4 [\LUT4("1110101010101010")\]
+Compiling architecture lut4_v of entity lut4 [\LUT4("0111010000000000")\]
+Compiling architecture lut4_v of entity lut4 [\LUT4("0101101000111100")\]
+Compiling architecture lut4_v of entity lut4 [\LUT4("0001000000000000")\]
+Compiling architecture lut4_v of entity lut4 [\LUT4("0101010000000000")\]
+Compiling architecture lut4_v of entity lut4 [\LUT4("0100000111111100")\]
+Compiling architecture lut4_v of entity lut4 [\LUT4("0000000000000001")\]
+Compiling architecture lut4_v of entity lut4 [\LUT4("0110100110010110")\]
+Compiling architecture lut4_v of entity lut4 [\LUT4("1111001111111111")\]
+Compiling architecture lut4_v of entity lut4 [\LUT4("0000000101000101")\]
+Compiling architecture lut4_v of entity lut4 [\LUT4("0000010000000000")\]
+Compiling architecture lut4_v of entity lut4 [\LUT4("1000000000000000")\]
+Compiling architecture lut4_v of entity lut4 [\LUT4("1111111111100010")\]
+Compiling architecture lut4_v of entity lut4 [\LUT4("0110111010001010")\]
+Compiling architecture lut4_v of entity lut4 [\LUT4("0000000000000010")\]
+Compiling architecture lut4_v of entity lut4 [\LUT4("0000000000010000")\]
+Compiling architecture lut4_v of entity lut4 [\LUT4("0100000000000000")\]
+Compiling architecture lut4_v of entity lut4 [\LUT4("0000000100000000")\]
+Compiling architecture lut4_v of entity lut4 [\LUT4("0110010101010101")\]
+Compiling architecture lut4_v of entity lut4 [\LUT4("1010100110011001")\]
+Compiling architecture fd_v of entity fd [\FD('0')\]
+Compiling architecture fde_v of entity fde [\FDE('0')\]
+Compiling architecture lut3_v of entity lut3 [\LUT3("00000100")\]
+Compiling architecture lut3_v of entity lut3 [\LUT3("00101111")\]
+Compiling architecture lut3_v of entity lut3 [\LUT3("00111111")\]
+Compiling architecture lut3_v of entity lut3 [\LUT3("11110011")\]
+Compiling architecture lut3_v of entity lut3 [\LUT3("11100100")\]
+Compiling architecture lut3_v of entity lut3 [\LUT3("00011111")\]
+Compiling architecture lut3_v of entity lut3 [\LUT3("01101100")\]
+Compiling architecture lut3_v of entity lut3 [\LUT3("10010110")\]
+Compiling architecture lut3_v of entity lut3 [\LUT3("11111110")\]
+Compiling architecture fdre_v of entity fdre [\FDRE('0')\]
+Compiling architecture lut2_v of entity lut2 [\LUT2("1101")\]
+Compiling architecture lut2_v of entity lut2 [\LUT2("1000")\]
+Compiling architecture lut2_v of entity lut2 [\LUT2("1100")\]
+Compiling architecture lut2_v of entity lut2 [\LUT2("0011")\]
+Compiling architecture muxcy_v of entity muxcy [muxcy_default]
+Compiling architecture xorcy_v of entity xorcy [xorcy_default]
+Compiling architecture inv_v of entity inv [inv_default]
+Compiling architecture fdrse_v of entity fdrse [\FDRSE('0')\]
+Compiling architecture ram16x1d_v of entity ram16x1d
+[\RAM16X1D("0000000000000000")\]
+Compiling architecture ram64x1s_v of entity ram64x1s
+[\RAM64X1S("000000000000000000000...]
+Compiling architecture muxf5_v of entity muxf5 [muxf5_default]
+Compiling architecture ram32x1s_v of entity ram32x1s
+[\RAM32X1S("000000000000000000000...]
+Compiling architecture low_level_definition of entity kcpsm3 [kcpsm3_default]
+Compiling architecture ramb16_s18_v of entity ramb16_s18
+[\RAMB16_S18("0000000000000000000...]
+Compiling architecture low_level_definition of entity int_test
+[int_test_default]
+Compiling architecture behavioral of entity kcpsm3_int_test
+[kcpsm3_int_test_default]
+Compiling architecture behavior of entity testbench
+Compiled 117 VHDL Units
+Built simulation executable testbench_isim_beh.exe
+Fuse Memory Usage: 69408 Kb
+Fuse CPU Usage: 32546 ms

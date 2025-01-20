@@ -1,0 +1,6 @@
+CommandLine
+C:\Xilinx\10.1\ISE\bin\nt\unwrapped\xst.exe -ise E:/labsolutions/VHDL/lab1/Flow_Lab/Flow_Lab/Flow_Lab.ise -intstyle ise -ifn E:/labsolutions/VHDL/lab1/Flow_Lab/Flow_Lab/kcpsm3_int_test.xst -ofn E:/labsolutions/VHDL/lab1/Flow_Lab/Flow_Lab/kcpsm3_int_test.syr -finalclean 1
+s
+FormatString
+xst [-ifn <InputFile>] [-ofn <OutputFile>] [-ise <iseProjectFile>] [--quiet] [-intstyle <Style>] [--deb <DebugLevel>] [--finalclean <Clean>] [--PcubeFlow] [--globOptFlow] [--XstNtrc]
+s

@@ -1,0 +1,38 @@
+Command line:
+   ./testbench_isim_beh.exe
+     -intstyle  ise
+     -ipchost  localhost
+     -ipcport  3335
+
+Fri Apr 09 14:03:20 2010
+
+Total Line Count : 1556
+
+ Elaboration Time: 0.078125 sec
+
+ Current Memory Usage: 251.421 Meg
+
+ Total Signals          : 1573
+ Total Nets             : 1439
+ Total Signal Drivers   : 347
+ Total Blocks           : 418
+ Total Primitive Blocks : 301
+ Total Processes        : 338
+ Total Traceable Variables  : 592
+ Total Scalar Nets and Variables : 27958
+ntrace select -o on -n /testbench/clk 
+ntrace select -o on -n /testbench/period 
+ntrace select -o on -n /testbench/interrupt_event 
+ntrace select -o on -n /testbench/counter 
+ntrace select -o on -n /testbench/waveforms 
+ntrace start 
+isimrun 25000 ns 
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+
+ Total Simulation Time: 0.296875 sec
+
+ Current Memory Usage: 260.923 Meg
+
+Fri Apr 09 14:25:05 2010
+

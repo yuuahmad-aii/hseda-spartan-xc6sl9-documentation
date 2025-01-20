@@ -1,0 +1,37 @@
+Command line:
+   ./testbench_vhd_isim_beh.exe
+     -intstyle  ise
+     -ipchost  localhost
+     -ipcport  4315
+
+Wed May 14 16:44:20 2008
+
+Total Line Count : 3669
+
+ Elaboration Time: 0.100143 sec
+
+ Current Memory Usage: 237.167 Meg
+
+ Total Signals          : 2593
+ Total Nets             : 2355
+ Total Signal Drivers   : 580
+ Total Blocks           : 645
+ Total Primitive Blocks : 448
+ Total Processes        : 655
+ Total Traceable Variables  : 949
+ Total Scalar Nets and Variables : 33835
+ntrace select -o on -m / -l this 
+ntrace start 
+isimrun 1000 ns 
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+isimstop -s 
+ERROR:Portability:3 - This Xilinx application has run out of memory or has
+   encountered a memory conflict.  Current memory usage is 1723320 kb.  You can
+   try increasing your system's physical or virtual memory.  For technical
+   support on this issue, please open a WebCase with this project attached at
+   http://www.xilinx.com/support. 
+ERROR: In process testbench.vhd:tb 
+ Signal Unknown signal received
+
+

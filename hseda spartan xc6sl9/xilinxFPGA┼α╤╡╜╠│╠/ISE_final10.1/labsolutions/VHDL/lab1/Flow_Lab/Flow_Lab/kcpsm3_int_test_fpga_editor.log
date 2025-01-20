@@ -1,0 +1,61 @@
+#:C19    
+#Xilinx FPGA Editor Command Log File
+#Editor Version:
+#:V   NT M2.1 K.31
+#Current Working Directory:
+#:D   E:\labsolutions\VHDL\lab1\Flow_Lab\Flow_Lab
+#Date/Time:
+#:T   Sat Feb 27 01:44:54 2010
+#------------------------------
+	#Reading kcpsm3_int_test.ncd...
+	#Loading device for application Rf_Device from file '3s500e.nph' in environment C:\Xilinx\10.1\ISE.
+	#   "kcpsm3_int_test" is an NCD, version 3.2, device xc3s500e, package fg320, speed -4
+	#Building chip graphics...
+	#Loading speed info...
+	#1
+setattr main edit-mode no-logic-changes
+	#2
+unselect -all
+	#3
+unselect -all
+	#4
+select site 'SLICE_X32Y47'
+	#site "SLICE_X32Y47",  type = SLICEM  (RPM grid X69Y49)
+	#5
+unselect -all
+	#6
+select site 'SLICE_X32Y47'
+	#site "SLICE_X32Y47",  type = SLICEM  (RPM grid X69Y49)
+	#7
+post block
+	#8
+unselect -all
+	#9
+setattr main disable_draw on
+	#10
+setattr layer ratsnests view on
+	#11
+setattr main disable_draw off
+	#Hint: change the visibility of more than one layer at a time by clicking on the apply button, clicking two or more layer buttons, and then clicking on the apply button again.
+	#12
+setattr main disable_draw on
+	#13
+setattr layer routes view on
+	#14
+setattr main disable_draw off
+	#15
+unselect -all
+	#16
+unselect -all
+	#17
+unselect -all
+	#18
+select site 'SLICE_X32Y46'
+	#site "SLICE_X32Y46",  type = SLICEM  (RPM grid X69Y48)
+	#19
+unselect -all
+	#20
+select site 'SLICE_X32Y46'
+	#site "SLICE_X32Y46",  type = SLICEM  (RPM grid X69Y48)
+	#21
+post block

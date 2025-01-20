@@ -1,0 +1,7 @@
+add instance dcm_sp 848 1872 R0 -sn=1
+select figure at 1006 939 6 -branches -sn=1
+move instance at 848 1872 to 1088 1840 R0 -keepConn -sn=1
+move instance at 1088 1840 to 1104 1808 R0 -keepConn -sn=1
+move instance at 1104 1808 to 1104 1744 R0 -keepConn -sn=1
+move instance at 1104 1744 to 1088 1728 R0 -keepConn -sn=1
+move instance at 1088 1728 to 1072 1696 R0 -keepConn -sn=1

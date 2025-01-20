@@ -1,0 +1,39 @@
+Command line:
+   ./testbench_vhd_isim_beh.exe
+     -intstyle  ise
+     -ipchost  localhost
+     -ipcport  4263
+
+Fri Apr 09 16:54:06 2010
+
+Total Line Count : 2999
+
+ Elaboration Time: 0.125 sec
+
+ Current Memory Usage: 258.818 Meg
+
+ Total Signals          : 2572
+ Total Nets             : 20897
+ Total Signal Drivers   : 558
+ Total Blocks           : 640
+ Total Primitive Blocks : 441
+ Total Processes        : 542
+ Total Traceable Variables  : 826
+ Total Scalar Nets and Variables : 31225
+ntrace select -o on -n /testbench_vhd/clk 
+ntrace select -o on -n /testbench_vhd/rst_tmp 
+ntrace select -o on -n /testbench_vhd/switches 
+ntrace select -o on -n /testbench_vhd/leds 
+ntrace select -o on -n /testbench_vhd/implicitactualforformal_rs232_rx_3364076259 
+ntrace select -o on -n /testbench_vhd/period 
+ntrace start 
+isimrun 50000 ns 
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+
+ Total Simulation Time: 0.28125 sec
+
+ Current Memory Usage: 268.255 Meg
+
+Fri Apr 09 16:54:12 2010
+

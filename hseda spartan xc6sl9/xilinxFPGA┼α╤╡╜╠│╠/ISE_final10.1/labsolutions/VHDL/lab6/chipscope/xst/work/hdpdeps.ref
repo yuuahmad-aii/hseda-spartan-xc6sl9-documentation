@@ -1,0 +1,74 @@
+V3 71
+FL E:/labsolutions/VHDL/lab6/chipscope/bbfifo_16x8.vhd 2003/12/03.15:53:56 K.31
+EN work/bbfifo_16x8 1269503759 \
+      FL E:/labsolutions/VHDL/lab6/chipscope/bbfifo_16x8.vhd \
+      PB ieee/std_logic_1164 1200023565 PB ieee/std_logic_arith 1200023566 \
+      PB ieee/STD_LOGIC_UNSIGNED 1200023567 LB unisim PH unisim/VCOMPONENTS 1200023571
+AR work/bbfifo_16x8/low_level_definition 1269503760 \
+      FL E:/labsolutions/VHDL/lab6/chipscope/bbfifo_16x8.vhd EN work/bbfifo_16x8 1269503759 \
+      CP string CP label CP SRL16E CP FDRE CP LUT4 CP MUXCY CP XORCY CP FDR CP LUT3
+FL E:/labsolutions/VHDL/lab6/chipscope/kcpsm3.vhd 2004/06/14.16:07:40 K.31
+EN work/kcpsm3 1269503763 FL E:/labsolutions/VHDL/lab6/chipscope/kcpsm3.vhd \
+      PB ieee/std_logic_1164 1200023565 PB ieee/std_logic_arith 1200023566 \
+      PB ieee/STD_LOGIC_UNSIGNED 1200023567 LB unisim PH unisim/VCOMPONENTS 1200023571
+AR work/kcpsm3/low_level_definition 1269503764 \
+      FL E:/labsolutions/VHDL/lab6/chipscope/kcpsm3.vhd EN work/kcpsm3 1269503763 \
+      CP LUT1 CP FDR CP FDS CP LUT4 CP FD CP FDE CP LUT3 CP FDRE CP LUT2 CP MUXCY CP XORCY \
+      CP INV CP string CP label CP FDRSE CP RAM16X1D CP RAM64X1S CP MUXF5 CP RAM32X1S
+FL E:/labsolutions/VHDL/lab6/chipscope/kcuart_rx.vhd 2003/12/03.15:53:38 K.31
+EN work/kcuart_rx 1269503757 FL E:/labsolutions/VHDL/lab6/chipscope/kcuart_rx.vhd \
+      PB ieee/std_logic_1164 1200023565 PB ieee/std_logic_arith 1200023566 \
+      PB ieee/STD_LOGIC_UNSIGNED 1200023567 LB unisim PH unisim/VCOMPONENTS 1200023571
+AR work/kcuart_rx/low_level_definition 1269503758 \
+      FL E:/labsolutions/VHDL/lab6/chipscope/kcuart_rx.vhd EN work/kcuart_rx 1269503757 \
+      CP FD CP string CP label CP SRL16E CP FDE CP LUT4 CP LUT3 CP LUT2
+FL E:/labsolutions/VHDL/lab6/chipscope/kcuart_tx.vhd 2003/12/03.15:53:48 K.31
+EN work/kcuart_tx 1269503761 FL E:/labsolutions/VHDL/lab6/chipscope/kcuart_tx.vhd \
+      PB ieee/std_logic_1164 1200023565 PB ieee/std_logic_arith 1200023566 \
+      PB ieee/STD_LOGIC_UNSIGNED 1200023567 LB unisim PH unisim/VCOMPONENTS 1200023571
+AR work/kcuart_tx/low_level_definition 1269503762 \
+      FL E:/labsolutions/VHDL/lab6/chipscope/kcuart_tx.vhd EN work/kcuart_tx 1269503761 \
+      CP LUT4 CP MUXF5 CP MUXF6 CP FDRS CP string CP label CP FDRE CP LUT2 CP MULT_AND \
+      CP MUXCY CP XORCY CP LUT3 CP FDE CP SRL16E CP FD
+FL E:/labsolutions/VHDL/lab6/chipscope/loopback.vhd 2010/03/10.13:51:28 K.31
+EN work/loopback 1269503773 FL E:/labsolutions/VHDL/lab6/chipscope/loopback.vhd \
+      PB ieee/std_logic_1164 1200023565 PB ieee/std_logic_arith 1200023566 \
+      PB ieee/STD_LOGIC_UNSIGNED 1200023567
+AR work/loopback/Behavioral 1269503774 \
+      FL E:/labsolutions/VHDL/lab6/chipscope/loopback.vhd EN work/loopback 1269503773 \
+      CP kcpsm3 CP program CP my_dcm CP uart_tx CP uart_rx
+FL E:/labsolutions/VHDL/lab6/chipscope/my_dcm.vhd 2010/02/28.21:40:38 K.31
+EN work/my_dcm 1269503767 FL E:/labsolutions/VHDL/lab6/chipscope/my_dcm.vhd \
+      PB ieee/std_logic_1164 1200023565 PH ieee/NUMERIC_STD 1200023568 LB unisim \
+      PH unisim/VCOMPONENTS 1200023571
+AR work/my_dcm/BEHAVIORAL 1269503768 \
+      FL E:/labsolutions/VHDL/lab6/chipscope/my_dcm.vhd EN work/my_dcm 1269503767 \
+      CP BUFG CP IBUFG CP DCM_SP
+FL E:/labsolutions/VHDL/lab6/chipscope/program.vhd 2008/05/15.14:37:56 K.31
+EN work/program 1269503765 FL E:/labsolutions/VHDL/lab6/chipscope/program.vhd \
+      PB ieee/std_logic_1164 1200023565
+AR work/program/program_a 1269503766 \
+      FL E:/labsolutions/VHDL/lab6/chipscope/program.vhd EN work/program 1269503765
+FL E:/labsolutions/VHDL/lab6/chipscope/uart_rx.vhd 2003/12/03.15:53:26 K.31
+EN work/uart_rx 1269503771 FL E:/labsolutions/VHDL/lab6/chipscope/uart_rx.vhd \
+      PB ieee/std_logic_1164 1200023565 PB ieee/std_logic_arith 1200023566 \
+      PB ieee/STD_LOGIC_UNSIGNED 1200023567 LB unisim PH unisim/VCOMPONENTS 1200023571
+AR work/uart_rx/macro_level_definition 1269503772 \
+      FL E:/labsolutions/VHDL/lab6/chipscope/uart_rx.vhd EN work/uart_rx 1269503771 \
+      CP kcuart_rx CP bbfifo_16x8
+FL E:/labsolutions/VHDL/lab6/chipscope/uart_tx.vhd 2003/12/03.15:53:16 K.31
+EN work/uart_tx 1269503769 FL E:/labsolutions/VHDL/lab6/chipscope/uart_tx.vhd \
+      PB ieee/std_logic_1164 1200023565 PB ieee/std_logic_arith 1200023566 \
+      PB ieee/STD_LOGIC_UNSIGNED 1200023567 LB unisim PH unisim/VCOMPONENTS 1200023571
+AR work/uart_tx/macro_level_definition 1269503770 \
+      FL E:/labsolutions/VHDL/lab6/chipscope/uart_tx.vhd EN work/uart_tx 1269503769 \
+      CP kcuart_tx CP bbfifo_16x8
+FL E:/WGL_ceshi/labsolutions/VHDL/lab6/chipscope/bbfifo_16x8.vhd 2003/12/03.15:53:56 K.31
+FL E:/WGL_ceshi/labsolutions/VHDL/lab6/chipscope/kcpsm3.vhd 2004/06/14.16:07:40 K.31
+FL E:/WGL_ceshi/labsolutions/VHDL/lab6/chipscope/kcuart_rx.vhd 2003/12/03.15:53:38 K.31
+FL E:/WGL_ceshi/labsolutions/VHDL/lab6/chipscope/kcuart_tx.vhd 2003/12/03.15:53:48 K.31
+FL E:/WGL_ceshi/labsolutions/VHDL/lab6/chipscope/loopback.vhd 2010/03/10.13:51:27 K.31
+FL E:/WGL_ceshi/labsolutions/VHDL/lab6/chipscope/my_dcm.vhd 2010/02/28.21:40:38 K.31
+FL E:/WGL_ceshi/labsolutions/VHDL/lab6/chipscope/program.vhd 2008/05/15.14:37:56 K.31
+FL E:/WGL_ceshi/labsolutions/VHDL/lab6/chipscope/uart_rx.vhd 2003/12/03.15:53:26 K.31
+FL E:/WGL_ceshi/labsolutions/VHDL/lab6/chipscope/uart_tx.vhd 2003/12/03.15:53:16 K.31

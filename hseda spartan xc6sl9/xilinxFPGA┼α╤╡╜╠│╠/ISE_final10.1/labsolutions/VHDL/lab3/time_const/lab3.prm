@@ -1,0 +1,17 @@
+PROMGEN: Xilinx Prom Generator K.31
+Copyright (c) 1995-2008 Xilinx, Inc.  All rights reserved.
+
+promgen -w -p mcs -c FF -o E:\labsolutions\VHDL\lab3\time_const\//lab3 -u 0 E:/labsolutions/VHDL/lab3/time_const/loopback.bit -x xcf04s 
+
+PROM E:\labsolutions\VHDL\lab3\time_const\//lab3.prm map: Sun Feb 28 15:29:11 2010
+
+Calculating PROM checksum with fill value ff
+
+Format        Mcs86 (32-bit)
+Size          512K
+PROM start    0000:0000
+PROM end      0007:ffff
+PROM checksum 03ae45c3
+
+        Addr1        Addr2                     Date File(s)
+    0000:0000    0004:547f     Feb 28 14:08:27 2010 E:/labsolutions/VHDL/lab3/time_const/loopback.bit

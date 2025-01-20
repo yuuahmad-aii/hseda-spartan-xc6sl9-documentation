@@ -1,0 +1,6 @@
+CommandLine
+C:\Xilinx\10.1\ISE\bin\nt\unwrapped\xst.exe -ise E:/labsolutions/VHDL/lab2/arwz_pace.ise -intstyle ise -ifn E:/labsolutions/VHDL/lab2/uart_clock.xst -ofn E:/labsolutions/VHDL/lab2/uart_clock.syr -finalclean 1
+s
+FormatString
+xst [-ifn <InputFile>] [-ofn <OutputFile>] [-ise <iseProjectFile>] [--quiet] [-intstyle <Style>] [--deb <DebugLevel>] [--finalclean <Clean>] [--PcubeFlow] [--globOptFlow] [--XstNtrc]
+s

@@ -1,0 +1,87 @@
+V3 72
+FL E:/labsolutions/VHDL/lab2/arwz_pace/bbfifo_16x8.vhd 2003/12/03.15:53:56 K.31
+FL E:/labsolutions/VHDL/lab2/arwz_pace/kcpsm3.vhd 2004/06/14.16:07:40 K.31
+FL E:/labsolutions/VHDL/lab2/arwz_pace/kcuart_rx.vhd 2003/12/03.15:53:38 K.31
+FL E:/labsolutions/VHDL/lab2/arwz_pace/kcuart_tx.vhd 2003/12/03.15:53:48 K.31
+FL E:/labsolutions/VHDL/lab2/arwz_pace/uart_clock.vhd 2010/02/27.12:09:32 K.31
+FL E:/labsolutions/VHDL/lab2/arwz_pace/uart_rx.vhd 2003/12/03.15:53:26 K.31
+FL E:/labsolutions/VHDL/lab2/arwz_pace/uart_tx.vhd 2003/12/03.15:53:16 K.31
+FL E:/labsolutions/VHDL/lab2/arwz_pace/UCLOCK.VHD 2006/05/22.10:06:32 K.31
+FL E:/labsolutions/VHDL/lab2/my_dcm.vhd 2010/02/28.10:29:37 K.31
+FL E:/WGL_ceshi/labsolutions/VHDL/lab2/arwz_pace/bbfifo_16x8.vhd 2003/12/03.15:53:56 K.31
+EN work/bbfifo_16x8 1268181816 \
+      FL E:/WGL_ceshi/labsolutions/VHDL/lab2/arwz_pace/bbfifo_16x8.vhd \
+      PB ieee/std_logic_1164 1200023565 PB ieee/std_logic_arith 1200023566 \
+      PB ieee/STD_LOGIC_UNSIGNED 1200023567 LB unisim PH unisim/VCOMPONENTS 1200023571
+AR work/bbfifo_16x8/low_level_definition 1268181817 \
+      FL E:/WGL_ceshi/labsolutions/VHDL/lab2/arwz_pace/bbfifo_16x8.vhd \
+      EN work/bbfifo_16x8 1268181816 CP string CP label CP SRL16E CP FDRE CP LUT4 \
+      CP MUXCY CP XORCY CP FDR CP LUT3
+FL E:/WGL_ceshi/labsolutions/VHDL/lab2/arwz_pace/kcpsm3.vhd 2004/06/14.16:07:40 K.31
+EN work/kcpsm3 1268181820 \
+      FL E:/WGL_ceshi/labsolutions/VHDL/lab2/arwz_pace/kcpsm3.vhd \
+      PB ieee/std_logic_1164 1200023565 PB ieee/std_logic_arith 1200023566 \
+      PB ieee/STD_LOGIC_UNSIGNED 1200023567 LB unisim PH unisim/VCOMPONENTS 1200023571
+AR work/kcpsm3/low_level_definition 1268181821 \
+      FL E:/WGL_ceshi/labsolutions/VHDL/lab2/arwz_pace/kcpsm3.vhd EN work/kcpsm3 1268181820 \
+      CP LUT1 CP FDR CP FDS CP LUT4 CP FD CP FDE CP LUT3 CP FDRE CP LUT2 CP MUXCY CP XORCY \
+      CP INV CP string CP label CP FDRSE CP RAM16X1D CP RAM64X1S CP MUXF5 CP RAM32X1S
+FL E:/WGL_ceshi/labsolutions/VHDL/lab2/arwz_pace/kcuart_rx.vhd 2003/12/03.15:53:38 K.31
+EN work/kcuart_rx 1268181814 \
+      FL E:/WGL_ceshi/labsolutions/VHDL/lab2/arwz_pace/kcuart_rx.vhd \
+      PB ieee/std_logic_1164 1200023565 PB ieee/std_logic_arith 1200023566 \
+      PB ieee/STD_LOGIC_UNSIGNED 1200023567 LB unisim PH unisim/VCOMPONENTS 1200023571
+AR work/kcuart_rx/low_level_definition 1268181815 \
+      FL E:/WGL_ceshi/labsolutions/VHDL/lab2/arwz_pace/kcuart_rx.vhd \
+      EN work/kcuart_rx 1268181814 CP FD CP string CP label CP SRL16E CP FDE CP LUT4 \
+      CP LUT3 CP LUT2
+FL E:/WGL_ceshi/labsolutions/VHDL/lab2/arwz_pace/kcuart_tx.vhd 2003/12/03.15:53:48 K.31
+EN work/kcuart_tx 1268181818 \
+      FL E:/WGL_ceshi/labsolutions/VHDL/lab2/arwz_pace/kcuart_tx.vhd \
+      PB ieee/std_logic_1164 1200023565 PB ieee/std_logic_arith 1200023566 \
+      PB ieee/STD_LOGIC_UNSIGNED 1200023567 LB unisim PH unisim/VCOMPONENTS 1200023571
+AR work/kcuart_tx/low_level_definition 1268181819 \
+      FL E:/WGL_ceshi/labsolutions/VHDL/lab2/arwz_pace/kcuart_tx.vhd \
+      EN work/kcuart_tx 1268181818 CP LUT4 CP MUXF5 CP MUXF6 CP FDRS CP string \
+      CP label CP FDRE CP LUT2 CP MULT_AND CP MUXCY CP XORCY CP LUT3 CP FDE CP SRL16E \
+      CP FD
+FL E:/WGL_ceshi/labsolutions/VHDL/lab2/arwz_pace/uart_clock.vhd 2010/02/27.12:09:34 K.31
+EN work/uart_clock 1268181830 \
+      FL E:/WGL_ceshi/labsolutions/VHDL/lab2/arwz_pace/uart_clock.vhd \
+      PB ieee/std_logic_1164 1200023565 PB ieee/std_logic_arith 1200023566 \
+      PB ieee/STD_LOGIC_UNSIGNED 1200023567
+AR work/uart_clock/Behavioral 1268181831 \
+      FL E:/WGL_ceshi/labsolutions/VHDL/lab2/arwz_pace/uart_clock.vhd \
+      EN work/uart_clock 1268181830 CP kcpsm3 CP uclock CP my_dcm CP uart_tx \
+      CP uart_rx
+FL E:/WGL_ceshi/labsolutions/VHDL/lab2/arwz_pace/uart_rx.vhd 2003/12/03.15:53:26 K.31
+EN work/uart_rx 1268181828 \
+      FL E:/WGL_ceshi/labsolutions/VHDL/lab2/arwz_pace/uart_rx.vhd \
+      PB ieee/std_logic_1164 1200023565 PB ieee/std_logic_arith 1200023566 \
+      PB ieee/STD_LOGIC_UNSIGNED 1200023567 LB unisim PH unisim/VCOMPONENTS 1200023571
+AR work/uart_rx/macro_level_definition 1268181829 \
+      FL E:/WGL_ceshi/labsolutions/VHDL/lab2/arwz_pace/uart_rx.vhd \
+      EN work/uart_rx 1268181828 CP kcuart_rx CP bbfifo_16x8
+FL E:/WGL_ceshi/labsolutions/VHDL/lab2/arwz_pace/uart_tx.vhd 2003/12/03.15:53:16 K.31
+EN work/uart_tx 1268181826 \
+      FL E:/WGL_ceshi/labsolutions/VHDL/lab2/arwz_pace/uart_tx.vhd \
+      PB ieee/std_logic_1164 1200023565 PB ieee/std_logic_arith 1200023566 \
+      PB ieee/STD_LOGIC_UNSIGNED 1200023567 LB unisim PH unisim/VCOMPONENTS 1200023571
+AR work/uart_tx/macro_level_definition 1268181827 \
+      FL E:/WGL_ceshi/labsolutions/VHDL/lab2/arwz_pace/uart_tx.vhd \
+      EN work/uart_tx 1268181826 CP kcuart_tx CP bbfifo_16x8
+FL E:/WGL_ceshi/labsolutions/VHDL/lab2/arwz_pace/UCLOCK.VHD 2006/05/22.10:06:32 K.31
+EN work/uclock 1268181822 \
+      FL E:/WGL_ceshi/labsolutions/VHDL/lab2/arwz_pace/UCLOCK.VHD \
+      PB ieee/std_logic_1164 1200023565 PB ieee/std_logic_arith 1200023566 \
+      PB ieee/STD_LOGIC_UNSIGNED 1200023567 LB unisim PH unisim/VCOMPONENTS 1200023571
+AR work/uclock/low_level_definition 1268181823 \
+      FL E:/WGL_ceshi/labsolutions/VHDL/lab2/arwz_pace/UCLOCK.VHD EN work/uclock 1268181822 \
+      CP RAMB16_S18
+FL E:/WGL_ceshi/labsolutions/VHDL/lab2/my_dcm.vhd 2010/02/28.10:29:38 K.31
+EN work/my_dcm 1268181824 FL E:/WGL_ceshi/labsolutions/VHDL/lab2/my_dcm.vhd \
+      PB ieee/std_logic_1164 1200023565 PH ieee/NUMERIC_STD 1200023568 LB unisim \
+      PH unisim/VCOMPONENTS 1200023571
+AR work/my_dcm/BEHAVIORAL 1268181825 \
+      FL E:/WGL_ceshi/labsolutions/VHDL/lab2/my_dcm.vhd EN work/my_dcm 1268181824 \
+      CP BUFG CP IBUFG CP DCM_SP

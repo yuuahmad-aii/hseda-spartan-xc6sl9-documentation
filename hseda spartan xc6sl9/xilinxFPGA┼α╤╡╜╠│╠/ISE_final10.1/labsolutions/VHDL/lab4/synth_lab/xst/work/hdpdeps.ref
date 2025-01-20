@@ -1,0 +1,76 @@
+V3 72
+FL E:/labsolutions/VHDL/lab4/Assembler/PROGRAM.VHD 2010/03/26.16:30:01 K.31
+EN work/program 1269592298 FL E:/labsolutions/VHDL/lab4/Assembler/PROGRAM.VHD \
+      PB ieee/std_logic_1164 1200023565 PB ieee/std_logic_arith 1200023566 \
+      PB ieee/STD_LOGIC_UNSIGNED 1200023567 LB unisim PH unisim/VCOMPONENTS 1200023571
+AR work/program/low_level_definition 1269592299 \
+      FL E:/labsolutions/VHDL/lab4/Assembler/PROGRAM.VHD EN work/program 1269592298 \
+      CP RAMB16_S18
+FL E:/labsolutions/VHDL/lab4/synth_lab/bbfifo_16x8.vhd 2003/12/03.15:53:56 K.31
+EN work/bbfifo_16x8 1269592292 \
+      FL E:/labsolutions/VHDL/lab4/synth_lab/bbfifo_16x8.vhd \
+      PB ieee/std_logic_1164 1200023565 PB ieee/std_logic_arith 1200023566 \
+      PB ieee/STD_LOGIC_UNSIGNED 1200023567 LB unisim PH unisim/VCOMPONENTS 1200023571
+AR work/bbfifo_16x8/low_level_definition 1269592293 \
+      FL E:/labsolutions/VHDL/lab4/synth_lab/bbfifo_16x8.vhd EN work/bbfifo_16x8 1269592292 \
+      CP string CP label CP SRL16E CP FDRE CP LUT4 CP MUXCY CP XORCY CP FDR CP LUT3
+FL E:/labsolutions/VHDL/lab4/synth_lab/kcpsm3.vhd 2004/06/14.16:07:40 K.31
+EN work/kcpsm3 1269592296 FL E:/labsolutions/VHDL/lab4/synth_lab/kcpsm3.vhd \
+      PB ieee/std_logic_1164 1200023565 PB ieee/std_logic_arith 1200023566 \
+      PB ieee/STD_LOGIC_UNSIGNED 1200023567 LB unisim PH unisim/VCOMPONENTS 1200023571
+AR work/kcpsm3/low_level_definition 1269592297 \
+      FL E:/labsolutions/VHDL/lab4/synth_lab/kcpsm3.vhd EN work/kcpsm3 1269592296 \
+      CP LUT1 CP FDR CP FDS CP LUT4 CP FD CP FDE CP LUT3 CP FDRE CP LUT2 CP MUXCY CP XORCY \
+      CP INV CP string CP label CP FDRSE CP RAM16X1D CP RAM64X1S CP MUXF5 CP RAM32X1S
+FL E:/labsolutions/VHDL/lab4/synth_lab/kcuart_rx.vhd 2003/12/03.15:53:38 K.31
+EN work/kcuart_rx 1269592290 FL E:/labsolutions/VHDL/lab4/synth_lab/kcuart_rx.vhd \
+      PB ieee/std_logic_1164 1200023565 PB ieee/std_logic_arith 1200023566 \
+      PB ieee/STD_LOGIC_UNSIGNED 1200023567 LB unisim PH unisim/VCOMPONENTS 1200023571
+AR work/kcuart_rx/low_level_definition 1269592291 \
+      FL E:/labsolutions/VHDL/lab4/synth_lab/kcuart_rx.vhd EN work/kcuart_rx 1269592290 \
+      CP FD CP string CP label CP SRL16E CP FDE CP LUT4 CP LUT3 CP LUT2
+FL E:/labsolutions/VHDL/lab4/synth_lab/kcuart_tx.vhd 2003/12/03.15:53:48 K.31
+EN work/kcuart_tx 1269592294 FL E:/labsolutions/VHDL/lab4/synth_lab/kcuart_tx.vhd \
+      PB ieee/std_logic_1164 1200023565 PB ieee/std_logic_arith 1200023566 \
+      PB ieee/STD_LOGIC_UNSIGNED 1200023567 LB unisim PH unisim/VCOMPONENTS 1200023571
+AR work/kcuart_tx/low_level_definition 1269592295 \
+      FL E:/labsolutions/VHDL/lab4/synth_lab/kcuart_tx.vhd EN work/kcuart_tx 1269592294 \
+      CP LUT4 CP MUXF5 CP MUXF6 CP FDRS CP string CP label CP FDRE CP LUT2 CP MULT_AND \
+      CP MUXCY CP XORCY CP LUT3 CP FDE CP SRL16E CP FD
+FL E:/labsolutions/VHDL/lab4/synth_lab/loopback.vhd 2010/03/10.10:26:22 K.31
+EN work/loopback 1269592306 FL E:/labsolutions/VHDL/lab4/synth_lab/loopback.vhd \
+      PB ieee/std_logic_1164 1200023565 PB ieee/std_logic_arith 1200023566 \
+      PB ieee/STD_LOGIC_UNSIGNED 1200023567
+AR work/loopback/Behavioral 1269592307 \
+      FL E:/labsolutions/VHDL/lab4/synth_lab/loopback.vhd EN work/loopback 1269592306 \
+      CP kcpsm3 CP program CP my_dcm CP uart_tx CP uart_rx
+FL E:/labsolutions/VHDL/lab4/synth_lab/my_dcm.vhd 2010/02/28.16:40:26 K.31
+EN work/my_dcm 1269592300 FL E:/labsolutions/VHDL/lab4/synth_lab/my_dcm.vhd \
+      PB ieee/std_logic_1164 1200023565 PH ieee/NUMERIC_STD 1200023568 LB unisim \
+      PH unisim/VCOMPONENTS 1200023571
+AR work/my_dcm/BEHAVIORAL 1269592301 \
+      FL E:/labsolutions/VHDL/lab4/synth_lab/my_dcm.vhd EN work/my_dcm 1269592300 \
+      CP BUFG CP IBUFG CP DCM_SP
+FL E:/labsolutions/VHDL/lab4/synth_lab/uart_rx.vhd 2003/12/03.15:53:26 K.31
+EN work/uart_rx 1269592304 FL E:/labsolutions/VHDL/lab4/synth_lab/uart_rx.vhd \
+      PB ieee/std_logic_1164 1200023565 PB ieee/std_logic_arith 1200023566 \
+      PB ieee/STD_LOGIC_UNSIGNED 1200023567 LB unisim PH unisim/VCOMPONENTS 1200023571
+AR work/uart_rx/macro_level_definition 1269592305 \
+      FL E:/labsolutions/VHDL/lab4/synth_lab/uart_rx.vhd EN work/uart_rx 1269592304 \
+      CP kcuart_rx CP bbfifo_16x8
+FL E:/labsolutions/VHDL/lab4/synth_lab/uart_tx.vhd 2003/12/03.15:53:16 K.31
+EN work/uart_tx 1269592302 FL E:/labsolutions/VHDL/lab4/synth_lab/uart_tx.vhd \
+      PB ieee/std_logic_1164 1200023565 PB ieee/std_logic_arith 1200023566 \
+      PB ieee/STD_LOGIC_UNSIGNED 1200023567 LB unisim PH unisim/VCOMPONENTS 1200023571
+AR work/uart_tx/macro_level_definition 1269592303 \
+      FL E:/labsolutions/VHDL/lab4/synth_lab/uart_tx.vhd EN work/uart_tx 1269592302 \
+      CP kcuart_tx CP bbfifo_16x8
+FL E:/WGL_ceshi/labsolutions/VHDL/lab4/Assembler/PROGRAM.VHD 2008/05/12.12:17:18 K.31
+FL E:/WGL_ceshi/labsolutions/VHDL/lab4/synth_lab/bbfifo_16x8.vhd 2003/12/03.15:53:56 K.31
+FL E:/WGL_ceshi/labsolutions/VHDL/lab4/synth_lab/kcpsm3.vhd 2004/06/14.16:07:40 K.31
+FL E:/WGL_ceshi/labsolutions/VHDL/lab4/synth_lab/kcuart_rx.vhd 2003/12/03.15:53:38 K.31
+FL E:/WGL_ceshi/labsolutions/VHDL/lab4/synth_lab/kcuart_tx.vhd 2003/12/03.15:53:48 K.31
+FL E:/WGL_ceshi/labsolutions/VHDL/lab4/synth_lab/loopback.vhd 2010/03/10.10:26:22 K.31
+FL E:/WGL_ceshi/labsolutions/VHDL/lab4/synth_lab/my_dcm.vhd 2010/02/28.16:40:26 K.31
+FL E:/WGL_ceshi/labsolutions/VHDL/lab4/synth_lab/uart_rx.vhd 2003/12/03.15:53:26 K.31
+FL E:/WGL_ceshi/labsolutions/VHDL/lab4/synth_lab/uart_tx.vhd 2003/12/03.15:53:16 K.31
