@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch13.css">
+<TITLE> 13.7	Controlling pulses on module paths with PATHPULSE$</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch13.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch13.6.htm">Previous&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=709">
+ </A>
+13.7	<A NAME="marker=205">
+ </A>
+Controlling pulses on module paths with <A NAME="marker=204">
+ </A>
+PATHPULSE$</H1>
+<P CLASS="Body">
+<A NAME="pgfId=665">
+ </A>
+A <I CLASS="Emphasis">
+pulse</I>
+ is two scheduled transitions on a module path destination which occur in a shorter period of time than the delay specified for that module path. By default, pulses on a path destination are rejected. That is, only transitions that are the same as or longer than the module path delay will propagate to the path destination. This is analogous to the inertial delay theory of pulse propagation.</P>
+<P CLASS="Body">
+<A NAME="pgfId=792">
+ </A>
+A special specparam, <B CLASS="Keyword">
+PATHPULSE$</B>
+, is used to specify a range of pulse widths that will propagate to the path destination. The following pulse width ranges are specified using PATHPULSE$:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=793">
+ </A>
+a pulse width range for which a pulse shall be rejected.</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=794">
+ </A>
+a pulse width range for which a pulse shall be allowed to propagate to the path destination.</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=795">
+ </A>
+a pulse width range for which a pulse shall generate a logic x on the path destination.</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=666">
+ </A>
+The syntax for specifying pulse control ranges is shown below:</P>
+<P CLASS="Body">
+<A NAME="pgfId=669">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch13-30.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=670">
+ </A>
+Syntax&nbsp;13-8<A NAME="99423">
+ </A>
+: Syntax for PATHPULSE$ pulse control</P>
+<P CLASS="Body">
+<A NAME="pgfId=796">
+ </A>
+The reject limit value defines a reject limit for the pulse control range. A pulse that is less than the reject limit shall not propagate to the module path destination.  Any pulse that is greater than the reject limit shall propagate to the path destination as determined by the error limit value.</P>
+<P CLASS="Body">
+<A NAME="pgfId=671">
+ </A>
+The error limit value defines an error limit for the pulse control range. A pulse that is less than the error limit but greater than or equal to the reject limit shall generate a logic x on the path destination. Any pulse that is greater than the error limit shall propagate to the path destination.</P>
+<P CLASS="Body">
+<A NAME="pgfId=674">
+ </A>
+If only the reject limit value is specified, that value shall apply to both the reject limit and the error limit.</P>
+<P CLASS="Body">
+<A NAME="pgfId=667">
+ </A>
+The reject limit and error limit may be specified for a specific module path. When no module path is specified, then the reject limit and error limit shall apply to all module paths defined in a module. If both path-specific PATHPULSE$ specparams and a non path-specific PATHPULSE$ specparam appear in the same module, then the path-specific specparams shall take precedence for the specified paths.</P>
+<P CLASS="Body">
+<A NAME="pgfId=672">
+ </A>
+The module path input terminals and output terminals shall conform the to rules for module path inputs and outputs, with the following restriction: the terminals may not be a bit-select or part-select of a vector.</P>
+<P CLASS="Body">
+<A NAME="pgfId=668">
+ </A>
+If a module path declaration declares multiple paths, then the PATHPULSE$ specparam shall only be specified for the first path input terminal and the first path output terminal. The reject limit and error limit specified shall apply to all other paths in the multiple path declaration.</P>
+<DIV>
+<H3 CLASS="Example">
+<A NAME="pgfId=627">
+ </A>
+</H3>
+<P CLASS="Body">
+<A NAME="pgfId=634">
+ </A>
+In the following example, the path <CODE CLASS="code">
+(clk=&gt;q)</CODE>
+ acquires a reject limit of 2 and an error limit of 9, as defined by the first PATHPULSE$ declaration. The paths <CODE CLASS="code">
+(clr*&gt;q)</CODE>
+ and <CODE CLASS="code">
+(pre*&gt;q)</CODE>
+ receive a reject limit of 0 and an error limit of 4, as specified by the second PATHPULSE$ declaration. The path <CODE CLASS="code">
+(data=&gt;q)</CODE>
+ is not explicitly defined in any of the PATHPULSE$ declarations, and so acquires reject and error limit of 3, as defined by the last PATHPULSE$ declaration.</P>
+<P CLASS="Body">
+<A NAME="pgfId=681">
+ </A>
+ </P>
+<DIV>
+<MAP NAME="ch13-31">
+</MAP>
+<IMG SRC="ch13-31.gif" USEMAP="#ch13-31">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=643">
+ </A>
+In the next example, the PATHPULSE$ declaration sets both the reject limit and the error limit to 0 for all module paths. These limits will allow all pulses to propagate to the path destinations.</P>
+<P CLASS="Body">
+<A NAME="pgfId=360">
+ </A>
+ </P>
+<DIV>
+<MAP NAME="ch13-32">
+</MAP>
+<IMG SRC="ch13-32.gif" USEMAP="#ch13-32">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=689">
+ </A>
+<A NAME="marker=198">
+ </A>
+ <A NAME="marker=199">
+ </A>
+ <EM CLASS="ToDelete">
+ </EM>
+<A NAME="marker=200">
+ </A>
+</P>
+</DIV>
+<HR><P><A HREF="ch13.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch13.6.htm">Previous&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

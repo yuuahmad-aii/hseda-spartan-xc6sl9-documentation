@@ -1,0 +1,53 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Mac">
+  <LINK REL="STYLESHEET" HREF="ch04.css">
+  <TITLE> 4.3	Minimum, typical, maximum delay expressions</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><A NAME="pgfId=732"></A><HR ALIGN=LEFT></P>
+
+<P><A HREF="ch04.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A 
+HREF="ch04.2.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch04.4.htm">Next&nbsp;&nbsp;page</A></P>
+
+<H1>4.3 Minimum, typical, maximum delay expressions</H1>
+
+<P><P CLASS="Body"><A NAME="pgfId=733"></A>Verilog HDL delay expressions
+can be specified as three expressions separated by colons. This triple is
+intended to represent minimum, typical, and maximum values--in that order.
+The syntax is as follows:</P>
+
+<PRE>mintypmax_expression ::= expression 
+                       | expression <B>:</B> expression <B>:</B> expression</PRE>
+
+<P><P CLASS="BNFCapBody"><A NAME="pgfId=735"></A>Syntax&nbsp;4-2: Syntax
+for mintypmax expression</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=739"></A>Verilog HDL models typically
+specify three values for delay expressions. The three values allow a design
+to be tested with minimum, typical, or maximum delay values.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=822"></A>Values expressed in min:typ:max
+format can be used in expressions. The min:typ:max format can be used wherever
+expressions can appear.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=743"></A>1. This example shows an expression
+that defines a single triplet of delay values. The minimum value is the
+sum of <CODE>a+d</CODE> ; the typical value is <CODE>b+e</CODE> ; the maximum
+value is <CODE>c+f</CODE> , as follows:</P>
+
+<PRE>(a:b:c)&nbsp;+&nbsp;(d:e:f)&nbsp;</PRE>
+
+<P><P CLASS="Body"><A NAME="pgfId=745"></A>3. The next example shows some
+typical expressions that are used to specify <CODE>min:typ:max</CODE> format
+values:</P>
+
+<PRE>val&nbsp;-&nbsp;(32'd&nbsp;50:&nbsp;32'd&nbsp;75:&nbsp;32'd&nbsp;100)&nbsp;</PRE>
+
+<P><HR ALIGN=LEFT></P>
+
+<P><A HREF="ch04.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A 
+HREF="ch04.2.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch04.4.htm">Next&nbsp;&nbsp;page</A>
+</BODY>
+</HTML>

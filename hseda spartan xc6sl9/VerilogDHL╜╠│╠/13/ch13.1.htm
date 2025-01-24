@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch13.css">
+<TITLE> 13.1	Specify Block Declaration</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch13.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch13.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch13.2.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=517">
+ </A>
+13.1	Specify Block Declaration</H1>
+<P CLASS="Body">
+<A NAME="pgfId=439">
+ </A>
+A block statement called the <I CLASS="Emphasis">
+specify block</I>
+ is the vehicle for describing paths between a source and a destination and assigning delays to these paths. The syntax for specify block is shown below: </P>
+<P CLASS="Body">
+<A NAME="pgfId=333">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch13-1.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=415">
+ </A>
+Syntax&nbsp;13-1<A NAME="13240">
+ </A>
+: Syntax of specify block<A NAME="marker=29">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=409">
+ </A>
+The specify block shall be bounded by the keywords <B CLASS="Keyword">
+specify</B>
+ and <B CLASS="Keyword">
+endspecify</B>
+, and shall appear inside a module declaration. The specify block can be used to perform the following tasks:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=410">
+ </A>
+Describe various paths across the module.</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=411">
+ </A>
+Assign delays to those paths.</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=412">
+ </A>
+Perform timing checks to ensure that events occurring at the module inputs satisfy the timing constraints of the device described by the module. See <A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/13/ch14.htm#Timing Checks" CLASS="XRef">
+</A>
+.</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=413">
+ </A>
+The paths described in the specify block, called <I CLASS="Emphasis">
+module paths</I>
+, pair a signal source with a signal destination. The source may be unidirectional (an input port) or bidirectional (an inout port) and is referred to as the <I CLASS="Emphasis">
+module path s</I>
+<A NAME="marker=48">
+ </A>
+<I CLASS="Emphasis">
+ource</I>
+. Similarly, the destination may be unidirectional (an output port) or bidirectional (an inout port) and is referred to as the <I CLASS="Emphasis">
+module path desti</I>
+<A NAME="marker=283">
+ </A>
+<I CLASS="Emphasis">
+nation</I>
+.</P>
+<DIV>
+<H3 CLASS="Example">
+<A NAME="pgfId=323">
+ </A>
+</H3>
+<P CLASS="Body">
+<A NAME="pgfId=417">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch13-2.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=420">
+ </A>
+The first two lines following the keyword <B CLASS="Keyword">
+specify</B>
+ declare specify parameters, which are discussed in <A HREF="ch13.2.htm#61845" CLASS="XRef">
+See Declaring parameters in specify blocks</A>
+. The line following the declarations of specify<A NAME="marker=45">
+ </A>
+ parameters describes a module path and assigns delays to that module path. The specify parameters determine the delay assigned to the module path. Specifying module paths is presented in <A HREF="ch13.3.htm#45352" CLASS="XRef">
+See Module path declarations</A>
+. Assigning delays to module paths is discussed in <A HREF="ch13.4.htm#27453" CLASS="XRef">
+See Assigning delays to module paths</A>
+. The line preceding the keyword <B CLASS="Keyword">
+endspecify</B>
+ instantiates one of the system timing checks, which are discussed further in <A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/13/ch14.htm#Timing Checks" CLASS="XRef">
+</A>
+.</P>
+</DIV>
+<HR><P><A HREF="ch13.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch13.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch13.2.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

@@ -1,0 +1,479 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch14.css">
+<TITLE> 14.7	Stochastic analysis tasks</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch14.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch14.6.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch14.8.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=832">
+ </A>
+14.7	<A NAME="44255">
+ </A>
+Stochastic analysis tasks</H1>
+<P CLASS="Body">
+<A NAME="pgfId=1470">
+ </A>
+This section describes a set of system tasks and functions which manage queues and generate random numbers with specific distributions. These tasks facilitate implementation of stochastic <A NAME="marker=588">
+ </A>
+queueing models.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1472">
+ </A>
+The set of tasks and functions that create and manage queues are listed below:</P>
+<PRE CLASS="BNFDef"><A NAME="pgfId=1473"> </A>
+	<A NAME="marker=597"> </A>
+<A NAME="marker=598"> </A>
+<B CLASS="Keyword">$q_initialize</B>
+ (q_id, q_type, max_length, status) ;<B CLASS="Keyword">$q_add</B>
+<A NAME="marker=599"> </A>
+<A NAME="marker=600"> </A>
+<A NAME="marker=601"> </A>
+ (q_id, job_id, inform_id, status) ;<B CLASS="Keyword">$q_remove</B>
+<A NAME="marker=602"> </A>
+<A NAME="marker=603"> </A>
+<A NAME="marker=604"> </A>
+ (q_id, job_id, inform_id, status) ;<B CLASS="Keyword">$q_full</B>
+<A NAME="marker=605"> </A>
+<A NAME="marker=606"> </A>
+<A NAME="marker=607"> </A>
+ (q_id, status) ;<B CLASS="Keyword">$q_exam</B>
+<A NAME="marker=608"> </A>
+<A NAME="marker=609"> </A>
+<A NAME="marker=610"> </A>
+ (q_id, q_stat_code, q_stat_value, status) ;</PRE>
+<P CLASS="SubSection">
+<A NAME="pgfId=1478">
+ </A>
+<A NAME="marker=611">
+ </A>
+$q_initialize</P>
+<P CLASS="Body">
+<A NAME="pgfId=1480">
+ </A>
+The <B CLASS="Keyword">
+$q_initialize</B>
+ system task creates new queues. The q_id parameter is an integer input which must uniquely identify the new queue. The q_type parameter is an integer input. The value of the q_type parameter specifies the type of the queue as shown in <A HREF="ch14.7.htm#72518" CLASS="XRef">
+See : q_type parameter value</A>
+.</P>
+<TABLE BORDER="1">
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=1481">
+ </A>
+Table&nbsp;14-21<A NAME="72518">
+ </A>
+: q_type parameter value</P>
+</CAPTION>
+<TR>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=1483">
+ </A>
+q_type value</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=1484">
+ </A>
+Type of queue</P>
+</TH>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1485">
+ </A>
+1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1486">
+ </A>
+first-in, first-out</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1487">
+ </A>
+2</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1488">
+ </A>
+last-in, first-out</P>
+</TD>
+</TR>
+</TABLE>
+<P CLASS="Body">
+<A NAME="pgfId=1489">
+ </A>
+The max length parameter is an integer input which specifies the maximum number of entries that will be allowed on the queue. The success or failure of the creation of the queue is returned as an integer value in status. The error conditions and corresponding values of status are described in <A HREF="ch14.7.htm#51472" CLASS="XRef">
+See : The status parameter values and corresponding information</A>
+.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=1490">
+ </A>
+<A NAME="marker=620">
+ </A>
+<A NAME="marker=621">
+ </A>
+$q_add</P>
+<P CLASS="Body">
+<A NAME="pgfId=1491">
+ </A>
+The <B CLASS="Keyword">
+$q_add</B>
+ system task places an entry on a queue. The q_id parameter is an integer input which indicates which queue to add the entry to. The job_id<CODE CLASS="code">
+ </CODE>
+parameter is an integer input which identifies the job. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1492">
+ </A>
+The inform_id parameter is an integer input which is associated with the queue entry. Its meaning is user-defined. For example, inform_id parameter can represent execution time for an entry in a CPU model. The status parameter reports on the success of the operation or error conditions as described in <A HREF="ch14.7.htm#51472" CLASS="XRef">
+See : The status parameter values and corresponding information</A>
+.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=1493">
+ </A>
+<A NAME="marker=625">
+ </A>
+<A NAME="marker=626">
+ </A>
+$q_remove</P>
+<P CLASS="Body">
+<A NAME="pgfId=1494">
+ </A>
+The <B CLASS="Keyword">
+$q_remove</B>
+ system task gets an entry from a queue. The q_id parameter is an integer input which indicates which queue to remove from. The job_id parameter is an integer output which identifies the entry being removed. The inform_id parameter is an integer output which the queue manager stored during <B CLASS="Keyword">
+$q_add</B>
+. Its meaning is user-defined. The status parameter reports on the success of the operation or error conditions as described in <A HREF="ch14.7.htm#51472" CLASS="XRef">
+See : The status parameter values and corresponding information</A>
+.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=1495">
+ </A>
+<A NAME="marker=630">
+ </A>
+<A NAME="marker=631">
+ </A>
+$q_full</P>
+<P CLASS="Body">
+<A NAME="pgfId=1496">
+ </A>
+The <B CLASS="Keyword">
+$q_full</B>
+ system function checks whether there is room for another entry on a queue. It returns <CODE CLASS="code">
+0</CODE>
+ when the queue is not full, and <CODE CLASS="code">
+1</CODE>
+ when the queue is full.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=1497">
+ </A>
+<A NAME="marker=632">
+ </A>
+<A NAME="marker=633">
+ </A>
+$q_exam</P>
+<P CLASS="Body">
+<A NAME="pgfId=1498">
+ </A>
+The <B CLASS="Keyword">
+$q_exam</B>
+ system task provides statistical information about activity at the queue<CODE CLASS="code">
+ </CODE>
+q_id. It returns a value in q_stat_value depending on the information requested in q_stat_code. The values of q_stat_code are described in <A HREF="ch14.7.htm#13047" CLASS="XRef">
+See : The information received in q_stat_value</A>
+, and the corresponding information returned in q_stat_value is described in <A HREF="ch14.7.htm#51472" CLASS="XRef">
+See : The status parameter values and corresponding information</A>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1515">
+ </A>
+</P>
+<TABLE>
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=1499">
+ </A>
+Table&nbsp;14-22<A NAME="13047">
+ </A>
+: The information received in q_stat_value</P>
+</CAPTION>
+<TR>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=1501">
+ </A>
+<B CLASS="bold">
+Value Requested in q_stat_code </B>
+</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=1502">
+ </A>
+<B CLASS="bold">
+ Information Received Back <BR>
+from &nbsp;&nbsp;q_stat_value</B>
+</P>
+</TH>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1503">
+ </A>
+1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1504">
+ </A>
+current queue length</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1505">
+ </A>
+2</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1506">
+ </A>
+mean inter-arrival time</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1507">
+ </A>
+3</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1508">
+ </A>
+maximum queue length</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1509">
+ </A>
+4</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1510">
+ </A>
+shortest wait time ever</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1511">
+ </A>
+5</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1512">
+ </A>
+longest wait time for jobs still in the queue</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1513">
+ </A>
+6</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1514">
+ </A>
+average wait time in the queue</P>
+</TD>
+</TR>
+</TABLE>
+<P CLASS="SubSection">
+<A NAME="pgfId=1516">
+ </A>
+<A NAME="62805">
+ </A>
+<EM CLASS="">
+status</EM>
+<A NAME="marker=643">
+ </A>
+ codes</P>
+<P CLASS="Body">
+<A NAME="pgfId=1517">
+ </A>
+All of the queue management tasks and functions return an output status parameter. The status parameter values and corresponding information are described in <A HREF="ch14.7.htm#51472" CLASS="XRef">
+See : The status parameter values and corresponding information</A>
+.</P>
+<TABLE>
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=1518">
+ </A>
+Table&nbsp;14-23<A NAME="51472">
+ </A>
+: The status parameter values and corresponding information</P>
+</CAPTION>
+<TR>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=1521">
+ </A>
+<B CLASS="bold">
+status Parameter Values</B>
+</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=1522">
+ </A>
+<B CLASS="bold">
+What it Means</B>
+</P>
+</TH>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1523">
+ </A>
+0</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1539">
+ </A>
+OK</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1540">
+ </A>
+1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1541">
+ </A>
+queue full, cannot add</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1542">
+ </A>
+2</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1543">
+ </A>
+undefined q_id</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1544">
+ </A>
+3</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1545">
+ </A>
+queue empty, cannot remove</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1546">
+ </A>
+4</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1547">
+ </A>
+unsupported queue type, cannot create queue </P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1548">
+ </A>
+5</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1549">
+ </A>
+specified length &lt;= 0, cannot create queue</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1550">
+ </A>
+6</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1551">
+ </A>
+duplicate q_id, cannot create queue</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1552">
+ </A>
+7</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1553">
+ </A>
+not enough memory, cannot create queue</P>
+</TD>
+</TR>
+</TABLE>
+<P CLASS="Note">
+<A NAME="pgfId=1554">
+ </A>
+<A NAME="marker=649">
+ </A>
+.<A NAME="marker=650">
+ </A>
+</P>
+<HR><P><A HREF="ch14.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch14.6.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch14.8.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

@@ -1,0 +1,1266 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch13.css">
+<TITLE> 13.3	Module path declarations</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch13.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch13.2.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch13.4.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=435">
+ </A>
+13.3	<A NAME="45352">
+ </A>
+Module path declarations</H1>
+<P CLASS="Body">
+<A NAME="pgfId=437">
+ </A>
+There are two steps required to set up module path delays in a specify block:</P>
+<OL>
+<P CLASS="NumberedLista">
+<A NAME="pgfId=312">
+ </A>
+a)	describe the module paths</P>
+<P CLASS="NumberedListb">
+<A NAME="pgfId=334">
+ </A>
+b)	assign delays to those paths (<A HREF="ch13.4.htm#27453" CLASS="XRef">
+See Assigning delays to module paths</A>
+)</P>
+</OL>
+<P CLASS="Body">
+<A NAME="pgfId=372">
+ </A>
+The syntax of the module path declaration is described below. </P>
+<P CLASS="Body">
+<A NAME="pgfId=458">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch13-5.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=473">
+ </A>
+Syntax&nbsp;13-3<A NAME="30112">
+ </A>
+: Syntax of the module path declaration</P>
+<P CLASS="Body">
+<A NAME="pgfId=467">
+ </A>
+A module path may be described as a <I CLASS="Emphasis">
+simple path</I>
+, an <I CLASS="Emphasis">
+edge sensitive path</I>
+, or a <I CLASS="Emphasis">
+state dependent path</I>
+. A <A NAME="marker=138">
+ </A>
+module path shall be defined inside a specify block as a connection between a source signal and a destination signal. Module paths can connect any combination of vectors and scalars.</P>
+<DIV>
+<H3 CLASS="Example">
+<A NAME="pgfId=310">
+ </A>
+</H3>
+<P CLASS="Body">
+<A NAME="pgfId=335">
+ </A>
+<A HREF="ch13.3.htm#path delays" CLASS="XRef">
+See : Module path delays</A>
+ illustrates a circuit with module path delays. More than one source (<CODE CLASS="code">
+A</CODE>
+, <CODE CLASS="code">
+B</CODE>
+, <CODE CLASS="code">
+C</CODE>
+, and <CODE CLASS="code">
+D</CODE>
+) may have a module path to the same destination (<CODE CLASS="code">
+Q</CODE>
+), and different delays may be specified for each input to output path.</P>
+<P CLASS="Body">
+<A NAME="pgfId=339">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch13-6.gif">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=340">
+ </A>
+Figure&nbsp;13-1<A NAME="path delays">
+ </A>
+: Module path delays</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=304">
+ </A>
+<A NAME="marker=84">
+ </A>
+Module path restrictions</P>
+<P CLASS="Body">
+<A NAME="pgfId=346">
+ </A>
+Module paths have the following restrictions:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=468">
+ </A>
+The <A NAME="marker=89">
+ </A>
+module path source shall be a net that is connected to a module input port or inout port.</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=469">
+ </A>
+The <A NAME="marker=90">
+ </A>
+module path destination shall be a net or register that is connected to a module output port or inout port.</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=622">
+ </A>
+The module path destination shall have only one driver inside the module.</LI>
+</UL>
+<P CLASS="SubSection">
+<A NAME="pgfId=368">
+ </A>
+<A NAME="marker=109">
+ </A>
+Simple module paths<A NAME="describing module paths (&amp; rules)">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=414">
+ </A>
+The syntax for specifying a simple module path is as follows:</P>
+<P CLASS="Body">
+<A NAME="pgfId=462">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch13-7.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=471">
+ </A>
+Syntax&nbsp;13-4: Syntax for simple module path</P>
+<P CLASS="Body">
+<A NAME="pgfId=476">
+ </A>
+Simple path can be declared in one of the two forms:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=495">
+ </A>
+source <CODE CLASS="code">
+*&gt;</CODE>
+<A NAME="marker=117">
+ </A>
+ destination</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=482">
+ </A>
+source<A NAME="marker=116">
+ </A>
+ <CODE CLASS="code">
+=&gt;</CODE>
+ destination </LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=508">
+ </A>
+The symbols <CODE CLASS="code">
+*&gt;</CODE>
+ and <CODE CLASS="code">
+=&gt;</CODE>
+ each represent a different kind of connection between the module path source and the module path destination. The operator <CODE CLASS="code">
+*&gt;</CODE>
+ establishes a <I CLASS="Emphasis">
+full connection</I>
+ between source and destination. The operator <CODE CLASS="code">
+=&gt;</CODE>
+ establishes a <I CLASS="Emphasis">
+parallel connection</I>
+ between source and destination. Refer to <A HREF="ch13.3.htm#40926" CLASS="XRef">
+See Full connection and parallel connection paths</A>
+ for a description of full connection and parallel connection paths.</P>
+</DIV>
+<DIV>
+<H3 CLASS="Example">
+<A NAME="pgfId=359">
+ </A>
+</H3>
+<P CLASS="Body">
+<A NAME="pgfId=297">
+ </A>
+The following three examples illustrate valid simple module path declarations.</P>
+<P CLASS="Body">
+<A NAME="pgfId=361">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch13-8.gif">
+</DIV>
+<P CLASS="SubSection">
+<A NAME="pgfId=290">
+ </A>
+<A NAME="14683">
+ </A>
+Edge-sensitive paths&nbsp;&nbsp;<A NAME="marker=18">
+ </A>
+<A NAME="marker=20">
+ </A>
+<A NAME="marker=124">
+ </A>
+<A NAME="marker=125">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=292">
+ </A>
+When a module path is described using an edge transition at the source, it is called an <I CLASS="Emphasis">
+edge-sensitive path</I>
+. The edge-sensitive path construct is used to model the timing of input to output delays which only occur when a specified edge occurs at the source signal.</P>
+<P CLASS="Body">
+<A NAME="pgfId=299">
+ </A>
+The syntax of the edge-sensitive path declaration is shown below. </P>
+<P CLASS="Body">
+<A NAME="pgfId=332">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch13-9.gif">
+</DIV>
+</DIV>
+<DIV>
+<H2 CLASS="BNFCapPage">
+<A NAME="pgfId=336">
+ </A>
+<A NAME="89910">
+ </A>
+: Syntax of the edge-sensitive path declaration<A NAME="marker=132">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=337">
+ </A>
+The edge identifier may be one of the keywords <B CLASS="Keyword">
+posedge</B>
+ or <B CLASS="Keyword">
+negedge</B>
+, associated with an input terminal descriptor which may be any scalar input port or inout port, or bit-select of that port. If a vector port is specified as the input terminal descriptor, the edge transition shall be detected on the least significant bit. If the edge transition is not specified, the path shall be considered active on any transition at the input terminal.</P>
+<P CLASS="Body">
+<A NAME="pgfId=338">
+ </A>
+An edge-sensitive path may be specified with full connections (<CODE CLASS="code">
+*&gt;</CODE>
+) or parallel connections (<CODE CLASS="code">
+=&gt;</CODE>
+). For parallel connections (<CODE CLASS="code">
+=&gt;</CODE>
+), the destination shall be any scalar output or inout port, or one of its bit-selects. For full connections (<CODE CLASS="code">
+*&gt;</CODE>
+), the destination shall be a list of one or more of the vector or scalar output and inout ports, and bit-selects or part-selects of those ports. Refer to <A HREF="ch13.3.htm#40926" CLASS="XRef">
+See Full connection and parallel connection paths</A>
+ for a description of parallel paths and full connection paths.</P>
+<P CLASS="Body">
+<A NAME="pgfId=342">
+ </A>
+The data source expression is an arbitrary expression, which serves as a description of the flow of data to the path destination. This arbitrary data path description does not affect the actual propagation of data or events through the model; how an event at the data path source propagates to the destination depends on the internal logic of the module. The polarity operator describes whether the data path is inverting or non-inverting.</P>
+<DIV>
+<H3 CLASS="Example">
+<A NAME="pgfId=347">
+ </A>
+ <A NAME="marker=134">
+ </A>
+</H3>
+<P CLASS="Body">
+<A NAME="pgfId=349">
+ </A>
+1. The following example demonstrates an edge-sensitive path declaration with a positive polarity operator:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=354"> </A>
+( <B CLASS="Keyword">posedge</B>
+ clock =&gt; ( out +: in ) ) = (10, 8);</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=355">
+ </A>
+In this example, at the positive edge of <CODE CLASS="code">
+clock</CODE>
+, a module path extends from <CODE CLASS="code">
+clock</CODE>
+ to <CODE CLASS="code">
+out</CODE>
+ using a rise delay of 10 and a fall delay of 8. The data path is from <CODE CLASS="code">
+in</CODE>
+ to <CODE CLASS="code">
+out</CODE>
+, and <CODE CLASS="code">
+in</CODE>
+ is not inverted as it propagates to <CODE CLASS="code">
+out</CODE>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=343">
+ </A>
+2. The following example demonstrates an edge-sensitive path declaration with a negative polarity operator:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=345"> </A>
+( <B CLASS="Keyword">negedge</B>
+ clock[0] =&gt; ( out -: in ) ) = (10, 8);</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=621">
+ </A>
+In this example, at the negative edge of <CODE CLASS="code">
+clock[0]</CODE>
+, a module path extends from <CODE CLASS="code">
+clock[0]</CODE>
+ to <CODE CLASS="code">
+out</CODE>
+ using a rise delay of 10 and a fall delay of 8. The data path is from <CODE CLASS="code">
+in</CODE>
+ to <CODE CLASS="code">
+out</CODE>
+, and <CODE CLASS="code">
+in</CODE>
+ is inverted as it propagates to <CODE CLASS="code">
+out</CODE>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=356">
+ </A>
+3. The following example demonstrates an edge-sensitive path declaration with no edge identifier:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=357"> </A>
+( clock =&gt; ( out : in ) ) = (10, 8); </PRE>
+<P CLASS="Body">
+<A NAME="pgfId=358">
+ </A>
+In this example, at any change in <CODE CLASS="code">
+clock</CODE>
+, a module path extends from <CODE CLASS="code">
+clock</CODE>
+ to <CODE CLASS="code">
+out</CODE>
+.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=375">
+ </A>
+<A NAME="24633">
+ </A>
+State<A NAME="marker=136">
+ </A>
+-dependent<A NAME="marker=137">
+ </A>
+ paths</P>
+<P CLASS="Body">
+<A NAME="pgfId=376">
+ </A>
+A <I CLASS="Emphasis">
+state-dependent path</I>
+ makes it possible to assign a delay to a module path that affects signal propagation delay through the path only if specified conditions are true.</P>
+<P CLASS="Body">
+<A NAME="pgfId=377">
+ </A>
+A state-dependent path description includes the following items:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=378">
+ </A>
+a conditional expression that, when evaluated true, enables the module path</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=440">
+ </A>
+a module path description</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=443">
+ </A>
+a delay expression that applies to the module path</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=451">
+ </A>
+The syntax for the state-dependent path declaration is shown below:</P>
+<P CLASS="Body">
+<A NAME="pgfId=453">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch13-10.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=464">
+ </A>
+Syntax&nbsp;13-6<A NAME="">
+ </A>
+<A NAME="marker=144">
+ </A>
+: Syntax<A NAME="marker=145">
+ </A>
+ of state-dependant paths</P>
+<P CLASS="SubSubSect">
+<A NAME="pgfId=470">
+ </A>
+Conditional expression</P>
+<P CLASS="Body">
+<A NAME="pgfId=474">
+ </A>
+The operands in the conditional expression shall be constructed from the following:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=475">
+ </A>
+scalar or vector module input ports or inout ports or their bit-select or part-select</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=477">
+ </A>
+compile time constants (constant numbers and specify parameters)</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=480">
+ </A>
+The following is a list of valid operators that may be used in conditional expressions:</P>
+<P CLASS="Body">
+<A NAME="pgfId=592">
+ </A>
+</P>
+<TABLE BORDER="1">
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=481">
+ </A>
+Table&nbsp;13-2: List of valid operators in state dependent path delay expression</P>
+</CAPTION>
+<TR>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=504">
+ </A>
+operator</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=507">
+ </A>
+description</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=509">
+ </A>
+operator</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=510">
+ </A>
+description</P>
+</TH>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=522">
+ </A>
+~</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=526">
+ </A>
+bit-wise negation</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=529">
+ </A>
+&amp;</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=530">
+ </A>
+reduction and</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=531">
+ </A>
+&amp;</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=532">
+ </A>
+bit-wise and</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=533">
+ </A>
+| </P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=534">
+ </A>
+reduction or</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=535">
+ </A>
+|</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=536">
+ </A>
+bit-wise or</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=537">
+ </A>
+^</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=538">
+ </A>
+reduction xor</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=539">
+ </A>
+^</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=540">
+ </A>
+bit-wise xor</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=541">
+ </A>
+~&amp;</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=547">
+ </A>
+reduction nand</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=556">
+ </A>
+^~ ~^</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=558">
+ </A>
+bit-wise xnor</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=559">
+ </A>
+~|</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=560">
+ </A>
+reduction nor</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=561">
+ </A>
+==</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=562">
+ </A>
+logical equality</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=563">
+ </A>
+^~ ~^</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=564">
+ </A>
+reduction xnor</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=565">
+ </A>
+!=</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=566">
+ </A>
+logical inequality</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=567">
+ </A>
+{}</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=568">
+ </A>
+concatenation</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=571">
+ </A>
+&amp;&amp;</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=579">
+ </A>
+logical and</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=581">
+ </A>
+{ {} }</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=583">
+ </A>
+replication</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=584">
+ </A>
+||</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=585">
+ </A>
+logical or</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=586">
+ </A>
+?:</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=587">
+ </A>
+conditional</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=588">
+ </A>
+!</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=589">
+ </A>
+logical not</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=590">
+ </A>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=591">
+ </A>
+</P>
+</TD>
+</TR>
+</TABLE>
+<P CLASS="Body">
+<A NAME="pgfId=593">
+ </A>
+A conditional expression shall evaluate to true (<CODE CLASS="code">
+1</CODE>
+) for the state-dependent path to be assigned a delay value. If the conditional expression evaluates to <CODE CLASS="code">
+x</CODE>
+ or <CODE CLASS="code">
+z</CODE>
+, it shall be treated as true. If the conditional expression evaluates to multiple bits, the least significant bit shall represent the result. The conditional expression can have any number of operands and operators.</P>
+<P CLASS="SubSubSect">
+<A NAME="pgfId=594">
+ </A>
+Simple state-dependent paths</P>
+<P CLASS="Body">
+<A NAME="pgfId=595">
+ </A>
+If the path description of a state-dependent path is a simple path, then it is called a <I CLASS="Emphasis">
+simple state-dependent path</I>
+. The simple path description is discussed in <A HREF="ch13.3.htm#describing module paths (&amp; rules)" CLASS="XRef">
+See Simple module paths</A>
+.</P>
+</DIV>
+<DIV>
+<H3 CLASS="Example">
+<A NAME="pgfId=596">
+ </A>
+</H3>
+<P CLASS="Body">
+<A NAME="pgfId=597">
+ </A>
+The following example uses state-dependent paths to describe the timing of an XOR gate.</P>
+<P CLASS="Body">
+<A NAME="pgfId=599">
+ </A>
+</P>
+<DIV>
+<MAP NAME="ch13-11">
+</MAP>
+<IMG SRC="ch13-11.gif" USEMAP="#ch13-11">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=600">
+ </A>
+In this example, first two state-dependent paths describe a pair of output rise and fall delay times when the XOR gate (<CODE CLASS="code">
+x1</CODE>
+) inverts a changing input. The last two state-dependent paths describe another pair of output rise and fall delay times when the XOR gate buffers a changing input.</P>
+<P CLASS="Body">
+<A NAME="pgfId=601">
+ </A>
+The example below models a partial ALU. The state-dependent paths specify different delays for different ALU operations.</P>
+<P CLASS="Body">
+<A NAME="pgfId=603">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch13-12.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=604">
+ </A>
+In the preceding example, the first three path declarations declare paths extending from operand inputs <CODE CLASS="code">
+i1</CODE>
+ and <CODE CLASS="code">
+i2</CODE>
+ to the <CODE CLASS="code">
+o1</CODE>
+ output. The delays on these paths are assigned to operations on the basis of the operation specified by the inputs on <CODE CLASS="code">
+opcode</CODE>
+. The last path declaration declares a path from the <CODE CLASS="code">
+opcode</CODE>
+ input to the <CODE CLASS="code">
+o1</CODE>
+ output.</P>
+<P CLASS="SubSubSect">
+<A NAME="pgfId=605">
+ </A>
+Edge-sensitive state-dependent paths</P>
+<P CLASS="Body">
+<A NAME="pgfId=607">
+ </A>
+If the path description of a state-dependent path describes an edge-dependent path, then the state-dependent path is called an<I CLASS="Emphasis">
+ edge-sensitive state-dependent path</I>
+. The edge-sensitive paths are discussed in <A HREF="ch13.3.htm#14683" CLASS="XRef">
+See Edge-sensitive paths</A>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=608">
+ </A>
+Different delays can be assigned to the same edge-sensitive path as long as the following criteria are met:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=609">
+ </A>
+The edge, condition, or both make each declaration unique.</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=610">
+ </A>
+The port is referenced in the same way in all path declarations (entire port, bit-select, or part-select).</LI>
+</UL>
+</DIV>
+<DIV>
+<H3 CLASS="Example">
+<A NAME="pgfId=611">
+ </A>
+</H3>
+<P CLASS="Body">
+<A NAME="pgfId=613">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch13-13.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=614">
+ </A>
+In this example, if the positive edge of <CODE CLASS="code">
+clock</CODE>
+ occurs when <CODE CLASS="code">
+reset</CODE>
+ and <CODE CLASS="code">
+clear</CODE>
+ are low, a module path extends from <CODE CLASS="code">
+clock</CODE>
+ to <CODE CLASS="code">
+out</CODE>
+ using a rise delay of 10 and a fall delay of 8.</P>
+<P CLASS="Body">
+<A NAME="pgfId=615">
+ </A>
+The following example shows four edge-sensitive path declarations. Note that each path has a unique edge or condition.</P>
+<P CLASS="Body">
+<A NAME="pgfId=617">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch13-14.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=618">
+ </A>
+The two state-dependent path declarations shown below are not legal because even though they have different conditions, the destinations are not specified in the same way: the first destination is a part-select, the second is a bit-select.<A NAME="marker=172">
+ </A>
+<A NAME="marker=175">
+ </A>
+<A NAME="marker=176">
+ </A>
+<A NAME="marker=177">
+ </A>
+<A NAME="marker=178">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=620">
+ </A>
+</P>
+<DIV>
+<MAP NAME="ch13-15">
+</MAP>
+<IMG SRC="ch13-15.gif" USEMAP="#ch13-15">
+</DIV>
+<P CLASS="SubSubSect">
+<A NAME="pgfId=635">
+ </A>
+The ifnone condition</P>
+<P CLASS="Body">
+<A NAME="pgfId=636">
+ </A>
+The <B CLASS="Keyword">
+ifnone</B>
+ keyword is used to specify a default state-dependant path delay for when all other conditions for the path are false. The <B CLASS="Keyword">
+ifnone</B>
+ condition must specify the same module path source and destination as the state dependant module paths. The following rules apply to module paths specified with the <B CLASS="Keyword">
+ifnone</B>
+ condition:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=637">
+ </A>
+Only simple module paths may be described with an <B CLASS="Keyword">
+ifnone</B>
+ condition.</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=638">
+ </A>
+The state-dependant paths which correspond to the <B CLASS="Keyword">
+ifnone</B>
+ path may be either simple module paths or edge-sensitive paths.</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=639">
+ </A>
+If there are no corresponding state-dependent module paths to the <B CLASS="Keyword">
+ifnone</B>
+ module path, then the <B CLASS="Keyword">
+ifnone</B>
+ module path shall be treated the same as an unconditional simple module path. </LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=653">
+ </A>
+It is illegal to specify both an <B CLASS="Keyword">
+ifnone</B>
+ condition for a module path and an unconditional simple module path for the same module path.</LI>
+</UL>
+</DIV>
+<DIV>
+<H3 CLASS="Example">
+<A NAME="pgfId=656">
+ </A>
+</H3>
+<P CLASS="Body">
+<A NAME="pgfId=657">
+ </A>
+The following are valid state-dependant path combinations:</P>
+<P CLASS="Body">
+<A NAME="pgfId=661">
+ </A>
+</P>
+<DIV>
+<MAP NAME="ch13-16">
+</MAP>
+<IMG SRC="ch13-16.gif" USEMAP="#ch13-16">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=662">
+ </A>
+The following module path description combination is illegal because it combines a state-dependant path using an <B CLASS="Keyword">
+ifnone</B>
+ condition and an unconditional path for the same module path.</P>
+<P CLASS="Body">
+<A NAME="pgfId=664">
+ </A>
+</P>
+<DIV>
+<MAP NAME="ch13-17">
+</MAP>
+<IMG SRC="ch13-17.gif" USEMAP="#ch13-17">
+</DIV>
+<P CLASS="SubSubSect">
+<A NAME="pgfId=341">
+ </A>
+State-dependent and unconditional path precedence</P>
+<P CLASS="Body">
+<A NAME="pgfId=629">
+ </A>
+A simple module path with no edge-sensitive or state-dependant conditions is an unconditional path. If both an unconditional path and a state-dependant path are specified for the same module path, then the unconditional path delay shall take precedence over the state-dependent path delay.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=344">
+ </A>
+<A NAME="40926">
+ </A>
+Full connection and parallel connection paths</P>
+<P CLASS="Body">
+<A NAME="pgfId=348">
+ </A>
+The operator <CODE CLASS="code">
+*&gt;</CODE>
+ shall be used to establish a <I CLASS="Emphasis">
+full connection</I>
+<A NAME="marker=76">
+ </A>
+<A NAME="marker=107">
+ </A>
+ between source and destination. In a full connection, every bit in the source shall connect to every bit in the destination. The module path source need not have the same number of bits as the module path destination.</P>
+<P CLASS="Body">
+<A NAME="pgfId=423">
+ </A>
+The full connection can handle most types of module paths, since it does not restrict the size or number of source signals and destination signals. The following situations require the use of full connections:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=429">
+ </A>
+to describe a module path between a vector and a scalar</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=430">
+ </A>
+to describe a module path between vectors of different sizes</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=431">
+ </A>
+to describe a module path with multiple sources or multiple destinations in a single statement (see <A HREF="ch13.3.htm#59756" CLASS="XRef">
+See Declaring multiple module paths in a single statement</A>
+)</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=365">
+ </A>
+The operator <CODE CLASS="code">
+=&gt;</CODE>
+ shall be used to establish a <I CLASS="Emphasis">
+parallel connection</I>
+<A NAME="marker=108">
+ </A>
+<A NAME="marker=118">
+ </A>
+ between source and destination. In a parallel connection, each bit in the source shall connect to one corresponding bit in the destination. Parallel module paths can be created only between sources and destinations that contain the same number of bits.</P>
+<P CLASS="Body">
+<A NAME="pgfId=433">
+ </A>
+Parallel connections are more restrictive than full connections. They only connect one source to one destination, where each signal contains the same number of bits. Therefore, a parallel connection may only be used to describe a module path between two vectors of the same size. Since scalars are one bit wide, either *&gt; or =&gt; may be used to set up bit-to-bit connections between two scalars.</P>
+</DIV>
+<DIV>
+<H3 CLASS="Example">
+<A NAME="pgfId=434">
+ </A>
+</H3>
+<P CLASS="Body">
+<A NAME="pgfId=466">
+ </A>
+<A HREF="ch13.3.htm#difference between parallel and full connections . . ." CLASS="XRef">
+See : The difference between parallel and full connection paths</A>
+ illustrates how a parallel connection differs from a full connection between two 4-bit vectors.</P>
+<P CLASS="Body">
+<A NAME="pgfId=472">
+ </A>
+ </P>
+<DIV>
+<IMG SRC="ch13-18.gif">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=479">
+ </A>
+Figure&nbsp;13-2: The differenc<A NAME="difference between parallel and full connections . . .">
+ </A>
+e between parallel and full connection paths</P>
+<P CLASS="Body">
+<A NAME="pgfId=623">
+ </A>
+The example below shows module paths for a 2:1 multiplexor with two 8-bit inputs and one 8-bit output.</P>
+<P CLASS="Body">
+<A NAME="pgfId=486">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch13-19.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=519">
+ </A>
+The module path from <CODE CLASS="code">
+s</CODE>
+ to <CODE CLASS="code">
+q</CODE>
+ uses a full connection (<CODE CLASS="code">
+*&gt;)</CODE>
+ because it connects a scalar source--the 1-bit select line--to a vector destination--the 8-bit output bus. The module paths from both input lines <CODE CLASS="code">
+in1</CODE>
+ and <CODE CLASS="code">
+in2</CODE>
+ to <CODE CLASS="code">
+q</CODE>
+ use a parallel connection (<CODE CLASS="code">
+=&gt;</CODE>
+) because they set up parallel connections between two 8-bit buses.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=502">
+ </A>
+<A NAME="59756">
+ </A>
+<A NAME="marker=202">
+ </A>
+<A NAME="marker=203">
+ </A>
+Declaring multiple module paths in a single statement</P>
+<P CLASS="Body">
+<A NAME="pgfId=294">
+ </A>
+Multiple module paths may be described in a single statement by using the symbol <CODE CLASS="code">
+*&gt;</CODE>
+ to connect a comma separated list of sources to a comma separated list of destinations. When describing multiple module paths in one statement, the lists of <A NAME="marker=15">
+ </A>
+sources and <A NAME="marker=16">
+ </A>
+destinations may contain a mix of scalars and vectors of any size. </P>
+<P CLASS="Body">
+<A NAME="pgfId=298">
+ </A>
+The connection in a multiple module path declaration is always a full connection.<A NAME="marker=157">
+ </A>
+<A NAME="marker=158">
+ </A>
+<A NAME="marker=159">
+ </A>
+<A NAME="marker=160">
+ </A>
+&nbsp;<A NAME="marker=161">
+ </A>
+</P>
+</DIV>
+<DIV>
+<H3 CLASS="Example">
+<A NAME="pgfId=303">
+ </A>
+</H3>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=505"> </A>
+(a, b, c *&gt; q1, q2) = 10;</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=506">
+ </A>
+is equivalent to the following six individual module path assignments: </P>
+<DIV>
+<IMG SRC="ch13-20.gif">
+</DIV>
+<P CLASS="SubSection">
+<A NAME="pgfId=295">
+ </A>
+<A NAME="marker=19">
+ </A>
+<A NAME="marker=100">
+ </A>
+Module path polarity</P>
+<P CLASS="Body">
+<A NAME="pgfId=317">
+ </A>
+The polarity of a module path is an arbitrary specification indicating whether or not the direction of a signal transition is inverted as it propagates from the input to the output.  This arbitrary polarity description does not affect the actual propagation of data or events through the model; how a rise or a fall at the source propagates to the destination depends on the internal logic of the module.</P>
+<P CLASS="Body">
+<A NAME="pgfId=300">
+ </A>
+Module paths may specify <EM CLASS="-">
+any</EM>
+ of three polarities:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=401">
+ </A>
+unknown polarity</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=454">
+ </A>
+positive polarity</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=456">
+ </A>
+negative polarity</LI>
+</UL>
+<P CLASS="SubSubSect">
+<A NAME="pgfId=457">
+ </A>
+Unknown polarity</P>
+<P CLASS="Body">
+<A NAME="pgfId=557">
+ </A>
+By default, module paths shall have <I CLASS="Emphasis">
+unknown polarity</I>
+<A NAME="marker=101">
+ </A>
+--that is, a transition at the path source may propagate to the destination in an unpredictable way, as follows:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=575">
+ </A>
+A rise at the source may cause either a rise transition, a fall transition, or no transition at the destination.</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=578">
+ </A>
+A fall at the source may cause either a rise transition, a fall transition, or no transition at the destination.</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=331">
+ </A>
+A module path specified either as a full connection or a parallel connection, but without a polarity operator <CODE CLASS="code">
++</CODE>
+ or <CODE CLASS="code">
+-</CODE>
+, shall be treated as a module path with unknown polarity.</P>
+<P CLASS="SubSubSect">
+<A NAME="pgfId=606">
+ </A>
+Positive polarity</P>
+<P CLASS="Body">
+<A NAME="pgfId=645">
+ </A>
+For module paths with <I CLASS="Emphasis">
+positive polarity</I>
+<A NAME="marker=112">
+ </A>
+, any transition at the source may cause the same transition at the destination, as follows:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=646">
+ </A>
+A rise at the source may cause either a rise transition or no transition at the destination.</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=648">
+ </A>
+A fall at the source may cause either a fall transition or no transition at the destination.</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=316">
+ </A>
+A module path with positive polarity shall be specified by prefixing <CODE CLASS="code">
++</CODE>
+ polarity operator to <CODE CLASS="code">
+=&gt;</CODE>
+ or <CODE CLASS="code">
+*&gt;</CODE>
+.</P>
+<P CLASS="SubSubSect">
+<A NAME="pgfId=649">
+ </A>
+Negative polarity</P>
+<P CLASS="Body">
+<A NAME="pgfId=650">
+ </A>
+For module paths with <I CLASS="Emphasis">
+negative polarity</I>
+<A NAME="marker=113">
+ </A>
+, any transition at the source may cause the opposite transition at the destination, as follows:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=651">
+ </A>
+A rise at the source may cause either a fall transition or no transition at the destination.</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=652">
+ </A>
+A fall at the source may cause either a rise transition or no transition at the destination. </LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=324">
+ </A>
+A module path with negative polarity shall be specified by prefixing <CODE CLASS="code">
+-</CODE>
+ polarity operator to <CODE CLASS="code">
+=&gt;</CODE>
+ or <CODE CLASS="code">
+*&gt;</CODE>
+.</P>
+</DIV>
+<DIV>
+<H3 CLASS="Example">
+<A NAME="pgfId=318">
+ </A>
+</H3>
+<P CLASS="Body">
+<A NAME="pgfId=321">
+ </A>
+The following examples show each type of path polarity:</P>
+<P CLASS="Body">
+<A NAME="pgfId=655">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch13-21.gif">
+</DIV>
+</DIV>
+</DIV>
+<HR><P><A HREF="ch13.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch13.2.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch13.4.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

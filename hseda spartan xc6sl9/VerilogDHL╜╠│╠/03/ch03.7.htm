@@ -1,0 +1,439 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Mac">
+  <LINK REL="STYLESHEET" HREF="ch03.css">
+  <TITLE> 3.7&nbsp;&nbsp;&nbsp;Net types </TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><A NAME="pgfId=366"></A><HR ALIGN=LEFT></P>
+
+<P><A HREF="ch03.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A 
+HREF="ch03.6.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch03.8.htm">Next&nbsp;&nbsp;page</A></P>
+
+<H1>3.7&nbsp;&nbsp;&nbsp;Net types</H1>
+
+<P><P CLASS="Body"><A NAME="pgfId=577"></A>There are several distinct types
+of nets as shown in Table&nbsp;3-1.</P>
+
+<P><TABLE BORDER="1" CELLSPACING="2" CELLPADDING="0">
+<CAPTION ALIGN="TOP"><P CLASS="TableTitle"><A NAME="pgfId=417"></A>Table&nbsp;3-1: Net Types</CAPTION>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=465"></A><B>wire</B></TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=466"></A><B>tri</B></TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=481"></A><B>tri0</B></TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=482"></A><B>supply0</B></TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=484"></A><B>wand</B></TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=539"></A><B>triand</B></TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=540"></A><B>tri1</B></TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=541"></A><B>supply1</B></TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=542"></A><B>wor</B></TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=557"></A><B>trior</B></TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=558"></A><B>trireg</B></TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=562"></A>&nbsp;</TD></TR>
+</TABLE>
+<P CLASS="SubSection"><A NAME="pgfId=600"></A>Wire and tri nets</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=485"></A>The <I>wire</I> and <I>tri</I>
+nets connect elements. The net types wire and tri shall be identical in
+their syntax and functions; two names are provided so that the name of a
+net can indicate the purpose of the net in that model. A wire net can be
+used for nets that are driven by a single gate or continuous assignment.
+The tri net type can be used where multiple drivers drive a net.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=486"></A>Logical conflicts from multiple
+sources on a wire or a tri net result in unknown values unless the net is
+controlled by logic strength.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=394"></A>Table&nbsp;3-2 is a truth table
+for wire and tri nets. Note that it assumes equal strengths for both drivers.
+Please refer to 7.10 for a discussion of logic strength modeling.</P>
+
+<P><TABLE BORDER="1" CELLSPACING="2" CELLPADDING="0">
+<CAPTION ALIGN="TOP"><P CLASS="TableTitle"><A NAME="pgfId=395"></A>Table&nbsp;3-2: Truth table
+for wire and tri nets</CAPTION>
+<TR>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=459"></A><B>wire/<BR>
+tri</B></TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=467"></A>0</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=468"></A>1</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=469"></A>x</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=470"></A>z</TH></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=477"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=480"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=483"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=487"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=488"></A>0</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=489"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=490"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=491"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=494"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=495"></A>1</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=497"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=528"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=530"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=533"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=537"></A>x</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=548"></A>z</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=553"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=572"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=581"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=587"></A>z</TD></TR>
+</TABLE>
+<P CLASS="SubSection"><A NAME="pgfId=589"></A>Wired nets</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=492"></A>Wired nets are of type <I>wor</I>
+, <I>wand</I> , <I>trior</I> , and <I>triand</I> , and are used to model
+wired logic configurations. Wired nets resolve the conflicts that result
+when multiple drivers drive the same net. The wor and trior nets shall create
+<I>wired or</I> configurations, such that when any of the drivers is <CODE>1</CODE>
+, the resulting value of the net is <CODE>1</CODE> . The wand and triand
+nets shall create <I>wired and</I> configurations, such that if any driver
+is <CODE>0</CODE> , the value of the net is <CODE>0</CODE> .</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=493"></A>The net types wor and trior shall
+be identical in their syntax and functionality. The net types wand and triand
+shall be identical in their syntax and functionality. Table&nbsp;3-3 and
+Table&nbsp;3-4 gives the truth tables for wired nets. Note that it assumes
+equal strengths for both drivers. See 7.10 for a discussion of logic strength
+modeling.</P>
+
+<P><TABLE BORDER="1" CELLSPACING="2" CELLPADDING="0">
+<CAPTION ALIGN="TOP"><P CLASS="TableTitle"><A NAME="pgfId=599"></A>Table&nbsp;3-3: Truth tables
+for wand and triand nets</CAPTION>
+<TR>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=368"></A><B>wand/<BR>
+triand</B></TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=389"></A>0</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=390"></A>1</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=391"></A>x</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=392"></A>z</TH></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=393"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=654"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=655"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=656"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=657"></A>0</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=658"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=659"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=660"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=661"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=662"></A>1</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=663"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=664"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=665"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=666"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=667"></A>x</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=668"></A>z</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=669"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=670"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=671"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=672"></A>z</TD></TR>
+</TABLE>
+ <TABLE BORDER="1" CELLSPACING="2" CELLPADDING="0">
+<CAPTION ALIGN="TOP"><P CLASS="TableTitle"><A NAME="pgfId=605"></A>Table&nbsp;3-4: Truth tables
+for wor and trior nets</CAPTION>
+<TR>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=673"></A><B>wor/<BR>
+trior</B></TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=674"></A>0</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=675"></A>1</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=676"></A>x</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=677"></A>z</TH></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=678"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=679"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=680"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=681"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=682"></A>0</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=683"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=684"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=685"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=686"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=687"></A>1</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=688"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=689"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=690"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=691"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=692"></A>x</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=693"></A>z</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=694"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=695"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=696"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=697"></A>z</TD></TR>
+</TABLE>
+<P CLASS="SubSection"><A NAME="pgfId=496"></A>Trireg net</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=498"></A>The <I>trireg</I> net stores
+a value and is used to model charge storage nodes. A trireg net can be in
+one of two states:</P>
+
+<P><P CLASS="Type"><A NAME="pgfId=499"></A><I>driven state</I> &nbsp;&nbsp;&nbsp;When
+at least one driver of a trireg net has a value of <CODE>1</CODE> , <CODE>0</CODE>
+, or <CODE>x</CODE> , the resolved value propagates into the trireg net
+and is the trireg net's driven value.</P>
+
+<P><P CLASS="Type"><A NAME="pgfId=500"></A><I>capacitive state</I> &nbsp;&nbsp;&nbsp;When
+all the drivers of a trireg net are at the high impedance value (<CODE>
+z</CODE> ), the trireg net retains its last driven value; the high impedance
+value does not propagate from the driver to the trireg.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=501"></A>The strength of the value on
+the trireg net in the capacitive state can be <B>small</B>, <B>medium</B>,
+or <B>large</B>, depending on the size specified in the declaration of the
+trireg net. The strength of a trireg net in the driven state can be <B>supply</B><CODE>,
+</CODE><B>strong</B>,<CODE> </CODE><B>pull</B>, or <B>weak</B> depending
+on the strength of the driver.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=502"></A>Example:</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=432"></A>Figure&nbsp;3-1 shows a schematic
+that includes a trireg net whose size is <B>medium</B>, its driver, and
+the simulation results.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=503"></A>&nbsp;</P>
+
+<P><IMG SRC="ch03-1.gif" WIDTH="376" HEIGHT="160" NATURALSIZEFLAG="3" ALIGN=
+"BOTTOM"> <P CLASS="FigCapBody"><A NAME="pgfId=433"></A>Figure&nbsp;3-1:
+Simulation values of a trireg and its driver</P>
+
+<OL>
+  <P><P CLASS="NumberedLista"><A NAME="pgfId=474"></A>a)&nbsp;&nbsp;&nbsp;At
+  simulation time 0, wire <CODE>a</CODE> and wire <CODE>b</CODE> have a value
+  of <CODE>1</CODE> . A value of <CODE>1</CODE> with a <CODE>strong</CODE>
+  strength propagates from the <B>and</B> gate through the <B>nmos</B> switches
+  connected to each other by wire <CODE>c</CODE> , into trireg net <CODE>d</CODE>
+  .
+  <P><P CLASS="NumberedListb"><A NAME="pgfId=507"></A>b)&nbsp;&nbsp;&nbsp;At
+  simulation time 10, wire <CODE>a</CODE> changes value to <CODE>0</CODE>
+  , disconnecting wire <CODE>c </CODE>from the <B>and</B> gate. When wire
+  <CODE>c</CODE> is no longer connected to the <B>and</B> gate, value of
+  wire <CODE>c</CODE> changes to <CODE>HiZ</CODE> . The value of wire <CODE>b</CODE>
+  remains <CODE>1</CODE> so wire <CODE>c</CODE> remains connected to trireg
+  net <CODE>d</CODE> through the <CODE>nmos2</CODE> switch. The<CODE> HiZ</CODE>
+  value does not propagate from wire <CODE>c</CODE> into trireg net <CODE>d</CODE>
+  . Instead, trireg net <CODE>d</CODE> enters the capacitive state, storing
+  its last driven value of <CODE>1</CODE> . It stores the <CODE>1</CODE>
+  with a <B>medium</B> strength.
+</OL>
+
+<P><P CLASS="SubSubSect"><A NAME="pgfId=508"></A>Capacitive networks</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=385"></A>A capacitive network is a connection
+between two or more trireg nets. In a capacitive network whose trireg nets
+are in the capacitive state, logic and strength values can propagate between
+trireg nets.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=504"></A>Examples:</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=505"></A>Figure&nbsp;3-2 shows a capacitive
+network in which the logic value of some trireg nets change the logic value
+of other trireg nets of equal or smaller size.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=387"></A>&nbsp;</P>
+
+<P><IMG SRC="ch03-2.gif" WIDTH="376" HEIGHT="436" NATURALSIZEFLAG="3" ALIGN=
+"BOTTOM"> <P CLASS="FigCapBody"><A NAME="pgfId=455"></A>Figure&nbsp;3-2:
+Simulation results of a capacitive network</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=512"></A>In Figure&nbsp;3-2, capacitive
+strength of <CODE>trireg_la</CODE> net is <CODE>large</CODE> , <CODE>trireg_me1</CODE>
+and <CODE>trireg_me2</CODE> are <CODE>medium</CODE> , and <CODE>trireg_sm</CODE>
+is <CODE>small</CODE> . Simulation reports the following sequence of events:</P>
+
+<OL>
+  <P><P CLASS="NumberedLista"><A NAME="pgfId=513"></A>a)&nbsp;&nbsp;&nbsp;At
+  simulation time 0, wire <CODE>a</CODE> and wire <CODE>b</CODE> have a value
+  of <CODE>1</CODE> .<CODE> </CODE>The wire <CODE>c</CODE> drives a value
+  of <CODE>1</CODE> into <CODE>trireg_la</CODE> and <CODE>trireg_sm</CODE>
+  , wire <CODE>d</CODE> drives a value of 1 into <CODE>trireg_me1</CODE>
+  and <CODE>trireg_me2</CODE> .
+  <P><P CLASS="NumberedListb"><A NAME="pgfId=514"></A>b)&nbsp;&nbsp;&nbsp;At
+  simulation time 10, value of wire <CODE>b</CODE> changes to <CODE>0</CODE>
+  , disconnecting <CODE>trireg_sm</CODE> and <CODE>trireg_me2</CODE> from
+  their drivers. These trireg nets enter the capacitive state and store the
+  value <CODE>1</CODE> , their last driven value.
+  <P><P CLASS="NumberedListb"><A NAME="pgfId=515"></A>c)&nbsp;&nbsp;&nbsp;At
+  simulation time 20, wire <CODE>c</CODE> drives a value of <CODE>0</CODE>
+  into <CODE>trireg_la</CODE> .
+  <P><P CLASS="NumberedListb"><A NAME="pgfId=516"></A>d)&nbsp;&nbsp;&nbsp;At
+  simulation time 30, wire <CODE>d</CODE> drives a value of <CODE>0</CODE>
+  into <CODE>trireg_me1</CODE> .
+  <P><P CLASS="NumberedListb"><A NAME="pgfId=517"></A>e)&nbsp;&nbsp;&nbsp;At
+  simulation time 40, value of wire <CODE>a</CODE> changes to <CODE>0</CODE>
+  , disconnecting <CODE>trireg_la</CODE> and <CODE>trireg_me1</CODE> from
+  their drivers. These trireg nets enter the capacitive state and store the
+  value <CODE>0</CODE> .
+  <P><P CLASS="NumberedListb"><A NAME="pgfId=518"></A>f)&nbsp;&nbsp;&nbsp;At
+  simulation time 50, the value of wire <CODE>b</CODE> changes to <CODE>1</CODE>
+  . <BR>
+  <BR>
+  This change of value in wire <CODE>b</CODE> connects <CODE>trireg_sm</CODE>
+  to <CODE>trireg_la</CODE> ; these trireg nets have different sizes and
+  stored different values. This connection causes the smaller trireg net
+  to store the larger trireg net's value and <CODE>trireg_sm</CODE> now stores
+  a value of <CODE>0</CODE> .<BR>
+  <BR>
+  This change of value in wire <CODE>b</CODE> also connects <CODE>trireg_me1</CODE>
+  to <CODE>trireg_me2</CODE> ; these trireg nets have the same size and stored
+  different values. The connection causes both <CODE>trireg_me1</CODE> and
+  <CODE>trireg_me2</CODE> to change value to <CODE>x</CODE> .
+</OL>
+
+<P><P CLASS="Body"><A NAME="pgfId=506"></A>In a capacitive network, charge
+strengths propagate from a larger trireg net to a smaller trireg net. Figure&nbsp;3-3
+shows a capacitive network and its simulation results.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=380"></A>&nbsp;</P>
+
+<P><IMG SRC="ch03-3.gif" WIDTH="376" HEIGHT="326" NATURALSIZEFLAG="3" ALIGN=
+"BOTTOM"> <P CLASS="FigCapBody"><A NAME="pgfId=651"></A>Figure&nbsp;3-3:
+Simulation results of charge sharing</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=652"></A>In Figure&nbsp;3-3, capacitive
+strength of <CODE>trireg_la</CODE> is <B>large</B> and capacitive strength
+of <CODE>trireg_sm</CODE> is <B>small</B>. Simulation reports the following
+results:</P>
+
+<OL>
+  <P><P CLASS="NumberedLista"><A NAME="pgfId=523"></A>a)&nbsp;&nbsp;&nbsp;At
+  simulation time 0, the value of wire <CODE>a</CODE> , wire <CODE>b</CODE>
+  , and wire <CODE>c </CODE>is <CODE>1</CODE> and wire <CODE>a</CODE> drives
+  a <CODE>strong 1</CODE> into <CODE>trireg_la</CODE> and <CODE>trireg_sm</CODE>
+  .
+  <P><P CLASS="NumberedListb"><A NAME="pgfId=524"></A>b)&nbsp;&nbsp;&nbsp;At
+  simulation time 10, value of wire <CODE>b</CODE> changes to <CODE>0</CODE>
+  , disconnecting <CODE>trireg_la</CODE> and <CODE>trireg_sm</CODE> from
+  wire <CODE>a</CODE> . The <CODE>trireg_la</CODE> and <CODE>trireg_sm</CODE>
+  nets enter the capacitive state. Both trireg nets share the<CODE> </CODE><B>large</B>
+  charge of <CODE>trireg_la</CODE> because they remain connected through
+  <CODE>tranif1_2</CODE> .
+  <P><P CLASS="NumberedListb"><A NAME="pgfId=525"></A>c)&nbsp;&nbsp;&nbsp;At
+  simulation time 20, value of wire <CODE>c</CODE> changes to <CODE>0</CODE>
+  , disconnecting <CODE>trireg_sm</CODE> from <CODE>trireg_la</CODE> . The
+  <CODE>trireg_sm</CODE> no longer shares <B>large</B> charge of <CODE>trireg_la</CODE>
+  and now stores a <B>small</B> charge.
+  <P><P CLASS="NumberedListb"><A NAME="pgfId=526"></A>d)&nbsp;&nbsp;&nbsp;At
+  simulation time 30, value of wire <CODE>c</CODE> changes to <CODE>1</CODE>
+  , connecting the two trireg nets. These trireg nets now share the same
+  charge.
+  <P><P CLASS="NumberedListb"><A NAME="pgfId=458"></A>e)&nbsp;&nbsp;&nbsp;At
+  simulation time 40, value of wire <CODE>c</CODE> changes again to <CODE>0</CODE>
+  , disconnecting <CODE>trireg_sm</CODE> from <CODE>trireg_la</CODE> . Once
+  again, <CODE>trireg_sm</CODE> no longer shares <B>large </B>charge of <CODE>trireg_la</CODE>
+  and now stores a <B>small</B> charge.
+</OL>
+
+<P><P CLASS="SubSubSect"><A NAME="pgfId=653"></A>Ideal capacitive state
+and charge decay</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=529"></A>A <I>trireg</I> net can retain
+its value indefinitely or its charge can decay over time. The simulation
+time of charge decay is specified in the trireg net's delay specification.
+See section&nbsp;7.15.2 for charge decay explanation.</P>
+
+<P><P CLASS="SubSection"><A NAME="pgfId=531"></A>Tri0 and tri1 nets</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=430"></A>The <I>tri0</I> and <I>tri1</I>
+nets model nets with resistive <I>pulldown</I> and resistive <I>pullup</I>
+devices on them. When no driver drives a tri0 net, its value is <CODE>0</CODE>
+. When no driver drives a tri1 net, its value is <CODE>1</CODE> . The strength
+of this value is <B>pull</B>. See Section 7 for a description of strength
+modeling.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=371"></A>A truth table for <CODE>tri0</CODE>
+is shown in Table&nbsp;3-5. A truth table for <CODE>tri1</CODE> is shown
+in Table&nbsp;3-6.</P>
+
+<P><TABLE BORDER="1" CELLSPACING="2" CELLPADDING="0">
+<CAPTION ALIGN="TOP"><P CLASS="TableTitle"><A NAME="pgfId=641"></A>Table&nbsp;3-5: Truth table
+for tri0 net</CAPTION>
+<TR>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=646"></A><B>tri0</B></TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=647"></A>0</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=648"></A>1</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=649"></A>x</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=650"></A>z</TH></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=698"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=699"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=700"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=701"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=702"></A>0</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=703"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=704"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=705"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=706"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=707"></A>1</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=708"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=709"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=710"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=711"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=712"></A>x</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=713"></A>z</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=714"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=715"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=716"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=717"></A>0</TD></TR>
+</TABLE>
+ <TABLE BORDER="1" CELLSPACING="2" CELLPADDING="0">
+<CAPTION ALIGN="TOP"><P CLASS="TableTitle"><A NAME="pgfId=747"></A>Table&nbsp;3-6: Truth table
+for tri1 net</CAPTION>
+<TR>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=718"></A><B>tri1</B></TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=719"></A>0</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=720"></A>1</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=721"></A>x</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=722"></A>z</TH></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=723"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=724"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=725"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=726"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=727"></A>0</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=728"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=729"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=730"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=731"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=732"></A>1</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=733"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=734"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=735"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=736"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=737"></A>x</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=738"></A>z</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=739"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=740"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=741"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=742"></A>1</TD></TR>
+</TABLE>
+<P CLASS="SubSection"><A NAME="pgfId=534"></A>Supply nets</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=535"></A>The <I>supply0</I> and <I>supply1</I>
+nets may be used to model the power supplies in a circuit. These nets shall
+have <B>supply</B> strengths.</P>
+
+<P><HR ALIGN=LEFT></P>
+
+<P><A HREF="ch03.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A 
+HREF="ch03.6.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch03.8.htm">Next&nbsp;&nbsp;page</A>
+</BODY>
+</HTML>

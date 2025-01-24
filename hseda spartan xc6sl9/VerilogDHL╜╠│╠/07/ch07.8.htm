@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch07.css">
+<TITLE> 7.8	Pullup and pulldown sources</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch07.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch07.7.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch07.9.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=1519">
+ </A>
+7.8	<A NAME="gate descriptions end">
+ </A>
+P<A NAME="marker=315">
+ </A>
+<A NAME="marker=316">
+ </A>
+<A NAME="marker=317">
+ </A>
+ullup and <A NAME="marker=318">
+ </A>
+p<A NAME="marker=319">
+ </A>
+<A NAME="marker=320">
+ </A>
+ulldown <A NAME="marker=321">
+ </A>
+<A NAME="marker=322">
+ </A>
+sources</H1>
+<P CLASS="Body">
+<A NAME="pgfId=1024">
+ </A>
+The instance declaration of a pullup or a pulldown source shall begin with one of the following keywords: </P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1520"> </A>
+<B CLASS="Keyword">pullup</B>
+							<B CLASS="Keyword">pulldown</B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1521">
+ </A>
+A <B CLASS="Keyword">
+pullup</B>
+ source shall place a logic value <CODE CLASS="code">
+1</CODE>
+ on the nets connected in its terminal list. A <B CLASS="Keyword">
+pulldown</B>
+ source shall place a logic value <CODE CLASS="code">
+0</CODE>
+ on the nets connected in its terminal list. The signals that these sources place on nets shall have <B CLASS="Keyword">
+pull</B>
+ strength in the absence of a strength specification. There shall be no delay specifications for these sources. </P>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=1522">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=1032">
+ </A>
+The following example declares two <B CLASS="Keyword">
+pullup</B>
+ instances:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1523"> </A>
+<B CLASS="Keyword">pullup</B>
+ <B CLASS="Keyword">(strong1)</B>
+ p1 (neta), p2 (netb);</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1524">
+ </A>
+In this example, <CODE CLASS="code">
+p1</CODE>
+ instance drives <CODE CLASS="code">
+neta</CODE>
+ and the other <CODE CLASS="code">
+p2</CODE>
+ instance drives <CODE CLASS="code">
+netb</CODE>
+.</P>
+</DIV>
+<HR><P><A HREF="ch07.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch07.7.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch07.9.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

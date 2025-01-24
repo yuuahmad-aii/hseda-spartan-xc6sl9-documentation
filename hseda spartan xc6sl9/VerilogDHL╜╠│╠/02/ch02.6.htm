@@ -1,0 +1,111 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Mac">
+  <LINK REL="STYLESHEET" HREF="ch02.css">
+  <TITLE> 2.6	Strings </TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><HR ALIGN=LEFT></P>
+
+<P><A HREF="ch02.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A 
+HREF="ch02.5.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch02.7.htm">Next&nbsp;&nbsp;page</A></P>
+
+<H1><A NAME="pgfId=238"></A>2.6 Strings</H1>
+
+<P><P CLASS="Body"><A NAME="pgfId=239"></A>A <B>string</B> is a sequence
+of characters enclosed by double quotes (<CODE> &quot;&quot;</CODE> ) and
+contained on a single line. Strings used as operands in expressions and
+assignments shall be treated as unsigned integer constants represented by
+a sequence of eight-bit ASCII values, with one eight bit ASCII value representing
+one character.</P>
+
+<P><P CLASS="SubSection"><A NAME="pgfId=243"></A>String variable declaration</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=184"></A>String variables are variables
+of register type (see section&nbsp;3.2) with width equal to the number of
+characters in the string multiplied by 8.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=231"></A>Example:</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=235"></A>To store the twelve characters
+string <CODE>&quot;Hello world!&quot;</CODE> requires a register 8*12, or
+96 bits wide</P>
+
+<P><P CLASS="CodeText"><A NAME="pgfId=5329"></A><B>reg&nbsp;</B>[8*12:1]&nbsp;stringvar;<BR>
+<B>initial</B> <B>begin<BR>
+</B>&nbsp;stringvar&nbsp;=&nbsp;&quot;Hello&nbsp;world!&quot;;<BR>
+<B>end</B></P>
+
+<P><P CLASS="SubSection"><A NAME="pgfId=240"></A>String manipulation</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=251"></A>Strings can be manipulated using
+the Verilog HDL operators. The value being manipulated by the operator is
+the sequence of 8-bit ASCII values.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=168"></A>Example:</P>
+
+<PRE><A NAME="pgfId=5336"></A> 
+<B>module</B> string_test;
+<B>reg</B> [8*14:1] stringvar;
+<B>initial</B>
+<B> </B>	<B>begin</B>	stringvar = &quot;Hello world&quot;;
+	<B>$display</B>(&quot;%s is stored as %h&quot;, stringvar,stringvar);
+	stringvar = {stringvar,&quot;!!!&quot;};
+	<B>$display</B>(&quot;%s is stored as %h&quot;, stringvar,stringvar);
+<B>end</B>
+<B>endmodule</B></PRE>
+
+<P><P CLASS="Body"><A NAME="pgfId=255"></A>The output is:</P>
+
+<PRE><A NAME="pgfId=177"></A> 
+Hello world is stored as 00000048656c6c6f20776f726c64
+Hello world!!! is stored as 48656c6c6f20776f726c64212121</PRE>
+
+<P><P CLASS="Note"><A NAME="pgfId=245"></A>NOTE--When a variable is larger
+than required to hold a value being assigned, the contents on the left are
+padded with zeros after the assignment. This is consistent with the padding
+that occurs during assignment of non-string values. If a string is larger
+than the destination string variable, the string is truncated to the left
+and the left most characters will be lost.</P>
+
+<P><P CLASS="SubSection"><A NAME="pgfId=258"></A>Special characters in strings</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=259"></A>Certain characters can only be
+used in strings when preceded by an introductory character called an escape
+character. Table&nbsp;2-1 lists these characters in the right-hand column
+with the escape sequence that represents the character in the left-hand
+column.</P>
+
+<P><TABLE BORDER="1" CELLSPACING="2" CELLPADDING="0">
+<CAPTION ALIGN="TOP"><P CLASS="TableTitle"><A NAME="pgfId=323"></A>Table&nbsp;2-1: Specifying
+special characters in string</CAPTION>
+<TR>
+<TD><P CLASS="CellHeading"><A NAME="pgfId=330"></A>Escape <BR>
+String</TD>
+<TD><P CLASS="CellHeading"><A NAME="pgfId=331"></A>Character Produced by<BR>
+Escape String</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=333"></A>\n</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=334"></A>new line character</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=335"></A>\t</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=336"></A>tab character</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=337"></A>\\</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=338"></A>\ character</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=339"></A>\&quot;</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=340"></A>&quot; character</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=341"></A>\ddd</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=332"></A>a character specified in 1-3
+octal digits<BR>
+(0 &lt;= d &lt;= 7)</TD></TR>
+</TABLE>
+<HR ALIGN=LEFT></P>
+
+<P><A HREF="ch02.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A 
+HREF="ch02.5.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch02.7.htm">Next&nbsp;&nbsp;page</A>
+</BODY>
+</HTML>

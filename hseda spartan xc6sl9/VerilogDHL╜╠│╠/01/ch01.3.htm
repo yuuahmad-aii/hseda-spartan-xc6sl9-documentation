@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Mac">
+  <TITLE>1.3 Syntactic description</TITLE>
+</HEAD>
+<BODY>
+
+<P><A NAME="anchor640956"></A><HR ALIGN=LEFT></P>
+
+<P><A HREF="ch01.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A 
+HREF="ch01.2.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch01.4.htm">Next&nbsp;&nbsp;page</A></P>
+
+<H2>1.3 Syntactic description</H2>
+
+<P><P CLASS="Body"><A NAME="pgfId=72"></A>The formal syntax of Verilog HDL
+is described using Backus-Naur Form (BNF). The following conventions are
+used:</P>
+
+<OL>
+  <P><P CLASS="NumberedLista"><A NAME="pgfId=84"></A>a) Lower case words,
+  some containing embedded underscores, are used to denote syntactic categories,
+  for example:
+</OL>
+
+<PRE><A NAME="pgfId=85"></A> 
+module_declaration</PRE>
+
+<OL>
+  <P><P CLASS="NumberedListb"><A NAME="pgfId=86"></A>b) Bold face words are
+  used to denote reserved keywords, operators and punctuation marks as required
+  part of the syntax. These words appear in larger font for distinction.
+  For example:
+</OL>
+
+<PRE><A NAME="pgfId=87"></A> 
+<B>module</B>      <B>=&gt;</B>       <B>;      </B></PRE>
+
+<OL>
+  <P><P CLASS="NumberedListb"><A NAME="pgfId=67"></A>c) A vertical bar separates
+  alternative items unless it appears in bold face, in which case it stands
+  for itself. For example:
+</OL>
+
+<PRE><A NAME="pgfId=68"></A> 
+port_expression ::=  &nbsp;port_reference | <B>{</B> port_reference  {<B> ,</B> port_reference } <B>}</B>
+<A NAME="pgfId=73"></A> 
+unary_operator ::=    <B>+ </B>| <B> -  </B>| <B> ! </B>| <B> ~ </B>| <B> &amp; </B>| <B>  ~&amp; </B>| <B>  |  </B>| <B> ~|  </B>| <B> ^  </B>| <B> ~^ </B>| <B> ^~</B></PRE>
+
+<OL>
+  <P><P CLASS="NumberedListb"><A NAME="pgfId=90"></A>d) Square brackets enclose
+  optional items. For example:
+</OL>
+
+<PRE><A NAME="pgfId=91"></A> 
+input_declaration ::= <B>input</B> [range]  list_of_variables <EM>;</EM></PRE>
+
+<OL>
+  <P><P CLASS="NumberedListb"><A NAME="pgfId=92"></A>e) Braces enclose a
+  repeated item. The item may appear zero or more times; the repetitions
+  occur from left to right as with an equivalent left-recursive rule. Thus,
+  the following two rules are equivalent:
+</OL>
+
+<PRE><A NAME="pgfId=111"></A> 
+list_of_param_assignments ::= param_assignment<B>  </B>{ <B>,</B><EM> </EM>param_assignment }
+<A NAME="pgfId=117"></A> 
+list_of_param_assignments ::=  &nbsp;param_assignment| param_assignment <B>,</B> list_of_param_assignment</PRE>
+
+<OL>
+  <P><P CLASS="NumberedListb"><A NAME="pgfId=103"></A>f) If the name of any
+  category starts with an italicized part, it is equivalent to the category
+  name without the italicized part. The italicized part is intended to convey
+  some semantic information. For example, <I>msb_</I> constant_expression
+  and <I>lsb_</I> constant_expression are equivalent to constant_expression.
+</OL>
+
+<P><P CLASS="Body"><A NAME="pgfId=80"></A>The main text uses <I>italicized</I>
+font when a term is being defined, and <CODE>constant-width</CODE> font
+for examples, file names, and while referring to constants, especially <CODE>0</CODE>
+, <CODE>1</CODE> , <CODE>x</CODE> , and <CODE>z</CODE> values.</P>
+
+<P><A HREF="ch01.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A 
+HREF="ch01.2.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch01.4.htm">Next&nbsp;&nbsp;page</A>
+</BODY>
+</HTML>

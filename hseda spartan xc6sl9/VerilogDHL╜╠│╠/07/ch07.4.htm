@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch07.css">
+<TITLE> 7.4	Bufif1, bufif0, notif1, and notif0 gates </TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch07.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch07.3.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch07.5.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=1485">
+ </A>
+7.4	<A NAME="marker=240">
+ </A>
+<A NAME="marker=241">
+ </A>
+<A NAME="marker=242">
+ </A>
+Bufif1, bufif0<A NAME="marker=244">
+ </A>
+, <A NAME="marker=245">
+ </A>
+<A NAME="marker=246">
+ </A>
+<A NAME="marker=247">
+ </A>
+notif1, and <A NAME="marker=248">
+ </A>
+notif0 gates </H1>
+<P CLASS="Body">
+<A NAME="pgfId=1008">
+ </A>
+The instance declaration of a tristate logic gate shall begin with one of the following keywords: </P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1486"> </A>
+<B CLASS="Keyword">bufif0 					bufif1 				notif1 				notif0 </B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1487">
+ </A>
+These four logic gates model three-state drivers. In addition to logic values 1 and 0, these gates can output Z.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1488">
+ </A>
+The delay specification shall be zero, one, two, or three delays. If the delay specification contains three delays, the first delay shall determine the rise delay, the second delay shall determine the fall delay, the third delay shall determine the delay of transitions to <CODE CLASS="code">
+z</CODE>
+, and the smallest of the three delays shall determine the delay of transitions to <CODE CLASS="code">
+x</CODE>
+. If the specification contains two delays, the first delay shall determine the output rise delay, the second delay shall determine the output fall delay, and the smaller of the two delays shall apply to output transitions to <CODE CLASS="code">
+x</CODE>
+ and <CODE CLASS="code">
+z</CODE>
+. If only one delay is specified, it shall specify the delay for all output transitions. If there is no delay specification, there shall be no propagation delay through the gate.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1489">
+ </A>
+Some combinations of data input values and control input values can cause these gates to output either of two values, without a preference for either value (see <A HREF="ch07.b.htm#48463" CLASS="XRef">
+See Ambiguous strengths: sources and combinations</A>
+). These logic tables for these gates include two symbols representing such unknown results. The symbol <CODE CLASS="code">
+L</CODE>
+ shall represent a result which has a value <CODE CLASS="code">
+0</CODE>
+ or <CODE CLASS="code">
+z</CODE>
+. The symbol <CODE CLASS="code">
+H</CODE>
+ shall represent a result which has a value <CODE CLASS="code">
+1</CODE>
+ or <CODE CLASS="code">
+z</CODE>
+. Delays on transitions to <CODE CLASS="code">
+H</CODE>
+ or <CODE CLASS="code">
+L</CODE>
+ shall be treated the same as delays on transitions to <CODE CLASS="code">
+x</CODE>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1490">
+ </A>
+These four logic gates shall have one output, one data input, and one control input. The first terminal in the terminal list shall connect to the output, the second terminal shall connect to the data input, and the third terminal shall connect to the control input.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1491">
+ </A>
+<A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/07/ch07.htm#24808" CLASS="XRef">
+See : Truth tables for tristate logic gates</A>
+ presents the logic tables for these gates: </P>
+<P CLASS="Body">
+<A NAME="pgfId=1492">
+ </A>
+</P>
+<DIV>
+<MAP NAME="ch07-8">
+</MAP>
+<IMG SRC="ch07-8.gif" USEMAP="#ch07-8">
+</DIV>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=1493">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=1009">
+ </A>
+<A NAME="marker=251">
+ </A>
+<A NAME="marker=252">
+ </A>
+<A NAME="marker=253">
+ </A>
+<A NAME="marker=254">
+ </A>
+<A NAME="marker=255">
+ </A>
+The following example declares an instance of <B CLASS="Keyword">
+bufif1</B>
+:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1494"> </A>
+<B CLASS="Keyword">bufif1</B>
+ bf1 (outw, inw, controlw);</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1495">
+ </A>
+The output is <CODE CLASS="code">
+outw</CODE>
+, the input is <CODE CLASS="code">
+inw</CODE>
+, and the <A NAME="marker=256">
+ </A>
+control<A NAME="marker=257">
+ </A>
+ is <CODE CLASS="code">
+controlw</CODE>
+<A NAME="marker=258">
+ </A>
+. The instance name if bf1.</P>
+</DIV>
+<HR><P><A HREF="ch07.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch07.3.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch07.5.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

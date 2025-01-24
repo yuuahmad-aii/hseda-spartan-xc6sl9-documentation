@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch07.css">
+<TITLE> 7.6	Bidirectional pass switches</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch07.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch07.5.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch07.7.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=1506">
+ </A>
+7.6	B<A NAME="marker=281">
+ </A>
+<A NAME="marker=282">
+ </A>
+<A NAME="marker=283">
+ </A>
+idirectional <A NAME="marker=284">
+ </A>
+pass switches</H1>
+<P CLASS="Body">
+<A NAME="pgfId=1015">
+ </A>
+The instance declaration of a bidirectional pass switch shall begin with one of the following keywords: </P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1507"> </A>
+<B CLASS="Keyword">tran</B>
+<A NAME="marker=285"> </A>
+ 					<B CLASS="Keyword">tranif1</B>
+<A NAME="marker=286"> </A>
+ 					<B CLASS="Keyword">tranif0rtran</B>
+<A NAME="marker=287"> </A>
+<A NAME="marker=290"> </A>
+				<B CLASS="Keyword">	rtranif1</B>
+	<A NAME="marker=291"> </A>
+				<B CLASS="Keyword">rtr</B>
+<A NAME="marker=632"> </A>
+<B CLASS="Keyword">anif0</B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1017">
+ </A>
+The bidirectional pass switches shall not delay signals propagating through them. When these devices are turned off they shall block signals, and when they are turned on they shall pass signals. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1019">
+ </A>
+The delay specifications for <B CLASS="Keyword">
+tranif1</B>
+, <B CLASS="Keyword">
+tranif0</B>
+, <B CLASS="Keyword">
+rtranif1</B>
+, and <B CLASS="Keyword">
+rtranif0</B>
+ devices shall be zero, one, or two delays. If the specification contains two delays, the first delay shall determine the <I CLASS="Emphasis">
+turn-on delay</I>
+, and the second delay shall determine the <I CLASS="Emphasis">
+turn-off delay</I>
+, and the smaller of the two delays shall apply to output transitions to <CODE CLASS="code">
+x</CODE>
+ and <CODE CLASS="code">
+z</CODE>
+. If only one delay is specified, it shall specify both the turn-on and the turn-off delays. If there is no delay specification, there shall be no turn-on or turn-off delay for the bidirectional pass switch.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1018">
+ </A>
+The bidirectional pass switches <B CLASS="Keyword">
+tran</B>
+ and <B CLASS="Keyword">
+rtran</B>
+ shall not accept delay specification.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1508">
+ </A>
+The <B CLASS="Keyword">
+tranif1</B>
+, <B CLASS="Keyword">
+tranif0</B>
+, <B CLASS="Keyword">
+rtranif1</B>
+, and <B CLASS="Keyword">
+rtranif0</B>
+ devices shall have three items in their terminal lists. The first two shall be bidirectional terminals that conduct signals to and from the devices, and the third terminal shall connect to a control input. The <B CLASS="Keyword">
+tran</B>
+ and <B CLASS="Keyword">
+rtran</B>
+ devices shall have terminal lists containing two bidirectional terminals. The bidirectional terminals of all six devices shall be connected only to scalar nets or bit selects of vector nets.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1509">
+ </A>
+The <B CLASS="Keyword">
+tran</B>
+, <B CLASS="Keyword">
+tranif0</B>
+, and <B CLASS="Keyword">
+tranif1</B>
+ devices shall pass signals with an alteration in their strength in only one case, as discussed in <A HREF="ch07.c.htm#75600" CLASS="XRef">
+See Strength reduction by non-resistive devices</A>
+. The <B CLASS="Keyword">
+rtran</B>
+, <B CLASS="Keyword">
+rtranif0</B>
+, and <B CLASS="Keyword">
+rtranif1</B>
+ devices shall reduce the strength of the signals passing through them according to rules discussed in <A HREF="ch07.d.htm#90909" CLASS="XRef">
+See Strength reduction by resistive devices</A>
+.</P>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=1510">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=1020">
+ </A>
+The following example declares an<CODE CLASS="code">
+ </CODE>
+instance of <B CLASS="Keyword">
+tranif1</B>
+:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1511"> </A>
+<B CLASS="Keyword">tranif1</B>
+ t1 (inout1,<CODE CLASS="code">in</CODE>
+out2,control);</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1512">
+ </A>
+The bidirectional terminals are <CODE CLASS="code">
+inout1</CODE>
+ and <CODE CLASS="code">
+inout2</CODE>
+. The control input is <CODE CLASS="code">
+control</CODE>
+. The instance name is <CODE CLASS="code">
+t1</CODE>
+.</P>
+</DIV>
+<HR><P><A HREF="ch07.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch07.5.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch07.7.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

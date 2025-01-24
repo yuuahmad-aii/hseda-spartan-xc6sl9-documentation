@@ -1,0 +1,1061 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch17.css">
+<TITLE> Section 17</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="none">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="none">Next&nbsp;&nbsp;page</A></P></DIV>
+<DIV>
+<H2 CLASS="SectionNum">
+<A NAME="pgfId=255">
+ </A>
+<A NAME="27886">
+ </A>
+</H2>
+</DIV>
+<DIV>
+<H2 CLASS="SectionTitle">
+<A NAME="pgfId=138">
+ </A>
+<A NAME="marker=24">
+ </A>
+PLI TF and ACC interface mechanism</H2>
+<P CLASS="BodyText">
+<A NAME="pgfId=139">
+ </A>
+The interface mechanism described in this section provides a means for users to link applications based on PLI task/function (TF) routines and access (ACC) routines to Verilog software products. Through the interface mechanism, a user will:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=144">
+ </A>
+Specify a <A NAME="marker=38">
+ </A>
+user-defined <A NAME="marker=44">
+ </A>
+system <A NAME="marker=45">
+ </A>
+task or function <A NAME="marker=51">
+ </A>
+name that may be included in Verilog HDL source descriptions; the user-defined system task or function name must begin with a dollar sign (<A NAME="marker=54">
+ </A>
+$), such as <EM CLASS="Italic">
+$get_vector</EM>
+ </LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=140">
+ </A>
+Provide one or more PLI C applications to be called by a software implementation (such as a logic simulator)</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=155">
+ </A>
+Define which PLI C applications are to be called--and when the applications should be called--when the user-defined system task or function name is encountered in the Verilog HDL source description</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=171">
+ </A>
+Define whether the PLI C applications should be treated as  <EM CLASS="Italic">
+function</EM>
+s (which return a value), or <EM CLASS="Italic">
+task</EM>
+s (analogous to subroutines in other programming languages)</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=245">
+ </A>
+Define a data argument to be passed to the PLI C routines each time they are called</LI>
+</UL>
+<P CLASS="Note">
+<A NAME="pgfId=243">
+ </A>
+Note: The PLI interface mechanism described in this section may not apply to applications which use the Verilog Procedural Interface (VPI) routines; these routines use the VPI registry mechanism described in <A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/17/ch22.htm#42361" CLASS="XRef">
+</A>
+ and <A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/17/ch23.htm#19452" CLASS="XRef">
+</A>
+.</P>
+<DIV>
+<H3 CLASS="H2(1.1)">
+<A NAME="pgfId=157">
+ </A>
+PLI purpose and <A NAME="marker=135">
+ </A>
+history</H3>
+<P CLASS="BodyText">
+<A NAME="pgfId=159">
+ </A>
+<A HREF="ch17.htm#27886" CLASS="XRef">
+See </A>
+ through <A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/17/ch23.htm#19452" CLASS="XRef">
+</A>
+ and <A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/17/annG.htm#74208" CLASS="XRef">
+</A>
+ through <A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/17/annE.htm#50345" CLASS="XRef">
+</A>
+ describe the C-language procedural interface standard and interface mechanisms which are part of the Verilog Hardware Description Language. This procedural interface, known as the Programming Language Interface, or PLI, provides a means for Verilog HDL users to dynamically access and modify data in an instantiated Verilog HDL data structure. An instantiated Verilog HDL data structure is the result of compiling Verilog HDL source descriptions and generating the hierarchy modeled by module instances, primitive instances, and other Verilog HDL constructs which represent scope.  The PLI procedural interface provides a library of C language functions which can directly access data within an instantiated Verilog HDL data structure.</P>
+<P CLASS="BodyText">
+<A NAME="pgfId=211">
+ </A>
+A few of the many possible applications for the PLI procedural interface are:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=220">
+ </A>
+C language delay calculators for Verilog model libraries that can dynamically scan the data structure of a Verilog simulation or timing analyzer and then dynamically modify the delays of each instance of models from the library</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=225">
+ </A>
+C language routines that dynamically read test vectors or other data from a file and pass the data into a Verilog logic simulator or fault simulator </LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=226">
+ </A>
+Custom graphical waveform and debugging environments for Verilog simulators</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=252">
+ </A>
+Source code decompilers that can generate Verilog HDL source code from the compiled data structure of a Verilog software product</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=253">
+ </A>
+Simulation models written in the C language and dynamically linked into Verilog HDL simulations</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=254">
+ </A>
+Interfaces to actual hardware, such as a hardware modeler, that dynamically interact with simulations</LI>
+</UL>
+<P CLASS="BodyText">
+<A NAME="pgfId=257">
+ </A>
+The IEEE-1364 Verilog PLI is a standardization of a public domain Verilog PLI that has been in use since the mid 1980's. The 1364 standard comprises three primary generations of public domain PLI routines.</P>
+<OL>
+<P CLASS="NumberedLista">
+<A NAME="pgfId=268">
+ </A>
+a)	<A NAME="marker=107">
+ </A>
+<EM CLASS="Italic">
+Task/function</EM>
+ routines, called <EM CLASS="ItalicBold">
+TF</EM>
+ routines, make up the first generation of the PLI. These routines, most of which start with the characters <EM CLASS="ItalicBold">
+tf_</EM>
+, are primarily used for operations involving user-defined task/function arguments, along with utility functions such as setting up call-back mechanisms, and writing data to output devices. The TF routines are sometimes referred to as &quot;utility routines&quot;</P>
+<P CLASS="NumberedListb">
+<A NAME="pgfId=269">
+ </A>
+b)	<EM CLASS="Italic">
+Access</EM>
+<A NAME="marker=117">
+ </A>
+ routines, called <EM CLASS="ItalicBold">
+ACC</EM>
+ routines, form the second generation of the PLI. These routines, which all start with the characters <EM CLASS="ItalicBold">
+acc_</EM>
+, provide an object oriented access directly into a Verilog HDL structural description. ACC routines are used to access and modify information, such as delay values and logic values on a wide variety of objects that exist in a Verilog HDL description. There is some overlap in functionality between ACC routines and TF routines.</P>
+<P CLASS="NumberedListb">
+<A NAME="pgfId=270">
+ </A>
+c)	<A NAME="marker=118">
+ </A>
+Verilog Procedural Interface routines, called <EM CLASS="ItalicBold">
+VPI</EM>
+ routines, are the third generation of the PLI. These routines, all of which start with the characters <EM CLASS="ItalicBold">
+vpi_</EM>
+, provide an object oriented access for both Verilog HDL structural and behavioral objects. The VPI routines are a superset of the functionality of the TF routines and ACC routines.</P>
+</OL>
+<P CLASS="BodyText">
+<A NAME="pgfId=271">
+ </A>
+The first two generations of PLI routines were first developed as part of a proprietary commercial digital logic simulator product, and were released to the public domain in 1990. After release to the public domain, the TF routines and ACC routines became known as the <A NAME="marker=119">
+ </A>
+Open Verilog International (<A NAME="marker=120">
+ </A>
+OVI) <A NAME="marker=121">
+ </A>
+PLI 1.0 standard. The OVI PLI 1.0 standard did not document a number of TF and ACC routines that were widely used in commercial Verilog HDL software products. The IEEE-1364 Verilog PLI standard includes both the public domain OVI PLI 1.0 routines and the de facto standard PLI routines in use in commercial products.</P>
+<P CLASS="BodyText">
+<A NAME="pgfId=272">
+ </A>
+The third generation PLI routines, the VPI routines, were first introduced in 1993 by OVI under the title of <A NAME="marker=122">
+ </A>
+PLI 2.0. OVI intended PLI 2.0 to replace PLI 1.0--the VPI routines provide more functionality with simpler syntax and semantics than the TF and ACC routines. However, this approach did not provide adequate backward compatibility with existing PLI applications. Therefore, the IEEE-1364 Verilog PLI standard includes all three generations of the PLI routines.</P>
+</DIV>
+<DIV>
+<H3 CLASS="H2(1.1)">
+<A NAME="pgfId=137">
+ </A>
+User-defined task or function names</H3>
+<P CLASS="BodyText">
+<A NAME="pgfId=247">
+ </A>
+A user-defined task or function name is the name which will be used within a Verilog HDL source file to invoke specific PLI C routines.  The name must adhere to the following rules:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=249">
+ </A>
+The first character of the name must be the dollar sign character ( $ )</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=251">
+ </A>
+The remaining characters may be letters, digits, the underscore character ( _ ), or the dollar character ( $ )</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=273">
+ </A>
+Upper and lower case letters are considered to be unique--the name is case sensitive</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=274">
+ </A>
+The name may be any size, and all characters are significant</LI>
+</UL>
+</DIV>
+<DIV>
+<H3 CLASS="H2(1.1)">
+<A NAME="pgfId=248">
+ </A>
+<A NAME="marker=55">
+ </A>
+Overloading built-in system task and function names</H3>
+<P CLASS="BodyText">
+<A NAME="pgfId=275">
+ </A>
+<A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/17/ch14.htm#21043" CLASS="XRef">
+</A>
+ of this document defines a number of built-in system tasks and functions which are part of the Verilog language.  In addition, software implementations may include other built-in system tasks and functions specific to the implementation.  These built-in system tasks and functions also begin with the dollar sign character ( $ ).</P>
+<P CLASS="BodyText">
+<A NAME="pgfId=250">
+ </A>
+Using the PLI interface mechanism, it is possible to overload the definition of a built-in system task or function by simply using the same name; for example, a user could write a random number generator as a PLI C routine, and then associate the PLI routine with the name <EM CLASS="Italic">
+$random</EM>
+, thereby overriding the built-in <EM CLASS="Italic">
+$random</EM>
+ function with the PLI C routine.</P>
+</DIV>
+<DIV>
+<H3 CLASS="H2(1.1)">
+<A NAME="pgfId=201">
+ </A>
+User supplied PLI C applications</H3>
+<P CLASS="BodyText">
+<A NAME="pgfId=189">
+ </A>
+User supplied C applications are C language functions that utilize the library of PLI C functions to dynamically access and interact with Verilog HDL software implementations as the Verilog HDL source code is executed.</P>
+<P CLASS="BodyText">
+<A NAME="pgfId=246">
+ </A>
+These PLI C applications are not independent C programs.  They are C functions, which are linked into a software implementation, and become part of the implementation.  This allows the PLI C application to be called when the user-defined system task or function $ name is compiled or executed in the Verilog HDL source code.</P>
+<P CLASS="BodyText">
+<A NAME="pgfId=145">
+ </A>
+The PLI interface mechanism provides a means to have PLI C applications called for various  reasons when the associated system task or function $ name is encountered in the Verilog HDL source description.  For example, when a Verilog HDL simulator first compiles the Verilog HDL source description, a specific PLI C application may be called that performs syntax checking to ensure the user-defined system task or function is being used correctly.  Then, as simulation is executing, a different PLI C application may be called to perform the operations required by the PLI application.  Other PLI C application can be automatically called by the simulator for miscellaneous reasons, such as the end of a simulation time step or a logic value change on a specific signal.</P>
+<P CLASS="BodyText">
+<A NAME="pgfId=186">
+ </A>
+The PLI interface mechanism for TF and ACC routines provides five classes of user supplied PLI C applications, <EM CLASS="ItalicBold">
+checktf</EM>
+ routines, <EM CLASS="ItalicBold">
+sizetf</EM>
+ routines, <EM CLASS="ItalicBold">
+calltf</EM>
+ routines, <EM CLASS="ItalicBold">
+misctf</EM>
+ routines and <EM CLASS="ItalicBold">
+consumer</EM>
+ routines.  The purpose of each of the PLI routine classes is explained in the following sections.</P>
+<DIV>
+<H4 CLASS="H3(1.1.1)">
+<A NAME="pgfId=281">
+ </A>
+The <A NAME="marker=60">
+ </A>
+<EM CLASS="Italic">
+calltf</EM>
+ class of PLI C routines</H4>
+<P CLASS="BodyText">
+<A NAME="pgfId=285">
+ </A>
+A <EM CLASS="ItalicBold">
+calltf</EM>
+ PLI routine is called each time the associated user defined system task or function is executed within the Verilog HDL source code.  For example, the following Verilog loop would call the PLI <EM CLASS="ItalicBold">
+calltf</EM>
+ routine that is associated with the <EM CLASS="Italic">
+$get_vector</EM>
+ user-defined system task name 1024 times:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=286"> </A>
+for (i = 1; i &lt;= 1024; i = i + 1) </PRE>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=287"> </A>
+   @(posedge clk) $get_vector(&quot;test_vector.pat&quot;, input_bus); </PRE>
+<P CLASS="BodyText">
+<A NAME="pgfId=280">
+ </A>
+In this example, the user supplied PLI <EM CLASS="ItalicBold">
+calltf</EM>
+  C routine might read a test vector from a file called <EM CLASS="Italic">
+test_vector.pat</EM>
+ (the first task/function argument), perhaps manipulate the vector to put in a proper format for Verilog, and then assign the vector value to the second task/function argument called <EM CLASS="Italic">
+input_bus</EM>
+.</P>
+</DIV>
+<DIV>
+<H4 CLASS="H3(1.1.1)">
+<A NAME="pgfId=277">
+ </A>
+The <A NAME="marker=59">
+ </A>
+c<EM CLASS="Italic">
+hecktf</EM>
+ class of PLI C routines</H4>
+<P CLASS="BodyText">
+<A NAME="pgfId=284">
+ </A>
+A <EM CLASS="ItalicBold">
+checktf</EM>
+ PLI routine will be called when the user-defined system task or function name is encountered during parsing or compiling the Verilog HDL source code. This routine is typically used to check the correctness of any arguments used with the system task in the Verilog HDL source code.  The <EM CLASS="ItalicBold">
+checktf</EM>
+ PLI routine is called one time for each system task or function reference in the source description.  Providing a <EM CLASS="ItalicBold">
+checktf</EM>
+ routine is optional, but  it is recommended that any arguments used with the system task or function be checked for correctness to avoid problems when the <EM CLASS="Italic">
+calltf</EM>
+ or other PLI routines read and perform operations on the arguments. </P>
+</DIV>
+<DIV>
+<H4 CLASS="H3(1.1.1)">
+<A NAME="pgfId=278">
+ </A>
+The <A NAME="marker=61">
+ </A>
+<EM CLASS="Italic">
+sizetf</EM>
+ class of PLI routines</H4>
+<P CLASS="BodyText">
+<A NAME="pgfId=276">
+ </A>
+A <EM CLASS="ItalicBold">
+sizetf</EM>
+ PLI routine is used in conjunction with user-defined system <EM CLASS="Italic">
+functions</EM>
+.  A function will return a value, and the software implementations that execute the system function may need to determine how many bits wide that return will be.  The user supplied PLI <EM CLASS="ItalicBold">
+sizetf</EM>
+ routine is called one time by the software implementation, typically when the Verilog HDL source code is compiled; when called, the <EM CLASS="ItalicBold">
+sizetf</EM>
+ routine must return the number of bits of the system function return value. The <EM CLASS="ItalicBold">
+sizetf</EM>
+ routine is not called for PLI system tasks.</P>
+</DIV>
+<DIV>
+<H4 CLASS="H3(1.1.1)">
+<A NAME="pgfId=279">
+ </A>
+The <A NAME="marker=62">
+ </A>
+<EM CLASS="Italic">
+misctf</EM>
+ class of PLI routines</H4>
+<P CLASS="BodyText">
+<A NAME="pgfId=282">
+ </A>
+A <EM CLASS="ItalicBold">
+misctf</EM>
+ PLI routine is called by a Verilog software implementation for miscellaneous reasons while the Verilog HDL source description is being executed.  Among these reasons are the end of a simulation time step, a logic value change on a user-defined system task/function argument, and the execution of the <EM CLASS="Italic">
+$stop</EM>
+ and <EM CLASS="Italic">
+$finish</EM>
+ built-in system functions.  When the software implementation calls the <EM CLASS="ItalicBold">
+misctf</EM>
+ PLI routine, it passes in a reason argument, which may be used within the <EM CLASS="ItalicBold">
+misctf</EM>
+ routine to determine why the routine was called.  The reason argument is a predefined integer constant.  <A HREF="ch17.htm#15540" CLASS="XRef">
+See : &nbsp;Predefined reason integer constants</A>
+, in <A HREF="ch17.htm#25028" CLASS="XRef">
+See The reason C argument</A>
+ lists the reasons the <EM CLASS="ItalicBold">
+misctf</EM>
+ routine may be called. Note that the <EM CLASS="ItalicBold">
+misctf</EM>
+ routine associated with a specific instance of a user-defined task or function $ name shall not be activated until that instance of the task/function has been executed the first time.</P>
+</DIV>
+<DIV>
+<H4 CLASS="H3(1.1.1)">
+<A NAME="pgfId=187">
+ </A>
+The <A NAME="marker=63">
+ </A>
+<EM CLASS="Italic">
+consumer</EM>
+ class of PLI routines</H4>
+<P CLASS="BodyText">
+<A NAME="pgfId=283">
+ </A>
+A <EM CLASS="ItalicBold">
+consumer</EM>
+ PLI application is called through a PLI call-back mechanism referred to as the <EM CLASS="Italic">
+Value Change Link</EM>
+ (VCL).  Using the VCL, another PLI application, typically the <EM CLASS="Italic">
+calltf</EM>
+ routine, can place VCL flags on objects within the Verilog HDL data structure, such as a specific net.  Whenever an object with a VCL flag changes value during a simulation, the <EM CLASS="ItalicBold">
+consumer</EM>
+ PLI routine is called and passed information about the change.</P>
+</DIV>
+</DIV>
+<DIV>
+<H3 CLASS="H2(1.1)">
+<A NAME="pgfId=291">
+ </A>
+<A NAME="marker=64">
+ </A>
+Associating PLI C routines to a class and system task/function name</H3>
+<P CLASS="BodyText">
+<A NAME="pgfId=147">
+ </A>
+Each user-provided PLI C application is a standard C language function which makes use of the library of PLI functions.  These user-provided PLI applications must be associated with both the class of routine (such as <EM CLASS="Italic">
+calltf</EM>
+ or <EM CLASS="Italic">
+checktf</EM>
+) and the user-defined system task or function $ name.  In addition, the user-defined name must be declared as either a system task or a system function.</P>
+<P CLASS="BodyText">
+<A NAME="pgfId=148">
+ </A>
+The method of associating PLI applications with a class and system task/function name is not defined as part of the IEEE 1364 PLI standard.  Each software product vendor shall define an association mechanism specific to their product.  Refer to the vendor's documentation for instructions on associating PLI routines to classes and system task/function names and then linking the PLI routines into the vendor's software products.</P>
+</DIV>
+<DIV>
+<H3 CLASS="H2(1.1)">
+<A NAME="pgfId=146">
+ </A>
+PLI routine arguments</H3>
+<P CLASS="BodyText">
+<A NAME="pgfId=152">
+ </A>
+When the <EM CLASS="Italic">
+calltf</EM>
+, <EM CLASS="Italic">
+checktf</EM>
+, and <EM CLASS="Italic">
+sizetf</EM>
+ PLI routines are called by a Verilog software implementation, they are always passed two C arguments, <EM CLASS="ItalicBold">
+data</EM>
+ and <EM CLASS="ItalicBold">
+reason</EM>
+ (in that order).  When the <EM CLASS="Italic">
+misctf</EM>
+ routine is called, it is always passed three C arguments, <EM CLASS="ItalicBold">
+data</EM>
+, <EM CLASS="ItalicBold">
+reason</EM>
+ and <EM CLASS="ItalicBold">
+paramvc</EM>
+ (in that order).  The arguments are defined in more detail in the following sections.</P>
+<DIV>
+<H4 CLASS="H3(1.1.1)">
+<A NAME="pgfId=292">
+ </A>
+The <A NAME="marker=65">
+ </A>
+<EM CLASS="Italic">
+data</EM>
+ C argument</H4>
+<P CLASS="BodyText">
+<A NAME="pgfId=154">
+ </A>
+The <EM CLASS="ItalicBold">
+data</EM>
+ C argument is an integer value.  The value is defined by the user at the time the PLI applications are associated with a user-defined system task or function name. This value may be used to allow several different system task/function names to use the same <EM CLASS="Italic">
+calltf</EM>
+,<EM CLASS="Italic">
+ checktf</EM>
+, <EM CLASS="Italic">
+sizetf</EM>
+, or <EM CLASS="Italic">
+misctf</EM>
+ routines.  To do this, each system task/function name would be associated with the same PLI C routines, but would have a different value for the user-defined <EM CLASS="ItalicBold">
+data</EM>
+ argument.  When PLI C routine is called, it can then check the value of the <EM CLASS="ItalicBold">
+data</EM>
+ argument to determine which system task/function name was used to call the routine.</P>
+</DIV>
+<DIV>
+<H4 CLASS="H3(1.1.1)">
+<A NAME="pgfId=293">
+ </A>
+<A NAME="25028">
+ </A>
+The <A NAME="marker=66">
+ </A>
+<EM CLASS="Italic">
+reason</EM>
+ C argument</H4>
+<P CLASS="BodyText">
+<A NAME="pgfId=156">
+ </A>
+The <EM CLASS="ItalicBold">
+reason</EM>
+ C argument is a predefined integer constant that is passed to the <EM CLASS="Italic">
+calltf</EM>
+, <EM CLASS="Italic">
+checktf</EM>
+, <EM CLASS="Italic">
+sizetf</EM>
+ and <EM CLASS="Italic">
+misctf</EM>
+ routines each time the routines are called.  Generally, the <EM CLASS="Italic">
+calltf</EM>
+, <EM CLASS="Italic">
+checktf</EM>
+ and <EM CLASS="Italic">
+sizetf</EM>
+ have no need to check the reason argument, since these routines can only be called under specific circumstances.  The <EM CLASS="Italic">
+misctf</EM>
+ routine, however, may be called for a wide variety of reasons, and therefore should always examine the reason argument to determine why the routine was called and what action should be taken.  The value for the reason argument is defined in the PLI include file   <B CLASS="Keyword">
+veriuser.h</B>
+.  The predefined constants that may be passed to the reason argument are listed in <A HREF="ch17.htm#15540" CLASS="XRef">
+See : &nbsp;Predefined reason integer constants</A>
+, below.</P>
+</DIV>
+<DIV>
+<H4 CLASS="H3(1.1.1)">
+<A NAME="pgfId=235">
+ </A>
+<A NAME="25028">
+ </A>
+The <A NAME="marker=67">
+ </A>
+<EM CLASS="Italic">
+paramvc</EM>
+ C argument</H4>
+<P CLASS="BodyText">
+<A NAME="pgfId=160">
+ </A>
+The <EM CLASS="ItalicBold">
+paramvc</EM>
+ C argument is an integer value passed to the <EM CLASS="Italic">
+misctf</EM>
+ routine.  The value of <EM CLASS="ItalicBold">
+paramvc</EM>
+ indicates which parameter changed value when the <EM CLASS="Italic">
+misctf</EM>
+ routine is called back after activating the utility routine <EM CLASS="Italic">
+tf_asynchon()</EM>
+.  This routine will cause the <EM CLASS="Italic">
+misctf</EM>
+ routine to be called with a reason argument of <EM CLASS="ItalicBold">
+reason_paramvc</EM>
+ or <EM CLASS="ItalicBold">
+reason_paramdrc</EM>
+.</P>
+<P CLASS="BodyText">
+<A NAME="pgfId=161">
+ </A>
+      </P>
+<TABLE BORDER="1">
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=305">
+ </A>
+Table&nbsp;17-1: &nbsp;<A NAME="15540">
+ </A>
+Predefined <A NAME="marker=68">
+ </A>
+reason integer constants</P>
+</CAPTION>
+<TR>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=289">
+ </A>
+Reason value passed to</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=290">
+ </A>
+Predefined integer constant</P>
+</TH>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=294">
+ </A>
+<EM CLASS="ItalicBold">
+calltf</EM>
+ routines</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=296">
+ </A>
+<EM CLASS="Italic">
+reason_calltf</EM>
+<A NAME="marker=69">
+ </A>
+<EM CLASS="TableCode">
+ </EM>
+</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=297">
+ </A>
+<EM CLASS="ItalicBold">
+checktf</EM>
+ routines</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=298">
+ </A>
+<EM CLASS="Italic">
+reason_checktf</EM>
+<A NAME="marker=70">
+ </A>
+<EM CLASS="TableCode">
+ </EM>
+</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=299">
+ </A>
+<EM CLASS="ItalicBold">
+sizetf</EM>
+ routines</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=300">
+ </A>
+<EM CLASS="Italic">
+reason_sizetf</EM>
+<A NAME="marker=71">
+ </A>
+<EM CLASS="TableCode">
+ </EM>
+</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=301">
+ </A>
+<EM CLASS="ItalicBold">
+misctf</EM>
+ routines</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=302">
+ </A>
+</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBodyIndent">
+<A NAME="pgfId=239">
+ </A>
+for the end of Verilog source compilation/start of execution</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=240">
+ </A>
+<EM CLASS="Italic">
+reason_endofcompile</EM>
+<A NAME="marker=72">
+ </A>
+ </P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBodyIndent">
+<A NAME="pgfId=303">
+ </A>
+for a change of value on a user-defined system task or function argument parameter</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=304">
+ </A>
+<EM CLASS="Italic">
+reason_paramvc</EM>
+<A NAME="marker=73">
+ </A>
+<EM CLASS="TableCode">
+ </EM>
+</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBodyIndent">
+<A NAME="pgfId=218">
+ </A>
+for a value change on the driver of a user-defined system task or function argument parameter</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=219">
+ </A>
+<EM CLASS="Italic">
+reason_paramdrc</EM>
+<A NAME="marker=74">
+ </A>
+ </P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBodyIndent">
+<A NAME="pgfId=309">
+ </A>
+for a the end of a time step flagged by <EM CLASS="Italic">
+tf_synchronize()</EM>
+ </P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=310">
+ </A>
+<EM CLASS="Italic">
+reason_synch</EM>
+<A NAME="marker=75">
+ </A>
+ </P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBodyIndent">
+<A NAME="pgfId=216">
+ </A>
+for a the end of a time step flagged by <EM CLASS="Italic">
+tf_rosynchronize()</EM>
+ </P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=217">
+ </A>
+<EM CLASS="Italic">
+reason_rosynch</EM>
+<A NAME="marker=76">
+ </A>
+ </P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBodyIndent">
+<A NAME="pgfId=307">
+ </A>
+for a simulation event scheduled by <EM CLASS="Italic">
+tf_setdelay()</EM>
+ </P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=308">
+ </A>
+<EM CLASS="Italic">
+reason_reactiviate</EM>
+<A NAME="marker=77">
+ </A>
+ </P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBodyIndent">
+<A NAME="pgfId=256">
+ </A>
+for the execution of a procedural force or procedural continuous assignment on any net, register or variable</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=288">
+ </A>
+<EM CLASS="Italic">
+reason_force</EM>
+<A NAME="marker=78">
+ </A>
+ </P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBodyIndent">
+<A NAME="pgfId=241">
+ </A>
+for the execution of a procedural release or procedural deassign on any net, register or variable</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=244">
+ </A>
+<EM CLASS="Italic">
+reason_release</EM>
+<A NAME="marker=79">
+ </A>
+ </P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBodyIndent">
+<A NAME="pgfId=242">
+ </A>
+for the execution of a procedural disable statement</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=213">
+ </A>
+<EM CLASS="Italic">
+reason_disable</EM>
+<A NAME="marker=80">
+ </A>
+ </P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBodyIndent">
+<A NAME="pgfId=150">
+ </A>
+for the execution of the <EM CLASS="Italic">
+$stop()</EM>
+ built-in system task</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=179">
+ </A>
+<EM CLASS="Italic">
+reason_interactive</EM>
+<A NAME="marker=81">
+ </A>
+ </P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBodyIndent">
+<A NAME="pgfId=227">
+ </A>
+for the execution of the <EM CLASS="Italic">
+$scope()</EM>
+ built-in system task</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=228">
+ </A>
+<EM CLASS="Italic">
+reason_scope</EM>
+<A NAME="marker=82">
+ </A>
+ </P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBodyIndent">
+<A NAME="pgfId=170">
+ </A>
+for the start of execution of the <EM CLASS="Italic">
+$save()</EM>
+ built-in system task</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=232">
+ </A>
+<EM CLASS="Italic">
+reason_startofsave</EM>
+<A NAME="marker=84">
+ </A>
+ </P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBodyIndent">
+<A NAME="pgfId=229">
+ </A>
+for the completion of execution of the <EM CLASS="Italic">
+$save()</EM>
+ built-in system task</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=230">
+ </A>
+<EM CLASS="Italic">
+reason_save</EM>
+<A NAME="marker=83">
+ </A>
+ </P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBodyIndent">
+<A NAME="pgfId=233">
+ </A>
+for the execution of the <EM CLASS="Italic">
+$restart()</EM>
+ built-in system task</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=234">
+ </A>
+<EM CLASS="Italic">
+reason_restart</EM>
+<A NAME="marker=85">
+ </A>
+ </P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBodyIndent">
+<A NAME="pgfId=231">
+ </A>
+for the start of execution of the <EM CLASS="Italic">
+$reset()</EM>
+ built-in system task</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=238">
+ </A>
+<EM CLASS="Italic">
+reason_reset</EM>
+<A NAME="marker=86">
+ </A>
+ </P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBodyIndent">
+<A NAME="pgfId=215">
+ </A>
+for the completion of execution of the <EM CLASS="Italic">
+$reset()</EM>
+ built-in system task</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=237">
+ </A>
+<EM CLASS="Italic">
+reason_endofreset</EM>
+<A NAME="marker=87">
+ </A>
+ </P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBodyIndent">
+<A NAME="pgfId=212">
+ </A>
+for the <EM CLASS="Italic">
+$finish()</EM>
+ built-in system task executed</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=214">
+ </A>
+<EM CLASS="Italic">
+reason_finish</EM>
+<A NAME="marker=88">
+ </A>
+<EM CLASS="TableCode">
+ </EM>
+</P>
+</TD>
+</TR>
+</TABLE>
+<P CLASS="BodyText">
+<A NAME="pgfId=162">
+ </A>
+</P>
+<P CLASS="BodyText">
+<A NAME="pgfId=236">
+ </A>
+</P>
+</DIV>
+</DIV>
+<DIV>
+<H3 CLASS="H2(1.1)">
+<A NAME="pgfId=149">
+ </A>
+User-defined <A NAME="marker=89">
+ </A>
+system <A NAME="marker=90">
+ </A>
+task and function <A NAME="marker=91">
+ </A>
+arguments</H3>
+<P CLASS="BodyText">
+<A NAME="pgfId=151">
+ </A>
+When a user-defined system task or function is used in a Verilog HDL source file, it may have arguments that will be used by the PLI C routines associated with the system task or function.  In the following example, the user-defined system task <EM CLASS="Italic">
+$get_vector</EM>
+ has two arguments:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=153"> </A>
+$get_vector(&quot;test_vector.pat&quot;, input_bus); </PRE>
+<P CLASS="BodyText">
+<A NAME="pgfId=158">
+ </A>
+The arguments to a system task or function are referred to as <EM CLASS="ItalicBold">
+task/function arguments</EM>
+ (often abbreviated as <A NAME="marker=92">
+ </A>
+<EM CLASS="ItalicBold">
+tfargs</EM>
+) by ACC routines, and as <EM CLASS="ItalicBold">
+task/function parameters</EM>
+ by TF routines.  <EM CLASS="Italic">
+These arguments are not the same as C language arguments</EM>
+.  When the PLI C routines associated with a user-defined system task or function are called, the task/function arguments are <EM CLASS="ItalicBold">
+not</EM>
+ passed to the PLI routine.  Instead, a number of PLI functions are provided that allow the PLI routines to read and write to the task/function arguments.  Refer to the sections on ACC routines and TF routines for information on specific routines that work with task/function arguments.</P>
+<P CLASS="BodyText">
+<A NAME="pgfId=164">
+ </A>
+Note that when PLI routines are called, they are passed two or three C arguments, <EM CLASS="Italic">
+data</EM>
+ and <EM CLASS="Italic">
+reason</EM>
+, and <EM CLASS="Italic">
+paramvc</EM>
+. These arguments are not the same as the task/function arguments that appear in the Verilog HDL source code.</P>
+</DIV>
+<DIV>
+<H3 CLASS="H2(1.1)">
+<A NAME="pgfId=295">
+ </A>
+PLI include files</H3>
+<P CLASS="BodyText">
+<A NAME="pgfId=172">
+ </A>
+C applications which use the PLI task/function routines should always include the file <B CLASS="Keyword">
+veriuser.h</B>
+.  C applications which use the PLI ACC routines should always include the file <B CLASS="Keyword">
+acc_user.h</B>
+.  These files define constants, structures and other data used by the library of PLI functions and the interface mechanism.  The files are listed in the Annex of this document.</P>
+<P CLASS="BodyText">
+<A NAME="pgfId=169">
+ </A>
+</P>
+</DIV>
+</DIV>
+<HR><P><A HREF="none">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="none">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

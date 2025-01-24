@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch13.css">
+<TITLE> 13.6	Driving wired logic</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch13.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch13.5.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch13.7.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=628">
+ </A>
+13.6	<A NAME="37376">
+ </A>
+<A NAME="marker=251">
+ </A>
+<A NAME="marker=252">
+ </A>
+Driving wired logic<A NAME="driving wired logic">
+ </A>
+</H1>
+<P CLASS="Body">
+<A NAME="pgfId=630">
+ </A>
+Module path output nets shall not have more than one driver within the module. Therefore, wired logic is not allowed at module path outputs.</P>
+<P CLASS="Body">
+<A NAME="pgfId=367">
+ </A>
+<A HREF="ch13.6.htm# Illegal module paths" CLASS="XRef">
+See : Illegal module paths</A>
+ illustrates a violation of this wired-output rule, and a method of avoiding the rule violation.</P>
+<P CLASS="Body">
+<A NAME="pgfId=520">
+ </A>
+ </P>
+<DIV>
+<IMG SRC="ch13-27.gif">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=624">
+ </A>
+Figure&nbsp;13-5:<A NAME=" Illegal module paths">
+ </A>
+ Legal and illegal module paths </P>
+<P CLASS="Body">
+<A NAME="pgfId=625">
+ </A>
+In <A HREF="ch13.6.htm# Illegal module paths" CLASS="XRef">
+See : Legal and illegal module paths</A>
+ (a), any module path to <CODE CLASS="code">
+S</CODE>
+ is illegal because the path destination has two drivers.</P>
+<P CLASS="Body">
+<A NAME="pgfId=626">
+ </A>
+Assuming signal <CODE CLASS="code">
+S</CODE>
+ in <A HREF="ch13.6.htm# Illegal module paths" CLASS="XRef">
+See : Legal and illegal module paths</A>
+ (a) is a <I CLASS="Emphasis">
+wired-and</I>
+, this limitation can be circumvented by replacing wired logic with gated logic to create a single driver to the output. <A HREF="ch13.6.htm# Illegal module paths" CLASS="XRef">
+See : Legal and illegal module paths</A>
+ (b) shows how adding a third <B CLASS="Keyword">
+and</B>
+ gate--the shaded one--solves the problem for the module in <A HREF="ch13.6.htm# Illegal module paths" CLASS="XRef">
+See : Legal and illegal module paths</A>
+ (a). </P>
+<P CLASS="Body">
+<A NAME="pgfId=633">
+ </A>
+The example in <A HREF="ch13.6.htm# Illegal module paths" CLASS="XRef">
+See : Illegal module paths</A>
+ is also illegal. In this example, when the outputs <CODE CLASS="code">
+Q</CODE>
+ and <CODE CLASS="code">
+R</CODE>
+ are wired together, it creates a condition where both paths have multiple drivers from within the same module.</P>
+<P CLASS="Body">
+<A NAME="pgfId=631">
+ </A>
+ </P>
+<DIV>
+<IMG SRC="ch13-28.gif">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=632">
+ </A>
+Figure&nbsp;13-6:<A NAME=" Illegal module paths">
+ </A>
+ Illegal module paths</P>
+<P CLASS="Body">
+<A NAME="pgfId=640">
+ </A>
+<BR>
+Although multiple output drivers to a path destination are prohibited inside the same module, they are allowed <A NAME="marker=259">
+ </A>
+outside the module. The example in <A HREF="ch13.6.htm#Legal module paths" CLASS="XRef">
+See : Legal module paths</A>
+ is legal since <CODE CLASS="code">
+Q</CODE>
+ and <CODE CLASS="code">
+R</CODE>
+ each have only one driver within the module in which the module paths are specified.</P>
+<P CLASS="Body">
+<A NAME="pgfId=641">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch13-29.gif">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=642">
+ </A>
+Figure&nbsp;13-7: <A NAME="Legal module paths">
+ </A>
+Legal module paths</P>
+<HR><P><A HREF="ch13.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch13.5.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch13.7.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

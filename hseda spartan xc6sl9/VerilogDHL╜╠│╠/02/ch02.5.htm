@@ -1,0 +1,233 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Mac">
+  <LINK REL="STYLESHEET" HREF="ch02.css">
+  <TITLE> 2.5	Numbers </TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><A NAME="pgfId=212"></A><HR ALIGN=LEFT></P>
+
+<P><A HREF="ch02.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A 
+HREF="ch02.4.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch02.6.htm">Next&nbsp;&nbsp;page</A></P>
+
+<H1>2.5 Numbers</H1>
+
+<P><P CLASS="Body"><A NAME="pgfId=5085"></A><I>Constant numbers</I> can
+be specified as integer constants or real constants.</P>
+
+<PRE><A NAME="pgfId=5248"></A> 
+number ::=  &nbsp;decimal_number | octal_number| binary_number| hex_number| real_number
+<A NAME="pgfId=5249"></A> 
+decimal_number ::= &nbsp;&nbsp;[ sign ] unsigned_number| [ size ] decimal_base unsigned_number
+<A NAME="pgfId=5250"></A> 
+binary_number ::= [ size ] binary_base binary_digit {<B> _</B> | binary_digit }
+<A NAME="pgfId=5251"></A> 
+octal_number ::= [ size ] octal_base octal_digit {<B> _</B> | octal_digit }
+<A NAME="pgfId=5252"></A> 
+hex_number ::= [ size ] hex_base hex_digit {<B> _</B> | hex_digit }
+<A NAME="pgfId=5253"></A> 
+real_number ::=&nbsp;&nbsp;[ sign ] unsigned_number <B>.</B> unsigned_number
+			| [ sign ] unsigned_number [ <B>.</B> unsigned_number ] <B>e</B> [ sign ] unsigned_number
+			| [ sign ] unsigned_number [ <B>.</B> unsigned_number ] <B>E</B> [ sign ] unsigned_number
+<A NAME="pgfId=5254"></A> 
+sign ::= <B>+</B> | <B>-</B><A NAME="pgfId=5255"></A> 
+size ::= unsigned_number
+<A NAME="pgfId=5256"></A> 
+unsigned_number ::=  decimal_digit {<B> _</B> | decimal_digit }
+<A NAME="pgfId=5257"></A> 
+decimal_base ::= <B>'d</B>  | <B>'D</B><A NAME="pgfId=5258"></A> 
+binary_base ::= <B>'b</B>  | <B>'B</B><A NAME="pgfId=5259"></A> 
+octal_base ::= <B>'o</B>  | <B>'O</B><A NAME="pgfId=5260"></A> 
+hex_base ::= <B>'h</B>  | <B>'H</B><A NAME="pgfId=5261"></A> 
+decimal_digit ::= <B>0</B> | <B>1</B> | <B>2</B> | <B>3</B> | <B>4</B> | <B>5</B> | <B>6</B> | <B>7</B> | <B>8</B> | <B>9</B><A
+NAME="pgfId=5262"></A> 
+binary_digit ::= <B>x</B> | <B>X</B> | <B>z</B> | <B>Z</B> | <B>0</B> | <B>1</B><A
+NAME="pgfId=5263"></A> 
+octal_digit ::= <B>x</B> | <B>X</B> | <B>z</B> | <B>Z</B> | <B>0</B> | <B>1</B> |<B> 2</B> | <B>3</B> | <B>4</B> | <B>5</B> | <B>6</B> | <B>7</B><A
+NAME="pgfId=5264"></A> 
+hex_digit ::= <B>x</B> | <B>X</B> | <B>z</B> | <B>Z</B> | <B>0</B> | <B>1</B> |<B> 2</B> | <B>3</B> | <B>4</B> | <B>5</B> | <B>6</B> | <B>7</B> | <B>8</B> | <B>9</B> | <B>a</B> |<B> b</B> | <B>c</B> | <B>d</B> | <B>e</B> | <B>f</B> | <B>A</B> | <B>B</B> | <B>C</B> | <B>D</B> | <B>E</B> | <B>F</B><A
+NAME="pgfId=5396"></A></PRE>
+
+<P><P CLASS="BNFCapBody">Syntax&nbsp;2-1: Syntax for integer and real numbers</P>
+
+<P><P CLASS="SubSection"><A NAME="pgfId=5109"></A>Integer constants</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=310"></A><I>Integer constants</I> can
+be specified in decimal, hexadecimal, octal, or binary format.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=314"></A>There are two forms to express
+integer constants. The first form is a simple decimal number which shall
+be specified as a sequence of digits <CODE>0</CODE> through <CODE>9</CODE>
+, optionally starting with a plus or minus unary operator. The second form
+specifies a <I>sized constant</I> , which shall be composed of up to three
+tokens - an optional size constant, a single quote followed by a base format
+character, and the digits representing the value of the number.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=219"></A>The first token, a size constant,
+shall specify the size of the constant in terms of its exact number of bits.
+It shall be specified as an unsigned decimal number. For example, the size
+specification for two hexadecimal digits is 8, because one hexadecimal digit
+requires four bits.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=299"></A>The second token, a base_format,
+shall consist of a letter specifying the base for the number, preceded by
+the single quote character (<CODE> '</CODE> ). Legal base specifications
+are <CODE>d</CODE> , <CODE>D</CODE> , <CODE>h</CODE> , <CODE>H</CODE> ,
+<CODE>o</CODE> , <CODE>O</CODE> , b, or <CODE>B</CODE> , for the bases decimal,
+hexadecimal, octal, and binary respectively.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=216"></A>The use of <CODE>x</CODE> and
+<CODE>z</CODE> in defining the value of a number is case insensitive.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=302"></A>The single quote and the base
+format character shall not be separated by any white space.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=217"></A>The third token, an unsigned
+number, shall consist of digits that are legal for the specified base format.
+The unsigned number token shall immediately follow the base format, optionally
+preceded by white space. <EM>The hexadecimal digits </EM><CODE>a</CODE>
+<EM>to </EM><CODE>f</CODE> <EM>shall be case insensitive.</EM></P>
+
+<P><P CLASS="Body"><A NAME="pgfId=325"></A>Simple decimal numbers without
+the size and the base format shall be treated as <I>signed integers</I>
+, whereas the numbers specified with the base format shall be treated as
+<I>unsigned integers</I> .</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=225"></A>A plus or a minus operator preceding
+the size constant is a sign for the constant number; the size constant does
+not take a sign. A plus or minus operator between the base format and the
+number is an illegal syntax.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=308"></A><I>Negative numbers</I> shall
+be represented in 2's complement form.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=229"></A>An <CODE>x</CODE> represents
+the <I>unknown value</I> in hexadecimal, octal, and binary constants<CODE>
+.</CODE> A <CODE>z</CODE> represents the <I>high impedance</I> value. See
+section&nbsp;3.1 for a discussion of the Verilog HDL value set. An <CODE>x</CODE>
+shall set four bits to unknown in the hexadecimal base, three bits in the
+octal base, and one bit in the binary base. Similarly, a <CODE>z</CODE>
+shall set four, three, and one bit, respectively, to the high impedance
+value.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=300"></A>If the size of the unsigned number
+is smaller than the size specified for the constant, the unsigned number
+shall be padded to the left with zeros. If the left most bit in the unsigned
+number is an <CODE>x</CODE> or a <CODE>z</CODE> , then an <CODE>x</CODE>
+or a <CODE>z</CODE> shall be used to pad to the left respectively.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=232"></A>When used in a number, the question
+mark <CODE>(?)</CODE> character is a Verilog HDL alternative for the <CODE>z</CODE>
+character. It sets four bits to the high impedance value in hexadecimal
+numbers, three in octal, and one in binary. The question mark can be used
+to enhance readability in cases where the high impedance value is a don't-care
+condition. See the discussion of <B>casez</B> <EM>and </EM><B>casex</B>in
+section&nbsp;9.5.1. The question mark character is also used in user defined
+primitive state table. See section&nbsp;8.1.4.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=274"></A>The underscore character (_)
+shall be legal anywhere in a number except as the first or the last character.
+This feature can be used to break up long numbers for readability purposes.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=220"></A>Examples:</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=175"></A>Unsized constant numbers</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=5269"></A>659 // is a decimal number <BR>
+'h 837FF // is a hexadecimal number <BR>
+'o7460 // is an octal number <BR>
+4af // is illegal (hexadecimal format requires 'h)</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=223"></A>Sized constant numbers</P>
+
+<P><P CLASS="CodeText"><A NAME="pgfId=5287"></A>4'b1001 // is a 4-bit binary
+number <BR>
+5 'D 3 // is a 5-bit decimal number <BR>
+3'b01x // is a 3-bit number with the least <BR>
+// significant bit unknown <BR>
+12'hx // is a 12-bit unknown number <BR>
+16'hz // is a 16-bit high impedance number</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=226"></A>Using sign with constant numbers</P>
+
+<P><P CLASS="CodeText"><A NAME="pgfId=5297"></A>8 'd -6 &nbsp;&nbsp;// this
+is illegal syntax <BR>
+-8 'd 6 &nbsp;&nbsp;// this defines the two's complement of 6, <BR>
+&nbsp;// held in 8 bits--equivalent to -(8'd 6)</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=208"></A>Automatic left padding</P>
+
+<P><P CLASS="CodeText"><A NAME="pgfId=5307"></A><B>reg</B> [11:0] a, b,
+c, d;<BR>
+<B>initial begin<BR>
+</B>a = 'h x; // yields xxx<BR>
+b = 'h 3x; // yields 03x<BR>
+c = 'h z3; // yields zz3<BR>
+d = 'h 0z3; // yields 0z3<BR>
+<B>end</B></P>
+
+<P><P CLASS="Body"><A NAME="pgfId=227"></A>Using underscore character in
+numbers</P>
+
+<P><P CLASS="CodeText"><A NAME="pgfId=5317"></A>27_195_000 <BR>
+16'b0011_0101_0001_1111 <BR>
+32 'h 12ab_f001</P>
+
+<P><P CLASS="Note"><A NAME="pgfId=234"></A>NOTES</P>
+
+<OL>
+  <P><P CLASS="NumberedNote1"><A NAME="pgfId=209"></A>1) --A sized negative
+  number is not sign-extended when assigned to a register data type.
+  <P><P CLASS="NumberedNote2"><A NAME="pgfId=218"></A>2) --Each of the three
+  tokens for specifying a number may be macro substituted.
+  <P><P CLASS="NumberedNote2"><A NAME="pgfId=171"></A>3) --The number of
+  bits that make up an unsized number (which is a simple decimal number or
+  a number without the size specification) shall be at least 32.
+</OL>
+
+<P><P CLASS="SubSection"><A NAME="pgfId=172"></A>Real constants</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=176"></A>The <I>real constant numbers</I>
+shall be represented as described by IEEE STD-754-1985, an IEEE standard
+for double precision floating point numbers.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=316"></A>Real numbers can be specified
+in either decimal notation (for example, 14.72) or in scientific notation
+(for example, 39e8, which indicates 39 multiplied by 10 to the 8th power).
+Real numbers expressed with a decimal point shall have at least one digit
+on each side of the decimal point.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=317"></A>Examples:</P>
+
+<PRE><A NAME="pgfId=318"></A> 
+1.2 0.1 2394.26331 1.2E12 (the exponent symbol can be e or E) 1.30e-2 0.1e-0 23E10 29E-2 236.123_763_e-12  (underscores are ignored)</PRE>
+
+<P><P CLASS="Body"><A NAME="pgfId=319"></A>The following are invalid forms
+of real numbers because they do not have at least one digit on each side
+of the decimal point:</P>
+
+<PRE><A NAME="pgfId=320"></A> 
+.12 9.4.E3 .2e-7</PRE>
+
+<P><P CLASS="SubSection"><A NAME="pgfId=321"></A>Conversion</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=322"></A>Real numbers shall be converted
+to integers by rounding the real number to the nearest integer, rather than
+by truncating it. Implicit conversion shall take place when a real number
+is assigned to an integer. The ties shall be rounded away from zero.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=324"></A>Examples:</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=326"></A>The real numbers 35.7 and 35.5
+both become 36 when converted to an integer and 35.2 becomes 35.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=328"></A>Converting -1.5 to integer yields
+-2, converting 1.5 to integer yields 2.</P>
+
+<P><HR ALIGN=LEFT></P>
+
+<P><A HREF="ch02.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A 
+HREF="ch02.4.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch02.6.htm">Next&nbsp;&nbsp;page</A>
+</BODY>
+</HTML>

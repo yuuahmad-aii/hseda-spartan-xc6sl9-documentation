@@ -1,0 +1,180 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch09.css">
+<TITLE> 9.9	Structured procedures </TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch09.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch09.8.htm">Previous&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=790">
+ </A>
+9.9	<A NAME="19982">
+ </A>
+<A NAME="marker=292">
+ </A>
+Structured procedures </H1>
+<P CLASS="Body">
+<A NAME="pgfId=791">
+ </A>
+All <A NAME="marker=293">
+ </A>
+<A NAME="marker=294">
+ </A>
+<A NAME="marker=295">
+ </A>
+<A NAME="marker=296">
+ </A>
+<A NAME="marker=297">
+ </A>
+<A NAME="marker=298">
+ </A>
+<A NAME="marker=299">
+ </A>
+<A NAME="marker=300">
+ </A>
+procedures in Verilog HDL are specified within one of the following four statements:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=792">
+ </A>
+<I CLASS="Emphasis">
+initial</I>
+ construct</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=793">
+ </A>
+<I CLASS="Emphasis">
+always</I>
+<A NAME="marker=301">
+ </A>
+ construct</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=794">
+ </A>
+t<A NAME="marker=302">
+ </A>
+ask</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=795">
+ </A>
+f<A NAME="marker=303">
+ </A>
+unction</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=796">
+ </A>
+The initial and always constructs are enabled at the beginning of a simulation. The initial construct shall execute only once and its activity shall cease when the statement has finished. In contrast, the always construct shall execute repeatedly. Its activity shall cease only when the simulation is terminated. There shall be no implied order of execution between initial and always constructs. The initial constructs need not be scheduled and executed before the always constructs. There shall be no limit to the number of initial and always constructs that can be defined in a module.</P>
+<P CLASS="Body">
+<A NAME="pgfId=627">
+ </A>
+T<A NAME="marker=273">
+ </A>
+asks and <A NAME="marker=274">
+ </A>
+functions are procedures that are enabled from one or more places in other procedures. Tasks and functions are described in <A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/09/ch10.htm#73077" CLASS="XRef">
+</A>
+.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=648">
+ </A>
+<A NAME="29925">
+ </A>
+<A NAME="marker=308">
+ </A>
+Initial construct</P>
+<P CLASS="Body">
+<A NAME="pgfId=799">
+ </A>
+The <A NAME="marker=309">
+ </A>
+<A NAME="marker=310">
+ </A>
+syntax for the <I CLASS="Emphasis">
+initial construct</I>
+ is as follows:</P>
+<P CLASS="Body">
+<A NAME="pgfId=800">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-48.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=801">
+ </A>
+Syntax&nbsp;9-15: Syntax for initial construct</P>
+<P CLASS="Body">
+<A NAME="pgfId=802">
+ </A>
+The example below illustrates use of the initial construct for initialization of variables at the start of simulation.</P>
+<P CLASS="Body">
+<A NAME="pgfId=803">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-49.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=804">
+ </A>
+Another typical usage of the <A NAME="marker=313">
+ </A>
+initial construct is specification of waveform descriptions that execute once to provide stimulus to the main part of the circuit being simulated as illustrated below:</P>
+<P CLASS="Body">
+<A NAME="pgfId=805">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-50.gif">
+</DIV>
+<P CLASS="SubSection">
+<A NAME="pgfId=806">
+ </A>
+<A NAME="12049">
+ </A>
+<A NAME="marker=316">
+ </A>
+Always construct</P>
+<P CLASS="Body">
+<A NAME="pgfId=808">
+ </A>
+The <I CLASS="Emphasis">
+always construct</I>
+ repeats continuously throughout the duration of the simulation. <A HREF="ch09.9.htm#37736" CLASS="XRef">
+See : Syntax for always construct</A>
+ shows the <A NAME="marker=320">
+ </A>
+syntax for the always construct.</P>
+<P CLASS="Body">
+<A NAME="pgfId=809">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-51.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=810">
+ </A>
+Syntax&nbsp;9-16<A NAME="37736">
+ </A>
+: Syntax for always construct</P>
+<P CLASS="Body">
+<A NAME="pgfId=811">
+ </A>
+The always construct, because of its looping nature, is only useful when used in conjunction with some form of timing control. If an always construct has no control for simulation time to advance, it will create a simulation deadlock condition. The following code, for example, creates a zero-delay infinite loop.</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=812"> </A>
+<B CLASS="Keyword">always</B>
+<A NAME="marker=323"> </A>
+ areg = ~areg;</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=813">
+ </A>
+Providing a timing control to the above code creates a potentially useful description as shown below:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=814"> </A>
+<B CLASS="Keyword">always</B>
+ #half_period areg = ~areg;</PRE>
+<HR><P><A HREF="ch09.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch09.8.htm">Previous&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

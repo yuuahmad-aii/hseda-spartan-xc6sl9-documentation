@@ -1,0 +1,209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch13.css">
+<TITLE> 13.2	Declaring parameters in specify blocks</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch13.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch13.1.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch13.3.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=422">
+ </A>
+13.2	<A NAME="61845">
+ </A>
+<A NAME="marker=55">
+ </A>
+Declaring <A NAME="marker=56">
+ </A>
+parameters in specify blocks</H1>
+<P CLASS="Body">
+<A NAME="pgfId=424">
+ </A>
+The keyword <B CLASS="Keyword">
+specparam</B>
+ declares parameters within specify blocks--called <I CLASS="Emphasis">
+specify parameters</I>
+<A NAME="marker=57">
+ </A>
+ or <I CLASS="Emphasis">
+specparams</I>
+, to distinguish them from <I CLASS="Emphasis">
+module parameters</I>
+<A NAME="marker=58">
+ </A>
+. The<A NAME="marker=62">
+ </A>
+ syntax <A NAME="marker=63">
+ </A>
+for<A NAME="marker=64">
+ </A>
+ declaring specify parameters is shown below:</P>
+<P CLASS="Body">
+<A NAME="pgfId=426">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch13-3.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=427">
+ </A>
+Syntax&nbsp;13-2<A NAME="80827">
+ </A>
+: Syntax of the specparam declaration</P>
+<P CLASS="Body">
+<A NAME="pgfId=327">
+ </A>
+A specify parameter shall be declared and used only within the specify block. The value assigned to a specify parameter can be any constant expression. A specify parameter declared in the specify block can be used to construct a constant expression for a subsequent specify parameter declaration. A specify parameter shall not be visible outside the specify block it is declared in. </P>
+<P CLASS="Body">
+<A NAME="pgfId=421">
+ </A>
+The specify parameters and module parameters shall not be interchangeable. <A HREF="ch13.2.htm#52443" CLASS="XRef">
+See : Differences between specparams and parameters</A>
+ summarizes the differences between the two types of parameter declarations. </P>
+<TABLE>
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=328">
+ </A>
+Table&nbsp;13-1<A NAME="52443">
+ </A>
+: Differences between specparams and parameters</P>
+</CAPTION>
+<TR>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=386">
+ </A>
+SPECPARAMS</P>
+<P CLASS="CellHeading">
+<A NAME="pgfId=387">
+ </A>
+(Specify parameter)</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=388">
+ </A>
+PARAMETERS</P>
+<P CLASS="CellHeading">
+<A NAME="pgfId=389">
+ </A>
+(Module parameter)</P>
+</TH>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=390">
+ </A>
+use keyword <B CLASS="Keyword">
+specparam</B>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=391">
+ </A>
+use keyword <B CLASS="Keyword">
+parameter</B>
+</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=393">
+ </A>
+must be declared <I CLASS="Emphasis">
+inside</I>
+ specify blocks</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=394">
+ </A>
+must be declared <I CLASS="Emphasis">
+outside</I>
+ specify blocks</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=395">
+ </A>
+may only be used inside specify blocks</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=398">
+ </A>
+may not be used inside specify blocks</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=399">
+ </A>
+cannot use <B CLASS="Keyword">
+defparam</B>
+ to override values</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=419">
+ </A>
+use <B CLASS="Keyword">
+defparam</B>
+ to override values</P>
+</TD>
+</TR>
+</TABLE>
+<DIV>
+<H3 CLASS="Example">
+<A NAME="pgfId=428">
+ </A>
+</H3>
+<P CLASS="Body">
+<A NAME="pgfId=734">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch13-4.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=311">
+ </A>
+The lines between the keywords <B CLASS="Keyword">
+specify</B>
+ and <B CLASS="Keyword">
+endspecify</B>
+ declare four specify parameters. The first line declares specify parameters called <CODE CLASS="code">
+tRise_clk_q</CODE>
+ and <CODE CLASS="code">
+tFall_clk_q</CODE>
+ with values <CODE CLASS="code">
+150</CODE>
+ and <CODE CLASS="code">
+200</CODE>
+ respectively; the second line declares <CODE CLASS="code">
+tRise_control</CODE>
+ and <CODE CLASS="code">
+tFall_control</CODE>
+ specify parameters with values <CODE CLASS="code">
+40</CODE>
+ and <CODE CLASS="code">
+50</CODE>
+ respectively. <A NAME="marker=46">
+ </A>
+<A NAME="marker=52">
+ </A>
+<A NAME="marker=60">
+ </A>
+</P>
+</DIV>
+<HR><P><A HREF="ch13.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch13.1.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch13.3.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

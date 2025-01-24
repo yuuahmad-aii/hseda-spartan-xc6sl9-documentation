@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch05.css">
+<TITLE> 5.5	Race conditions</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch05.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch05.4.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch05.6.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=139">
+ </A>
+5.5	Race conditions</H1>
+<P CLASS="Body">
+<A NAME="pgfId=140">
+ </A>
+Because the execution of expression evaluation and net update events may be intermingled, race conditions are possible:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=141"> </A>
+<B CLASS="Keyword">assign</B>
+ p = q; <B CLASS="Keyword">initial</B>
+ <B CLASS="Keyword">begin</B>
+	q = 1;	#1 q = 0; 	<B CLASS="Keyword">$display</B>
+(p); <B CLASS="Keyword">end</B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=142">
+ </A>
+The simulator is correct in displaying either a <CODE CLASS="code">
+1</CODE>
+ or a <CODE CLASS="code">
+0</CODE>
+ here. The assignment of <CODE CLASS="code">
+0</CODE>
+ to <CODE CLASS="code">
+q</CODE>
+ enables an update event for <CODE CLASS="code">
+p</CODE>
+. The simulator may either continue and execute the $display task, or execute the update for <CODE CLASS="code">
+p</CODE>
+, followed by the $display task.</P>
+<HR><P><A HREF="ch05.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch05.4.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch05.6.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

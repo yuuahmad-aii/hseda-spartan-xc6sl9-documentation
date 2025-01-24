@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch08.css">
+<TITLE> 8.2	Combinational UDPs</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch08.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch08.1.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch08.3.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=342">
+ </A>
+8.2	<A NAME="89140">
+ </A>
+<A NAME="marker=65">
+ </A>
+<A NAME="marker=66">
+ </A>
+Combinational UDPs</H1>
+<P CLASS="Body">
+<A NAME="pgfId=343">
+ </A>
+In <A NAME="marker=67">
+ </A>
+combinational UDPs, the output state is determined solely as a function of the current input states. Whenever an input state changes, the UDP is evaluated and the output state is set to the value indicated by the row in the state table that matches all the input states. All combinations of the inputs that are not explicitly specified will drive the output state to the unknown value <CODE CLASS="code">
+x</CODE>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=344">
+ </A>
+Example:</P>
+<P CLASS="Body">
+<A NAME="pgfId=339">
+ </A>
+The following example defines a multiplexer with two data inputs and a control input. </P>
+<P CLASS="Body">
+<A NAME="pgfId=290">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch08-2.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=345">
+ </A>
+The first entry in the table above can be explained as follows: when <CODE CLASS="code">
+control</CODE>
+ equals <CODE CLASS="code">
+0</CODE>
+, and <CODE CLASS="code">
+dataA</CODE>
+ equals <CODE CLASS="code">
+1</CODE>
+, and <CODE CLASS="code">
+dataB</CODE>
+ equals <CODE CLASS="code">
+0</CODE>
+, then output <CODE CLASS="code">
+mux</CODE>
+ equals <CODE CLASS="code">
+1</CODE>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=346">
+ </A>
+The input combination <CODE CLASS="code">
+0xx</CODE>
+ <CODE CLASS="code">
+(control=0, dataA=x, dataB=x)</CODE>
+ is not specified. If this combination occurs during simulation, the value of output port <CODE CLASS="code">
+mux</CODE>
+ will become <CODE CLASS="code">
+x</CODE>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=322">
+ </A>
+Using <CODE CLASS="code">
+?</CODE>
+, the description of a multiplexer can be abbreviated as:</P>
+<P CLASS="Body">
+<A NAME="pgfId=347">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch08-3.gif">
+</DIV>
+<HR><P><A HREF="ch08.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch08.1.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch08.3.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

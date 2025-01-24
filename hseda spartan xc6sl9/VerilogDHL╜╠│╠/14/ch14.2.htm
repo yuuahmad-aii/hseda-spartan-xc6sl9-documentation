@@ -1,0 +1,365 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch14.css">
+<TITLE> 14.2	File input-output system tasks</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch14.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch14.1.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch14.3.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=770">
+ </A>
+14.2	<A NAME="89258">
+ </A>
+File input-<A NAME="marker=30">
+ </A>
+ou<A NAME="marker=32">
+ </A>
+t<A NAME="marker=163">
+ </A>
+put system tasks</H1>
+<P CLASS="Body">
+<A NAME="pgfId=1408">
+ </A>
+The system tasks and functions for file based operations are divided into three categories:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=1411">
+ </A>
+tasks that open and close files</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=1412">
+ </A>
+tasks that output values into files</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=1415">
+ </A>
+tasks that read values from files and load into memory</LI>
+</UL>
+<P CLASS="SubSection">
+<A NAME="pgfId=1469">
+ </A>
+Opening and closing files</P>
+<DIV>
+<H2 CLASS="Syntax">
+<A NAME="pgfId=802">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=952">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch14-10.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=1219">
+ </A>
+Syntax&nbsp;14-4: Syntax for $fopena nd $fclose system tasks</P>
+<P CLASS="Body">
+<A NAME="pgfId=1202">
+ </A>
+The function <B CLASS="Keyword">
+$fopen</B>
+<CODE CLASS="code">
+ </CODE>
+opens the file specified as an argument and returns a 32-bit unsigned multichannel descriptor that is uniquely associated with the file. It returns 0 if the file could not be opened for writing.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1226">
+ </A>
+The <A NAME="marker=469">
+ </A>
+multichannel descriptor should be thought of as a set of 32 flags, where each flag represents a single output channel. The least significant bit (bit 0) of a multichannel descriptor always refers to the <A NAME="marker=470">
+ </A>
+standard output. The standard output is also called channel 0. The other bits refer to channels that have been opened by the <B CLASS="Keyword">
+$fopen</B>
+ system function.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1268">
+ </A>
+The first call to <B CLASS="Keyword">
+$fopen</B>
+ opens channel 1 and returns a multichannel descriptor value of 2--that is, bit 1 of the descriptor is set. A second call to <B CLASS="Keyword">
+$fopen</B>
+ opens channel 2 and returns a value of 4--that is, only bit 2 of the descriptor is set. Subsequent calls to $fopen open channels 3, 4, 5, and so on and return values of 8, 16, 32, and so on, up to a maximum of 32 open channels. Thus, a channel number corresponds to an individual bit in a multichannel descriptor.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1296">
+ </A>
+The <B CLASS="Keyword">
+$fclose</B>
+ system task closes the channels specified in the multichannel descriptor, and does not allow any further output to the closed channels. The <B CLASS="Keyword">
+$fopen</B>
+ task will reuse channels that have been closed.</P>
+<P CLASS="Note">
+<A NAME="pgfId=1293">
+ </A>
+Note--The number of simultaneous output channels that may be active at any one time is dependent on the operating system.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=848">
+ </A>
+File output system tasks</P>
+</DIV>
+<DIV>
+<H2 CLASS="Syntax">
+<A NAME="pgfId=1538">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=1471">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch14-11.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=1220">
+ </A>
+Syntax&nbsp;14-5: Syntax for file output system tasks </P>
+<P CLASS="Body">
+<A NAME="pgfId=1479">
+ </A>
+Each of the four formatted display tasks--<B CLASS="Keyword">
+$display</B>
+, <B CLASS="Keyword">
+$write</B>
+, <B CLASS="Keyword">
+$monitor</B>
+, and <B CLASS="Keyword">
+$strobe</B>
+--has a counterpart that writes to specific files as opposed to the standard output. These counterpart tasks--<B CLASS="Keyword">
+$fdisplay</B>
+, <B CLASS="Keyword">
+$fwrite,</B>
+ <B CLASS="Keyword">
+$fmonitor</B>
+, and <B CLASS="Keyword">
+$fstrobe</B>
+--accept the same type of arguments as the tasks they are based upon, with one exception: The first parameter must be a <A NAME="marker=468">
+ </A>
+multichannel descriptor that indicates where to direct the file output. A multichannel descriptor is either a variable or the result of an expression that takes the form of a 32-bit unsigned integer value. The value of the multichannel descriptor determines which open files the task will write to.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1402">
+ </A>
+The <B CLASS="Keyword">
+$fstrobe</B>
+ and <B CLASS="Keyword">
+$fmonitor</B>
+ system tasks work just like their counterparts, <B CLASS="Keyword">
+$strobe</B>
+ and <B CLASS="Keyword">
+$monitor</B>
+, except that they write to files using the multichannel descriptor for control. Unlike <B CLASS="Keyword">
+$monitor</B>
+, any number of<CODE CLASS="code">
+ </CODE>
+<B CLASS="Keyword">
+$fmonitor</B>
+ tasks can be set up to be simultaneously active. However, there is no counterpart to <B CLASS="Keyword">
+$monitoron</B>
+ and <B CLASS="Keyword">
+$monitoroff</B>
+ tasks.</P>
+</DIV>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=1409">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=1410">
+ </A>
+This example shows how to set up multichannel descriptors. In this example, three different channels are opened using the <B CLASS="Keyword">
+$fopen</B>
+ function. The three multichannel descriptors that are returned by the function are then combined in a <CODE CLASS="code">
+bit-wise or</CODE>
+ operation and assigned to the integer variable <CODE CLASS="code">
+messages</CODE>
+. The <CODE CLASS="code">
+messages</CODE>
+ variable can then be used as the first parameter in a file output task to direct output to all three channels at once. To create a descriptor that directs output to the standard output as well, the <CODE CLASS="code">
+messages</CODE>
+ variable is<CODE CLASS="code">
+ bit-wise or</CODE>
+'ed with the constant <CODE CLASS="code">
+1</CODE>
+, which effectively enables channel 0. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1380">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch14-12.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=1406">
+ </A>
+The following file output tasks show how the channels opened in the above example might be used:</P>
+<P CLASS="Body">
+<A NAME="pgfId=1403">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch14-13.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=1404">
+ </A>
+<A NAME="marker=466">
+ </A>
+<A NAME="marker=467">
+ </A>
+<A NAME="marker=471">
+ </A>
+<A NAME="marker=473">
+ </A>
+<A NAME="marker=477">
+ </A>
+<A NAME="marker=479">
+ </A>
+<A NAME="marker=480">
+ </A>
+<A NAME="marker=481">
+ </A>
+<A NAME="marker=482">
+ </A>
+</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=1405">
+ </A>
+<EM CLASS="AppSection">
+Loading memory data from a file</EM>
+<A NAME="61953">
+ </A>
+</P>
+</DIV>
+<DIV>
+<H2 CLASS="Syntax">
+<A NAME="pgfId=1413">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=1586">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch14-14.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=1587">
+ </A>
+Syntax&nbsp;14-6: Syntax for memory loadi system tasks</P>
+<P CLASS="Body">
+<A NAME="pgfId=1416">
+ </A>
+Two system tasks--<B CLASS="Keyword">
+$readmemb</B>
+ and <B CLASS="Keyword">
+$readmemh</B>
+--read and load data from a specified text file into a specified memory. Either task may be executed at any time during simulation. The text file to be read must contain only the following:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=1417">
+ </A>
+white space (spaces, new lines, tabs, and form-feeds)</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=1418">
+ </A>
+comments (both types of comment are allowed)</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=1419">
+ </A>
+binary or hexadecimal numbers</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=1474">
+ </A>
+The numbers must have neither the length nor the base format specified. For <B CLASS="Keyword">
+$readmemb</B>
+, each number must be binary. For <B CLASS="Keyword">
+$readmemh</B>
+, the numbers must be hexadecimal. The unknown value (x or X), the high impedance value (z or Z), and the underscore (_) can be used in specifying a number as in a Verilog HDL source description. White space and/or comments must be used to separate the numbers.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1475">
+ </A>
+In the following discussion, the term <A NAME="marker=489">
+ </A>
+&quot;address&quot; refers to an index into the array that models the memory.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1476">
+ </A>
+As the file is read, each number encountered is assigned to a successive word element of the memory. Addressing is controlled both by specifying start and/or finish addresses in the system task invocation, and by specifying addresses in the data file.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1477">
+ </A>
+When addresses appear in the data file, the format is an &quot;at&quot; character (<CODE CLASS="code">
+@</CODE>
+<A NAME="marker=490">
+ </A>
+) followed by a hexadecimal number as follows:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1520"> </A>
+    @hh...h</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1524">
+ </A>
+Both upper and lower case digits are allowed in the number. No white space is allowed between the <CODE CLASS="code">
+@</CODE>
+ and the number. You may use as many address specifications as you need within the data file. When the system task encounters an address specification, it loads subsequent data starting at that memory address.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1525">
+ </A>
+If no addressing information is specified within the system task, and no address specifications appear within the data file, then the default start address is the left-hand address given in the declaration of the memory, and consecutive words are loaded until either the memory is full or the data file is completely read. If the start address is specified in the task without the finish address, then loading starts at the specified start address and continues towards the right-hand address given in the declaration of the memory.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1526">
+ </A>
+If both start and finish addresses are specified as parameters to the task, then loading begins at the start address and continues toward the finish address, regardless of how the addresses are specified in the memory declaration.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1527">
+ </A>
+When addressing information is specified both in the system task and in the data file, the addresses in the data file must be within the address range specified by the system task parameters, otherwise an error message is issued and the load operation is terminated.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1528">
+ </A>
+A warning message is issued if the number of data words in the file differs from the number of words in the range implied by the start through finish addresses.</P>
+</DIV>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=1529">
+ </A>
+</H2>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1530"> </A>
+<B CLASS="Keyword">reg</B>
+<EM CLASS="ExInd12"> [7:0] mem[1:256];</EM>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1531">
+ </A>
+Given this declaration, each of the following statements will load data into <CODE CLASS="code">
+mem</CODE>
+ in a different manner:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1532"> </A>
+<B CLASS="Keyword">initial</B>
+<A NAME="marker=491"> </A>
+ <B CLASS="Keyword">$readmemh</B>
+(&quot;mem.data&quot;, mem);<B CLASS="Keyword">initial</B>
+ <B CLASS="Keyword">$readmemh</B>
+(&quot;mem.data&quot;, mem, 16);<B CLASS="Keyword">initial</B>
+ <B CLASS="Keyword">$readmemh</B>
+(&quot;mem.data&quot;, mem, 128, 1);</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1533">
+ </A>
+The first statement will load up the memory at simulation time 0 starting at the memory address 1. The second statement will begin loading at address 16 and continue on towards address 256. For the third and final statement, loading will begin at address 128 and continue down towards address 1. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1534">
+ </A>
+In the third case, when loading is complete, a final check is performed to ensure that exactly 128 numbers are contained in the file. If the check fails, a warning message is issued.<A NAME="marker=492">
+ </A>
+<A NAME="marker=493">
+ </A>
+<A NAME="marker=494">
+ </A>
+</P>
+</DIV>
+<HR><P><A HREF="ch14.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch14.1.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch14.3.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch07.css">
+<TITLE> 7.14	Strengths of net types</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch07.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch07.d.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch07.f.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=1646">
+ </A>
+7.14	<A NAME="83929">
+ </A>
+Strengths of net types</H1>
+<P CLASS="Body">
+<A NAME="pgfId=1647">
+ </A>
+The <B CLASS="Keyword">
+tri0</B>
+, <B CLASS="Keyword">
+tri1</B>
+, <B CLASS="Keyword">
+supply0</B>
+, and <B CLASS="Keyword">
+supply1</B>
+ net types shall generate signals with specific strength levels. The <B CLASS="Keyword">
+trireg</B>
+ declaration can specify either of two signal strength levels other than a default strength level.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=1648">
+ </A>
+<A NAME="83556">
+ </A>
+<A NAME="marker=563">
+ </A>
+<A NAME="marker=564">
+ </A>
+Tri0 and <A NAME="marker=565">
+ </A>
+<A NAME="marker=566">
+ </A>
+tri1 net strengths </P>
+<P CLASS="Body">
+<A NAME="pgfId=1043">
+ </A>
+The <B CLASS="Keyword">
+tri0</B>
+ net type models a net connected to a resistive <B CLASS="Keyword">
+pulldown</B>
+ device. In the absence of an overriding source, such a signal shall have a value <CODE CLASS="code">
+0</CODE>
+ and a <B CLASS="Keyword">
+pull</B>
+ strength. The <B CLASS="Keyword">
+tri1</B>
+ net type models a net connected to a resistive <B CLASS="Keyword">
+pullup</B>
+ device. In the absence of an overriding source, such a signal shall have a value <CODE CLASS="code">
+1</CODE>
+ and a <B CLASS="Keyword">
+pull</B>
+ strength.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=1649">
+ </A>
+<A NAME="64748">
+ </A>
+<A NAME="marker=568">
+ </A>
+<A NAME="marker=569">
+ </A>
+Trireg strength </P>
+<P CLASS="Body">
+<A NAME="pgfId=1650">
+ </A>
+The <B CLASS="Keyword">
+trireg</B>
+ net type models charge storage nodes. The strength of the drive resulting from a <B CLASS="Keyword">
+trireg</B>
+ net that is in the charge storage state (that is, a driver charged the net and then went to high impedance) shall be one of these three strengths: <B CLASS="Keyword">
+large</B>
+, <B CLASS="Keyword">
+medium</B>
+, or <B CLASS="Keyword">
+small</B>
+. The specific strength associated with a particular <B CLASS="Keyword">
+trireg</B>
+ net shall be specified by the user in the net declaration. The default shall be <B CLASS="Keyword">
+medium</B>
+. The syntax of this specification is described in <A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/07/ch03.htm#47037" CLASS="XRef">
+</A>
+.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=1651">
+ </A>
+S<A NAME="marker=573">
+ </A>
+<A NAME="marker=574">
+ </A>
+upply0 and supply1 net strengths </P>
+<P CLASS="Body">
+<A NAME="pgfId=1652">
+ </A>
+The <B CLASS="Keyword">
+supply0</B>
+ net type models ground connections. The <B CLASS="Keyword">
+supply1</B>
+ net type models connections to power supplies. The <B CLASS="Keyword">
+supply0</B>
+ and <B CLASS="Keyword">
+supply1</B>
+ net types shall have <B CLASS="Keyword">
+supply</B>
+ driving <A NAME="marker=575">
+ </A>
+strengths<A NAME="marker=576">
+ </A>
+.</P>
+<HR><P><A HREF="ch07.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch07.d.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch07.f.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

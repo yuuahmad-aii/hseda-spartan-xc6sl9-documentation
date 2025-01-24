@@ -1,0 +1,238 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Mac">
+  <LINK REL="STYLESHEET" HREF="ch04.css">
+  <TITLE> 4.2	Operands </TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><A NAME="pgfId=626"></A><HR ALIGN=LEFT></P>
+
+<P><A HREF="ch04.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A 
+HREF="ch04.1.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch04.3.htm">Next&nbsp;&nbsp;page</A></P>
+
+<H1>4.2 Operands</H1>
+
+<P><P CLASS="Body"><A NAME="pgfId=635"></A>As stated before, there are several
+types of operands that can be specified in expressions. The simplest type
+is a reference to a net or register in its complete form--that is, just
+the name of the net or register is given. In this case, all of the bits
+making up the net or register value shall be used as the operand.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=668"></A>If a single bit of a vector net
+or register is required, then a bit-select operand shall be used. A part-select
+operand shall be used to reference a group of adjacent bits in a vector
+net or register.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=669"></A>A memory element can be referenced
+as an operand. A concatenation of other operands, (including nested concatenations)
+can be specified as an operand. A function call is an operand.</P>
+
+<P><P CLASS="SubSection"><A NAME="pgfId=493"></A>Net and register bit-select
+and part-select addressing</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=674"></A><I>Bit-selects</I> extract a
+particular bit from a vector net or register. The bit can be addressed using
+an expression. If the bit select is out of the address bounds or the bit-select
+is <CODE>x</CODE> or <CODE>z</CODE> , then the value returned by the reference
+shall be <CODE>x</CODE> .</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=679"></A>Several contiguous bits in a
+vector register or net can be addressed, and are known as <I>part-selects</I>
+. A part-select of a vector register or net is given with the following
+syntax:</P>
+
+<PRE>vect[msb_expr:lsb_expr]</PRE>
+
+<P><P CLASS="Body"><A NAME="pgfId=681"></A>Both expressions must be constant
+expressions. The first expression must address a more significant bit than
+the second expression. If the part-select is out of the address bounds or
+the part-select is <CODE>x</CODE> or <CODE>z</CODE> , then the value returned
+by the reference shall be <CODE>x</CODE> .</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=805"></A>The bit-select or part-select
+of a variable declared as real and realtime shall be considered illegal.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=912"></A>1. The following example specifies
+the single bit of <CODE>acc</CODE> vector that is addressed by the operand
+<CODE>index</CODE> .</P>
+
+<PRE>acc[index]</PRE>
+
+<P><P CLASS="Body"><A NAME="pgfId=676"></A>The actual bit that is accessed
+by an address is, in part, determined by the declaration of <CODE>acc</CODE>
+. For instance, each of the declarations of <CODE>acc</CODE> shown in the
+next example causes a particular value of <CODE>index</CODE> to access a
+different bit:</P>
+
+<PRE><B>reg</B>[15:0]&nbsp;acc;
+<B>reg</B> [1:16]&nbsp;acc;</PRE>
+
+<P><P CLASS="Body"><A NAME="pgfId=1274"></A>2. The next example and the
+bullet items that follow it illustrate the principles of bit addressing.
+The code declares an 8-bit register called <CODE>vect</CODE> and initializes
+it to a value of 4. The bullet items describe how the separate bits of that
+vector can be addressed.</P>
+
+<PRE><B>reg</B> [7:0]&nbsp;vect;
+vect = 4; // fills vect with the pattern 00000100
+          // msb is bit 7, lsb is bit 0</PRE>
+
+<UL>
+  <LI><A NAME="pgfId=683"></A>if the value of <CODE>addr</CODE> is 2, then
+  <CODE>vect[addr]</CODE> returns <CODE>1</CODE>
+  <LI><A NAME="pgfId=684"></A>if the value of <CODE>addr</CODE> is out of
+  bounds, then <CODE>vect[addr]</CODE> returns <CODE>x</CODE>
+  <LI><A NAME="pgfId=685"></A>if <CODE>addr</CODE> is 0, 1, or 3 through
+  7, <CODE>vect[addr]</CODE> returns <CODE>0</CODE>
+  <LI><A NAME="pgfId=686"></A><CODE>vect[3:0]</CODE> returns the bits <CODE>0100</CODE>
+  <LI><A NAME="pgfId=687"></A><CODE>vect[5:1]</CODE> returns the bits <CODE>00010</CODE>
+  <LI><A NAME="pgfId=688"></A><CODE>vect[</CODE> <I>expression that returns
+  x</I> <CODE>]</CODE> returns <CODE>x</CODE>
+  <LI><A NAME="pgfId=689"></A><CODE>vect[</CODE> <I>expression that returns
+  z</I> <CODE>]</CODE> returns <CODE>x</CODE>
+  <LI><A NAME="pgfId=690"></A>if any bit of <CODE>addr</CODE> is <CODE>x/z</CODE>
+  , then the value of <CODE>addr</CODE> is <CODE>x</CODE>
+</UL>
+
+<P><P CLASS="Note"><A NAME="pgfId=1273"></A>NOTES</P>
+
+<OL>
+  <P><P CLASS="NumberedNote1"><A NAME="pgfId=1277"></A>1) --Part-select Indices
+  that evaluate to x or z may be flagged as a compile time error.
+  <P><P CLASS="NumberedNote2"><A NAME="pgfId=1278"></A>2) --Bit-select or
+  Part-select indices that are outside of the declared range may be flagged
+  as a compile time error.
+</OL>
+
+<P><P CLASS="SubSection"><A NAME="pgfId=691"></A>Memory addressing</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=693"></A>Declaration of memory is discussed
+in section&nbsp;3.8. This section discusses memory addressing.&nbsp;</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=913"></A>The next example declares a memory
+of 1024 8-bit words:</P>
+
+<PRE><B>reg</B> [7:0]&nbsp;mem_name[0:1023];</PRE>
+
+<P><P CLASS="Body"><A NAME="pgfId=695"></A>The syntax for a memory address
+shall consist of the name of the memory and an expression for the address--specified
+with the following format:</P>
+
+<PRE>mem_name[addr_expr]</PRE>
+
+<P><P CLASS="Body"><A NAME="pgfId=697"></A>The <CODE>addr_expr</CODE> can
+be any expression; therefore, memory indirections can be specified in a
+single expression. The next example illustrates memory indirection:</P>
+
+<PRE>mem_name[mem_name[3]]</PRE>
+
+<P><P CLASS="Body"><A NAME="pgfId=699"></A>In the above example, <CODE>mem_name[3]</CODE>
+addresses word three of the memory called <CODE>mem_name</CODE> . The value
+at word three is the index into <CODE>mem_name</CODE> that is used by the
+memory address <CODE>mem_name[mem_name[3]]</CODE> . As with bit-selects,
+the address bounds given in the declaration of the memory determine the
+effect of the address expression. If the index is out of the address bounds
+or if any bit in the address is <CODE>x</CODE> or <CODE>z</CODE> , then
+the value of the reference shall be <CODE>x</CODE> .</P>
+
+<P><P CLASS="Note"><A NAME="pgfId=700"></A>NOTE--There is no mechanism to
+express bit-selects or part-selects of memory elements directly. If this
+is required, then the memory element has to be first transferred to an appropriately
+sized temporary register.</P>
+
+<P><P CLASS="SubSection"><A NAME="pgfId=702"></A>Strings</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=706"></A>String operands shall be treated
+as constant numbers consisting of a sequence of 8-bit ASCII codes, one per
+character. Any Verilog HDL operator can manipulate string operands. The
+operator shall behave as though the entire string were a single numeric
+value.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=1272"></A>When a variable is larger than
+required to hold the value being assigned, the contents after the assignment
+shall be padded on the left with zeros. This is consistent with the padding
+that occurs during assignment of non-string values.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=704"></A>The following example declares
+a string variable large enough to hold 14 characters and assigns a value
+to it. The example then manipulates the string using the concatenation operator.</P>
+
+<PRE><B>module</B> string_test;
+<B>reg</B> [8*14:1]&nbsp;stringvar;
+<B>initial </B>
+	<B>begin</B>
+	stringvar&nbsp;=&nbsp;&quot;Hello&nbsp;world&quot;;
+   <B>$display</B> (&quot;%s is stored as %h&quot;, stringvar, stringvar);
+   stringvar&nbsp;=&nbsp;{stringvar,&quot;!!!&quot;};
+   <B>$display</B> (&quot;%s is stored as %h&quot;, stringvar, stringvar);
+<B>end</B>
+<B>endmodule</B></PRE>
+
+<P><P CLASS="Body"><A NAME="pgfId=709"></A>The result of simulating the
+above description is:</P>
+
+<PRE>Hello world is stored as 00000048656c6c6f20776f726c64Hello world!!! is stored as 48656c6c6f20776f726c64212121</PRE>
+
+<P><P CLASS="SubSubSect"><A NAME="pgfId=712"></A>String operations</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=713"></A>The common string operations
+copy, concatenate, and compare are supported by Verilog HDL operators. Copy
+is provided by simple assignment. Concatenation is provided by the concatenation
+operator. Comparison is provided by the equality operators.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=503"></A>When manipulating string values
+in vector variables, at least <CODE>8*n</CODE> bits shall be required in
+the vector, where <CODE>n</CODE> is the number of characters in the string.</P>
+
+<P><P CLASS="SubSubSect"><A NAME="pgfId=716"></A>String value padding and
+potential problems</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=717"></A>When strings are assigned to
+variables, the values stored shall be padded on the left with zeros. Padding
+can affect the results of comparison and concatenation operations. The comparison
+and concatenation operators shall not distinguish between zeros resulting
+from padding and the original string characters.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=1275"></A>The following example illustrates
+the potential problem.</P>
+
+<PRE><B>reg</B> [8*10:1]&nbsp;s1,&nbsp;s2;
+<B>initial begin</B>
+	s1&nbsp;=&nbsp;&quot;Hello&quot;;	s2&nbsp;=&nbsp;&quot;&nbsp;world!&quot;;
+<B>   if</B> ({s1,s2}&nbsp;==&nbsp;&quot;Hello&nbsp;world!&quot;) <B>$display</B> (&quot;strings&nbsp;are&nbsp;equal&quot;);
+<B>end</B></PRE>
+
+<P><P CLASS="Body"><A NAME="pgfId=721"></A>The comparison in the example
+above fails because during the assignment the string variables get padded
+as illustrated in the next example:</P>
+
+<PRE>s1&nbsp;=&nbsp;000000000048656c6c6fs2&nbsp;=&nbsp;00000020776f726c6421</PRE>
+
+<P><P CLASS="Body"><A NAME="pgfId=723"></A>The concatenation of <CODE>s1</CODE>
+and <CODE>s2</CODE> includes the zero padding, resulting in the following
+value:</P>
+
+<PRE>000000000048656c6c6f00000020776f726c6421</PRE>
+
+<P><P CLASS="Body"><A NAME="pgfId=725"></A>Since the string &quot;Hello
+world!&quot; contains no zero padding, the comparison fails, as shown below:</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=726"></A>&nbsp;</P>
+
+<P><IMG SRC="ch04-7.gif" WIDTH="416" HEIGHT="94" NATURALSIZEFLAG="3" ALIGN=
+"BOTTOM"> <P CLASS="Body"><A NAME="pgfId=727"></A>The above comparison yields
+a result of zero, which is equivalent to false.</P>
+
+<P><P CLASS="SubSubSect"><A NAME="pgfId=729"></A>Null string handling</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=730"></A>The null string (<CODE> &quot;&quot;</CODE>
+) shall be considered equivalent to the ASCII value zero (0), which is different
+from a string <CODE>&quot;0&quot;</CODE> .</P>
+
+<P><HR ALIGN=LEFT></P>
+
+<P><A HREF="ch04.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A 
+HREF="ch04.1.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch04.3.htm">Next&nbsp;&nbsp;page</A>
+</BODY>
+</HTML>

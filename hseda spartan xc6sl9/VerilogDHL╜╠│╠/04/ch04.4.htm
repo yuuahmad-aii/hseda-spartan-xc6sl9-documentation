@@ -1,0 +1,164 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Mac">
+  <LINK REL="STYLESHEET" HREF="ch04.css">
+  <TITLE> 4.4	Expression bit lengths </TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><A NAME="pgfId=749"></A><HR ALIGN=LEFT></P>
+
+<P><A HREF="ch04.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A 
+HREF="ch04.3.htm">Previous&nbsp;&nbsp;page</A></P>
+
+<H1>4.4 Expression bit lengths</H1>
+
+<P><P CLASS="Body"><A NAME="pgfId=750"></A>Controlling the number of bits
+that are used in expression evaluations is important if consistent results
+are to be achieved. Some situations have a simple solution, for example,
+if a bit-wise and operation is specified on two 16-bit registers, then the
+result is a 16-bit value. However, in some situations it is not obvious
+how many bits are used to evaluate an expression, or what size the result
+should be.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=508"></A>For example, should an arithmetic
+add of two 16-bit values perform the evaluation using 16 bits, or should
+the evaluation use 17 bits in order to allow for a possible carry overflow?
+The answer depends on the type of device being modeled, and whether that
+device handles carry overflow. The Verilog HDL uses the bit length of the
+operands to determine how many bits to use while evaluating an expression.
+The bit length rules are shown below. In the case of the addition operator,
+the bit length of the largest operand, including the left-hand side of an
+assignment, shall be used.</P>
+
+<PRE><B>reg</B> [15:0] a, b; // 16 bit registers
+<B>reg</B> [15:0] sumA; // 16 bit register
+<B>reg</B> [16:0] sumB; // 17 bit register
+sumA = a + b;    // expression evaluates using 16 bits
+sumB = a + b;    // expression evaluates using 17 bits</PRE>
+
+<P><P CLASS="SubSection"><A NAME="pgfId=765"></A>Rules for expression bit
+lengths</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=766"></A>The rules governing the expression
+bit lengths have been formulated so that most practical situations have
+a natural solution.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=767"></A>The number of bits of an expression
+(known as the size of the expression) shall be determined by the operands
+involved in the expression and the context in which the expression is given.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=768"></A>A <I>self-determined expression</I>
+is one where the bit length of the expression is solely determined by the
+expression itself--for example, an expression representing a delay value.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=769"></A>A <I>context-determined expression</I>
+is one where the bit length of the expression is determined by the bit length
+of the expression and by the fact that it is part of another expression.
+For example, the bit size of the right-hand side expression of an assignment
+depends on itself and the size of the left-hand side.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=770"></A>Table&nbsp;4-23 shows how the
+form of an expression shall determine the bit lengths of the results of
+the expression. In Table&nbsp;4-23, <CODE>i</CODE> , <CODE>j</CODE> , and
+<CODE>k</CODE> represent expressions of an operand, and<CODE> L(i)</CODE>
+represents the bit length of the operand represented by <CODE>i</CODE> .</P>
+
+<P><TABLE BORDER="1" CELLSPACING="2" CELLPADDING="0">
+<CAPTION ALIGN="TOP"><P CLASS="TableTitle"><A NAME="pgfId=878"></A>Table&nbsp;4-25: Bit lengths
+resulting from expressions</CAPTION>
+<TR>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=464"></A>Expression</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=486"></A>Bit&nbsp;length</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=753"></A>Comments</TH></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=771"></A>unsized constant number</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=772"></A>same as integer</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=776"></A>&nbsp;</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=777"></A>sized constant number</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=778"></A>as given</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=779"></A>&nbsp;</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=780"></A>i op j, where op is:<BR>
++ - * / % &amp; | ^ ^~ ~^</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=782"></A>max(L(i),L(j))</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=783"></A>&nbsp;</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=784"></A>op i, where op is:<BR>
++, -, ~</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=785"></A>L(i)</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=786"></A>&nbsp;</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=790"></A>i op j, where op is:<BR>
+=== !== == != &amp;&amp; || &gt; &gt;= &lt; &lt;=</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=935"></A>1 bit</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=936"></A>All operands are self-determined</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=938"></A>op i, where op is:<BR>
+&amp; ~&amp; | ~| ^ ~^ ^~</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=940"></A>1 bit</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=941"></A>All operands are self-determined</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=943"></A>i op j, where op is:<BR>
+&gt;&gt;, &lt;&lt;</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=944"></A>L(i)</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=945"></A>j is self-determined</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=946"></A>i ? j : k</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=947"></A>max(L(j),L(k))</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=948"></A>i is self-determined</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=949"></A>{i,...,j}</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=950"></A>L(i)+..+L(j)</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=951"></A>All operands are self-determined</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=953"></A>{i{j,..,k}}</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=954"></A>i*(L(j)+..+L(k))</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=955"></A>All operands are self-determined</TD></TR>
+</TABLE>
+</P>
+
+<P><P CLASS="SubSection"><A NAME="pgfId=754"></A>An example of an expression
+bit length problem</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=755"></A>During the evaluation of an expression,
+interim results shall take the size of the largest operand (in case of an
+assignment, this also includes the left-hand side). Care must be taken to
+prevent loss of a significant bit during expression evaluation. The example
+below describes how the bit lengths of the operands could result in the
+loss of a significant bit.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=862"></A>Given the following declarations</P>
+
+<PRE><B>reg</B> [15:0] a, b, answer; // 16-bit registers</PRE>
+
+<P><P CLASS="Body"><A NAME="pgfId=865"></A>The intent is to evaluate the
+expression:</P>
+
+<PRE>answer = (a + b) &gt;&gt; 1; // won't work properly</PRE>
+
+<P><P CLASS="Body"><A NAME="pgfId=1163"></A>Where <CODE>a</CODE> and <CODE>b</CODE>
+are to be added, which may result in an overflow, and then shifted right
+by one bit to preserve the carry bit in the 16-bit <CODE>answer</CODE> .</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=1164"></A>A problem arises, however, because
+all operands in the expression are of a 16-bit width. Therefore, the expression
+(<CODE> a + b</CODE> ) produces an interim result that is only 16 bits wide,
+thus losing the carry bit before the evaluation performs the 1-bit right
+shift operation.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=1165"></A>The solution is to force the
+expression (<CODE> a + b</CODE> ) to evaluate using at least 17 bits. For
+example, adding an integer value of 0 to the expression will cause the evaluation
+to be performed using the bit size of integers. The following example will
+produce the intended result:</P>
+
+<PRE>answer = (a + b + 0) &gt;&gt; 1; // will work correctly</PRE>
+
+<P><HR ALIGN=LEFT></P>
+
+<P><A HREF="ch04.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A 
+HREF="ch04.3.htm">Previous&nbsp;&nbsp;page</A>
+</BODY>
+</HTML>

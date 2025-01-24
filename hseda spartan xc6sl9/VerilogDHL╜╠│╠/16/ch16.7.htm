@@ -1,0 +1,387 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch16.css">
+<TITLE> 16.7	`timescale</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch16.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch16.6.htm">Previous&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=219">
+ </A>
+16.7	<A NAME="56660">
+ </A>
+`<A NAME="marker=53">
+ </A>
+timescale</H1>
+<P CLASS="Body">
+<A NAME="pgfId=221">
+ </A>
+This directive specifies the time unit and time precision of the modules that follow it. The time unit is the unit of measurement for time values such as the simulation time and delay values.</P>
+<P CLASS="Body">
+<A NAME="pgfId=154">
+ </A>
+To use modules with different time units in the same design, the following timescale constructs are useful:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=224">
+ </A>
+the <B CLASS="Keyword">
+`timescale</B>
+ compiler directive to specify the unit of measurement for time and precision of time in the modules in the design</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=225">
+ </A>
+the<B CLASS="codebold">
+ </B>
+<B CLASS="Keyword">
+$printtimescale</B>
+ system task to display the time unit and precision of a module</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=226">
+ </A>
+ the <B CLASS="Keyword">
+$time</B>
+ and <B CLASS="Keyword">
+$realtime</B>
+ system functions, the <B CLASS="Keyword">
+$timeformat</B>
+<B CLASS="codebold">
+ </B>
+system task, and the <CODE CLASS="code">
+%t</CODE>
+ format specification to specify how time information is reported</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=227">
+ </A>
+The <B CLASS="Keyword">
+`timescale</B>
+ compiler directive specifies the unit of measurement for time and delay values and the degree of accuracy for delays in all modules that follow this directive until another <B CLASS="Keyword">
+`timescale</B>
+ compiler directive is read.</P>
+<P CLASS="Body">
+<A NAME="pgfId=302">
+ </A>
+The syntax for the <B CLASS="Keyword">
+`timescale</B>
+ directive is as follows:</P>
+<PRE CLASS="BNFDef"><A NAME="pgfId=229"> </A>
+<B CLASS="Keyword">	`timescale</B>
+ time_unit / time_precision</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=230">
+ </A>
+The<CODE CLASS="code">
+ time_unit</CODE>
+<A NAME="marker=54">
+ </A>
+ argument specifies the unit of measurement for times and delays.</P>
+<P CLASS="Body">
+<A NAME="pgfId=231">
+ </A>
+The<CODE CLASS="code">
+ </CODE>
+<B CLASS="codebold">
+</B>
+<A NAME="marker=55">
+ </A>
+<CODE CLASS="code">
+time_precision</CODE>
+ argument specifies how delay values are rounded before being used in simulation. The values used are accurate to within the unit of time that is specified here. The smallest<CODE CLASS="code">
+ time_precision</CODE>
+ argument of all the<CODE CLASS="code">
+ </CODE>
+<B CLASS="Keyword">
+`timescale</B>
+ compiler directives in the design determines the time unit of the simulation. </P>
+<P CLASS="Body">
+<A NAME="pgfId=232">
+ </A>
+The <CODE CLASS="code">
+time_precision</CODE>
+ argument must be at least as precise as the <CODE CLASS="code">
+time_unit</CODE>
+ argument; it cannot specify a longer unit of time than<CODE CLASS="code">
+ time_unit</CODE>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=233">
+ </A>
+The integers in these arguments specify an order of magnitude for the size of the value; the valid integers are 1, 10, and 100. The character strings represent units of measurement; the valid character strings are <B CLASS="Keyword">
+s</B>
+, <B CLASS="Keyword">
+ms</B>
+, <B CLASS="Keyword">
+us</B>
+, <B CLASS="Keyword">
+ns</B>
+, <B CLASS="Keyword">
+ps</B>
+, and <B CLASS="Keyword">
+fs</B>
+. </P>
+<P CLASS="Body">
+<A NAME="pgfId=234">
+ </A>
+The units of measurement specified by these character strings are as follows:</P>
+<TABLE BORDER="1">
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=165">
+ </A>
+Table&nbsp;16-1: Arguments of time_precision</P>
+</CAPTION>
+<TR>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=309">
+ </A>
+Character String</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=179">
+ </A>
+<B CLASS="bold">
+Unit of Measurement</B>
+</P>
+</TH>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=259">
+ </A>
+s</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=274">
+ </A>
+seconds</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=275">
+ </A>
+ms</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=276">
+ </A>
+milliseconds</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=277">
+ </A>
+us</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=278">
+ </A>
+microseconds</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=279">
+ </A>
+ns</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=280">
+ </A>
+nanoseconds</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=281">
+ </A>
+ps</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=285">
+ </A>
+picoseconds</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=286">
+ </A>
+fs</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=299">
+ </A>
+femtoseconds</P>
+</TD>
+</TR>
+</TABLE>
+<P CLASS="Body">
+<A NAME="pgfId=237">
+ </A>
+Examples:</P>
+<P CLASS="Body">
+<A NAME="pgfId=155">
+ </A>
+The following example shows how this directive is used:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=238"> </A>
+<B CLASS="Keyword">`timescale</B>
+ 1 <B CLASS="Keyword">ns</B>
+ / 1 <B CLASS="Keyword">ps</B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=239">
+ </A>
+Here, all time values in the modules that follow the directive are multiples of 1 nanosecond because the <CODE CLASS="code">
+time_unit</CODE>
+ argument is &quot;1 ns&quot;. Delays are rounded to real numbers with three decimal places--or, precise to within one thousandth of a nanosecond--because the <CODE CLASS="code">
+time_precision</CODE>
+ argument is &quot;1 ps,&quot; or one thousandth of a nanosecond.</P>
+<P CLASS="Body">
+<A NAME="pgfId=240">
+ </A>
+Consider the following example:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=241"> </A>
+<B CLASS="Keyword">`timescale</B>
+ 10 <B CLASS="Keyword">us</B>
+ / 100 <B CLASS="Keyword">ns</B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=242">
+ </A>
+The time values in the modules that follow this directive are multiples of 10 microseconds because the <CODE CLASS="code">
+time_unit</CODE>
+ argument is &quot;10 us&quot;. Delays are rounded to within one tenth of a microsecond because the <CODE CLASS="code">
+time_precision</CODE>
+ argument is &quot;100 ns,&quot; or one tenth of a microsecond.</P>
+<P CLASS="Body">
+<A NAME="pgfId=243">
+ </A>
+<A NAME="marker=57">
+ </A>
+The following example shows a <B CLASS="Keyword">
+`timescale</B>
+ directive in the context of a module:</P>
+<P CLASS="Body">
+<A NAME="pgfId=244">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch16-6.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=246">
+ </A>
+The <B CLASS="Keyword">
+`timescale</B>
+<CODE CLASS="code">
+ 10 ns / 1 ns</CODE>
+ compiler directive specifies that the time unit for module test is 10 nanoseconds. As a result, the time values in the module are multiples of 10 nanoseconds, rounded to the nearest 1 nanosecond and, therefore, the value stored in parameter <B CLASS="codebold">
+d</B>
+ is scaled to a delay of 16 nanoseconds. This means that the value 0 is assigned to reg <CODE CLASS="code">
+set</CODE>
+ at simulation time 16 nanoseconds (1.6 x 10 ns), and the value 1 at simulation time 32 nanoseconds.</P>
+<P CLASS="Body">
+<A NAME="pgfId=247">
+ </A>
+Parameter <CODE CLASS="code">
+d</CODE>
+ retains its value no matter what timescale is in effect.</P>
+<P CLASS="Body">
+<A NAME="pgfId=248">
+ </A>
+These simulation times are determined as follows:</P>
+<OL>
+<P CLASS="NumberedLista">
+<A NAME="pgfId=249">
+ </A>
+a)	The value of parameter <CODE CLASS="code">
+d</CODE>
+ is rounded from 1.55 to 1.6 according to the time precision.</P>
+<P CLASS="NumberedListb">
+<A NAME="pgfId=250">
+ </A>
+b)	The time unit of the module is 10 nanoseconds, and the precision is 1 nanoseconds, so the delay of parameter <CODE CLASS="code">
+d</CODE>
+ is scaled from 1.6 to 16.</P>
+<P CLASS="NumberedListb">
+<A NAME="pgfId=251">
+ </A>
+c)	The assignment of 0 to reg <CODE CLASS="code">
+set</CODE>
+ is scheduled at simulation time 16 nanoseconds and the assignment of 1 at simulation time 32 nanoseconds. The time values are not rounded when the assignments are scheduled. </P>
+</OL>
+<P CLASS="SubSection">
+<A NAME="pgfId=162">
+ </A>
+<A NAME="98881">
+ </A>
+`<A NAME="marker=47">
+ </A>
+unconnected_drive and <A NAME="marker=48">
+ </A>
+`nounconnected_drive </P>
+<P CLASS="Body">
+<A NAME="pgfId=283">
+ </A>
+<EM CLASS="-">
+All unconnected input ports of a module appearing between the directive</EM>
+s <B CLASS="Keyword">
+`unconnected_drive</B>
+<EM CLASS="-">
+ and </EM>
+<B CLASS="Keyword">
+`nounconnected_drive</B>
+<EM CLASS="-">
+ are pulled up or pulled down instead of</EM>
+ the normal default. </P>
+<P CLASS="Body">
+<A NAME="pgfId=310">
+ </A>
+The directive <B CLASS="Keyword">
+`unconnected_drive</B>
+<EM CLASS="-">
+ takes one of two arguments--</EM>
+<B CLASS="Keyword">
+pull1</B>
+<EM CLASS="-">
+ or </EM>
+<B CLASS="Keyword">
+pull0</B>
+<CODE CLASS="code">
+.</CODE>
+<EM CLASS="-">
+ When </EM>
+<B CLASS="Keyword">
+pull1</B>
+<EM CLASS="-">
+ is specified, all unconnected input ports are automatically pulled up. When </EM>
+<B CLASS="Keyword">
+pull0</B>
+<EM CLASS="-">
+ is specified, unconnected ports are pulled down. These directives must be specified in pair, and outside modules only.</EM>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=311">
+ </A>
+</P>
+<HR><P><A HREF="ch16.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch16.6.htm">Previous&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

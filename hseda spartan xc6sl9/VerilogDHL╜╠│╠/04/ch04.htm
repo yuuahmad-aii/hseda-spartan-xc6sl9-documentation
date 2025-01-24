@@ -1,0 +1,73 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Mac">
+  <LINK REL="STYLESHEET" HREF="ch04.css">
+  <TITLE> Section 4</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><A NAME="pgfId=462"></A><HR ALIGN="LEFT"></P>
+
+<P><A HREF="../../../Verilog.htm">Back&nbsp;to&nbsp;Verilog&nbsp;LRM&nbsp;index</A>&nbsp;&nbsp;<A HREF="ch04.htm">Next&nbsp;Section&nbsp;(disabled)</A>&nbsp;<A HREF="../03/ch03.htm">Previous&nbsp;Section</A>&nbsp;<A HREF="ch04.1.htm">Next&nbsp;page</A></P>
+
+<H1>Section 4</H1>
+
+<H1><A NAME="pgfId=524"></A>Expressions</H1>
+
+<P><P CLASS="Body"><A NAME="pgfId=525"></A>This section describes the operators
+and operands available in the Verilog HDL, and how to use them to form expressions.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=547"></A>An <I>expression</I> is a construct
+that combines <I>operands</I> with <I>operators</I> to produce a result
+that is a function of the values of the operands and the semantic meaning
+of the operator. Any legal operand, such as a net bit-select, without any
+operator is considered an expression. Wherever a value is needed in a Verilog
+HDL statement, an expression can be used.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=580"></A>Some statement constructs require
+an expression to be a <I>constant expression</I> . The operands of a constant
+expression consists of constant numbers and predefined parameter names only,
+but can use any of the operators defined in Table&nbsp;4-1.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=527"></A>A <I>scalar expression</I> is
+an expression that evaluates to a scalar (single bit) result. If the expression
+evaluates to a vector (multi-bit) result, then the least significant bit
+of the result is used as the scalar result.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=526"></A>The data types <B>integer</B>
+, <B>time</B> , <B>real</B> , and <B>realtime</B> share the same traits
+as the data type <B>reg</B> when used in expressions. Descriptions pertaining
+to register usage apply to variables of these types as well.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=528"></A>An <I>operand</I> can be one
+of the following:</P>
+
+<UL>
+  <LI><A NAME="pgfId=529"></A>constant number (including real)
+  <LI><A NAME="pgfId=895"></A>net
+  <LI><A NAME="pgfId=531"></A>register variables of type reg, integer, time,
+  real, and realtime
+  <LI><A NAME="pgfId=532"></A>net bit-select
+  <LI><A NAME="pgfId=533"></A>bit-select of type reg, integer, and time
+  <LI><A NAME="pgfId=534"></A>net part-select
+  <LI><A NAME="pgfId=535"></A>part-select of type reg, integer, and time
+  <LI><A NAME="pgfId=536"></A>memory element
+  <LI><A NAME="pgfId=537"></A>a call to a user-defined function or system
+  defined function that returns any of the above
+</UL>
+
+<P><A HREF="ch04.1.htm#pgfId=539" CLASS="Hypertext">4.1 Operators </A></P>
+
+<P><A HREF="ch04.2.htm#pgfId=626" CLASS="Hypertext">4.2 Operands </A></P>
+
+<P><A HREF="ch04.3.htm#pgfId=732" CLASS="Hypertext">4.3 Minimum, typical,
+maximum delay expressions</A></P>
+
+<P><A HREF="ch04.4.htm#pgfId=749" CLASS="Hypertext">4.4 Expression bit lengths
+</A></P>
+
+<P><HR ALIGN="LEFT"></P>
+
+<P><A HREF="../../../Verilog.htm">Back&nbsp;to&nbsp;Verilog&nbsp;LRM&nbsp;index</A>&nbsp;&nbsp;<A HREF="ch04.htm">Next&nbsp;Section&nbsp;(disabled)</A>&nbsp;<A HREF="../03/ch03.htm">Previous&nbsp;Section</A>&nbsp;<A HREF="ch04.1.htm">Next&nbsp;page</A>
+</BODY>
+</HTML>

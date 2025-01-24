@@ -1,0 +1,73 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Mac">
+  <LINK REL="STYLESHEET" HREF="ch03.css">
+  <TITLE> 3.11&nbsp;&nbsp;&nbsp;Name spaces</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><A NAME="pgfId=612"></A><HR ALIGN=LEFT></P>
+
+<P><A HREF="ch03.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A 
+HREF="ch03.a.htm">Previous&nbsp;&nbsp;page</A></P>
+
+<H1>3.11&nbsp;&nbsp;&nbsp;Name spaces</H1>
+
+<P><P CLASS="Body"><A NAME="pgfId=613"></A>In Verilog HDL, there are six
+name spaces; two are global and four are local. The global name spaces are
+<I>Definitions</I> and <I>Text macros</I> . The <I>definitions name space</I>
+unifies all the <B>module</B> (section&nbsp;12.1), <B>macromodule</B> (section&nbsp;12.1),
+and <B>primitive</B> (section&nbsp;8.1) definitions. That is, a module and
+a macromodule or a primitive cannot have the same name.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=445"></A>The <I>text macro name space</I>
+is global. Since text macro names are introduced and used with a leading
+<B>`</B> character, they remain unambiguous with any other name space (section&nbsp;16.3).
+The text macro names are defined in the linear order of appearance in the
+set of input files that make up the description of the design unit. Subsequent
+definitions of the same name override the previous definitions for the balance
+of the input files.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=615"></A>There are four local name spaces:
+<I>Block</I> , <I>Module</I> , <I>Port</I> , and <I>Specify</I> <I>Block</I>
+.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=616"></A>The <I>block name space</I> is
+introduced by the named block (section&nbsp;9.8), function (section&nbsp;10.3)
+and task (section&nbsp;10.2) constructs. It unifies the definitions of the
+named blocks, functions, tasks and the register type of declaration (section&nbsp;3.2.2).
+The register type of declaration includes <B>reg</B>, <B>integer</B>, <B>time</B>,
+<B>real</B>, <B>realtime</B>, <B>event</B> and <B>parameter</B> declarations.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=619"></A>The <I>module name space</I>
+is introduced by the <B>module</B>, <B>macromodule</B>, and <B>primitive</B>
+constructs. It unifies the definition of functions, tasks, named blocks,
+instance names, net type of declaration and register type of declaration.
+The net type of declaration includes <B>wire</B>, <B>wor</B>, <B>wand</B>,
+<B>tri</B>, <B>trior</B>, <B>triand</B>, <B>tri0</B>, <B>tri1</B>, <B>trireg</B>,
+<B>supply0</B>, and <B>supply1</B> (section&nbsp;3.7).</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=620"></A>The <I>port name space</I> is
+introduced by the <B>module</B>, <B>macromodule</B>, <B>primitive</B>, <B>function</B>
+and <B>task</B> constructs. It provides a means of structurally defining
+connections between two objects that are in two different name spaces. The
+connection can be unidirectional (either <B>input</B> or <B>output</B>)
+or bidirectional (<B> inout</B>). The port name space overlaps the module
+and the block name spaces. Essentially, the port name space specifies the
+type of connection between names in different name spaces. The port type
+of declarations include <B>input</B>, <B>output</B> and <B>inout</B> (section&nbsp;12.3).
+A port name introduced in the port name space may be reintroduced in the
+module name space by declaring a register or a wire with the same name as
+the port name.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=623"></A>The <I>specify</I> <I>block</I>
+<I>name space</I> is introduced by the <B>specify</B> construct (section&nbsp;13.2).
+A <B>specparam</B> name can be defined and used only in the specify block
+name space. Any other type of name can not be defined in this name space.</P>
+
+<P><HR ALIGN=LEFT></P>
+
+<P><A HREF="ch03.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A 
+HREF="ch03.a.htm">Previous&nbsp;&nbsp;page</A>
+</BODY>
+</HTML>

@@ -1,0 +1,63 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Mac">
+  <LINK REL="STYLESHEET" HREF="ch03.css">
+  <TITLE> 3.4&nbsp;&nbsp;&nbsp;Strengths</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><A NAME="pgfId=452"></A><HR ALIGN=LEFT></P>
+
+<P><A HREF="ch03.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A 
+HREF="ch03.3.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch03.5.htm">Next&nbsp;&nbsp;page</A></P>
+
+<H1>3.4&nbsp;&nbsp;&nbsp;Strengths</H1>
+
+<P><P CLASS="Body"><A NAME="pgfId=454"></A>There are two types of <I>strengths</I>
+that can be specified in a net declaration. They are as follows:</P>
+
+<P><P CLASS="Type"><A NAME="pgfId=378"></A><I>charge strength</I> &nbsp;&nbsp;&nbsp;shall
+be used when declaring a net of type <B>trireg</B></P>
+
+<P><P CLASS="Type"><A NAME="pgfId=384"></A><I>drive strength</I> &nbsp;&nbsp;&nbsp;shall
+be used when placing a continuous assignment on a net in the same statement
+that declares the net</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=457"></A>Gate declarations can also specify
+a drive strength. See Section 7 for more information on gates and for information
+on strengths.</P>
+
+<P><P CLASS="SubSection"><A NAME="pgfId=546"></A>Charge strength</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=460"></A>The charge strength specification
+shall be used only with trireg nets. A trireg net shall be used to model
+charge storage; charge strength shall specify the relative size of the capacitance
+indicated by one of the following keywords:</P>
+
+<UL>
+  <LI><A NAME="pgfId=461"></A><B>small</B>
+  <LI><A NAME="pgfId=462"></A><B>medium</B>
+  <LI><A NAME="pgfId=463"></A><B>large</B>
+</UL>
+
+<P><P CLASS="Body"><A NAME="pgfId=464"></A>The default charge strength of
+a trireg net shall be <B>medium</B>.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=418"></A>A trireg<CODE> </CODE>net can
+model a charge storage node whose charge decays over time. The simulation
+time of a charge decay shall be specified in the delay specification for
+the trireg net (see 7.15.2).</P>
+
+<P><P CLASS="SubSection"><A NAME="pgfId=450"></A>Drive strength</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=421"></A>The drive strength specification
+allows a continuous assignment to be placed on a net in the same statement
+that declares that net. See Section 6 for more details. Net strength properties
+are described in detail in Section 7.</P>
+
+<P><HR ALIGN=LEFT></P>
+
+<P><A HREF="ch03.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A 
+HREF="ch03.3.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch03.5.htm">Next&nbsp;&nbsp;page</A>
+</BODY>
+</HTML>

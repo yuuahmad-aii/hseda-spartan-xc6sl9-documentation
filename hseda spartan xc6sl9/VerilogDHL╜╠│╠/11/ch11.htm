@@ -1,0 +1,238 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch11.css">
+<TITLE> Section 11</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="none">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="none">Next&nbsp;&nbsp;page</A></P></DIV>
+<DIV>
+<H1 CLASS="Chapter">
+<A NAME="pgfId=48">
+ </A>
+Section 11<A NAME="74699">
+ </A>
+</H1>
+<H1 CLASS="ChapterTitle">
+<A NAME="pgfId=76">
+ </A>
+<A NAME="marker=3">
+ </A>
+<A NAME="marker=4">
+ </A>
+Disabling of named blocks and tasks</H1>
+<P CLASS="Body">
+<A NAME="pgfId=60">
+ </A>
+The <I CLASS="Emphasis">
+disable</I>
+<A NAME="marker=6">
+ </A>
+ statement provides the ability to terminate the activity associated with concurrently active procedures, while maintaining the structured nature of Verilog HDL procedural descriptions. The disable statement gives a mechanism for terminating a task before it executes all its statements, breaking from a looping statement, or skipping statements in order to continue with another iteration of a looping statement. It is useful for handling exception conditions such as hardware interrupts and global resets.</P>
+<P CLASS="Body">
+<A NAME="pgfId=78">
+ </A>
+The <A NAME="marker=7">
+ </A>
+disable statement has the following <A NAME="marker=8">
+ </A>
+<A NAME="marker=9">
+ </A>
+syntax form:</P>
+<P CLASS="Body">
+<A NAME="pgfId=79">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch11-1.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=80">
+ </A>
+Syntax&nbsp;11-1: Syntax of disable statement</P>
+<P CLASS="Body">
+<A NAME="pgfId=62">
+ </A>
+Either form of <A NAME="marker=45">
+ </A>
+disable statement shall terminate the activity of a task or a named block. Execution shall resume at the statement following the block or following the task enabling statement. All activities enabled within the named block or task shall be terminated as well. If <A NAME="marker=13">
+ </A>
+task enable statements are nested--that is, one task enables another, and that one enables yet another--then disabling a task within the chain shall disable all tasks downward on the chain. If a task is enabled more than once, then disabling such a task shall disable all activations of the task.</P>
+<P CLASS="Body">
+<A NAME="pgfId=82">
+ </A>
+The results of the following activities which may be initiated by a task are not specified if the task is disabled:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=57">
+ </A>
+Results of output and inout arguments</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=95">
+ </A>
+Scheduled, but not executed, non-blocking assignments</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=96">
+ </A>
+Procedural continuous assignments (<B CLASS="Keyword">
+assign</B>
+ and <B CLASS="Keyword">
+force</B>
+ statements)</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=77">
+ </A>
+The disable statement can be used within blocks and tasks to disable the particular block or task containing the disable statement. The disable statement cannot be used to disable functions.</P>
+<P CLASS="Body">
+<A NAME="pgfId=54">
+ </A>
+Examples:</P>
+<P CLASS="Body">
+<A NAME="pgfId=56">
+ </A>
+1. This example illustrates how a block disables itself:</P>
+<P CLASS="Body">
+<A NAME="pgfId=83">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch11-2.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=85">
+ </A>
+2. This example shows the disable statement being used within a named block in a manner similar to a forward goto. The next statement executed after the disable statement is the one following the named block.</P>
+<P CLASS="Body">
+<A NAME="pgfId=86">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch11-3.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=88">
+ </A>
+3. This example shows the disable statement being used as an early return from a task. However, a task disabling itself using a disable statement is not a short-hand for the <I CLASS="Emphasis">
+return</I>
+ statement found in programming languages.</P>
+<P CLASS="Body">
+<A NAME="pgfId=66">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch11-4.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=69">
+ </A>
+4. This example shows the disable statement being used in an equivalent way to the two statements <I CLASS="Emphasis">
+continue</I>
+ and <I CLASS="Emphasis">
+break</I>
+ in the C programming language. The example illustrates control code that would allow a named block to execute until a loop counter reaches <CODE CLASS="code">
+n</CODE>
+ iterations or until the variable <CODE CLASS="code">
+a</CODE>
+ gets set to the value of <CODE CLASS="code">
+b</CODE>
+. The named block <CODE CLASS="code">
+break</CODE>
+ contains the code that executes until <CODE CLASS="code">
+a == b</CODE>
+, at which point the <CODE CLASS="code">
+disable break;</CODE>
+ statement terminates execution of that block. The named block <CODE CLASS="code">
+continue</CODE>
+ contains the code that executes for each iteration of the <CODE CLASS="code">
+for</CODE>
+ loop. Each time this code executes the <CODE CLASS="code">
+disable continue;</CODE>
+ statement, the <CODE CLASS="code">
+continue</CODE>
+ block terminates and execution passes to the next iteration of the <CODE CLASS="code">
+fo</CODE>
+r loop. For each iteration of the <CODE CLASS="code">
+continue</CODE>
+ block, a set of statements executes if <CODE CLASS="code">
+(a != 0</CODE>
+). Another set of statements executes <CODE CLASS="code">
+if(a!=b)</CODE>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=58">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch11-5.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=90">
+ </A>
+5. This example shows the disable statement being used to concurrently disable a sequence of timing controls and the task <CODE CLASS="code">
+action</CODE>
+, when the <CODE CLASS="code">
+reset</CODE>
+ event occurs. The example shows a <CODE CLASS="code">
+fork</CODE>
+/<CODE CLASS="code">
+join</CODE>
+ block within which is a named sequential block (<CODE CLASS="code">
+event_expr</CODE>
+) and a disable statement that waits for occurrence of the event <CODE CLASS="code">
+reset</CODE>
+. The sequential block and the wait for <CODE CLASS="code">
+reset</CODE>
+ execute in parallel. The <CODE CLASS="code">
+event_expr</CODE>
+ block waits for one occurrence of event <CODE CLASS="code">
+ev1</CODE>
+ and three occurrences of event <CODE CLASS="code">
+trig</CODE>
+. When these four events have happened, plus a delay of <CODE CLASS="code">
+d</CODE>
+ time units, the task <CODE CLASS="code">
+action</CODE>
+ executes. When the event <CODE CLASS="code">
+reset</CODE>
+ occurs, regardless of events within the sequential block, the <CODE CLASS="code">
+fork</CODE>
+/<CODE CLASS="code">
+join</CODE>
+ block terminates--including the task <CODE CLASS="code">
+action</CODE>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=91">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch11-6.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=92">
+ </A>
+6. The next example is a behavioral description of a retriggerable monostable. The named event <CODE CLASS="code">
+retrig</CODE>
+ restarts the monostable time period. If <CODE CLASS="code">
+retrig</CODE>
+ continues to occur within 250 time units, then <CODE CLASS="code">
+q</CODE>
+ will remain at <CODE CLASS="code">
+1.</CODE>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=93">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch11-7.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=94">
+ </A>
+</P>
+</DIV>
+<HR><P><A HREF="none">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="none">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

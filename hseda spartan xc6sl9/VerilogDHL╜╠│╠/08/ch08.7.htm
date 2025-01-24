@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch08.css">
+<TITLE> 8.7	Mixing level and edge-sensitive descriptions </TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch08.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch08.6.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch08.8.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=378">
+ </A>
+8.7	M<A NAME="marker=152">
+ </A>
+<A NAME="marker=153">
+ </A>
+ixing level and edge-sensitive descriptions </H1>
+<P CLASS="Body">
+<A NAME="pgfId=379">
+ </A>
+<EM CLASS="-">
+UDP definitions allow a mixing of the level-sensitive and the edge-sensitive constructs in the same table. When the input changes, the edge-sensitive cases are processed first, followed by level-sensitive cases. Thus, when level-sensitive and edge-sensitive cases specify different output values, the result is specified by the level-sensitive case.</EM>
+ </P>
+<P CLASS="Body">
+<A NAME="pgfId=393">
+ </A>
+<EM CLASS="-">
+Example:</EM>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=380">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch08-11.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=381">
+ </A>
+<EM CLASS="-">
+In this example, the preset and clear logic is level-sensitive. Whenever the preset and clear combination is </EM>
+<CODE CLASS="code">
+01</CODE>
+<EM CLASS="-">
+, the output has value </EM>
+<CODE CLASS="code">
+1</CODE>
+<EM CLASS="-">
+. Similarly, whenever the preset and clear combination has value </EM>
+<CODE CLASS="code">
+10</CODE>
+<EM CLASS="-">
+, the output has value</EM>
+ <CODE CLASS="code">
+0</CODE>
+<EM CLASS="-">
+.</EM>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=382">
+ </A>
+<EM CLASS="-">
+The remaining logic is sensitive to edges of the clock. In the normal clocking cases, the flip-flop is sensitive to the rising clock edge as indicated by an</EM>
+<B CLASS="codebold">
+ </B>
+<CODE CLASS="code">
+r</CODE>
+<EM CLASS="-">
+ in the clock field in those entries. The insensitivity to the falling edge of clock is indicated by a hyphen (-</EM>
+)<EM CLASS="-">
+ in the output field (see <A HREF="ch08.1.htm#62691" CLASS="XRef">
+See : UDP table symbols</A>
+) for the entry with an </EM>
+<CODE CLASS="code">
+f</CODE>
+<EM CLASS="-">
+ as the value of clock. Remember that the desired output for this input transition must be specified to avoid unwanted </EM>
+<CODE CLASS="code">
+x</CODE>
+<EM CLASS="-">
+ values at the output. The last two entries show that the transitions in</EM>
+ <CODE CLASS="code">
+j</CODE>
+<EM CLASS="-">
+ and </EM>
+<CODE CLASS="code">
+k</CODE>
+<EM CLASS="-">
+ inputs do not change the output on a steady low or high </EM>
+<CODE CLASS="code">
+clock</CODE>
+<EM CLASS="-">
+.</EM>
+<A NAME="marker=155">
+ </A>
+<A NAME="marker=156">
+ </A>
+</P>
+<HR><P><A HREF="ch08.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch08.6.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch08.8.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

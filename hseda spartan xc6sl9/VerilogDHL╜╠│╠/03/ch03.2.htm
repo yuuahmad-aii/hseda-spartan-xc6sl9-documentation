@@ -1,0 +1,116 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Mac">
+  <LINK REL="STYLESHEET" HREF="ch03.css">
+  <TITLE> 3.2&nbsp;&nbsp;&nbsp;Nets and registers</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><A NAME="pgfId=409"></A><HR ALIGN=LEFT></P>
+
+<P><A HREF="ch03.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A 
+HREF="ch03.1.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch03.3.htm">Next&nbsp;&nbsp;page</A></P>
+
+<H1>3.2&nbsp;&nbsp;&nbsp;Nets and registers</H1>
+
+<P><P CLASS="Body"><A NAME="pgfId=410"></A>There are two main groups of
+data types: the register data types and the net data types. These two groups
+differ in the way that they are assigned and hold values. They also represent
+different hardware structures.</P>
+
+<P><P CLASS="SubSection"><A NAME="pgfId=412"></A>Nets</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=408"></A>The <I>net</I> data types shall
+represent physical connections between structural entities, such as gates.
+A net shall not store a value (except for the trireg net). Instead, its
+value shall be determined by the value of its driver, such as a continuous
+assignment or a gate. See Section 6 and Section 7 for definitions of these
+constructs. If no driver is connected to a net, its value shall be high-impedance
+(<CODE> z</CODE> )--unless the net is a trireg, in which case, it shall
+hold the previously driven value.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=422"></A>The syntax for net declarations
+is as follows:</P>
+
+<PRE><A NAME="pgfId=1333"></A> 
+net_declaration ::=  net_type  [ <B>vectored</B> | <B>scalared</B> ] [range] [delay3] list_of_net_identifiers <B>;</B> | <B>trireg</B>  [ <B>vectored</B> | <B>scalared</B> ] [charge_strength] [range] [delay3] list_of_net_identifiers <B>;</B>| net_type  [ <B>vectored</B> | <B>scalared</B> ] [drive_strength] [range] [delay3] &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;list_of_net_decl_assignments <B>;</B>
+<A NAME="pgfId=1334"></A> 
+net_type ::=  <B>wire</B> |  <B>tri</B> | <B>tri1</B> | <B>supply0</B> | <B>wand</B> | <B>triand</B> | <B>tri0</B> | <B>supply1</B> | <B>wor</B> | <B>trior</B>
+<A NAME="pgfId=1335"></A> 
+range ::= <B>[</B> msb_constant_expression <B>:</B> lsb_constant_expression <B>]</B>
+<A NAME="pgfId=1336"></A> 
+drive_strength ::= <B> &nbsp;(</B> strength0 <B>,</B> strength1 <B>)</B> | <B>(</B> strength1 <B>,</B> strength0 <B>)</B>| <B>(</B> strength0 <B>,</B> <B>highz1</B> <B>)</B>| <B>(</B> strength1 <B>,</B> <B>highz0</B> <B>)</B>| <B>(</B> <B>highz1</B> <B>,</B> strength0 <B>)</B>| <B>(</B> <B>highz0</B> <B>,</B> strength1 <B>)</B>
+<A NAME="pgfId=1337"></A> 
+strength0 ::= <B>supply0</B> | <B>strong0</B> | <B>pull0</B> | <B>weak0</B>
+<A NAME="pgfId=1338"></A> 
+strength1 ::= <B>supply1</B> | <B>strong1</B> | <B>pull1</B> | <B>weak1</B>
+<A NAME="pgfId=1339"></A> 
+charge_strength ::=  <B>( small </B>) | <B>( medium )</B> | <B>( large )</B>
+<A NAME="pgfId=1340"></A> 
+delay3 ::= <B>#</B> delay_value |<B> # (</B> delay_value [ <B>,</B> delay_value [ <B>,</B> delay_value ] ] <B>)</B>
+<A NAME="pgfId=1341"></A> 
+delay_value ::=  unsigned_number | <I>parameter</I>
+_identifier | constant_mintypmax_expression
+<A NAME="pgfId=1342"></A> 
+list_of_net_decl_assignments ::= net_decl_assignment { <B>,</B> net_decl_assignment }
+<A NAME="pgfId=1343"></A> 
+net_decl_assignment ::= net_identifier <B>=</B> expression
+<A NAME="pgfId=1344"></A> 
+list_of_net_identifiers ::= net_identifier { <B>,</B> net_identifier }</PRE>
+
+<P><P CLASS="BNFCapBody"><A NAME="pgfId=370"></A>Syntax&nbsp;3-1: Syntax
+for net declaration</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=625"></A>The first two forms of net declaration
+are described in this section. The third form, called net assignment, is
+described in Section 6.</P>
+
+<P><P CLASS="SubSection"><A NAME="pgfId=416"></A>Registers</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=415"></A>A <I>register</I> is an abstraction
+of a data storage element. The keyword for the register data type is <B>reg</B>.
+A register shall store a value from one assignment to the next. An assignment
+statement in a procedure acts as a trigger that changes the value in the
+data storage element. The default initialization value for a <B>reg</B>
+data type shall be the unknown value, <CODE>x</CODE> .</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=575"></A>The syntax for reg declarations
+is as follows:</P>
+
+<PRE><A NAME="pgfId=1352"></A> 
+reg_declaration ::= <B>reg</B> [range] list_of_register_identifiers <B>;</B>
+<A NAME="pgfId=1353"></A> 
+time_declaration ::= <B>time</B>   list_of_register_identifiers <B>;</B>
+<A NAME="pgfId=1354"></A> 
+integer_declaration ::= <B>integer</B>  list_of_register_identifiers <B>;</B>
+<A NAME="pgfId=1355"></A> 
+real_declaration ::= <B>real</B> real_identifier { <B>,</B> real_identifier } <B>;</B>
+<A NAME="pgfId=1356"></A> 
+realtime_declaration ::= <B>realtime</B> real_identifier { <B>,</B> real_identifier } <B>;</B>
+<A NAME="pgfId=1357"></A> 
+list_of_register_identifiers ::= register_name { <B>,</B> register_name }
+<A NAME="pgfId=1358"></A> 
+register_name ::= register_identifier | memory_identifier <B>[</B> upper_limit_constant_expression <B>:</B> lower_limit_constant_expression <B>]</B></PRE>
+
+<P><P CLASS="BNFCapBody"><A NAME="pgfId=411"></A>Syntax&nbsp;3-2: Syntax
+for reg declaration</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=414"></A>If a set of nets or registers
+share the same characteristics, they can be declared in the same declaration
+statement.</P>
+
+<P><P CLASS="Caution"><A NAME="pgfId=419"></A>CAUTION</P>
+
+<P><P CLASS="CautionBody"><A NAME="pgfId=420"></A>Registers can be assigned
+negative values, but, when a register is an operand in an expression, its
+value shall be treated as an unsigned (positive) value. For example, a minus
+one (-1) in a four-bit register shall function as the number 15 if the register
+is an expression operand. See 4.1.3 for more information on Numeric Conventions
+in Expressions.</P>
+
+<P><HR ALIGN=LEFT></P>
+
+<P><A HREF="ch03.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A 
+HREF="ch03.1.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch03.3.htm">Next&nbsp;&nbsp;page</A>
+</BODY>
+</HTML>

@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch14.css">
+<TITLE> 14.8	Simulation time system functions</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch14.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch14.7.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch14.9.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=963">
+ </A>
+14.8	<A NAME="42329">
+ </A>
+<A NAME="94333">
+ </A>
+Simulation time system functions</H1>
+<P CLASS="Body">
+<A NAME="pgfId=964">
+ </A>
+The following system functions provide access to current simulation time:</P>
+<P CLASS="Body">
+<A NAME="pgfId=945">
+ </A>
+<B CLASS="Keyword">
+	$time		$stime		$realtime</B>
+</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=969">
+ </A>
+<A NAME="marker=215">
+ </A>
+$time</P>
+<DIV>
+<H2 CLASS="Syntax">
+<A NAME="pgfId=970">
+ </A>
+</H2>
+<PRE CLASS="BNFDef"><A NAME="pgfId=1060"> </A>
+	<B CLASS="Keyword">integer $time</B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=971">
+ </A>
+The <B CLASS="Keyword">
+$time</B>
+ system function returns an integer that is a 64 bit time, scaled to the timescale unit of the module that invoked it. </P>
+</DIV>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=972">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=974">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch14-26.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=976">
+ </A>
+In this example, the reg <CODE CLASS="code">
+set</CODE>
+ is assigned the value 0 at simulation time 16 nanoseconds, and the value 1 at simulation time 32 nanoseconds. Note that these times do not match the times reported by <CODE CLASS="code">
+$time</CODE>
+. The time values returned by the <B CLASS="Keyword">
+$time</B>
+ system function are determined by the following steps:</P>
+<OL>
+<P CLASS="NumberedLista">
+<A NAME="pgfId=978">
+ </A>
+a)	The simulation times 16 and 32 nanoseconds are scaled to 1.6 and 3.2 because the time unit for the module is 10 nanoseconds, so time values reported by this module are multiples of 10 nanoseconds.</P>
+<P CLASS="NumberedListb">
+<A NAME="pgfId=979">
+ </A>
+b)	The value 1.6 is rounded to 2, and 3.2 is rounded to 3 because the <B CLASS="Keyword">
+$time</B>
+ system function returns an integer. The time precision does not cause rounding of these values.<A NAME="marker=398">
+ </A>
+</P>
+</OL>
+<P CLASS="SubSection">
+<A NAME="pgfId=980">
+ </A>
+$stime</P>
+</DIV>
+<DIV>
+<H2 CLASS="Syntax">
+<A NAME="pgfId=1577">
+ </A>
+</H2>
+<PRE CLASS="BNFDef"><A NAME="pgfId=1579"> </A>
+	<B CLASS="Keyword">integer $stime</B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1580">
+ </A>
+The <B CLASS="Keyword">
+$stime</B>
+ system function returns an unsigned integer that is a 32 bit time, scaled to the timescale unit of the module that invoked it. If the actual simulation time does not fit in 32 bits, the low order 32 bits of the current simulation time are returned.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1578">
+ </A>
+</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=1576">
+ </A>
+<A NAME="marker=399">
+ </A>
+$realtime</P>
+</DIV>
+<DIV>
+<H2 CLASS="Syntax">
+<A NAME="pgfId=981">
+ </A>
+</H2>
+<PRE CLASS="BNFDef"><A NAME="pgfId=1015"> </A>
+	<B CLASS="Keyword">real $realtime</B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=982">
+ </A>
+The <B CLASS="Keyword">
+$realtime</B>
+ system function returns a real number time that, like <B CLASS="Keyword">
+$time</B>
+, is scaled to the time unit of the module that invoked it.</P>
+</DIV>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=983">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=986">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch14-27.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=1038">
+ </A>
+In this example, the event times in the register <CODE CLASS="code">
+set</CODE>
+ are multiples of 10 nanoseconds because 10 nanoseconds is the time unit of the module. They are real numbers because <B CLASS="Keyword">
+$realtime</B>
+ returns a real number.</P>
+</DIV>
+<HR><P><A HREF="ch14.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch14.7.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch14.9.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

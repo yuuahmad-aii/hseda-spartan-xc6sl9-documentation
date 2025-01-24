@@ -1,0 +1,524 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch14.css">
+<TITLE> 14.6	PLA modeling system tasks</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch14.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch14.5.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch14.7.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=793">
+ </A>
+14.6	<A NAME="88052">
+ </A>
+PLA modeling system tasks</H1>
+<P CLASS="Body">
+<A NAME="pgfId=961">
+ </A>
+The modeling of PLA devices is provided in the Verilog HDL by a group of system tasks. This section describes the syntax and use of these system tasks and the formats of the logic array personality file.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1197">
+ </A>
+<A NAME="marker=443">
+ </A>
+<A NAME="marker=505">
+ </A>
+Syntax:</P>
+<P CLASS="Body">
+<A NAME="pgfId=1398">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch14-23.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=1399">
+ </A>
+Syntax&nbsp;14-9: Syntax for PLA modeling system task </P>
+<P CLASS="Body">
+<A NAME="pgfId=1420">
+ </A>
+The PLA syntax allows for the <A NAME="marker=507">
+ </A>
+<A NAME="marker=508">
+ </A>
+system tasks as shown in <A HREF="ch14.6.htm#46231" CLASS="XRef">
+See : PLA system tasks</A>
+:</P>
+<TABLE BORDER="1">
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=1261">
+ </A>
+Table&nbsp;14-20<A NAME="46231">
+ </A>
+: PLA system tasks</P>
+</CAPTION>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1150">
+ </A>
+<B CLASS="Keyword">
+$async$and$array</B>
+<A NAME="marker=526">
+ </A>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1158">
+ </A>
+<B CLASS="Keyword">
+$sync$and$array</B>
+<A NAME="marker=527">
+ </A>
+ </P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1235">
+ </A>
+<B CLASS="Keyword">
+$async$and$plane</B>
+<A NAME="marker=518">
+ </A>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1165">
+ </A>
+<B CLASS="Keyword">
+$sync$and$plane</B>
+<A NAME="marker=686">
+ </A>
+</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1170">
+ </A>
+<B CLASS="Keyword">
+$async$nand$array</B>
+<A NAME="marker=513">
+ </A>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1198">
+ </A>
+<B CLASS="Keyword">
+$sync$nand$array</B>
+<A NAME="marker=521">
+ </A>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1236">
+ </A>
+<B CLASS="Keyword">
+$async$nand$plane</B>
+<A NAME="marker=519">
+ </A>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1199">
+ </A>
+<B CLASS="Keyword">
+$sync$nand$plane</B>
+<A NAME="marker=687">
+ </A>
+</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1227">
+ </A>
+<B CLASS="Keyword">
+$async$or$array</B>
+<A NAME="marker=514">
+ </A>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1233">
+ </A>
+<B CLASS="Keyword">
+$sync$or$array</B>
+<A NAME="marker=515">
+ </A>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1237">
+ </A>
+<B CLASS="Keyword">
+$async$or$plane</B>
+<A NAME="marker=520">
+ </A>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1234">
+ </A>
+<B CLASS="Keyword">
+$sync$or$plane</B>
+<A NAME="marker=516">
+ </A>
+</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1166">
+ </A>
+<B CLASS="Keyword">
+$async$nor$array</B>
+<A NAME="marker=517">
+ </A>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1167">
+ </A>
+<B CLASS="Keyword">
+$sync$nor$array</B>
+<A NAME="marker=522">
+ </A>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1238">
+ </A>
+<B CLASS="Keyword">
+$async$nor$plane</B>
+<A NAME="marker=524">
+ </A>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1168">
+ </A>
+<B CLASS="Keyword">
+$sync$nor$plane</B>
+<A NAME="marker=523">
+ </A>
+</P>
+</TD>
+</TR>
+</TABLE>
+<P CLASS="SubSection">
+<A NAME="pgfId=1421">
+ </A>
+<A NAME="marker=529">
+ </A>
+<A NAME="marker=530">
+ </A>
+Array types</P>
+<P CLASS="Body">
+<A NAME="pgfId=1422">
+ </A>
+The modeling of both <A NAME="marker=531">
+ </A>
+synchronous and <A NAME="marker=532">
+ </A>
+asynchronous arrays is provided by the PLA system tasks. The synchronous forms control the time at which the logic array will be evaluated and the outputs will be updated. For the asynchronous forms, the evaluations are automatically performed whenever an input term changes value or any word in the <A NAME="marker=533">
+ </A>
+personality memory is changed. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1423">
+ </A>
+For both the synchronous and asynchronous forms, the output terms are updated without any delay.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1424">
+ </A>
+Examples:</P>
+<P CLASS="Body">
+<A NAME="pgfId=1425">
+ </A>
+An example of an asynchronous system call is as follows:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1426"> </A>
+<B CLASS="Keyword">$async$and$array</B>
+<A NAME="marker=534"> </A>
+(mem,{a1,a2,a3,a4,a5,a6,a7},{b1,b2,b3});</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1427">
+ </A>
+An example of a synchronous system call is as follows:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1428"> </A>
+<B CLASS="Keyword">$sync$or$plane</B>
+<A NAME="marker=535"> </A>
+(mem,{a1,a2,a3,a4,a5,a6,a7}, {b1,b2,b3});</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1429">
+ </A>
+Note that the input terms and the output terms are always represented as <A NAME="marker=536">
+ </A>
+concatenations<A NAME="marker=537">
+ </A>
+<A NAME="marker=538">
+ </A>
+.<A NAME="marker=539">
+ </A>
+<A NAME="marker=540">
+ </A>
+</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=1430">
+ </A>
+<A NAME="marker=542">
+ </A>
+<A NAME="marker=543">
+ </A>
+Array logic types</P>
+<P CLASS="Body">
+<A NAME="pgfId=1431">
+ </A>
+The logic arrays are modeled with and, or, nand, and nor <A NAME="marker=544">
+ </A>
+logic <A NAME="marker=545">
+ </A>
+planes. This applies to all array types and formats.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1432">
+ </A>
+Examples:</P>
+<P CLASS="Body">
+<A NAME="pgfId=1433">
+ </A>
+An example of a nor plane system call is as follows:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1434"> </A>
+<B CLASS="Keyword">$async$nor$array</B>
+<A NAME="marker=546"> </A>
+(mem,{a1,a2,a3,a4,a5,a6,a7},{b1,b2,b3});</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1435">
+ </A>
+An example of a nand plane system call is as follows:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1436"> </A>
+<B CLASS="Keyword">$sync$nand$plane</B>
+<A NAME="marker=547"> </A>
+(mem,{a1,a2,a3,a4,a5,a6,a7}, {b1,b2,b3});</PRE>
+<P CLASS="SubSection">
+<A NAME="pgfId=1437">
+ </A>
+Logic array personality declaration and loading</P>
+<P CLASS="Body">
+<A NAME="pgfId=1438">
+ </A>
+The <A NAME="marker=548">
+ </A>
+logic array <A NAME="marker=549">
+ </A>
+personality is <A NAME="marker=550">
+ </A>
+<A NAME="marker=551">
+ </A>
+<A NAME="marker=552">
+ </A>
+declared as an array of registers that is as wide as the number of input terms and as deep as the number of output terms. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1439">
+ </A>
+The personality of the logic array is normally <A NAME="marker=554">
+ </A>
+<A NAME="marker=555">
+ </A>
+<A NAME="marker=556">
+ </A>
+loaded into the memory from a text data file using the system tasks <A NAME="marker=557">
+ </A>
+<B CLASS="Keyword">
+$readmemb</B>
+ or<B CLASS="Keyword">
+ $readmemh</B>
+<A NAME="marker=558">
+ </A>
+. Alternatively, the personality data may be written directly into the memory using the procedural assignment statements. PLA personalities may be changed dynamically at any time during simulation, simply by changing the contents of the memory. The new personality will be reflected on the outputs of the logic array at the next evaluation.</P>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=1440">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=1441">
+ </A>
+The following example shows a logic array with <CODE CLASS="code">
+n</CODE>
+ input terms and <CODE CLASS="code">
+m</CODE>
+ output terms:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=790"> </A>
+<B CLASS="Keyword">reg</B>
+<A NAME="marker=110"> </A>
+ [1:n] mem[1:m];</PRE>
+<P CLASS="Note">
+<A NAME="pgfId=813">
+ </A>
+NOTE--Put PLA input terms, output terms, and memory in ascending order, as shown in examples in this section. </P>
+<P CLASS="SubSection">
+<A NAME="pgfId=839">
+ </A>
+<A NAME="12326">
+ </A>
+<A NAME="marker=204">
+ </A>
+<A NAME="marker=205">
+ </A>
+<A NAME="marker=206">
+ </A>
+<A NAME="marker=207">
+ </A>
+Logic array personality formats </P>
+<P CLASS="Body">
+<A NAME="pgfId=1442">
+ </A>
+Two separate personality formats are supported by Verilog HDL and are differentiated by using either an <A NAME="marker=559">
+ </A>
+<A NAME="marker=560">
+ </A>
+array system call or a plane system call. The array system call allows for a <CODE CLASS="code">
+1</CODE>
+ or <CODE CLASS="code">
+0</CODE>
+ in the memory that has been declared. A <CODE CLASS="code">
+1</CODE>
+ means take the input value and a <CODE CLASS="code">
+0</CODE>
+ means do not take the input value. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1443">
+ </A>
+The <A NAME="marker=561">
+ </A>
+<A NAME="marker=562">
+ </A>
+plane system call complies with the University of California at Berkeley format for <A NAME="marker=563">
+ </A>
+espresso. Each bit of the data stored in the array has the following meaning:</P>
+<P CLASS="Type">
+<A NAME="pgfId=1444">
+ </A>
+ <I CLASS="Emphasis">
+0</I>
+	 take the complemented input value</P>
+<P CLASS="Type">
+<A NAME="pgfId=1445">
+ </A>
+<I CLASS="Emphasis">
+ 1</I>
+ 	 take the true input value</P>
+<P CLASS="Type">
+<A NAME="pgfId=1446">
+ </A>
+ <I CLASS="Emphasis">
+x</I>
+ 	 take the &quot;worst case&quot; of the input value</P>
+<P CLASS="Type">
+<A NAME="pgfId=1447">
+ </A>
+ <I CLASS="Emphasis">
+z</I>
+	 don't-care; the input value is of no significance</P>
+<P CLASS="Type">
+<A NAME="pgfId=1448">
+ </A>
+<I CLASS="Emphasis">
+ ?</I>
+ 	 same as z</P>
+<P CLASS="Body">
+<A NAME="pgfId=1449">
+ </A>
+Examples:</P>
+<P CLASS="Body">
+<A NAME="pgfId=1450">
+ </A>
+1. The following example illustrates an array with logic equations: 		</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1451"> </A>
+<A NAME="marker=565"> </A>
+b1 = a1 &amp; a2 b2 = a3 &amp; a4 &amp; a5 b3 = a5 &amp; a6 &amp; a7 </PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1452">
+ </A>
+The PLA personality is as follows:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1453"> </A>
+1100000 in mem[1] 0011100 in mem[2]0000111 in mem[3]</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1454">
+ </A>
+The module for the PLA is as follows:</P>
+<P CLASS="Body">
+<A NAME="pgfId=1457">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch14-24.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=1458">
+ </A>
+Where the file <CODE CLASS="code">
+array.dat</CODE>
+ contains the binary data for the PLA personality:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1459"> </A>
+    1100000    0011100    0000111</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1460">
+ </A>
+2. An <A NAME="marker=568">
+ </A>
+example of the usage of the plane format tasks follows. The logical function of this PLA is shown first, followed by the PLA personality in the new format, the Verilog HDL description using the <B CLASS="Keyword">
+$async$and$plane</B>
+ system task, and finally the result of running the simulation.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1461">
+ </A>
+The logical function of the PLA is as follows: </P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1462"> </A>
+b[1] = a[1] &amp; ~a[2];b[2] = a[3];b[3] = ~a[1] &amp; ~a[3];b[4] = 1;</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1463">
+ </A>
+The PLA personality is as follows:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1464"> </A>
+3'b10?3'b??13'b0?03'b???</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1466">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch14-25.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=1467">
+ </A>
+The output is as follows:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1468"> </A>
+111 -&gt; 0101000 -&gt; 0011xxx -&gt; xxx1101 -&gt; 1101<A NAME="marker=570"> </A>
+<A NAME="marker=571"> </A>
+<A NAME="marker=572"> </A>
+<A NAME="marker=573"> </A>
+<A NAME="marker=574"> </A>
+<A NAME="marker=575"> </A>
+<A NAME="marker=581"> </A>
+</PRE>
+</DIV>
+<HR><P><A HREF="ch14.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch14.5.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch14.7.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

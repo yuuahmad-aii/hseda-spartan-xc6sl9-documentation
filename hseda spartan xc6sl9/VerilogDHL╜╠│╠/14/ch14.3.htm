@@ -1,0 +1,642 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch14.css">
+<TITLE> 14.3	Timescale system tasks</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch14.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch14.2.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch14.4.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=987">
+ </A>
+14.3	<A NAME="88165">
+ </A>
+Timescale system tasks</H1>
+<P CLASS="Body">
+<A NAME="pgfId=989">
+ </A>
+The following system tasks display and set timescale information: </P>
+<OL>
+<P CLASS="NumberedLista">
+<A NAME="pgfId=990">
+ </A>
+a)	&nbsp;<B CLASS="Keyword">
+$printtimescale </B>
+</P>
+<P CLASS="NumberedListb">
+<A NAME="pgfId=991">
+ </A>
+b)	&nbsp;<B CLASS="Keyword">
+$timeformat</B>
+</P>
+</OL>
+<P CLASS="SubSection">
+<A NAME="pgfId=992">
+ </A>
+<A NAME="marker=219">
+ </A>
+<A NAME="marker=220">
+ </A>
+$printtimescale</P>
+<P CLASS="Body">
+<A NAME="pgfId=994">
+ </A>
+The<B CLASS="boldemphasis">
+ </B>
+<B CLASS="Keyword">
+$printtimescale</B>
+ system task displays the time unit and precision for a particular module.</P>
+<DIV>
+<H2 CLASS="Syntax">
+<A NAME="pgfId=995">
+ </A>
+</H2>
+<PRE CLASS="BNFDef"><A NAME="pgfId=996"> </A>
+	<B CLASS="Keyword">$printtimescale</B>
+ [ <B CLASS="Keyword">(</B>
+ hierarchical_name<B CLASS="Keyword"> )</B>
+ ] <B CLASS="Keyword">;</B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1241">
+ </A>
+This system task can be specified with or without an argument.</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=998">
+ </A>
+When no argument is specified, <B CLASS="Keyword">
+$printtimescale</B>
+ displays the time unit and precision of the module that is the current scope.</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=999">
+ </A>
+When an argument is specified, <B CLASS="Keyword">
+$printtimescale</B>
+<CODE CLASS="code">
+ </CODE>
+displays the time unit and precision of the module passed to it.</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=1000">
+ </A>
+The timescale information appears in the following format:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1001"> </A>
+Time scale of (module_name) is unit / precision</PRE>
+</DIV>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=1002">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=1003">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch14-15.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=1005">
+ </A>
+In this example, module <CODE CLASS="code">
+a_dat</CODE>
+ invokes the <B CLASS="Keyword">
+$printtimescale</B>
+ system task to display timescale information about another module <CODE CLASS="code">
+c_dat</CODE>
+, which is instantiated in module <CODE CLASS="code">
+b_dat</CODE>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1006">
+ </A>
+The information about<CODE CLASS="code">
+ c_dat</CODE>
+ is displayed in the following format:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1007"> </A>
+Time scale of (b_dat.c1) is 1ns / 1ns<A NAME="marker=222"> </A>
+<A NAME="marker=223"> </A>
+</PRE>
+<P CLASS="SubSection">
+<A NAME="pgfId=1008">
+ </A>
+<A NAME="73834">
+ </A>
+<A NAME="marker=224">
+ </A>
+<A NAME="marker=225">
+ </A>
+<A NAME="marker=226">
+ </A>
+$timeformat</P>
+</DIV>
+<DIV>
+<H2 CLASS="Syntax">
+<A NAME="pgfId=1013">
+ </A>
+</H2>
+<PRE CLASS="BNFDef"><A NAME="pgfId=1014"> </A>
+<B CLASS="Keyword">	$timeformat</B>
+ [ <B CLASS="Keyword">(</B>
+ units_number <B CLASS="Keyword">,</B>
+ precision_number <B CLASS="Keyword">,</B>
+ suffix_string <B CLASS="Keyword">,</B>
+ minimum_field_width <B CLASS="Keyword">)</B>
+ ] <B CLASS="Keyword">;</B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1010">
+ </A>
+The<B CLASS="boldemphasis">
+ </B>
+<B CLASS="Keyword">
+$timeformat</B>
+ system task performs the following two functions:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=1011">
+ </A>
+It specifies how the <CODE CLASS="code">
+%t</CODE>
+ format specification reports time information for the <B CLASS="Keyword">
+$write</B>
+,<CODE CLASS="code">
+ </CODE>
+<B CLASS="Keyword">
+$display</B>
+,<CODE CLASS="code">
+ </CODE>
+<B CLASS="Keyword">
+$strobe</B>
+,<CODE CLASS="code">
+ </CODE>
+<B CLASS="Keyword">
+$monitor</B>
+,<CODE CLASS="code">
+ </CODE>
+<B CLASS="Keyword">
+$fwrite</B>
+,<CODE CLASS="code">
+ </CODE>
+<B CLASS="Keyword">
+$fdisplay</B>
+,<CODE CLASS="code">
+ </CODE>
+<B CLASS="Keyword">
+$fstrobe</B>
+,<CODE CLASS="code">
+ </CODE>
+and <B CLASS="Keyword">
+$fmonitor</B>
+ group of system tasks.</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=1012">
+ </A>
+It specifies the time unit for delays entered interactively.</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=1291">
+ </A>
+The units number argument must be an integer in the range from 0 to 15. This argument represents the time unit as follows:</P>
+<TABLE>
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=800">
+ </A>
+Table&nbsp;14-7<CODE CLASS="code">
+: </CODE>
+<B CLASS="Keyword">
+$timeformat</B>
+ units_number arguments</P>
+</CAPTION>
+<TR>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=937">
+ </A>
+Unit Number</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=940">
+ </A>
+Time Unit</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=950">
+ </A>
+Unit Number</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=953">
+ </A>
+Time Unit</P>
+</TH>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=960">
+ </A>
+0</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=962">
+ </A>
+1 s</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=968">
+ </A>
+-8</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=977">
+ </A>
+10 ns</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=984">
+ </A>
+-1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=988">
+ </A>
+100 ms</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=993">
+ </A>
+-9</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1009">
+ </A>
+1 ns</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1323">
+ </A>
+-2</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1324">
+ </A>
+10 ms</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1325">
+ </A>
+-10</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1326">
+ </A>
+100 ps</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1327">
+ </A>
+-3</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1328">
+ </A>
+1 ms</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1329">
+ </A>
+-11</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1332">
+ </A>
+10 ps</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1333">
+ </A>
+-4</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1334">
+ </A>
+100 us</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1335">
+ </A>
+-12</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1336">
+ </A>
+1 ps</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1337">
+ </A>
+-5</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1338">
+ </A>
+10 us</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1354">
+ </A>
+-13</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1356">
+ </A>
+100 fs</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1357">
+ </A>
+-6</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1358">
+ </A>
+1 us</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1359">
+ </A>
+-14</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1360">
+ </A>
+10 fs</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1361">
+ </A>
+-7</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1362">
+ </A>
+100 ns</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1363">
+ </A>
+-15</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1364">
+ </A>
+1 fs</P>
+</TD>
+</TR>
+</TABLE>
+<P CLASS="Body">
+<A NAME="pgfId=1018">
+ </A>
+The<B CLASS="boldemphasis">
+ </B>
+<B CLASS="Keyword">
+$timeformat</B>
+<CODE CLASS="code">
+ s</CODE>
+ystem task performs the following two operations:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=1019">
+ </A>
+It sets the time unit for all later entered delays entered interactively. </LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=1020">
+ </A>
+It sets the time unit, precision number, suffix string, and minimum field width for all <CODE CLASS="code">
+%t f</CODE>
+ormats specified in all modules that follow in the source description until another <B CLASS="Keyword">
+$timeformat</B>
+ <CODE CLASS="code">
+s</CODE>
+ystem task is invoked.</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=1021">
+ </A>
+The default <B CLASS="Keyword">
+$timeformat</B>
+<CODE CLASS="code">
+ s</CODE>
+ystem task arguments are as follows:</P>
+<TABLE BORDER="1">
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=773">
+ </A>
+Table&nbsp;14-8<CODE CLASS="code">
+: </CODE>
+<B CLASS="Keyword">
+$timeformat </B>
+default value for arguments</P>
+</CAPTION>
+<TR>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=1017">
+ </A>
+Argument</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=1365">
+ </A>
+Default</P>
+</TH>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1366">
+ </A>
+<CODE CLASS="code">
+units_number</CODE>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1371">
+ </A>
+the smallest time precision argument of all the <B CLASS="Keyword">
+`timescale</B>
+ compiler directives in the source description</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1368">
+ </A>
+precision_number</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1369">
+ </A>
+0</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1370">
+ </A>
+suffix_string</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1374">
+ </A>
+a null character string</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1372">
+ </A>
+minimum_field_width</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1373">
+ </A>
+20</P>
+</TD>
+</TR>
+</TABLE>
+</DIV>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=1024">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=1292">
+ </A>
+The following example shows the use of <CODE CLASS="code">
+%t</CODE>
+ with the <B CLASS="Keyword">
+$timeformat</B>
+<CODE CLASS="code">
+ s</CODE>
+ystem task to specify a uniform time unit, time precision, and format for timing information.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1025">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch14-16.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=1027">
+ </A>
+The contents of file <CODE CLASS="code">
+a1.dat</CODE>
+ is as follows:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1028"> </A>
+a1_dat: 0.00000 ns in1= x o1=xa1_dat: 10.00000 ns in1= 0 o1=xa1_dat: 20.00000 ns in1= 1 o1=0a1_dat: 30.00000 ns in1= 1 o1=1</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1033">
+ </A>
+The contents of file <CODE CLASS="code">
+a2.dat </CODE>
+are as follows:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1029"> </A>
+a2_dat: 0.00000 ns in2=x o2=xa2_dat: 10.00000 ns in2=0 o2=xa2_dat: 20.00000 ns in2=1 o2=0a2_dat: 30.00000 ns in2=1 o2=1</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1030">
+ </A>
+In this example, the times of events written to the files by the <B CLASS="Keyword">
+$fmonitor</B>
+<CODE CLASS="code">
+ </CODE>
+system task in modules<CODE CLASS="code">
+ a1_dat</CODE>
+ and <CODE CLASS="code">
+a2_dat</CODE>
+ are reported as multiples of 1 nanosecond--even though the time units for these modules are 1 femtosecond and 1 picosecond respectively--because the first argument of the <B CLASS="Keyword">
+$timeformat</B>
+ system task is <CODE CLASS="code">
+-9 </CODE>
+and<CODE CLASS="code">
+ </CODE>
+the <CODE CLASS="code">
+%t </CODE>
+format specification is included in the arguments to <B CLASS="Keyword">
+$fmonitor</B>
+<CODE CLASS="code">
+.</CODE>
+ This time information is reported after the module names with five fractional digits, followed by an<CODE CLASS="code">
+ </CODE>
+&quot;<CODE CLASS="code">
+ns</CODE>
+&quot; character string in a space wide enough for 10 ASCII characters<A NAME="marker=232">
+ </A>
+.<A NAME="marker=233">
+ </A>
+</P>
+</DIV>
+<HR><P><A HREF="ch14.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch14.2.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch14.4.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

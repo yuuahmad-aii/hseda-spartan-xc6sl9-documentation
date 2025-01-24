@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch07.css">
+<TITLE> 7.3	Buf and not gates </TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch07.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch07.2.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch07.4.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=1476">
+ </A>
+7.3	<A NAME="marker=225">
+ </A>
+<A NAME="marker=227">
+ </A>
+<A NAME="marker=228">
+ </A>
+Buf and <A NAME="marker=229">
+ </A>
+<A NAME="marker=230">
+ </A>
+<A NAME="marker=231">
+ </A>
+not gates </H1>
+<P CLASS="Body">
+<A NAME="pgfId=1477">
+ </A>
+The instance declaration of a multiple output logic gate shall begin with one of the following keywords: </P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1478"> </A>
+<B CLASS="Keyword">buf 					not</B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1006">
+ </A>
+The delay specification shall be zero, one, or two delays. If the specification contains two delays, the first delay shall determine the output rise delay, the second delay shall determine the output fall delay, and the smaller of the two delays shall apply to output transitions to <CODE CLASS="code">
+x</CODE>
+. If only one delay is specified, it shall specify both the rise delay and the fall delay. If there is no delay specification, there shall be no propagation delay through the gate.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1479">
+ </A>
+These two logic gates shall have one input and one or more outputs. The last terminal in the terminal list shall connect to the input of the logic gate, and the other terminals shall connect to the outputs of the logic gate.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1480">
+ </A>
+Truth tables for these logic gates with one input and one output is shown in <A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/07/ch07.htm#92284" CLASS="XRef">
+See : Truth tables for multiple output logic gates</A>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1481">
+ </A>
+</P>
+<DIV>
+<MAP NAME="ch07-7">
+</MAP>
+<IMG SRC="ch07-7.gif" USEMAP="#ch07-7">
+</DIV>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=1482">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=1007">
+ </A>
+The following example declares a two output <CODE CLASS="code">
+buf</CODE>
+:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1483"> </A>
+<B CLASS="Keyword">buf</B>
+ b1 (out1, out2, in);</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1484">
+ </A>
+The input is <CODE CLASS="code">
+in.</CODE>
+ The outputs are <CODE CLASS="code">
+out1</CODE>
+ and <CODE CLASS="code">
+out2</CODE>
+. The instance name is <CODE CLASS="code">
+b1</CODE>
+. <A NAME="marker=233">
+ </A>
+<A NAME="marker=234">
+ </A>
+<A NAME="marker=235">
+ </A>
+<A NAME="marker=236">
+ </A>
+<A NAME="marker=237">
+ </A>
+<A NAME="marker=238">
+ </A>
+</P>
+</DIV>
+<HR><P><A HREF="ch07.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch07.2.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch07.4.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

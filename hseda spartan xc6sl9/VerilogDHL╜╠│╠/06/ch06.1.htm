@@ -1,0 +1,322 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch06.css">
+<TITLE> 6.1	Continuous assignments </TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch06.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch06.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch06.2.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=116">
+ </A>
+6.1	<A NAME="marker=28">
+ </A>
+C<A NAME="marker=29">
+ </A>
+ontinuous assignments </H1>
+<P CLASS="Body">
+<A NAME="pgfId=117">
+ </A>
+Continuous assignments shall drive values onto nets, both vector and scalar. This assignment shall occur whenever the value of the right-hand side changes. Continuous assignments provide a way to model combinational logic without specifying an interconnection of gates. Instead, the model specifies the logical expression that drives the net. </P>
+<P CLASS="Body">
+<A NAME="pgfId=118">
+ </A>
+The syntax for continuous assignments is as follows:</P>
+<P CLASS="Body">
+<A NAME="pgfId=119">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch06-1.gif">
+</DIV>
+<DIV>
+<H2 CLASS="BNFCapPage">
+<A NAME="pgfId=120">
+ </A>
+: Syntax for continuous assignment</H2>
+<P CLASS="SubSection">
+<A NAME="pgfId=122">
+ </A>
+The net declaration assignment</P>
+<P CLASS="Body">
+<A NAME="pgfId=123">
+ </A>
+The first two alternatives in the net declaration are discussed in <A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/06/ch03.htm#86941" CLASS="XRef">
+</A>
+ (see <A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/06/ch03.htm#76390" CLASS="XRef">
+</A>
+). The third alternative, the net declaration assignment, allows a continuous assignment to be placed on a net in the same statement that declares the net. </P>
+<P CLASS="Body">
+<A NAME="pgfId=124">
+ </A>
+Example:</P>
+<P CLASS="Body">
+<A NAME="pgfId=125">
+ </A>
+The following is an example of the net declaration form of a continuous assignment:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=99"> </A>
+<B CLASS="Keyword">wire</B>
+ (<B CLASS="Keyword">strong1</B>
+, <B CLASS="Keyword">pull0</B>
+) mynet = enable ;</PRE>
+<P CLASS="Note">
+<A NAME="pgfId=100">
+ </A>
+NOTE--Because a net can be declared only once, only one net declaration assignment can be made for a particular net. This contrasts with the continuous assignment statement; one net can receive multiple assignments of the continuous assignment form.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=127">
+ </A>
+The continuous assignment statement</P>
+<P CLASS="Body">
+<A NAME="pgfId=128">
+ </A>
+The continuous assignment statement shall place a <A NAME="marker=43">
+ </A>
+continuous assignment on a net that has been previously declared, either explicitly by declaration or <A NAME="marker=44">
+ </A>
+implicitly by using its name in the terminal list of a gate, user-defined primitive, or module instance (see <A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/06/ch03.htm#48381" CLASS="XRef">
+</A>
+). </P>
+<P CLASS="Body">
+<A NAME="pgfId=130">
+ </A>
+Assignments on nets shall be continuous and automatic. This means that whenever an operand in the right-hand side expression changes value, the whole right-hand side shall be evaluated and assigned to the left-hand side. </P>
+<P CLASS="Body">
+<A NAME="pgfId=157">
+ </A>
+Examples:</P>
+<P CLASS="Body">
+<A NAME="pgfId=163">
+ </A>
+1. The following is an example of a continuous assignment to a net that has been previously declared:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=164"> </A>
+<B CLASS="Keyword">wire</B>
+<CODE CLASS="code12"> mynet ;</CODE>
+</PRE>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=129"> </A>
+<B CLASS="Keyword">assign</B>
+<CODE CLASS="code12"> (</CODE>
+<B CLASS="Keyword">strong1</B>
+<CODE CLASS="code12">, </CODE>
+<B CLASS="Keyword">pull0</B>
+<CODE CLASS="code12">) mynet = enable ;</CODE>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=92">
+ </A>
+2. The following is an example of the use of a continuous assignment to model a four bit adder with carry. The assignment could not be specified directly in the declaration of the nets because it requires a concatenation on the left-hand side.</P>
+<P CLASS="Body">
+<A NAME="pgfId=105">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch06-2.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=134">
+ </A>
+3. The following example describes a module with one 16-bit output bus. It selects between one of four input busses and connects the selected bus to the output bus.</P>
+<P CLASS="Body">
+<A NAME="pgfId=135">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch06-3.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=137">
+ </A>
+The following sequence of events is experienced during simulation of the above example:</P>
+<OL>
+<P CLASS="NumberedLista">
+<A NAME="pgfId=138">
+ </A>
+a)	The value of <CODE CLASS="code">
+s</CODE>
+, a bus selector input variable, is checked in the assign statement; based on the value of <CODE CLASS="code">
+s</CODE>
+, the net <CODE CLASS="code">
+data</CODE>
+ receives the data from one of the four input busses.</P>
+<P CLASS="NumberedListb">
+<A NAME="pgfId=139">
+ </A>
+b)	The setting of <CODE CLASS="code">
+data</CODE>
+ net triggers the continuous assignment in the net declaration for <CODE CLASS="code">
+busout</CODE>
+; if <CODE CLASS="code">
+enable</CODE>
+ is set, the contents of <CODE CLASS="code">
+data</CODE>
+ are assigned to <CODE CLASS="code">
+busout</CODE>
+; if <CODE CLASS="code">
+enable</CODE>
+ is <CODE CLASS="code">
+0</CODE>
+, the contents of <CODE CLASS="code">
+Zee</CODE>
+ are assigned to <CODE CLASS="code">
+busout</CODE>
+.</P>
+</OL>
+<P CLASS="SubSection">
+<A NAME="pgfId=141">
+ </A>
+<A NAME="marker=53">
+ </A>
+Delays </P>
+<P CLASS="Body">
+<A NAME="pgfId=142">
+ </A>
+A delay given to a continuous assignment shall specify the time duration between a right-hand side operand value change and the assignment made to the left-hand side. If the left-hand side references a scalar net, then the delay shall be treated in the same way as for gate delays--that is, different delays can be given for the output rising, falling and changing to high impedance (see <A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/06/ch07.htm#36723" CLASS="XRef">
+</A>
+).</P>
+<P CLASS="Body">
+<A NAME="pgfId=143">
+ </A>
+If the left-hand side references a vector net, then up to three delays can be applied. The following rules determine which delay controls the assignment:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=144">
+ </A>
+If the right-hand side makes a transition from non-zero to zero, then the falling delay shall be used.</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=145">
+ </A>
+If the right-hand side makes a transition to <CODE CLASS="code">
+z</CODE>
+, then the turn-off delay shall be used.</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=146">
+ </A>
+For all other cases, the rising delay shall be used.</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=147">
+ </A>
+Specifying the delay in a continuous assignment that is part of the net declaration shall be treated different from specifying a net delay and then making a continuous assignment to the net. A delay value can be applied to a net in a net declaration, as in the following example:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=148"> </A>
+<B CLASS="Keyword">wire</B>
+ #10 wireA;</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=149">
+ </A>
+This syntax, called a net delay, means that any value change that is to be applied to <CODE CLASS="code">
+wireA</CODE>
+ by some other statement shall be delayed for ten time units before it takes effect. When there is a continuous assignment in a declaration, the delay is part of the continuous assignment and is not a net delay. Thus, it shall not be added to the delay of other drivers on the net. Furthermore, if the assignment is to a vector net, then the rising and falling delays shall not be applied to the individual bits if the assignment is included in the declaration. </P>
+<P CLASS="Body">
+<A NAME="pgfId=150">
+ </A>
+<EM CLASS="-">
+In situations where a right-hand side operand changes before a previous change has had time to propagate to the left-hand side, then the latest value change</EM>
+ shall be the only one to be applied. That is, only one assignment shall occur<EM CLASS="-">
+.</EM>
+</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=153">
+ </A>
+S<A NAME="marker=70">
+ </A>
+trength </P>
+<P CLASS="Body">
+<A NAME="pgfId=154">
+ </A>
+The driving strength of a continuous assignment can be specified by the user. This applies only to assignments to <A NAME="marker=71">
+ </A>
+scalar nets of the types listed below:</P>
+<P CLASS="Body">
+<A NAME="pgfId=155">
+ </A>
+<B CLASS="Keyword">
+		wire		tri		trireg<BR>
+		wand		triand		tri0<BR>
+		wor		trior		tri1</B>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=156">
+ </A>
+Continuous assignments driving strengths can be specified in either a net declaration or in a stand-alone assignment, using the <B CLASS="Keyword">
+assign</B>
+ keyword. The strength specification, if provided, shall immediately follow the keyword (either the<EM CLASS="-">
+ keyword for the</EM>
+ net type or<EM CLASS="-">
+ </EM>
+<B CLASS="Keyword">
+assign</B>
+) and precede any delay specified. Whenever the continuous assignment drives the net, the strength of the value shall be simulated as specified.</P>
+<P CLASS="Body">
+<A NAME="pgfId=91">
+ </A>
+A drive strength specification shall contain one strength value that applies when the value being assigned to the net is <CODE CLASS="code">
+1</CODE>
+ and a second strength value that applies when the assigned value is <CODE CLASS="code">
+0</CODE>
+. The following keywords shall specify the strength value for an assignment of <CODE CLASS="code">
+1</CODE>
+:</P>
+<P CLASS="Body">
+<A NAME="pgfId=158">
+ </A>
+<B CLASS="Keyword">
+		supply1		strong1		pull1		weak1		highz1</B>
+<A NAME="marker=72">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=159">
+ </A>
+The following keywords shall specify the strength value for an assignment of <CODE CLASS="code">
+0</CODE>
+:</P>
+<P CLASS="Body">
+<A NAME="pgfId=160">
+ </A>
+<B CLASS="Keyword">
+		supply0		strong0		pull0		weak0		highz0</B>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=161">
+ </A>
+The order of the two strength specifications shall be arbitrary. The following two rules shall constrain the use of drive strength specifications:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=162">
+ </A>
+<EM CLASS="-">
+The strength specifications (</EM>
+<B CLASS="Keyword">
+highz1</B>
+<EM CLASS="-">
+, </EM>
+<B CLASS="Keyword">
+highz0</B>
+<EM CLASS="-">
+) and (</EM>
+<B CLASS="Keyword">
+highz0</B>
+<EM CLASS="-">
+, </EM>
+<B CLASS="Keyword">
+highz1</B>
+<EM CLASS="-">
+) shall be treated as illegal constructs.</EM>
+</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=182">
+ </A>
+If drive strength is not specified, it shall default to <CODE CLASS="code">
+(</CODE>
+<B CLASS="Keyword">
+strong1</B>
+, <B CLASS="Keyword">
+strong0</B>
+<CODE CLASS="code">
+)</CODE>
+.</LI>
+</UL>
+</DIV>
+<HR><P><A HREF="ch06.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch06.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch06.2.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

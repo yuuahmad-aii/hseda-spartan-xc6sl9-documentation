@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch09.css">
+<TITLE> 9.6	Looping statements</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch09.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch09.5.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch09.7.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=660">
+ </A>
+9.6	<A NAME="marker=163">
+ </A>
+Looping statements</H1>
+<P CLASS="Body">
+<A NAME="pgfId=661">
+ </A>
+There are four types of looping statements. These statements provide a means of controlling the execution of a statement zero, one, or more times.</P>
+<P CLASS="Type">
+<A NAME="pgfId=662">
+ </A>
+<I CLASS="Emphasis">
+forever</I>
+<A NAME="marker=164">
+ </A>
+	continuously executes a statement.</P>
+<P CLASS="Type">
+<A NAME="pgfId=663">
+ </A>
+<I CLASS="Emphasis">
+repeat</I>
+<A NAME="marker=165">
+ </A>
+	executes a statement a fixed number of times. If the expression evaluates to unknown or high impedance, it shall be treated as zero, and no statement shall be executed.</P>
+<P CLASS="Type">
+<A NAME="pgfId=664">
+ </A>
+<I CLASS="Emphasis">
+while</I>
+<A NAME="marker=166">
+ </A>
+	executes a statement until an expression becomes false. If the expression starts out false, the statement shall not be executed at all.</P>
+<P CLASS="Type">
+<A NAME="pgfId=665">
+ </A>
+<I CLASS="Emphasis">
+for</I>
+<A NAME="marker=167">
+ </A>
+	controls execution of its associated statement(s) by a three-step process, as follows:</P>
+<OL>
+<P CLASS="NumberedLista">
+<A NAME="pgfId=666">
+ </A>
+a)	executes an assignment normally used to initialize a register that controls the number of loops executed</P>
+<P CLASS="NumberedListb">
+<A NAME="pgfId=667">
+ </A>
+b)	<A NAME="88952">
+ </A>
+evaluates an expression--if the result is zero, the for-loop shall exit, and if it is not zero, the for-loop shall execute its associated statement(s) and then perform step<CODE CLASS="code">
+ c</CODE>
+. If the expression evaluates to unknown or high impedance value, it shall be treated as zero.</P>
+<P CLASS="NumberedListb">
+<A NAME="pgfId=668">
+ </A>
+c)	<A NAME="97914">
+ </A>
+executes an assignment normally used to modify the value of the loop-control register, then repeats step<CODE CLASS="code">
+ b</CODE>
+</P>
+</OL>
+<P CLASS="Body">
+<A NAME="pgfId=669">
+ </A>
+The following shows the&nbsp;<A NAME="marker=170">
+ </A>
+<A NAME="marker=171">
+ </A>
+<A NAME="marker=172">
+ </A>
+<A NAME="marker=173">
+ </A>
+syntax for various looping statements:</P>
+<P CLASS="Body">
+<A NAME="pgfId=670">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-26.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=671">
+ </A>
+Syntax&nbsp;9-7: Syntax for the looping statements</P>
+<P CLASS="Body">
+<A NAME="pgfId=672">
+ </A>
+The rest of this section presents examples for three of the looping statements. The forever loop should only be used in conjunction with the timing controls or the disable statement, therefore, this example is presented in <A HREF="ch09.7.htm#92814" CLASS="XRef">
+See Event control</A>
+.</P>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=675">
+ </A>
+<EM CLASS="-">
+</EM>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=489">
+ </A>
+<EM CLASS="-">
+1. Repeat Statement: In the following example of a </EM>
+repeat<EM CLASS="-">
+ loop, add and shift operators implement a multiplier.</EM>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=676">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-27.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=677">
+ </A>
+2. While statement: The example below counts up the number of logic <CODE CLASS="code">
+1</CODE>
+ values in <CODE CLASS="code">
+rega</CODE>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=678">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-28.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=680">
+ </A>
+3.For statement: The for statement accomplishes the same results as the following pseudo-code that is based on the while loop:</P>
+<P CLASS="Body">
+<A NAME="pgfId=681">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-29.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=682">
+ </A>
+The for loop implements this logic while using only two lines, as shown in the pseudo code below.<B CLASS="Keyword">
+</B>
+<A NAME="marker=113">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=683">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-30.gif">
+</DIV>
+</DIV>
+<HR><P><A HREF="ch09.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch09.5.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch09.7.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

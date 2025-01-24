@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch08.css">
+<TITLE> 8.3	Level-sensitive sequential UDPs </TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch08.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch08.2.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch08.4.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=348">
+ </A>
+8.3	<A NAME="sequential primitives">
+ </A>
+L<A NAME="marker=90">
+ </A>
+<A NAME="marker=91">
+ </A>
+<A NAME="marker=92">
+ </A>
+evel-sensitive sequential UDPs </H1>
+<P CLASS="Body">
+<A NAME="pgfId=349">
+ </A>
+Level-sensitive sequential behavior is represented the same way as combinational behavior, except that the output is declared to be of type <B CLASS="Keyword">
+reg</B>
+<A NAME="marker=93">
+ </A>
+, and there is an additional field in each table entry. This new field represents the current state of the UDP. The output field in a sequential UDP represents the next state.</P>
+<P CLASS="Body">
+<A NAME="pgfId=351">
+ </A>
+Example:</P>
+<P CLASS="Body">
+<A NAME="pgfId=340">
+ </A>
+Consider the example of a latch:</P>
+<P CLASS="Body">
+<A NAME="pgfId=323">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch08-4.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=352">
+ </A>
+This description <A NAME="marker=100">
+ </A>
+<A NAME="marker=101">
+ </A>
+differs from a combinational UDP model in two ways. First, the output identifier <CODE CLASS="code">
+q</CODE>
+ has an additional <B CLASS="Keyword">
+reg</B>
+ declaration to indicate that there is an internal state <CODE CLASS="code">
+q</CODE>
+. The output value of the UDP is always the same as the internal state. Second, a field for the current state, which is separated by colons from the inputs and the output, has been added.<A NAME="marker=102">
+ </A>
+<A NAME="marker=103">
+ </A>
+<A NAME="marker=104">
+ </A>
+</P>
+<HR><P><A HREF="ch08.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch08.2.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch08.4.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

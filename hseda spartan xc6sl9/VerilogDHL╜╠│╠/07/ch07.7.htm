@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch07.css">
+<TITLE> 7.7	Cmos switches</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch07.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch07.6.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch07.8.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=1513">
+ </A>
+7.7	<A NAME="57958">
+ </A>
+<A NAME="marker=299">
+ </A>
+<A NAME="marker=300">
+ </A>
+<A NAME="marker=301">
+ </A>
+Cmos<A NAME="marker=302">
+ </A>
+<A NAME="marker=303">
+ </A>
+ switches</H1>
+<P CLASS="Body">
+<A NAME="pgfId=1021">
+ </A>
+The instance declaration of a CMOS switch shall begin with one of the following keywords: </P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1514"> </A>
+<B CLASS="Keyword">cmos</B>
+						<B CLASS="Keyword">rcmos</B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1031">
+ </A>
+The delay specification shall be zero, one, two, or three delays. If the delay specification contains three delays, the first delay shall determine the rise delay, the second delay shall determine the fall delay, the third delay shall determine the delay of transitions to <CODE CLASS="code">
+z</CODE>
+, and the smallest of the three delays shall determine the delay of transitions to <CODE CLASS="code">
+x</CODE>
+. Delays in transitions to <CODE CLASS="code">
+H</CODE>
+ or <CODE CLASS="code">
+L</CODE>
+ are the same as delays in transitions to <CODE CLASS="code">
+x</CODE>
+. If the specification contains two delays, the first delay shall determine the output rise delay, the second delay shall determine the output fall delay, and the smaller of the two delays shall apply to output transitions to <CODE CLASS="code">
+x</CODE>
+ and <CODE CLASS="code">
+z</CODE>
+. If only one delay is specified, it shall specify the delay for all output transitions. If there is no delay specification, there shall be no propagation delay through the switch.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1515">
+ </A>
+The <B CLASS="Keyword">
+cmos</B>
+ and <B CLASS="Keyword">
+rcmos</B>
+ switches shall have a data input, a data output, and two control inputs. In the terminal list, the first terminal shall connect to the data output, the second terminal shall connect to the data input, the third terminal shall connect to the n-channel control input, and the last terminal shall connect to the p-channel control input.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1516">
+ </A>
+The <B CLASS="Keyword">
+cmos</B>
+ gate shall pass signals with an alteration in their strength in only one case, as discussed in <A HREF="ch07.c.htm#75600" CLASS="XRef">
+See Strength reduction by non-resistive devices</A>
+. The <B CLASS="Keyword">
+rcmos</B>
+ gate shall reduce the strength of signals passing through it according to rules described in <A HREF="ch07.d.htm#90909" CLASS="XRef">
+See Strength reduction by resistive devices</A>
+. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1517">
+ </A>
+The <B CLASS="Keyword">
+cmos</B>
+ switch shall be treated as the combination of a <B CLASS="Keyword">
+pmos</B>
+ switch and an <B CLASS="Keyword">
+nmos</B>
+ switch. The <B CLASS="Keyword">
+rcmos</B>
+ switch shall be treated as the combination of an <B CLASS="Keyword">
+rpmos</B>
+ switch and an <B CLASS="Keyword">
+rnmos</B>
+ switch. The combined switches in these configurations shall share data input and data output terminals, but shall have separate control inputs.</P>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=1518">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=1022">
+ </A>
+The equivalence of the <B CLASS="Keyword">
+cmos</B>
+ gate to the pairing of an <B CLASS="Keyword">
+nmos</B>
+ gate and a <B CLASS="Keyword">
+pmos</B>
+ gate is shown in the following example:</P>
+<P CLASS="Body">
+<A NAME="pgfId=1023">
+ </A>
+</P>
+<DIV>
+<MAP NAME="ch07-10">
+</MAP>
+<IMG SRC="ch07-10.gif" USEMAP="#ch07-10">
+</DIV>
+</DIV>
+<HR><P><A HREF="ch07.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch07.6.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch07.8.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

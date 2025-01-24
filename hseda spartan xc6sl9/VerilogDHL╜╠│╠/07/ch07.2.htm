@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch07.css">
+<TITLE> 7.2	And, nand, nor, or, xor, and xnor gates </TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch07.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch07.1.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch07.3.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=1465">
+ </A>
+7.2	<A NAME="56809">
+ </A>
+<A NAME="gate descriptions start">
+ </A>
+<A NAME="marker=205">
+ </A>
+<A NAME="marker=206">
+ </A>
+<A NAME="marker=207">
+ </A>
+And, <A NAME="marker=208">
+ </A>
+<A NAME="marker=209">
+ </A>
+<A NAME="marker=210">
+ </A>
+nand, <A NAME="marker=211">
+ </A>
+<A NAME="marker=212">
+ </A>
+<A NAME="marker=213">
+ </A>
+nor, <A NAME="marker=214">
+ </A>
+<A NAME="marker=215">
+ </A>
+<A NAME="marker=216">
+ </A>
+or, <A NAME="marker=217">
+ </A>
+<A NAME="marker=218">
+ </A>
+<A NAME="marker=219">
+ </A>
+xor, and <A NAME="marker=220">
+ </A>
+<A NAME="marker=221">
+ </A>
+<A NAME="marker=222">
+ </A>
+xnor gates </H1>
+<P CLASS="Body">
+<A NAME="pgfId=1466">
+ </A>
+The instance declaration of a multiple input logic gate shall begin with one of the following keywords: </P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1467"> </A>
+<B CLASS="Keyword">and 				nand 			nor 			or 			xor 			xnor </B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1468">
+ </A>
+The delay specification shall be zero, one, or two delays. If the specification contains two delays, the first delay shall determine the output rise delay, the second delay shall determine the output fall delay, and the smaller of the two delays shall apply to output transitions to <CODE CLASS="code">
+x</CODE>
+. If only one delay is specified, it shall specify both the rise delay and the fall delay. If there is no delay specification, there shall be no propagation delay through the gate.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1469">
+ </A>
+These six logic gates shall have one output and one or more inputs. The first terminal in the terminal list shall connect to the output of the gate and all other terminals connect to its inputs.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1470">
+ </A>
+The truth tables for these gates, showing the result of two input values, appear in <A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/07/ch07.htm#74170" CLASS="XRef">
+See : Truth tables for multiple input logic gates</A>
+. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1471">
+ </A>
+</P>
+<DIV>
+<MAP NAME="ch07-6">
+</MAP>
+<IMG SRC="ch07-6.gif" USEMAP="#ch07-6">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=1472">
+ </A>
+Versions of these six logic gates having more than two inputs shall have natural extension, but the number of inputs shall not alter propagation delays.</P>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=1473">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=1005">
+ </A>
+The following example declares a two input <B CLASS="Keyword">
+and</B>
+ gate:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1474"> </A>
+<B CLASS="Keyword">and</B>
+ a1 (out, in1, in2);</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1475">
+ </A>
+The inputs are <CODE CLASS="code">
+in1</CODE>
+ and <CODE CLASS="code">
+in2</CODE>
+. The output is <CODE CLASS="code">
+out</CODE>
+. The instance name is <CODE CLASS="code">
+a1</CODE>
+. </P>
+</DIV>
+<HR><P><A HREF="ch07.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch07.1.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch07.3.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

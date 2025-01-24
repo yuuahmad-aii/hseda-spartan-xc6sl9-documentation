@@ -1,0 +1,205 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch10.css">
+<TITLE> 10.3	Functions and function calling</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch10.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch10.2.htm">Previous&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=196">
+ </A>
+10.3	<A NAME="70426">
+ </A>
+<A NAME="marker=64">
+ </A>
+Functions and function calling</H1>
+<P CLASS="Body">
+<A NAME="pgfId=197">
+ </A>
+The purpose of a function is to return a value that is to be used in an expression. The rest of this section explains how to define and use functions.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=198">
+ </A>
+<A NAME="40428">
+ </A>
+Defining a function</P>
+<P CLASS="Body">
+<A NAME="pgfId=199">
+ </A>
+The syntax for defining a function is as follows:</P>
+<P CLASS="Body">
+<A NAME="pgfId=120">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch10-5.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=200">
+ </A>
+Syntax&nbsp;10-3: Syntax for function declaration</P>
+<P CLASS="Body">
+<A NAME="pgfId=201">
+ </A>
+A function declaration shall begin with the keyword <B CLASS="Keyword">
+function</B>
+, followed by the range or type of the return value from the function, followed by the name of the function and a semicolon, and shall end with the keyword <B CLASS="Keyword">
+endfunction</B>
+. The use of range or type shall be optional. A function specified without a range or a type defaults to a one-bit register for the return value. If used, range_or_type shall specify that the function's return value is a <B CLASS="Keyword">
+real</B>
+, an <B CLASS="Keyword">
+integer</B>
+, a <B CLASS="Keyword">
+time</B>
+, a <B CLASS="Keyword">
+realtime</B>
+, or a value with a range of [n:m] bits. A function shall have at least one input declared.</P>
+<P CLASS="Body">
+<A NAME="pgfId=110">
+ </A>
+Example:</P>
+<P CLASS="Body">
+<A NAME="pgfId=159">
+ </A>
+The following example defines a function called <CODE CLASS="code">
+getbyte</CODE>
+, using a range specification.</P>
+<P CLASS="Body">
+<A NAME="pgfId=184">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch10-6.gif">
+</DIV>
+<P CLASS="SubSection">
+<A NAME="pgfId=202">
+ </A>
+<A NAME="marker=77">
+ </A>
+Returning a value from a function</P>
+<P CLASS="Body">
+<A NAME="pgfId=203">
+ </A>
+The function definition shall implicitly declare a register, internal to the function, with the same name as the function. This register either defaults to one bit register or is the same type as the type specified in the function declaration. The function definition initializes the return value from the function by assigning the function result to the internal variable with the same name as the function. The following line from above example illustrates this concept:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=204"> </A>
+getbyte = <I CLASS="Emphasis">result</I>
+_expression;</PRE>
+<P CLASS="SubSection">
+<A NAME="pgfId=205">
+ </A>
+Calling a function</P>
+<P CLASS="Body">
+<A NAME="pgfId=206">
+ </A>
+A function call is an operand within an expression. The function call has the following <A NAME="marker=81">
+ </A>
+<A NAME="marker=82">
+ </A>
+syntax:</P>
+<P CLASS="Body">
+<A NAME="pgfId=207">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch10-7.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=208">
+ </A>
+Syntax&nbsp;10-4: Syntax for function_call</P>
+<P CLASS="Body">
+<A NAME="pgfId=129">
+ </A>
+The order of evaluation of the arguments to a function call is undefined.</P>
+<P CLASS="Body">
+<A NAME="pgfId=209">
+ </A>
+Example:</P>
+<P CLASS="Body">
+<A NAME="pgfId=128">
+ </A>
+The following example creates a word by concatenating the results of two calls to the function <CODE CLASS="code">
+getbyte</CODE>
+ (defined in <A HREF="ch10.3.htm#40428" CLASS="XRef">
+See Defining a function</A>
+).</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=112"> </A>
+word = control ? {getbyte(msbyte), getbyte(lsbyte)}:0;</PRE>
+<P CLASS="SubSection">
+<A NAME="pgfId=210">
+ </A>
+F<A NAME="marker=87">
+ </A>
+unction rules</P>
+<P CLASS="Body">
+<A NAME="pgfId=211">
+ </A>
+Functions are more limited than tasks. The following five rules govern their usage:</P>
+<OL>
+<P CLASS="NumberedLista">
+<A NAME="pgfId=212">
+ </A>
+a)	A function definition shall not contain any time controlled statements--that is, any statements introduced with <B CLASS="Keyword">
+#</B>
+, <B CLASS="Keyword">
+@</B>
+, or <B CLASS="Keyword">
+wait</B>
+.</P>
+<P CLASS="NumberedListb">
+<A NAME="pgfId=213">
+ </A>
+b)	Functions shall not enable tasks.</P>
+<P CLASS="NumberedListb">
+<A NAME="pgfId=214">
+ </A>
+c)	A function definition shall contain at least one input argument.</P>
+<P CLASS="NumberedListb">
+<A NAME="pgfId=113">
+ </A>
+d)	A function definition shall not have any argument declared as output or inout.</P>
+<P CLASS="NumberedListb">
+<A NAME="pgfId=215">
+ </A>
+e)	A function definition shall include an assignment of the function result value to the internal variable that has the same name as the function name.</P>
+</OL>
+<P CLASS="Body">
+<A NAME="pgfId=216">
+ </A>
+<A NAME="marker=88">
+ </A>
+Example</P>
+<P CLASS="Body">
+<A NAME="pgfId=217">
+ </A>
+This example defines a function called <CODE CLASS="code">
+factorial</CODE>
+ that returns a 32-bit register value. The <CODE CLASS="code">
+factorial</CODE>
+ function is called iteratively and the results are printed.</P>
+<P CLASS="Body">
+<A NAME="pgfId=218">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch10-8.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=187">
+ </A>
+The simulation results are shown below: </P>
+<P CLASS="Body">
+<A NAME="pgfId=191">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch10-9.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=223">
+ </A>
+</P>
+<HR><P><A HREF="ch10.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch10.2.htm">Previous&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

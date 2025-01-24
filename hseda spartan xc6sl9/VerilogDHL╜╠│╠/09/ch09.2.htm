@@ -1,0 +1,353 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch09.css">
+<TITLE> 9.2	Procedural assignments </TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch09.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch09.1.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch09.3.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=431">
+ </A>
+9.2	<A NAME="12062">
+ </A>
+<A NAME="75065">
+ </A>
+<A NAME="marker=24">
+ </A>
+P<A NAME="marker=25">
+ </A>
+rocedural assignments </H1>
+<P CLASS="Body">
+<A NAME="pgfId=478">
+ </A>
+As described in <A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/09/ch06.htm#26312" CLASS="XRef">
+</A>
+, procedural assignments are used for updating <B CLASS="Keyword">
+reg</B>
+, <B CLASS="Keyword">
+integer</B>
+, <B CLASS="Keyword">
+time</B>
+, <B CLASS="Keyword">
+real</B>
+, <B CLASS="Keyword">
+realtime</B>
+, and memory data types. There is a significant <A NAME="marker=36">
+ </A>
+difference between procedural assignments and continuous assignments: </P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=528">
+ </A>
+<I CLASS="Emphasis">
+Continuous assignments</I>
+<A NAME="marker=37">
+ </A>
+<A NAME="marker=38">
+ </A>
+ drive nets and are evaluated and updated whenever an input operand changes value. </LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=529">
+ </A>
+<I CLASS="Emphasis">
+Procedural assignments</I>
+ update the value of registers under the control of the procedural flow constructs that surround them.</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=530">
+ </A>
+<A NAME="marker=39">
+ </A>
+The right-hand side of a procedural assignment can be any expression that evaluates to a value. The left-hand side shall be a register that receives the assignment from the right-hand side. The left-hand side of a procedural assignment can take one of the following forms:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=531">
+ </A>
+reg, integer, real, realtime, or time register data type: <BR>
+an assignment to the name reference of one of these data types</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=532">
+ </A>
+bit-select of a reg, integer, or time register data type:<BR>
+an assignment to a single bit that leaves the other bits untouched</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=533">
+ </A>
+part-select of a reg, integer, or time register data type:<BR>
+a part-select of one or more contiguous bits that leaves the rest of the bits untouched. Only constant expressions shall be legal for specifying the part-select index</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=534">
+ </A>
+memory element:<BR>
+a single word of a memory. </LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=535">
+ </A>
+concatenation of any of the above: <BR>
+a concatenation of any of the previous four forms can be specified, which effectively partitions the result of the right-hand side expression and assigns the partition parts, in order, to the various parts of the concatenation</LI>
+</UL>
+<P CLASS="Note">
+<A NAME="pgfId=536">
+ </A>
+NOTE--Assignment to a <B CLASS="Keyword">
+reg</B>
+ data type differs from assignment to a <B CLASS="Keyword">
+real</B>
+, <B CLASS="Keyword">
+realtime</B>
+, <B CLASS="Keyword">
+time</B>
+, or <B CLASS="Keyword">
+integer</B>
+ variable when the right-hand side evaluates to fewer bits than the left-hand side. Assignment to a <B CLASS="Keyword">
+reg</B>
+ shall not sign-extend.</P>
+<P CLASS="Body">
+<A NAME="pgfId=537">
+ </A>
+The Verilog HDL contains two type of procedural assignment statements:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=538">
+ </A>
+blocking procedural assignment statements</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=539">
+ </A>
+non-blocking procedural assignment statements</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=540">
+ </A>
+Blocking and non-blocking procedural assignment statements specify different procedural flow in sequential blocks.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=542">
+ </A>
+Blocking procedural assignments<A NAME="marker=40">
+ </A>
+<A NAME="marker=41">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=543">
+ </A>
+A <I CLASS="Emphasis">
+blocking procedural assignment</I>
+ statement shall be executed before the execution of the statements that follow it in a sequential block (<A HREF="ch09.8.htm#46319" CLASS="XRef">
+See Sequential blocks</A>
+). A blocking procedural assignment statement shall not prevent the execution of statements that follow it in a parallel block (<A HREF="ch09.8.htm#47887" CLASS="XRef">
+See Parallel blocks</A>
+).</P>
+<P CLASS="Body">
+<A NAME="pgfId=838">
+ </A>
+<A NAME="marker=48">
+ </A>
+The syntax for a blocking procedural assignment is as follows:</P>
+<P CLASS="Body">
+<A NAME="pgfId=544">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-2.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=839">
+ </A>
+Syntax&nbsp;9-1: Syntax for blocking assignments</P>
+<P CLASS="Body">
+<A NAME="pgfId=547">
+ </A>
+where reg_lvalue is a data type that is valid for a procedural assignment statement, <CODE CLASS="code">
+=</CODE>
+ is the assignment operator, and delay or event control is the optional intra-assignment timing control. The control can be either a delay control (e.g., <CODE CLASS="code">
+#6</CODE>
+) or an event control (e.g., <CODE CLASS="code">
+@(</CODE>
+<B CLASS="Keyword">
+posedge</B>
+<CODE CLASS="code">
+ clk)</CODE>
+). The expression is the right-hand side value that shall be assigned to the left-hand side.</P>
+<P CLASS="Body">
+<A NAME="pgfId=548">
+ </A>
+The <CODE CLASS="code">
+=</CODE>
+ assignment operator used by blocking procedural assignments is also used by procedural continuous assignments and continuous assignments.</P>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=479">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=549">
+ </A>
+The following examples show blocking procedural assignments.</P>
+<P CLASS="Body">
+<A NAME="pgfId=550">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-3.gif">
+</DIV>
+<P CLASS="SubSection">
+<A NAME="pgfId=552">
+ </A>
+<A NAME="67945">
+ </A>
+<A NAME="marker=53">
+ </A>
+<A NAME="marker=54">
+ </A>
+The non-blocking procedural assignment<A NAME="marker=55">
+ </A>
+<A NAME="marker=56">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=515">
+ </A>
+The <I CLASS="Emphasis">
+non-blocking procedural assignment</I>
+ allows to schedule assignments without blocking the procedural flow. The non-blocking procedural assignment statement can be used whenever several register assignments within the same time step can be made without regard to order or dependance upon each other.</P>
+<P CLASS="Body">
+<A NAME="pgfId=554">
+ </A>
+The synt<A NAME="marker=34">
+ </A>
+ax for a non-blocking procedural assignment is as follows:</P>
+<P CLASS="Body">
+<A NAME="pgfId=835">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-4.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=837">
+ </A>
+Syntax&nbsp;9-2: Syntax for non-blocking assignments</P>
+<P CLASS="Body">
+<A NAME="pgfId=403">
+ </A>
+where reg_lvalue is a data type that is valid for a procedural assignment statement, <CODE CLASS="code">
+&lt;=</CODE>
+ is the non-blocking assignment operator, and delay or event control is the optional intra-assignment timing control. If reg_lvalue requires an evaluation, it shall be evaluated at the time specified by the intra-assignment timing control. The order of evaluation of the reg_lvalue and the expression on the right-hand side is undefined if timing control is not specified.</P>
+<P CLASS="Body">
+<A NAME="pgfId=503">
+ </A>
+The non-blocking assignment operator is the same operator as the less-than-or-equal relational operator. The interpretation shall be decided from the context in which <CODE CLASS="code">
+&lt;=</CODE>
+ appears. When <CODE CLASS="code">
+&lt;=</CODE>
+ is used in an expression it shall be interpreted as a relational operator, and when it is used in a non-blocking procedural assignment, it shall be interpreted as an assignment operator.</P>
+<P CLASS="Body">
+<A NAME="pgfId=560">
+ </A>
+The non-blocking procedural assignments shall be evaluated in two steps as discussed in <A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/09/ch05.htm#42515" CLASS="XRef">
+</A>
+.<A NAME="marker=58">
+ </A>
+ These two steps are shown in the example below.</P>
+<P CLASS="Body">
+<A NAME="pgfId=565">
+ </A>
+</P>
+<DIV>
+<MAP NAME="ch09-5">
+</MAP>
+<IMG SRC="ch09-5.gif" USEMAP="#ch09-5">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=567">
+ </A>
+<I CLASS="Emphasis">
+At the end of the time step</I>
+ means that the non-blocking assignments are the last assignments executed in a time step--with one exception. Non-blocking assignment events can create blocking assignment events.These blocking assignment events shall be processed after the scheduled non-blocking events.</P>
+<P CLASS="Body">
+<A NAME="pgfId=568">
+ </A>
+Unlike an event or delay control for blocking assignments, the non-blocking assignment does not block the procedural flow. The non-blocking assignment evaluates and schedules the assignment, but does not block the execution of subsequent statements in a begin end block.</P>
+</DIV>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=569">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=480">
+ </A>
+</P>
+<DIV>
+<MAP NAME="ch09-6">
+</MAP>
+<IMG SRC="ch09-6.gif" USEMAP="#ch09-6">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=571">
+ </A>
+As shown in previous example, the simulator evaluates and schedules assignments for the end of the current time step and can perform swapping operations with the new non-blocking procedural assignments.</P>
+<P CLASS="Body">
+<A NAME="pgfId=572">
+ </A>
+</P>
+<DIV>
+<MAP NAME="ch09-7">
+</MAP>
+<IMG SRC="ch09-7.gif" USEMAP="#ch09-7">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=444">
+ </A>
+When multiple non-blocking assignments<A NAME="marker=74">
+ </A>
+ are scheduled to occur in the same register in a particular time slot, the order in which the assignments are evaluated is not guaranteed--the final value of the register is indeterminate. As shown below, the value of register <CODE CLASS="code">
+a</CODE>
+ is not known until the end of time step 4.</P>
+<P CLASS="Body">
+<A NAME="pgfId=575">
+ </A>
+ </P>
+<DIV>
+<IMG SRC="ch09-8.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=577">
+ </A>
+If the simulator executes two procedural blocks concurrently, and these procedural blocks contain non-blocking assignment operators to the same register, the final value of that register is indeterminate. For example, the value of register <CODE CLASS="code">
+a</CODE>
+ is indeterminate in the example shown below.</P>
+<P CLASS="Body">
+<A NAME="pgfId=578">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-9.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=580">
+ </A>
+When multiple non-blocking assignments with timing controls are made to the same register, the assignments are made without cancelling non-blocking assignments scheduled at other times. Scheduling an assignment to a register at the same time as a previously scheduled assignment to the same register shall result in an arbitrary order of assignment to that register, and hence the final value of that register cannot be predicted. </P>
+<P CLASS="Body">
+<A NAME="pgfId=481">
+ </A>
+The following example shows how the value of <CODE CLASS="code">
+i[0]</CODE>
+ is assigned to <CODE CLASS="code">
+r1</CODE>
+ and how the assignments are scheduled to occur after each time delay.</P>
+<P CLASS="Body">
+<A NAME="pgfId=581">
+ </A>
+</P>
+<DIV>
+<MAP NAME="ch09-10">
+</MAP>
+<IMG SRC="ch09-10.gif" USEMAP="#ch09-10">
+</DIV>
+</DIV>
+<HR><P><A HREF="ch09.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch09.1.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch09.3.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

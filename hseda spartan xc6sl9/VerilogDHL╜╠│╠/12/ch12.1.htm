@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch12.css">
+<TITLE> 12.1	Modules</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch12.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch12.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch12.2.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=279">
+ </A>
+12.1	<A NAME="Modules (section)">
+ </A>
+M<A NAME="marker=18">
+ </A>
+odules</H1>
+<P CLASS="Body">
+<A NAME="pgfId=281">
+ </A>
+This section gives the formal syntax for a module definition and then gives the syntax for module instantiation, along with an example of a module definition and a module instantiation. </P>
+<P CLASS="Body">
+<A NAME="pgfId=282">
+ </A>
+<A NAME="marker=19">
+ </A>
+A module definition shall be enclosed between the keywords <B CLASS="Keyword">
+module</B>
+<A NAME="marker=20">
+ </A>
+ and <B CLASS="Keyword">
+endmodule</B>
+<A NAME="marker=21">
+ </A>
+. The identifier following the keyword <B CLASS="Keyword">
+module</B>
+ shall be the name of the module being defined. The optional list of ports shall specify an ordered list of the module's ports. The order used can be significant when instantiating the module (<A HREF="ch12.1.htm#module instantiation" CLASS="XRef">
+See Module instantiation</A>
+). The identifiers in this list must be declared in input, output, and inout statements within the module definition. The module items define what constitutes a module, and include many different types of declarations and definitions; many of them have already been introduced. </P>
+<P CLASS="Body">
+<A NAME="pgfId=381">
+ </A>
+The keyword <B CLASS="Keyword">
+macromodule</B>
+ can be used interchangeably with the keyword <B CLASS="Keyword">
+module</B>
+ to define a module. An implementation can choose to treat module definitions beginning with <B CLASS="Keyword">
+macromodule</B>
+ keyword differently.</P>
+<P CLASS="Body">
+<A NAME="pgfId=283">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch12-1.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=284">
+ </A>
+Syntax&nbsp;12-1: Syntax definitions for module</P>
+<P CLASS="Body">
+<A NAME="pgfId=285">
+ </A>
+<A NAME="marker=26">
+ </A>
+<A NAME="marker=27">
+ </A>
+See <A HREF="ch12.3.htm#34493" CLASS="XRef">
+See Ports</A>
+ for the definitions of ports. </P>
+<P CLASS="SubSection">
+<A NAME="pgfId=286">
+ </A>
+Top-level m<A NAME="marker=34">
+ </A>
+<A NAME="marker=35">
+ </A>
+odules</P>
+<P CLASS="Body">
+<A NAME="pgfId=287">
+ </A>
+<I CLASS="Emphasis">
+Top-level modules</I>
+<EM CLASS="-">
+ are modules that are included in the source text but are not instantiated, as described in <A HREF="ch12.1.htm#module instantiation" CLASS="XRef">
+See Module instantiation</A>
+. </EM>
+</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=288">
+ </A>
+<A NAME="module instantiation">
+ </A>
+<A NAME="24479">
+ </A>
+M<A NAME="marker=41">
+ </A>
+odule i<A NAME="marker=42">
+ </A>
+nstantiation </P>
+<P CLASS="Body">
+<A NAME="pgfId=290">
+ </A>
+Instantiation allows one module to incorporate a copy of another module into itself. Module definitions do not nest. That is, one module definition shall not contain the text of another module definition within its <B CLASS="Keyword">
+module</B>
+-<B CLASS="Keyword">
+endmodule</B>
+ keyword pair. A module definition nests another<A NAME="marker=43">
+ </A>
+ module by instantiating it. The <I CLASS="Emphasis">
+module instantiation statement</I>
+ creates one or more named instances of a defined module.</P>
+<P CLASS="Body">
+<A NAME="pgfId=413">
+ </A>
+For example, a counter module might instantiate a D flip-flop module to create multiple instances of the flip-flop.</P>
+<P CLASS="Body">
+<A NAME="pgfId=291">
+ </A>
+The following is the <A NAME="marker=44">
+ </A>
+syntax for specifying instantiations of <A NAME="marker=45">
+ </A>
+modules:</P>
+<P CLASS="Body">
+<A NAME="pgfId=292">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch12-2.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=293">
+ </A>
+Syntax&nbsp;12-2: Definitions for &lt;module_instantiation&gt;</P>
+<P CLASS="Body">
+<A NAME="pgfId=236">
+ </A>
+The instantiations of modules can contain a range specification. This allows an array of instances to be created. The array of instances are described in <A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/12/ch07.htm#93218" CLASS="XRef">
+</A>
+. The syntax and semantics of arrays of instances defined for gates and primitives apply for modules as well.</P>
+<P CLASS="Body">
+<A NAME="pgfId=245">
+ </A>
+One or more module instances (identical copies of a module) can be specified in a single module instantiation statement.</P>
+<P CLASS="Body">
+<A NAME="pgfId=251">
+ </A>
+The list of module connections shall be provided only for modules defined with ports. The parentheses, however, are always required. When a list of module connections is given, the first element in the list shall connect to the first <A NAME="marker=49">
+ </A>
+<A NAME="marker=50">
+ </A>
+port, the second to the second port, and so on. See <A HREF="ch12.3.htm#34493" CLASS="XRef">
+See Ports</A>
+ for a more detailed discussion of ports and port connection rules. </P>
+<P CLASS="Body">
+<A NAME="pgfId=255">
+ </A>
+A<A NAME="marker=55">
+ </A>
+ connection can be a simple reference to a register or a net identifier, an expression, or a blank. An expression can be used for supplying a value to a module input port. A <A NAME="marker=57">
+ </A>
+blank module connection shall represent the situation where the port is not to be <A NAME="marker=58">
+ </A>
+connected. </P>
+<P CLASS="Body">
+<A NAME="pgfId=257">
+ </A>
+When connecting ports by name, an unconnected port can be indicated either by omitting it in the port list, or by providing no expression in the parentheses (i.e. <CODE CLASS="code">
+.port_name ()</CODE>
+ ). </P>
+<DIV>
+<H3 CLASS="Example">
+<A NAME="pgfId=297">
+ </A>
+</H3>
+<P CLASS="Body">
+<A NAME="pgfId=238">
+ </A>
+1. The example below illustrates a circuit (the lower-level module) being driven by a simple waveform description (the higher-level module) where the circuit module is instantiated inside the waveform module.</P>
+<P CLASS="Body">
+<A NAME="pgfId=583">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch12-3.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=414">
+ </A>
+2. The example shown below creates two instances of the flip-flop module <CODE CLASS="code">
+ffnand </CODE>
+defined above, and connects only to the <CODE CLASS="code">
+q</CODE>
+ output in one instance and only to the <CODE CLASS="code">
+qbar</CODE>
+ output in the other instance.</P>
+<P CLASS="Body">
+<A NAME="pgfId=304">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch12-4.gif">
+</DIV>
+</DIV>
+<HR><P><A HREF="ch12.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch12.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch12.2.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

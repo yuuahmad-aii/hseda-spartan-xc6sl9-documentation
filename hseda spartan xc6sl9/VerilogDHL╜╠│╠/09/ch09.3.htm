@@ -1,0 +1,241 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch09.css">
+<TITLE> 9.3	Procedural continuous assignments </TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch09.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch09.2.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch09.4.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=500">
+ </A>
+9.3	<A NAME="43159">
+ </A>
+Procedural <A NAME="marker=340">
+ </A>
+continuous assignmen<A NAME="marker=341">
+ </A>
+ts </H1>
+<P CLASS="Body">
+<A NAME="pgfId=501">
+ </A>
+The <I CLASS="Emphasis">
+procedural continuous assignments</I>
+<A NAME="marker=342">
+ </A>
+ (using keywords <B CLASS="Keyword">
+assign</B>
+ and <B CLASS="Keyword">
+force</B>
+) are procedural statements that allow expressions to be driven continuously onto registers or nets. The <A NAME="marker=343">
+ </A>
+<A NAME="marker=344">
+ </A>
+<A NAME="marker=346">
+ </A>
+<A NAME="marker=347">
+ </A>
+<A NAME="marker=348">
+ </A>
+<A NAME="marker=349">
+ </A>
+syntax for these statements follows:</P>
+<P CLASS="Body">
+<A NAME="pgfId=693">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-11.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=695">
+ </A>
+Syntax&nbsp;9-3: Syntax for procedural continuous assignments</P>
+<P CLASS="Body">
+<A NAME="pgfId=701">
+ </A>
+The left-hand side of the assignment in the <I CLASS="Emphasis">
+assign statement</I>
+ shall be a register reference or a concatenation of registers. It shall not be a memory element (array reference) or a bit-select or a part-select of a register.</P>
+<P CLASS="Body">
+<A NAME="pgfId=712">
+ </A>
+In contrast, the left-hand side of the assignment in the <I CLASS="Emphasis">
+force</I>
+ <I CLASS="Emphasis">
+statement</I>
+ can be a register reference or a net reference. It can be a concatenation of any of the above. Bit-selects and part-selects of vector registers or vector nets are not allowed.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=713">
+ </A>
+The assign and deassign procedural statements</P>
+<P CLASS="Body">
+<A NAME="pgfId=714">
+ </A>
+<A NAME="marker=352">
+ </A>
+<A NAME="marker=353">
+ </A>
+<A NAME="marker=354">
+ </A>
+<A NAME="marker=355">
+ </A>
+The <I CLASS="Emphasis">
+assign</I>
+ procedural continuous assignment statement shall override all procedural assignments to a register. The <I CLASS="Emphasis">
+deassign</I>
+ procedural statement shall end a procedural continuous assignment to a register. The value of the register shall remain the same until the register is assigned a new value through a procedural assignment or a procedural continuous assignment. The assign and deassign procedural statements allow, for example, <A NAME="marker=356">
+ </A>
+modeling of asynchronous clear/preset on a D-type edge-triggered flip-flop, where the clock is inhibited when the clear or preset is active. </P>
+<P CLASS="Body">
+<A NAME="pgfId=483">
+ </A>
+If the keyword <B CLASS="Keyword">
+assign</B>
+ is applied to a register for which there is already a procedural continuous assignment, then this new procedural continuous assignment shall deassign the register before making the new procedural continuous assignment.</P>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=716">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=482">
+ </A>
+The example below shows a use of the assign and deassign procedural statements in a behavioral description of a D-type flip-flop with preset and clear inputs.</P>
+<P CLASS="Body">
+<A NAME="pgfId=720">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-12.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=738">
+ </A>
+If either <CODE CLASS="code">
+clear</CODE>
+ or <CODE CLASS="code">
+preset</CODE>
+ is low, then the output <CODE CLASS="code">
+q</CODE>
+ will be held continuously to the appropriate constant value and a positive edge on the <CODE CLASS="code">
+clock</CODE>
+ will not affect <CODE CLASS="code">
+q</CODE>
+. When both the <CODE CLASS="code">
+clear</CODE>
+ and <CODE CLASS="code">
+preset</CODE>
+ are high, then <CODE CLASS="code">
+q</CODE>
+ is deassigned. <A NAME="marker=359">
+ </A>
+<A NAME="marker=360">
+ </A>
+<A NAME="marker=361">
+ </A>
+<A NAME="marker=362">
+ </A>
+</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=679">
+ </A>
+<A NAME="22168">
+ </A>
+<A NAME="marker=333">
+ </A>
+The force<A NAME="marker=334">
+ </A>
+ and release<A NAME="marker=335">
+ </A>
+ procedural statements</P>
+<P CLASS="Body">
+<A NAME="pgfId=684">
+ </A>
+Another form of procedural continuous assignment is provided by the <I CLASS="Emphasis">
+force</I>
+ and <I CLASS="Emphasis">
+release</I>
+ procedural statements. These statements have a similar effect to the assign-deassign pair, but a force can be applied to nets as well as to registers. The left-hand side of the assignment can be a register, a net, a constant bit select of a vector net, a part select of a vector net, or a concatenation. It cannot be a memory element (array reference) or a bit-select or a part-select of a vector register.</P>
+<P CLASS="Body">
+<A NAME="pgfId=762">
+ </A>
+A <I CLASS="Emphasis">
+force</I>
+<A NAME="marker=364">
+ </A>
+<A NAME="marker=365">
+ </A>
+ statement to a register shall override a procedural assignment or procedural continuous assignment that takes place on the register until a release procedural statement is executed on the register. After the <I CLASS="Emphasis">
+release</I>
+ procedural statement is executed, the register shall not immediately change value (as would a net that is forced). The value specified in the force statement shall be maintained in the register until the next procedural assignment takes place, except in the case where a procedural continuous assignment is active on the register.</P>
+<P CLASS="Body">
+<A NAME="pgfId=773">
+ </A>
+A force procedural statement on a net overrides all drivers of the net--gate outputs, module outputs, and continuous assignments--until a release procedural statement is executed on the net.</P>
+<P CLASS="Body">
+<A NAME="pgfId=780">
+ </A>
+<A NAME="marker=363">
+ </A>
+Releasing a register that currently has an active procedural continuous assignment shall re-establish that assignment. </P>
+</DIV>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=789">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=798">
+ </A>
+<EM CLASS="DocSetOnly">
+</EM>
+</P>
+<DIV>
+<IMG SRC="ch09-13.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=807">
+ </A>
+<EM CLASS="DocSetOnly">
+In the example above, an </EM>
+<B CLASS="Keyword">
+and</B>
+<EM CLASS="DocSetOnly">
+ gate instance </EM>
+<CODE CLASS="code">
+and1</CODE>
+<EM CLASS="DocSetOnly">
+ is &quot;patched&quot; as an </EM>
+<B CLASS="Keyword">
+or</B>
+<EM CLASS="DocSetOnly">
+ gate b</EM>
+y a force proce<EM CLASS="DocSetOnly">
+dural statement that forces its output to the value of its or-ed inputs, and an </EM>
+assign<EM CLASS="DocSetOnly">
+ procedural statement of and-ed values is &quot;patc</EM>
+hed&quot; as an assign procedural statement of or-ed values.</P>
+<P CLASS="Body">
+<A NAME="pgfId=815">
+ </A>
+The right hand side of a procedural continuous assignment or a force statement can be an expression; this shall be treated just as a continuous assignment, that is if any variable on right hand side of the assignment changes, the assignment shall be re-evaluated while the assign or force is in effect. For example,</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=816"> </A>
+<B CLASS="Keyword">force</B>
+ a = b + f(c) ;</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=817">
+ </A>
+Here, if <CODE CLASS="code">
+b</CODE>
+ changes or <CODE CLASS="code">
+c</CODE>
+ changes, <CODE CLASS="code12">
+a</CODE>
+ will be forced to the new value of the expression <CODE CLASS="code">
+b+f(c)</CODE>
+.</P>
+</DIV>
+<HR><P><A HREF="ch09.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch09.2.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch09.4.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

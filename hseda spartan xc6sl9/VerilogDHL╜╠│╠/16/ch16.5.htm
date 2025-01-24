@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch16.css">
+<TITLE> 16.5	`include</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch16.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch16.4.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch16.6.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=269">
+ </A>
+16.5	<A NAME="53338">
+ </A>
+`include</H1>
+<P CLASS="Body">
+<A NAME="pgfId=270">
+ </A>
+The file inclusion (<B CLASS="Keyword">
+`include</B>
+) compiler directive is used to insert the entire contents of a source file in another file during compilation. The result is as though the contents of the included source file appear in place of the <B CLASS="Keyword">
+`include </B>
+compiler directive. The <B CLASS="Keyword">
+`include</B>
+ compiler directive can be used to include global or commonly used definitions and tasks without encapsulating repeated code within module boundaries. </P>
+<P CLASS="Body">
+<A NAME="pgfId=272">
+ </A>
+Advantages of using the <B CLASS="Keyword">
+`include</B>
+ compiler directive include the following:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=282">
+ </A>
+providing an integral part of configuration management</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=284">
+ </A>
+improving the organization of Verilog HDL source descriptions</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=287">
+ </A>
+facilitating the maintenance of Verilog HDL source descriptions</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=289">
+ </A>
+The syntax for the <B CLASS="Keyword">
+`include</B>
+ compiler directive is as follows:</P>
+<PRE CLASS="BNFDef"><A NAME="pgfId=290"> </A>
+<CODE CLASS="code">	</CODE>
+<B CLASS="Keyword">`include</B>
+<CODE CLASS="code"> &quot;</CODE>
+<I CLASS="Emphasis">filename</I>
+<CODE CLASS="code">&quot;</CODE>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=291">
+ </A>
+The compiler directive <B CLASS="Keyword">
+`include</B>
+ can be specified anywhere within the Verilog HDL description. The <I CLASS="Emphasis">
+filename</I>
+ is the name of the file to be included in the source file. The <I CLASS="Emphasis">
+filename</I>
+ can be a full or relative path name.</P>
+<P CLASS="Body">
+<A NAME="pgfId=145">
+ </A>
+Only white space or a comment may appear on the same line as the <B CLASS="Keyword">
+`include</B>
+ compiler directive. </P>
+<P CLASS="Body">
+<A NAME="pgfId=296">
+ </A>
+A file included in the source using <B CLASS="Keyword">
+`include</B>
+ compiler directive may contain other <B CLASS="Keyword">
+`include</B>
+ compiler directives. The number of nesting levels for included files shall be finite.</P>
+<P CLASS="Body">
+<A NAME="pgfId=146">
+ </A>
+Examples:</P>
+<P CLASS="Body">
+<A NAME="pgfId=300">
+ </A>
+Examples of legal comments for the <B CLASS="Keyword">
+`include</B>
+ compiler directive are as follows:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=292"> </A>
+<B CLASS="Keyword">`include</B>
+<CODE CLASS="code"> &quot;parts/count.v&quot;</CODE>
+</PRE>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=294"> </A>
+<B CLASS="Keyword">`include</B>
+ &quot;fileB&quot;<B CLASS="Keyword">`include</B>
+ &quot;fileB&quot; // including fileB</PRE>
+<P CLASS="Note">
+<A NAME="pgfId=295">
+ </A>
+NOTE--<A NAME="Include">
+ </A>
+Implementations may limit the maximum number of levels to which include files can be nested, but the limit shall be at least 15.</P>
+<HR><P><A HREF="ch16.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch16.4.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch16.6.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

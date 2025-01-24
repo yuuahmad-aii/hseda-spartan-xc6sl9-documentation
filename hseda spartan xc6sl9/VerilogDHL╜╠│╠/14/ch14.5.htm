@@ -1,0 +1,1811 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch14.css">
+<TITLE> 14.5	Timing check system tasks</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch14.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch14.4.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch14.6.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=1062">
+ </A>
+14.5	<A NAME="marker=272">
+ </A>
+Timing c<A NAME="Timing Checks">
+ </A>
+heck system tasks</H1>
+<P CLASS="Body">
+<A NAME="pgfId=1064">
+ </A>
+The timing check tasks may be invoked in specify blocks to verify the timing performance of a design by making sure critical events occur within given time limits. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1065">
+ </A>
+Timing checks perform the following steps:</P>
+<OL>
+<P CLASS="NumberedLista">
+<A NAME="pgfId=1066">
+ </A>
+a)	Determine the elapsed time between two events.</P>
+<P CLASS="NumberedListb">
+<A NAME="pgfId=1067">
+ </A>
+b)	Compare the elapsed time to a specified limit. </P>
+<P CLASS="NumberedListb">
+<A NAME="pgfId=1068">
+ </A>
+c)	If the elapsed time does not fall within the specified time window, report a timing violation. </P>
+</OL>
+<P CLASS="Body">
+<A NAME="pgfId=1069">
+ </A>
+The following system tasks may be used for performing <A NAME="marker=274">
+ </A>
+<A NAME="marker=275">
+ </A>
+<A NAME="marker=276">
+ </A>
+<A NAME="marker=277">
+ </A>
+<A NAME="marker=278">
+ </A>
+<A NAME="marker=279">
+ </A>
+<A NAME="marker=280">
+ </A>
+<A NAME="marker=281">
+ </A>
+<A NAME="marker=282">
+ </A>
+timing checks:</P>
+<P CLASS="Body">
+<A NAME="pgfId=838">
+ </A>
+<B CLASS="Keyword">
+	$setup</B>
+		<B CLASS="Keyword">
+$hold</B>
+		<B CLASS="Keyword">
+	$setuphold</B>
+			<B CLASS="Keyword">
+$period<BR>
+	$skew</B>
+		<B CLASS="Keyword">
+$recovery</B>
+		<B CLASS="Keyword">
+	$width</B>
+			<B CLASS="Keyword">
+$nochange </B>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=1071">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=1240">
+ </A>
+<A HREF="ch14.5.htm#44194" CLASS="XRef">
+See : Timing check arguments</A>
+ describes the arguments to these system tasks, which are explained with individual system task as well. </P>
+<TABLE BORDER="1">
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=1184">
+ </A>
+Table&nbsp;14-10<A NAME="44194">
+ </A>
+<A NAME="marker=286">
+ </A>
+<A NAME="marker=287">
+ </A>
+<A NAME="marker=288">
+ </A>
+<A NAME="marker=289">
+ </A>
+<A NAME="marker=290">
+ </A>
+<A NAME="marker=291">
+ </A>
+<A NAME="marker=292">
+ </A>
+<A NAME="marker=293">
+ </A>
+<A NAME="marker=294">
+ </A>
+: <A NAME="marker=295">
+ </A>
+Timing check <A NAME="marker=296">
+ </A>
+arguments</P>
+</CAPTION>
+<TR>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=1190">
+ </A>
+Argument</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=1191">
+ </A>
+Description</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=1205">
+ </A>
+Type</P>
+</TH>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1346">
+ </A>
+reference_event</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1376">
+ </A>
+the transition at a control signal that establishes the reference time for tracking timing violations on the data_event</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1377">
+ </A>
+module input or inout that is scalar or vector net</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1378">
+ </A>
+data_event</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1379">
+ </A>
+the signal change that initiates the timing check and is monitored for violations  </P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1073">
+ </A>
+module input or inout that is scalar or vector net</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1381">
+ </A>
+limit</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1382">
+ </A>
+a time limit used to detect timing violations on the data_event</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1383">
+ </A>
+constant expression or specparam</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1384">
+ </A>
+threshold</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1385">
+ </A>
+the largest pulse width that is ignored by the timing check $width</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1206">
+ </A>
+constant expression or specparam</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1387">
+ </A>
+setup_limit</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1389">
+ </A>
+a time limit used to detect timing violations on the data_event for $setup</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1207">
+ </A>
+constant expression or specparam</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1390">
+ </A>
+hold_limit</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1388">
+ </A>
+a time limit used to detect timing violations on the data_event for $hold</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1300">
+ </A>
+constant expression or specparam</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1393">
+ </A>
+notifier (optional)</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1394">
+ </A>
+an optional argument that &quot;notifies&quot; the simulator when a timing violation occurs</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1395">
+ </A>
+register</P>
+</TD>
+</TR>
+</TABLE>
+<P CLASS="SubSection">
+<A NAME="pgfId=1074">
+ </A>
+<A NAME="$setup">
+ </A>
+<A NAME="marker=298">
+ </A>
+<A NAME="marker=299">
+ </A>
+<A NAME="marker=300">
+ </A>
+$setup</P>
+<DIV>
+<H2 CLASS="Syntax">
+<A NAME="pgfId=1076">
+ </A>
+</H2>
+<PRE CLASS="BNFDef"><A NAME="pgfId=1078"> </A>
+	<B CLASS="Keyword">$setup</B>
+ <B CLASS="Keyword">(</B>
+ data_event <B CLASS="Keyword">,</B>
+ reference_event <B CLASS="Keyword">,</B>
+ limit [ <B CLASS="Keyword">,</B>
+ notifier ] <B CLASS="Keyword">)</B>
+ <B CLASS="Keyword">;</B>
+ </PRE>
+<P CLASS="Body">
+<A NAME="pgfId=691">
+ </A>
+<EM CLASS="DocSetOnly">
+<A HREF="ch14.5.htm#24399" CLASS="XRef">
+See : $hold arguments</A>
+</EM>
+ defines the <B CLASS="Keyword">
+$setup</B>
+ system task arguments.</P>
+<TABLE BORDER="1">
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=1023">
+ </A>
+Table&nbsp;14-11: <A NAME="24399">
+ </A>
+$setup arguments</P>
+</CAPTION>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1043">
+ </A>
+<CODE CLASS="code">
+data_event</CODE>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1375">
+ </A>
+lower bound event</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1046">
+ </A>
+<CODE CLASS="code">
+reference_event</CODE>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1045">
+ </A>
+upper bound event</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1048">
+ </A>
+<CODE CLASS="code">
+limit</CODE>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1047">
+ </A>
+positive constant expression or specparam</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1063">
+ </A>
+notifier (optional)</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1367">
+ </A>
+register</P>
+</TD>
+</TR>
+</TABLE>
+<P CLASS="Body">
+<A NAME="pgfId=1083">
+ </A>
+The <B CLASS="Keyword">
+$setup</B>
+ timing check reports a timing violation in the following case: </P>
+<P CLASS="Body">
+<A NAME="pgfId=1084">
+ </A>
+	(time of reference event) - (time of data event) &lt; limit</P>
+<P CLASS="Body">
+<A NAME="pgfId=1085">
+ </A>
+If the reference event and data event occur at the same simulation time, <B CLASS="Keyword">
+$setup</B>
+ performs the timing check before it records the new data event value, therefore no violation occurs.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=1086">
+ </A>
+<A NAME="marker=306">
+ </A>
+<A NAME="marker=307">
+ </A>
+<A NAME="marker=308">
+ </A>
+$hold</P>
+</DIV>
+<DIV>
+<H2 CLASS="Syntax">
+<A NAME="pgfId=692">
+ </A>
+</H2>
+<PRE CLASS="BNFDef"><A NAME="pgfId=694"> </A>
+	<B CLASS="Keyword">$hold</B>
+ <B CLASS="Keyword">(</B>
+ reference_event <B CLASS="Keyword">,</B>
+ data_event <B CLASS="Keyword">,</B>
+ limit [ <B CLASS="Keyword">,</B>
+ notifier ] <B CLASS="Keyword">)</B>
+ <B CLASS="Keyword">;</B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1089">
+ </A>
+<EM CLASS="DocSetOnly">
+<A HREF="ch14.5.htm#24399" CLASS="XRef">
+See : $hold arguments</A>
+ <A HREF="ch14.5.htm#71772" CLASS="XRef">
+See $hold system task reports a violation in the following case:</A>
+</EM>
+defines the <B CLASS="Keyword">
+$hold</B>
+<B CLASS="boldemphasis">
+ </B>
+system task arguments.</P>
+<TABLE BORDER="1">
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=695">
+ </A>
+Table&nbsp;14-12: <A NAME="24399">
+ </A>
+$hold arguments</P>
+</CAPTION>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=697">
+ </A>
+<CODE CLASS="code">
+reference_event</CODE>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=698">
+ </A>
+lower bound event</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=699">
+ </A>
+<CODE CLASS="code">
+data_event</CODE>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=700">
+ </A>
+upper bound event</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=701">
+ </A>
+<CODE CLASS="code">
+limit</CODE>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=711">
+ </A>
+positive constant expression or specparam</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=712">
+ </A>
+notifier (optional)</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1088">
+ </A>
+register</P>
+</TD>
+</TR>
+</TABLE>
+<P CLASS="Body">
+<A NAME="pgfId=713">
+ </A>
+<B CLASS="Keyword">
+$hold</B>
+<A NAME="71772">
+ </A>
+ system task reports a violation in the following case:</P>
+<PRE CLASS="BNFDef"><A NAME="pgfId=714"> </A>
+	(time of data event) - (time of reference event) &lt; limit</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1094">
+ </A>
+<B CLASS="Keyword">
+$hold</B>
+ always records the new reference event time before it performs the timing check. Therefore, if reference and data events occur at the same simulation time, there will be a violation.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=704">
+ </A>
+<A NAME="marker=115">
+ </A>
+<A NAME="marker=116">
+ </A>
+<A NAME="marker=118">
+ </A>
+$setuphold</P>
+</DIV>
+<DIV>
+<H2 CLASS="Syntax">
+<A NAME="pgfId=746">
+ </A>
+</H2>
+<PRE CLASS="BNFDef"><A NAME="pgfId=747"> </A>
+	<B CLASS="Keyword">$setuphold</B>
+ <B CLASS="Keyword">(</B>
+ reference_event <B CLASS="Keyword">,</B>
+ data_event <B CLASS="Keyword">,</B>
+ setup_limit <B CLASS="Keyword">,</B>
+ hold_limit <B CLASS="Keyword">,</B>
+ [ notifier ] <B CLASS="Keyword">) ;</B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1149">
+ </A>
+<A HREF="ch14.5.htm#24399" CLASS="XRef">
+See : $hold arguments</A>
+ defines the <B CLASS="Keyword">
+$setuphold</B>
+ system task arguments.</P>
+<TABLE BORDER="1">
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=749">
+ </A>
+Table&nbsp;14-13: <A NAME="24399">
+ </A>
+$setuphold arguments</P>
+</CAPTION>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=751">
+ </A>
+<CODE CLASS="code">
+reference_event</CODE>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=752">
+ </A>
+$hold lower bound event<BR>
+$setup upper bound event</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=753">
+ </A>
+<CODE CLASS="code">
+data_event</CODE>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=754">
+ </A>
+$hold upper bound event<BR>
+$setup lower bound event</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=799">
+ </A>
+<CODE CLASS="code">
+setup_limit</CODE>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1037">
+ </A>
+positive constant expression or specparam</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1096">
+ </A>
+<CODE CLASS="code">
+hold_limit</CODE>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1099">
+ </A>
+positive constant expression or specparam</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1101">
+ </A>
+notifier (optional)</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1146">
+ </A>
+register</P>
+</TD>
+</TR>
+</TABLE>
+<P CLASS="Body">
+<A NAME="pgfId=1151">
+ </A>
+Besides being a constant expression or a specparam, the setup limit and hold limit must follow an additional restriction. Although individually each limit may be negative, the sum of the limits must be positive. That is,</P>
+<P CLASS="Body">
+<A NAME="pgfId=1154">
+ </A>
+	setup_limit + hold_limit &gt; 0</P>
+<P CLASS="Body">
+<A NAME="pgfId=1155">
+ </A>
+The <B CLASS="Keyword">
+$setuphold</B>
+ timing check is a shorthand way to combine the functionality of <B CLASS="Keyword">
+$setup</B>
+ and <B CLASS="Keyword">
+$hold</B>
+ into one system task call. Therefore, the following invocation:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1156"> </A>
+<B CLASS="Keyword">$setuphold</B>
+( <B CLASS="Keyword">posedge</B>
+ clk, data, tSU, tHLD );</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1157">
+ </A>
+is equivalent in functionality to the following, if <CODE CLASS="code">
+tSU</CODE>
+ and <CODE CLASS="code">
+tHLD</CODE>
+ are not negative:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1581"> </A>
+<B CLASS="Keyword">$setup</B>
+( data, <B CLASS="Keyword">posedge</B>
+ clk, tSU );<B CLASS="Keyword">$hold</B>
+( <B CLASS="Keyword">posedge</B>
+ clk, data, tHLD );</PRE>
+<P CLASS="SubSection">
+<A NAME="pgfId=1095">
+ </A>
+<A NAME="marker=317">
+ </A>
+<A NAME="marker=318">
+ </A>
+<A NAME="marker=319">
+ </A>
+$width</P>
+</DIV>
+<DIV>
+<H2 CLASS="Syntax">
+<A NAME="pgfId=1097">
+ </A>
+</H2>
+<PRE CLASS="BNFDef"><A NAME="pgfId=1098"> </A>
+	<B CLASS="Keyword">$width</B>
+ <B CLASS="Keyword">(</B>
+ reference_event <B CLASS="Keyword">,</B>
+ limit <B CLASS="Keyword">,</B>
+ threshold [<B CLASS="Keyword"> ,</B>
+ notifier ] <B CLASS="Keyword">)</B>
+ <B CLASS="Keyword">;</B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1090">
+ </A>
+<EM CLASS="DocSetOnly">
+<A HREF="ch14.5.htm#24399" CLASS="XRef">
+See : $hold arguments</A>
+</EM>
+ defines the <B CLASS="Keyword">
+$width</B>
+ system task arguments.</P>
+<TABLE BORDER="1">
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=715">
+ </A>
+Table&nbsp;14-14<A NAME="24399">
+ </A>
+: $width arguments</P>
+</CAPTION>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=717">
+ </A>
+<CODE CLASS="code">
+reference_event</CODE>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=718">
+ </A>
+edge triggered event</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1091">
+ </A>
+<CODE CLASS="code">
+limit</CODE>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=792">
+ </A>
+positive constant expression or specparam</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1081">
+ </A>
+threshold (optional)</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1040">
+ </A>
+positive constant expression or specparam</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1082">
+ </A>
+notifier (optional)</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1087">
+ </A>
+register</P>
+</TD>
+</TR>
+</TABLE>
+<P CLASS="Body">
+<A NAME="pgfId=1102">
+ </A>
+The <B CLASS="Keyword">
+$width</B>
+ timing check monitors the width of signal pulses by timing the duration of signal levels from one clock edge to the opposite clock edge. Since a data event is not passed to <B CLASS="Keyword">
+$width</B>
+, it is derived from the reference event, as follows:</P>
+<P CLASS="Body">
+<A NAME="pgfId=1103">
+ </A>
+	data event = reference event signal with opposite edge</P>
+<P CLASS="Body">
+<A NAME="pgfId=1104">
+ </A>
+Because of the way the data event is derived for <B CLASS="Keyword">
+$width</B>
+, an edge triggered event must be passed as the reference event. A compilation error will occur if the reference event is not an edge specification.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1105">
+ </A>
+The <B CLASS="Keyword">
+$width</B>
+ timing check reports a violation in the following case:</P>
+<P CLASS="Body">
+<A NAME="pgfId=1106">
+ </A>
+	threshold &lt; (time of data event) - (time of reference event) &lt; limit</P>
+<P CLASS="Body">
+<A NAME="pgfId=1107">
+ </A>
+In other words, the pulse width must be greater than or equal to limit in order to avoid a timing violation.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1108">
+ </A>
+The data event and the reference event will never occur at the same simulation time because these events are triggered by opposite transitions.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1109">
+ </A>
+The null arguments for <B CLASS="Keyword">
+$width</B>
+ are not accepted. Therefore, the threshold argument must be passed if notifier argument is required. It is permissible, however, to drop both the threshold and notifier arguments when invoking <B CLASS="Keyword">
+$width</B>
+. </P>
+</DIV>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=959">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=1026">
+ </A>
+The following example demonstrates some <A NAME="marker=327">
+ </A>
+examples of legal and illegal calls:<A NAME="marker=328">
+ </A>
+<A NAME="marker=329">
+ </A>
+<A NAME="marker=330">
+ </A>
+ </P>
+<DIV>
+<MAP NAME="ch14-17">
+</MAP>
+<IMG SRC="ch14-17.gif" USEMAP="#ch14-17">
+</DIV>
+<P CLASS="SubSection">
+<A NAME="pgfId=1111">
+ </A>
+<A NAME="marker=269">
+ </A>
+<A NAME="marker=273">
+ </A>
+<A NAME="marker=304">
+ </A>
+$period</P>
+</DIV>
+<DIV>
+<H2 CLASS="Syntax">
+<A NAME="pgfId=1113">
+ </A>
+</H2>
+<PRE CLASS="BNFDef"><A NAME="pgfId=719"> </A>
+	<B CLASS="Keyword">$period</B>
+ <B CLASS="Keyword">(</B>
+ reference_event <B CLASS="Keyword">,</B>
+ limit [ <B CLASS="Keyword">,</B>
+ notifier ] <B CLASS="Keyword">) ;</B>
+</PRE>
+<PRE CLASS="BNFDef"><A NAME="pgfId=720"> </A>
+</PRE>
+<PRE CLASS="BNFDef"><A NAME="pgfId=721"> </A>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1041">
+ </A>
+<A HREF="ch14.5.htm#24399" CLASS="XRef">
+See : $hold arguments</A>
+ defines the <B CLASS="Keyword">
+$period</B>
+<B CLASS="boldemphasis">
+ </B>
+system task arguments. </P>
+<TABLE BORDER="1">
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=722">
+ </A>
+Table&nbsp;14-15<A NAME="24399">
+ </A>
+: $period arguments</P>
+</CAPTION>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=724">
+ </A>
+<CODE CLASS="code">
+reference_event</CODE>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=794">
+ </A>
+edge triggered event</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=858">
+ </A>
+<CODE CLASS="code">
+limit</CODE>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=884">
+ </A>
+positive constant expression or specparam</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=948">
+ </A>
+notifier (optional)</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1039">
+ </A>
+register</P>
+</TD>
+</TR>
+</TABLE>
+<P CLASS="Body">
+<A NAME="pgfId=1115">
+ </A>
+Since the data event is not passed as an argument to <B CLASS="Keyword">
+$period</B>
+, it is derived from the reference event, as follows:</P>
+<P CLASS="Body">
+<A NAME="pgfId=1117">
+ </A>
+	data event = reference event signal with the same edge</P>
+<P CLASS="Body">
+<A NAME="pgfId=1119">
+ </A>
+Because of the way the data event is derived for <B CLASS="Keyword">
+$period</B>
+, an edge triggered event must be passed as the reference event. A compilation error will occur if the reference event is not an edge specification.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1120">
+ </A>
+The <B CLASS="Keyword">
+$period</B>
+ timing check reports a violation in the following case:</P>
+<P CLASS="Body">
+<A NAME="pgfId=1122">
+ </A>
+	(time of data event) - (time of reference event) &lt; limit</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=1123">
+ </A>
+<A NAME="marker=341">
+ </A>
+<A NAME="marker=342">
+ </A>
+<A NAME="marker=343">
+ </A>
+$skew</P>
+</DIV>
+<DIV>
+<H2 CLASS="Syntax">
+<A NAME="pgfId=1125">
+ </A>
+</H2>
+<PRE CLASS="BNFDef"><A NAME="pgfId=1127"> </A>
+	<B CLASS="Keyword">$skew</B>
+ <B CLASS="Keyword">(</B>
+ reference_event <B CLASS="Keyword">,</B>
+ data_event <B CLASS="Keyword">,</B>
+ limit [ <B CLASS="Keyword">,</B>
+ notifier ] <B CLASS="Keyword">) ;</B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1128">
+ </A>
+<A HREF="ch14.5.htm#24399" CLASS="XRef">
+See : $hold arguments</A>
+ defines the <B CLASS="Keyword">
+$skew</B>
+<B CLASS="boldemphasis">
+ </B>
+system task arguments.</P>
+<TABLE BORDER="1">
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=725">
+ </A>
+Table&nbsp;14-16: <A NAME="24399">
+ </A>
+$skew arguments</P>
+</CAPTION>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=730">
+ </A>
+<CODE CLASS="code">
+reference_event</CODE>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=731">
+ </A>
+lower bound event</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=732">
+ </A>
+<CODE CLASS="code">
+data_event</CODE>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=733">
+ </A>
+upper bound event</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=734">
+ </A>
+<CODE CLASS="code">
+limit</CODE>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=735">
+ </A>
+positive constant expression or specparam</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=736">
+ </A>
+notifier (optional)</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1092">
+ </A>
+register</P>
+</TD>
+</TR>
+</TABLE>
+<P CLASS="Body">
+<A NAME="pgfId=1131">
+ </A>
+The <B CLASS="Keyword">
+$skew</B>
+ timing check reports a violation in the following case:</P>
+<PRE CLASS="BNFDef"><A NAME="pgfId=1132"> </A>
+	(time of data event) - (time of reference event) &gt; limit</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1133">
+ </A>
+The <B CLASS="Keyword">
+$skew</B>
+ timing check always records the new time of reference event before it performs the timing check. If the data event and the reference event occur at the same simulation time, <B CLASS="Keyword">
+$skew</B>
+ does not report a timing violation. </P>
+<P CLASS="SubSection">
+<A NAME="pgfId=1134">
+ </A>
+<A NAME="marker=350">
+ </A>
+<A NAME="marker=351">
+ </A>
+<A NAME="marker=352">
+ </A>
+$recovery</P>
+</DIV>
+<DIV>
+<H2 CLASS="Syntax">
+<A NAME="pgfId=1136">
+ </A>
+</H2>
+<PRE CLASS="BNFDef"><A NAME="pgfId=1138"> </A>
+	<B CLASS="Keyword">$recovery</B>
+ <B CLASS="Keyword">(</B>
+ reference_event <B CLASS="Keyword">,</B>
+ data_event <B CLASS="Keyword">,</B>
+ limit <B CLASS="Keyword">,</B>
+ [ notifier ] <B CLASS="Keyword">)</B>
+ <B CLASS="Keyword">;</B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1140">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=888">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=891">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=902">
+ </A>
+<A HREF="ch14.5.htm#24399" CLASS="XRef">
+See : $hold arguments</A>
+ defines the <B CLASS="Keyword">
+$recovery</B>
+<B CLASS="boldemphasis">
+ </B>
+system task arguments.</P>
+<TABLE BORDER="1">
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=737">
+ </A>
+Table&nbsp;14-17: <A NAME="24399">
+ </A>
+$recovery arguments</P>
+</CAPTION>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=739">
+ </A>
+<CODE CLASS="code">
+reference_event</CODE>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=740">
+ </A>
+edge triggered event</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=741">
+ </A>
+<CODE CLASS="code">
+data_event</CODE>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=742">
+ </A>
+upper bound event</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=743">
+ </A>
+<CODE CLASS="code">
+limit</CODE>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=744">
+ </A>
+positive constant expression or specparam</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=745">
+ </A>
+notifier (optional)</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1093">
+ </A>
+register</P>
+</TD>
+</TR>
+</TABLE>
+<P CLASS="Body">
+<A NAME="pgfId=1142">
+ </A>
+The reference event must be specified as an edge triggered event using either <B CLASS="Keyword">
+posedge</B>
+ or <B CLASS="Keyword">
+negedge</B>
+ keyword. Not specifying an edge results in illegal specification of the reference event.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1582">
+ </A>
+The <B CLASS="Keyword">
+$recovery</B>
+ timing check system task reports a timing violation in the following case: </P>
+<P CLASS="Body">
+<A NAME="pgfId=1143">
+ </A>
+	(time of data event) - (time of reference event) &lt; limit</P>
+<P CLASS="Body">
+<A NAME="pgfId=1135">
+ </A>
+The $recovery system task records the new reference event time before performing the timing check, so if a data event and a reference event occur at the same simulation time, a violation occurs.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=1144">
+ </A>
+$nocheck</P>
+</DIV>
+<DIV>
+<H2 CLASS="Syntax">
+<A NAME="pgfId=1110">
+ </A>
+</H2>
+<PRE CLASS="BNFDef"><A NAME="pgfId=1139"> </A>
+	<B CLASS="Keyword">$nochange</B>
+ <B CLASS="Keyword">(</B>
+ reference_event <B CLASS="Keyword">,</B>
+ data_event <B CLASS="Keyword">,</B>
+ start_edge_offset <B CLASS="Keyword">,</B>
+ end_edge_offset [ <B CLASS="Keyword">,</B>
+ notifier ] <B CLASS="Keyword">) ;</B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1208">
+ </A>
+<A HREF="ch14.5.htm#79167" CLASS="XRef">
+See : $nochange arguments</A>
+ defines the <B CLASS="Keyword">
+$nochange</B>
+<B CLASS="boldemphasis">
+ </B>
+system task arguments.</P>
+<TABLE BORDER="1">
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=1145">
+ </A>
+Table&nbsp;14-18<A NAME="79167">
+ </A>
+: $nochange arguments</P>
+</CAPTION>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1153">
+ </A>
+<CODE CLASS="code">
+reference_event</CODE>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1162">
+ </A>
+edge triggered event</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1171">
+ </A>
+<CODE CLASS="code">
+data_event</CODE>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1172">
+ </A>
+upper bound event</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1173">
+ </A>
+<CODE CLASS="code">
+start_edge_offset</CODE>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1177">
+ </A>
+any constant expression or specparam</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1212">
+ </A>
+<CODE CLASS="code">
+end_edge_offset</CODE>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1213">
+ </A>
+any constant expression or specparam</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1179">
+ </A>
+notifier (optional)</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1193">
+ </A>
+register</P>
+</TD>
+</TR>
+</TABLE>
+<P CLASS="Body">
+<A NAME="pgfId=1141">
+ </A>
+The $nochange timing check system task reports a timing violation if the data event occurs during the specified level of the control signal, the reference event. The reference event may be specified with the <B CLASS="Keyword">
+posedge</B>
+ or the <B CLASS="Keyword">
+negedge</B>
+ keyword, but the edge control specifiers (see <A HREF="ch14.5.htm#edge control specifiers" CLASS="XRef">
+See Edge-control specifiers</A>
+) can not be used.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1214">
+ </A>
+The start edge and end edge offsets can expand or shrink the timing violation region, which is defined by the duration of the reference event signal edge. A positive offset for start edge extends the region by starting the timing violation region earlier, a negative offset for start edge shrinks the region by starting the region later. Similarly, a positive offset for end edge extends the timing violation region by ending it later, while a negative offset for end edge shrinks the region by ending it earlier. If both the offsets are zero, the size of the region will not change.</P>
+</DIV>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=1215">
+ </A>
+</H2>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1216"> </A>
+<B CLASS="Keyword">$nochange</B>
+( <B CLASS="Keyword">posedge</B>
+ clk, data, 0, 0) ;</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1217">
+ </A>
+In this example, <B CLASS="Keyword">
+$nochange</B>
+ system task will report a violation if the <CODE CLASS="code">
+data</CODE>
+ signal changes while <CODE CLASS="code">
+clk</CODE>
+ is high.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=1159">
+ </A>
+Edge-control specifiers<A NAME="marker=284">
+ </A>
+<A NAME="edge control specifiers">
+ </A>
+ </P>
+<P CLASS="Body">
+<A NAME="pgfId=1161">
+ </A>
+The edge-control specifiers may be used to control events in timing checks based on specific edge transitions between <CODE CLASS="code">
+0</CODE>
+, <CODE CLASS="code">
+1</CODE>
+, and <CODE CLASS="code">
+x</CODE>
+.</P>
+</DIV>
+<DIV>
+<H2 CLASS="Syntax">
+<A NAME="pgfId=748">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=1583">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch14-18.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=1407">
+ </A>
+Syntax&nbsp;14-7: Syntax for edge control specifier</P>
+<P CLASS="Body">
+<A NAME="pgfId=1163">
+ </A>
+Edge-control specifiers contain the keyword <B CLASS="Keyword">
+edge</B>
+<A NAME="marker=369">
+ </A>
+ followed by a square bracketed list of from one to six pairs of edge transitions between <CODE CLASS="code">
+0</CODE>
+, <CODE CLASS="code">
+1</CODE>
+ and <CODE CLASS="code">
+x</CODE>
+, as follows:</P>
+<P CLASS="Body">
+<A NAME="pgfId=1164">
+ </A>
+	01	transition from 0 to 1<BR>
+	0x	transition from 0 to x<BR>
+	10	transition from 1 to 0<BR>
+	1x	transition from 1 to x<BR>
+	x0	transition from x to 0<BR>
+	x1	transition from x to 1</P>
+<P CLASS="Body">
+<A NAME="pgfId=729">
+ </A>
+Edge transitions involving <CODE CLASS="code">
+z</CODE>
+ are treated the same way as edge transitions involving<B CLASS="boldemphasis">
+ </B>
+<CODE CLASS="code">
+x</CODE>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1174">
+ </A>
+The <B CLASS="Keyword">
+posedge</B>
+<A NAME="marker=376">
+ </A>
+ and <B CLASS="Keyword">
+negedge</B>
+<A NAME="marker=377">
+ </A>
+ keywords may be used as a shorthand for certain edge control specifiers. For example, the construct:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1175"> </A>
+<B CLASS="Keyword">posedge</B>
+ clr</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1176">
+ </A>
+is equivalent to the following:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=805"> </A>
+<B CLASS="Keyword">edge</B>
+[01, 0x, x1] clr</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1178">
+ </A>
+Similarly, the construct:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=806"> </A>
+<B CLASS="Keyword">negedge</B>
+ clr</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1180">
+ </A>
+is the same as the following:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1181"> </A>
+<B CLASS="Keyword">edge</B>
+[10, x0, 1x] clr</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1182">
+ </A>
+However, edge-control specifiers offer the flexibility to declare edge transitions other than <B CLASS="Keyword">
+posedge</B>
+ and <B CLASS="Keyword">
+negedge</B>
+. <A NAME="marker=381">
+ </A>
+</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=1183">
+ </A>
+Notifiers: user-defined responses to timing violations<A NAME="Notifiers sub-section">
+ </A>
+<A NAME="marker=382">
+ </A>
+  </P>
+<P CLASS="Body">
+<A NAME="pgfId=1185">
+ </A>
+Timing check notifiers detect timing check violations behaviorally, and, therefore, take an action as soon as a violation occurs. Such notifiers may be used to print an informative error message describing the violation, or propagate an <CODE CLASS="code">
+x</CODE>
+ value at the output of the device that reported the violation.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1186">
+ </A>
+The notifier is a <A NAME="marker=384">
+ </A>
+register--declared in the module where timing check tasks are invoked--that is passed as the last argument to a system timing check. Whenever a timing violation occurs, the system task updates the value of the notifier. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1187">
+ </A>
+The notifier is an optional argument to all system timing checks and can be omitted from the system task call without adversely affecting its operation. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1100">
+ </A>
+<A HREF="ch14.5.htm#24870" CLASS="XRef">
+See : Notifier value changes</A>
+ shows how the notifier values are toggled when timing violations occur.</P>
+<TABLE BORDER="1">
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=755">
+ </A>
+Table&nbsp;14-19: <A NAME="24870">
+ </A>
+<A NAME="marker=386">
+ </A>
+Notifier value changes</P>
+</CAPTION>
+<TR>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=757">
+ </A>
+BEFORE violation </P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=758">
+ </A>
+ AFTER violation</P>
+</TH>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=759">
+ </A>
+x</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=760">
+ </A>
+0</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=761">
+ </A>
+0</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=762">
+ </A>
+1</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=763">
+ </A>
+1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=764">
+ </A>
+0</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=765">
+ </A>
+z</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=798">
+ </A>
+z</P>
+</TD>
+</TR>
+</TABLE>
+</DIV>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=1112">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=1192">
+ </A>
+1. </P>
+<DIV>
+<IMG SRC="ch14-19.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=1194">
+ </A>
+2. Consider a more complex <A NAME="marker=391">
+ </A>
+example of how to use notifiers in a behavioral model. The example that follows uses a notifier to set the D flip-flop output to <CODE CLASS="code">
+x</CODE>
+ when a timing violation occurs in an edge-sensitive user-defined primitive (UDP).</P>
+<P CLASS="Body">
+<A NAME="pgfId=1195">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch14-20.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=821">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch14-21.gif">
+</DIV>
+<P CLASS="Note">
+<A NAME="pgfId=1201">
+ </A>
+NOTE--This model applies to edge-sensitive UDPs only; for level-sensitive models, an additional UDP for <CODE CLASS="code">
+x</CODE>
+ propagation must be generated. <A NAME="marker=394">
+ </A>
+</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=1072">
+ </A>
+Enabling timing checks with c<A NAME="marker=383">
+ </A>
+onditioned events</P>
+<P CLASS="Body">
+<A NAME="pgfId=1075">
+ </A>
+A construct called a conditioned event ties the occurrence of timing checks to the value of a conditioning signal.</P>
+</DIV>
+<DIV>
+<H2 CLASS="Syntax">
+<A NAME="pgfId=1160">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=772">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch14-22.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=1414">
+ </A>
+Syntax&nbsp;14-8: Syntax for controlled timing check event</P>
+<P CLASS="Body">
+<A NAME="pgfId=810">
+ </A>
+The comparisons used in the <A NAME="marker=312">
+ </A>
+<A NAME="marker=325">
+ </A>
+condition may be deterministic--as in <B CLASS="Keyword">
+===</B>
+, <B CLASS="Keyword">
+!==</B>
+, <B CLASS="Keyword">
+~</B>
+, or no operation, or non-deterministic--as in <B CLASS="Keyword">
+==</B>
+ or <B CLASS="Keyword">
+!=</B>
+. When comparisons are deterministic, an <CODE CLASS="code">
+x</CODE>
+ value on the conditioning signal will not enable the timing check. For non-deterministic comparisons, an <CODE CLASS="code">
+x</CODE>
+ on the conditioning signal will enable the timing check.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1124">
+ </A>
+The conditioning signal must be a scalar net; if a vector net or an expression resulting in a multi-bit value is used then the least significant bit of the vector net or the expression value is used.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1129">
+ </A>
+If more than one conditioning signal is required for conditioning timing checks, appropriate logic must be combined in a separate signal outside the specify block, which may be used as the conditioning signal.</P>
+</DIV>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=809">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=807">
+ </A>
+1. To illustrate the <A NAME="marker=397">
+ </A>
+difference between conditioned and unconditioned timing check events, consider the following example with unconditioned timing check: </P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1209"> </A>
+<B CLASS="Keyword">$setup</B>
+( data, <B CLASS="Keyword">posedge</B>
+ clk, 10 );</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1210">
+ </A>
+Here, a setup timing check will occur every time there is a positive edge on signal <CODE CLASS="code">
+clk</CODE>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1211">
+ </A>
+To trigger the setup check on the positive edge on signal <CODE CLASS="code">
+clk</CODE>
+ only when signal<CODE CLASS="code">
+ clr</CODE>
+ is high, rewrite the command as:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=808"> </A>
+<B CLASS="Keyword">$setup</B>
+( data, <B CLASS="Keyword">posedge</B>
+ clk <B CLASS="Keyword">&amp;&amp;&amp;</B>
+ clr, 10 ) ;</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=769">
+ </A>
+2. This example shows two ways to trigger the same timing check as above (on the positive <CODE CLASS="code">
+clk</CODE>
+ edge) only when <CODE CLASS="code">
+clr</CODE>
+ is low. The second method uses <B CLASS="Keyword">
+===</B>
+ operator, which makes the comparison deterministic.</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=812"> </A>
+<B CLASS="Keyword">$setup</B>
+( data, <B CLASS="Keyword">posedge</B>
+ clk <B CLASS="Keyword">&amp;&amp;&amp;</B>
+ (<B CLASS="Keyword">~</B>
+clr), 10 ) ;<B CLASS="Keyword">$setup</B>
+( data, <B CLASS="Keyword">posedge</B>
+ clk <B CLASS="Keyword">&amp;&amp;&amp;</B>
+ (clr<B CLASS="Keyword">===</B>
+0), 10 );</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=811">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=1222">
+ </A>
+3. To perform the previous sample setup check on the positive <CODE CLASS="code">
+clk</CODE>
+ edge only when <CODE CLASS="code">
+clr</CODE>
+ and <CODE CLASS="code">
+set</CODE>
+ are high, add the following statement outside the specify block:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1223"> </A>
+<B CLASS="Keyword">and</B>
+ new_gate( clr_and_set, clr, set );</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1224">
+ </A>
+Then, add the condition to the timing check using the signal <CODE CLASS="code">
+clr_and_set</CODE>
+ as follows:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=788"> </A>
+<B CLASS="Keyword">$setup</B>
+( data, <B CLASS="Keyword">posedge</B>
+ clk <B CLASS="Keyword">&amp;&amp;&amp;</B>
+ clr_and_set, 10 );<A NAME="marker=209"> </A>
+<A NAME="marker=210"> </A>
+</PRE>
+</DIV>
+<HR><P><A HREF="ch14.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch14.4.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch14.6.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

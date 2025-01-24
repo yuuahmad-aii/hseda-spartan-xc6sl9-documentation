@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch06.css">
+<TITLE> 6.2	Procedural assignments </TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch06.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch06.1.htm">Previous&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=165">
+ </A>
+6.2	P<A NAME="marker=75">
+ </A>
+rocedural assignments </H1>
+<P CLASS="Body">
+<A NAME="pgfId=166">
+ </A>
+The primary discussion of procedural assignments is in <A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/06/ch09.htm#12062" CLASS="XRef">
+</A>
+. However, a description of the basic ideas here highlights the <A NAME="marker=79">
+ </A>
+differences between continuous assignments and procedural assignments.</P>
+<P CLASS="Body">
+<A NAME="pgfId=167">
+ </A>
+As stated above, continuous assignments drive nets in a manner similar to the way gates drive nets. The expression on the right-hand side can be thought of as a combinatorial circuit that drives the net continuously. In contrast, <A NAME="marker=80">
+ </A>
+procedural assignments put values in <A NAME="marker=81">
+ </A>
+registers. The assignment does not have duration; instead, the register holds the value of the assignment until the next procedural assignment to that register. </P>
+<P CLASS="Body">
+<A NAME="pgfId=168">
+ </A>
+Procedural assignments occur within procedures such as <B CLASS="Keyword">
+always</B>
+, <B CLASS="Keyword">
+initial</B>
+ (see <A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/06/ch09.htm#73702" CLASS="XRef">
+</A>
+), <B CLASS="Keyword">
+task</B>
+ and <B CLASS="Keyword">
+function</B>
+ (see <A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/06/ch10.htm#73077" CLASS="XRef">
+</A>
+) and can be thought of as &quot;triggered&quot; assignments. The trigger occurs when the flow of execution in the simulation reaches an assignment within a procedure. Reaching the assignment can be controlled by conditional statements. Event controls, delay controls, <B CLASS="Keyword">
+if</B>
+ statements, <B CLASS="Keyword">
+case</B>
+ statements, and looping statements can all be used to control whether assignments get evaluated. <A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/06/ch09.htm#73702" CLASS="XRef">
+</A>
+ gives details and examples.<A NAME="marker=86">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=96">
+ </A>
+ </P>
+<HR><P><A HREF="ch06.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch06.1.htm">Previous&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

@@ -1,0 +1,239 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch12.css">
+<TITLE> 12.4	Hierarchical names </TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch12.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch12.3.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch12.5.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=315">
+ </A>
+12.4	Hierarchical names <A NAME="71439">
+ </A>
+<A NAME="marker=162">
+ </A>
+<A NAME="marker=164">
+ </A>
+<A NAME="marker=165">
+ </A>
+</H1>
+<P CLASS="Body">
+<A NAME="pgfId=324">
+ </A>
+Every identifier in a Verilog HDL description shall have a unique <I CLASS="Emphasis">
+hierarchical path name</I>
+. The hierarchy of modules and the definition of items such as <A NAME="marker=166">
+ </A>
+tasks and <A NAME="marker=167">
+ </A>
+named blocks within the modules shall define these names. The hierarchy of names can be viewed as a <A NAME="marker=168">
+ </A>
+tree structure, where each module instance, task, function, or named <CODE CLASS="code">
+begin-end </CODE>
+or <CODE CLASS="code">
+fork-join</CODE>
+ block defines a new <A NAME="marker=169">
+ </A>
+<A NAME="marker=170">
+ </A>
+hierarchical level, or scope, in a particular branch of the tree.</P>
+<P CLASS="Body">
+<A NAME="pgfId=418">
+ </A>
+At the <A NAME="marker=171">
+ </A>
+top of the name hierarchy are the names of modules of which no instances have been created. It is the <I CLASS="Emphasis">
+root</I>
+ of the hierarchy. Inside any module, each module instance, task definition, function definition, and named <CODE CLASS="code">
+begin-end</CODE>
+ or <CODE CLASS="code">
+fork-join</CODE>
+ block shall define a new branch of the hierarchy. Named blocks within named blocks and within tasks and functions shall create new branches.</P>
+<P CLASS="Body">
+<A NAME="pgfId=419">
+ </A>
+Each <A NAME="marker=172">
+ </A>
+node in the hierarchical name tree shall be a separate scope<A NAME="marker=173">
+ </A>
+ with respect to identifiers. A particular identifier can be declared at most once in any scope. See <A HREF="ch12.5.htm#91529" CLASS="XRef">
+See Scope rules</A>
+ for a discussion of scope rules, and <A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/12/ch03.htm#12742" CLASS="XRef">
+</A>
+ for a discussion of name spaces.</P>
+<P CLASS="Body">
+<A NAME="pgfId=420">
+ </A>
+Any named Verilog object can be referenced uniquely in its full form by <A NAME="marker=174">
+ </A>
+concatenating the names of the modules, tasks, functions, or blocks that contain it. The period character shall be used to separate each of the names in the hierarchy. The complete path name to any object shall start at a top-level module. This path name can be used from any level in the description. The first node name in a path name can also be the top of a hierarchy that starts at the level where the path is being used.</P>
+<DIV>
+<H3 CLASS="Example">
+<A NAME="pgfId=421">
+ </A>
+<EM CLASS="-">
+</EM>
+</H3>
+<P CLASS="Body">
+<A NAME="pgfId=305">
+ </A>
+<EM CLASS="-">
+1. The code in example below defines a hierarchy of module instances and named blocks. <A HREF="ch12.4.htm#hierarchy in a model" CLASS="XRef">
+See : Hierarchy in a model</A>
+ illustrates the hierarchy implicit in this Verilog code. <A HREF="ch12.4.htm#hierarchical path names in a model" CLASS="XRef">
+See : Hierarchical path names in a model</A>
+ is a list of the hierarchical forms of the names of all the objects defined in the code.</EM>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=422">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch12-12.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=424">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch12-13.gif">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=425">
+ </A>
+Figure&nbsp;12-1<A NAME="hierarchy in a model">
+ </A>
+: Hierarchy in a model</P>
+<P CLASS="Body">
+<A NAME="pgfId=426">
+ </A>
+The following list gives the hierarchical path names for all the objects shown above:</P>
+<P CLASS="Body">
+<A NAME="pgfId=427">
+ </A>
+<A NAME="marker=185">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch12-14.gif">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=428">
+ </A>
+Figure&nbsp;12-2<A NAME="hierarchical path names in a model">
+ </A>
+: Hierarchical path names in a model</P>
+<P CLASS="Body">
+<A NAME="pgfId=429">
+ </A>
+Hierarchical name referencing allows free data access to any object from any level in the hierarchy. If the unique hierarchical path name of an item is known, its value can be sampled or changed from anywhere within the description.</P>
+<P CLASS="Body">
+<A NAME="pgfId=227">
+ </A>
+2. Next example shows how a pair of named blocks can refer to items declared within each other.</P>
+<P CLASS="Body">
+<A NAME="pgfId=256">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch12-15.gif">
+</DIV>
+<P CLASS="SubSection">
+<A NAME="pgfId=307">
+ </A>
+<A NAME="marker=189">
+ </A>
+Upwards name referencing</P>
+<P CLASS="Body">
+<A NAME="pgfId=326">
+ </A>
+<EM CLASS="-">
+A lower-level module can reference items in a module above it in the hierarchy if the name of the higher-level module is known. The syntax for an upward reference is as follows:</EM>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=240">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch12-16.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=246">
+ </A>
+Syntax&nbsp;12-5<EM CLASS="-">
+: Syntax for upward name referencing</EM>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=380">
+ </A>
+<EM CLASS="-">
+Upwards name references can also be done with names of the form</EM>
+</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=390"> </A>
+module_instance_name.item_name</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=400">
+ </A>
+A name of this form shall be resolved as follows:</P>
+<OL>
+<P CLASS="NumberedList1">
+<A NAME="pgfId=401">
+ </A>
+1)	Look in the current module for a module instance named <CODE CLASS="code">
+module_instance_name</CODE>
+. If found, this name reference shall be treated as a downward reference, and the item name shall be resolved in the corresponding module.</P>
+<P CLASS="NumberedList2">
+<A NAME="pgfId=402">
+ </A>
+2)	Look in the parent module for a module instance named <CODE CLASS="code">
+module_instance_name</CODE>
+. If found, the item name shall be resolved from that instance, which is the sibling of the module containing the reference.</P>
+<P CLASS="NumberedList2">
+<A NAME="pgfId=403">
+ </A>
+3)	Repeat step 2, going up the hierarchy.</P>
+</OL>
+<P CLASS="Body">
+<A NAME="pgfId=385">
+ </A>
+<EM CLASS="-">
+There shall be no spaces within the hierarchical name reference. Next example demonstrates upward referencing</EM>
+. In this example, there are four modules, a, <CODE CLASS="code">
+b</CODE>
+, <CODE CLASS="code">
+c</CODE>
+, and <CODE CLASS="code">
+d</CODE>
+. Each module contains an integer <CODE CLASS="code">
+i</CODE>
+. The highest-level modules in this segment of a model hierarchy are <CODE CLASS="code">
+a</CODE>
+ and <CODE CLASS="code">
+d</CODE>
+. There are two copies of module <CODE CLASS="code">
+b</CODE>
+ because module <CODE CLASS="code">
+a</CODE>
+ and <CODE CLASS="code">
+d</CODE>
+ instantiate <CODE CLASS="code">
+b</CODE>
+. There are four copies of <CODE CLASS="code">
+c.i</CODE>
+ because each of the two copies of <CODE CLASS="code">
+b</CODE>
+ instantiates <CODE CLASS="code">
+c</CODE>
+ twice.</P>
+<P CLASS="Body">
+<A NAME="pgfId=248">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch12-17.gif">
+</DIV>
+</DIV>
+<HR><P><A HREF="ch12.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch12.3.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch12.5.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

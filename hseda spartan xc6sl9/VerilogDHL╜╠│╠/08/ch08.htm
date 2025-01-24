@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch08.css">
+<TITLE> Section 8</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="none">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch08.1.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<DIV>
+<H1 CLASS="Chapter">
+<A NAME="pgfId=257">
+ </A>
+Section 8<A NAME="68347">
+ </A>
+</H1>
+<H1 CLASS="ChapterTitle">
+<A NAME="pgfId=299">
+ </A>
+<A NAME="marker=22">
+ </A>
+<A NAME="marker=23">
+ </A>
+User-Defined Primitives (UDPs)</H1>
+<P CLASS="Body">
+<A NAME="pgfId=300">
+ </A>
+This section describes a modeling technique to augment the set of predefined gate primitives by designing and specifying new primitive elements called user-defined primitives (UDPs). Instances of these new UDPs can be used in exactly the same manner as the gate primitives to represent the circuit being modeled. </P>
+<P CLASS="Body">
+<A NAME="pgfId=301">
+ </A>
+The following two types of behavior can be represented in a user-defined primitive:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=302">
+ </A>
+<A NAME="marker=25">
+ </A>
+combinational--modeled by a combinational UDP</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=303">
+ </A>
+sequential--modeled by a sequential UDP</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=304">
+ </A>
+A combinational UDP uses the value of its inputs to determine the next value of its output. A sequential UDP uses the value of its inputs and the current value of its output to determine the next value of its output. Sequential UDPs provide a way to model sequential circuits such as flip-flops and latches. A sequential UDP can model both level-sensitive and edge-sensitive behavior.</P>
+<P CLASS="Body">
+<A NAME="pgfId=306">
+ </A>
+Each UDP has exactly one output, which can be in one of three states: <CODE CLASS="code">
+0</CODE>
+, <CODE CLASS="code">
+1</CODE>
+, or <CODE CLASS="code">
+x</CODE>
+. The tri-state value <CODE CLASS="code">
+z</CODE>
+ is not supported. In sequential UDPs, the output always has the same value as the internal state. </P>
+<P CLASS="Body">
+<A NAME="pgfId=438">
+ </A>
+The <CODE CLASS="code">
+z</CODE>
+ values passed to UDP inputs shall be treated the same as <CODE CLASS="code">
+x</CODE>
+ values.</P>
+<H2 CLASS="SectionTOC">
+<A HREF="ch08.1.htm#pgfId=316" CLASS="Hypertext">
+8.1	UDP definition </A>
+</H2>
+<H2 CLASS="SectionTOC">
+<A HREF="ch08.2.htm#pgfId=342" CLASS="Hypertext">
+8.2	Combinational UDPs</A>
+</H2>
+<H2 CLASS="SectionTOC">
+<A HREF="ch08.3.htm#pgfId=348" CLASS="Hypertext">
+8.3	Level-sensitive sequential UDPs </A>
+</H2>
+<H2 CLASS="SectionTOC">
+<A HREF="ch08.4.htm#pgfId=353" CLASS="Hypertext">
+8.4	Edge-sensitive sequential UDPs </A>
+</H2>
+<H2 CLASS="SectionTOC">
+<A HREF="ch08.5.htm#pgfId=361" CLASS="Hypertext">
+8.5	Sequential UDP initialization</A>
+</H2>
+<H2 CLASS="SectionTOC">
+<A HREF="ch08.6.htm#pgfId=371" CLASS="Hypertext">
+8.6	UDP instances </A>
+</H2>
+<H2 CLASS="SectionTOC">
+<A HREF="ch08.7.htm#pgfId=378" CLASS="Hypertext">
+8.7	Mixing level and edge-sensitive descriptions </A>
+</H2>
+<H2 CLASS="SectionTOC">
+<A HREF="ch08.8.htm#pgfId=386" CLASS="Hypertext">
+8.8	Level-sensitive dominance </A>
+</H2>
+</DIV>
+<HR><P><A HREF="none">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch08.1.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

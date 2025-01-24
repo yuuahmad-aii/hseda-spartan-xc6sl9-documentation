@@ -1,0 +1,781 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch07.css">
+<TITLE> 7.15	Gate and net delays </TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch07.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch07.e.htm">Previous&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=1653">
+ </A>
+7.15	<A NAME="56851">
+ </A>
+<A NAME="33083">
+ </A>
+Gate and<A NAME="marker=580">
+ </A>
+ <A NAME="marker=581">
+ </A>
+<A NAME="marker=582">
+ </A>
+<A NAME="marker=583">
+ </A>
+net d<A NAME="marker=584">
+ </A>
+elays </H1>
+<P CLASS="Body">
+<A NAME="pgfId=1654">
+ </A>
+Gate and net delays provide a means of more accurately describing delays through a circuit. The <I CLASS="Emphasis">
+gate delays</I>
+ specify the signal propagation delay from any gate input to the gate output. Up to three values per output representing rise, fall, and turn-off delays can be specified (see <A HREF="ch07.2.htm#56809" CLASS="XRef">
+See And, nand, nor, or, xor, and xnor gates</A>
+ - <A HREF="ch07.8.htm#gate descriptions end" CLASS="XRef">
+See Pullup and pulldown sources</A>
+).</P>
+<P CLASS="Body">
+<A NAME="pgfId=1655">
+ </A>
+<I CLASS="Emphasis">
+Net delays</I>
+ refer to the time it takes from any driver on the net changing value to the time when the net value is updated and propagated further. Up to three delay values per net can be specified.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1656">
+ </A>
+For both gates and nets, the <I CLASS="Emphasis">
+default delay</I>
+ shall be zero when no delay specification is given. When <A NAME="marker=593">
+ </A>
+one delay value is given, then this value shall be used for all <A NAME="marker=594">
+ </A>
+<A NAME="marker=595">
+ </A>
+propagation delays associated with the gate or the net. When <A NAME="marker=591">
+ </A>
+two delays are given, the first shall specify the <A NAME="marker=592">
+ </A>
+<A NAME="marker=596">
+ </A>
+rise delay and the second delay shall specify the <A NAME="marker=597">
+ </A>
+<A NAME="marker=598">
+ </A>
+fall delay. The delay when the signal changes to <A NAME="marker=599">
+ </A>
+high impedance or to <A NAME="marker=600">
+ </A>
+unknown shall be the lesser of the two delay values.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1050">
+ </A>
+For&nbsp;a&nbsp;<A NAME="marker=604">
+ </A>
+three&nbsp;delay&nbsp;specification:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=1657">
+ </A>
+the first delay&nbsp;refers&nbsp;to&nbsp;the&nbsp;transition&nbsp;to&nbsp;the&nbsp;1&nbsp;value&nbsp;(rise delay)</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=1658">
+ </A>
+the second delay refers to the transition to the 0 value (fall delay)</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=1659">
+ </A>
+the third delay refers to the transition to the high impedance value</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=1660">
+ </A>
+When a value changes to the <A NAME="marker=605">
+ </A>
+unknown (<CODE CLASS="code">
+x</CODE>
+) value, the delay is the smallest of the three delays. The strength of the input signal shall not affect the propagation delay from an input to an output.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1661">
+ </A>
+<A HREF="ch07.f.htm#44752" CLASS="XRef">
+See : Rules for propagation delays</A>
+ summarizes the from-to propagation delay choice for the two and three delay specifications.</P>
+<TABLE>
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=1254">
+ </A>
+Table&nbsp;7-10<A NAME="44752">
+ </A>
+: Rules for propagation delays</P>
+</CAPTION>
+<TR>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=1258">
+ </A>
+</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=1249">
+ </A>
+</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="2">
+<P CLASS="CellHeading">
+<A NAME="pgfId=1255">
+ </A>
+<EM CLASS="-">
+delay&nbsp;used if there are:</EM>
+</P>
+</TH>
+</TR>
+<TR>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=1262">
+ </A>
+<EM CLASS="-">
+from&nbsp;value</EM>
+:</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=1257">
+ </A>
+<EM CLASS="-">
+to&nbsp;value</EM>
+:		</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=1259">
+ </A>
+<EM CLASS="-">
+2&nbsp;delays</EM>
+</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=1260">
+ </A>
+<EM CLASS="-">
+3&nbsp;delays</EM>
+</P>
+</TH>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1266">
+ </A>
+0</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1261">
+ </A>
+1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1263">
+ </A>
+d1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1264">
+ </A>
+d1</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1270">
+ </A>
+0</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1265">
+ </A>
+x</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1267">
+ </A>
+min(d1, d2)</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1268">
+ </A>
+min(d1, d2, d3)</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1274">
+ </A>
+0</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1269">
+ </A>
+z</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1271">
+ </A>
+min(d1, d2)</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1272">
+ </A>
+d3</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1278">
+ </A>
+1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1273">
+ </A>
+0</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1275">
+ </A>
+d2</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1276">
+ </A>
+d2</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1282">
+ </A>
+1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1277">
+ </A>
+x</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1279">
+ </A>
+min(d1, d2)</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1280">
+ </A>
+min(d1, d2, d3)</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1286">
+ </A>
+1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1281">
+ </A>
+z</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1283">
+ </A>
+min(d1, d2)</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1284">
+ </A>
+d3</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1290">
+ </A>
+x</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1285">
+ </A>
+0</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1287">
+ </A>
+d2</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1288">
+ </A>
+d2</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1294">
+ </A>
+x</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1289">
+ </A>
+1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1291">
+ </A>
+d1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1292">
+ </A>
+d1</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1298">
+ </A>
+x</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1293">
+ </A>
+z</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1295">
+ </A>
+min(d1, d2)</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1296">
+ </A>
+d3</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1302">
+ </A>
+z</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1297">
+ </A>
+0</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1299">
+ </A>
+d2</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1300">
+ </A>
+d2</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1306">
+ </A>
+z</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1301">
+ </A>
+1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1303">
+ </A>
+d1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1304">
+ </A>
+d1</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1310">
+ </A>
+z</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1305">
+ </A>
+x</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1307">
+ </A>
+min(d1, d2)	</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1308">
+ </A>
+min(d1, d2, d3)</P>
+</TD>
+</TR>
+</TABLE>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=1046">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=1054">
+ </A>
+1. The following is an example of a delay specification with one, two, and three delays:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1047"> </A>
+<B CLASS="Keyword">and</B>
+ #(10) a1 (out, in1, in2);													// Only one delay</PRE>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1049"> </A>
+<B CLASS="Keyword">and</B>
+ #(10,12) a2 (out, in1, in2);													// rise and fall delays</PRE>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1052"> </A>
+<B CLASS="Keyword">bufif0</B>
+ #(10,12,11) b3 (out, in, ctrl);													// rise, fall, and turn-off delays</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1662">
+ </A>
+4. The following <A NAME="marker=610">
+ </A>
+example specifies a simple latch module with tri-state outputs, where individual delays are given to the gates. The propagation delay from the primary inputs to the outputs of the module will be cumulative, and depends on the signal path through the network.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1663">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch07-35.gif">
+</DIV>
+<P CLASS="SubSection">
+<A NAME="pgfId=1664">
+ </A>
+<A NAME="marker=612">
+ </A>
+<A NAME="marker=613">
+ </A>
+Min/typ/max delays</P>
+<P CLASS="Body">
+<A NAME="pgfId=1665">
+ </A>
+The syntax for delays on gate primitives (including User-Defined Primitives, see <A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/07/ch08.htm#68347" CLASS="XRef">
+</A>
+), nets, and continuous assignments shall allow three values each for the <A NAME="marker=614">
+ </A>
+<A NAME="marker=615">
+ </A>
+rising, <A NAME="marker=616">
+ </A>
+<A NAME="marker=617">
+ </A>
+falling, and <A NAME="marker=618">
+ </A>
+<A NAME="marker=619">
+ </A>
+turn-off delays. The minimum, typical, and maximum values for each delay shall be specified as constant expressions separated by colons. There shall be no required relation (e.g. min &#163; typ &#163; max) between the expressions for minimum, typical, and maximum delays. These can be any three constant expressions.</P>
+</DIV>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=1048">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=1051">
+ </A>
+The following example shows <CODE CLASS="code">
+min/typ/max</CODE>
+ values for rising, falling, and turn-off delays:</P>
+<P CLASS="Body">
+<A NAME="pgfId=1666">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch07-36.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=1667">
+ </A>
+The syntax for delay controls in procedural statements (see <A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/07/ch09.htm#39185" CLASS="XRef">
+</A>
+) also allows minimum, typical, and maximum values. These are specified by expressions separated by colons. The following example illustrates this concept.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1668">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch07-37.gif">
+</DIV>
+<P CLASS="SubSection">
+<A NAME="pgfId=1669">
+ </A>
+<A NAME="97621">
+ </A>
+Trireg net charge decay<A NAME="marker=623">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=1670">
+ </A>
+Like all nets, the delay specification in a <B CLASS="Keyword">
+trireg</B>
+ net declaration can contain up to three delays. The first two delays shall specify the delay for transition to the <CODE CLASS="code">
+1</CODE>
+ and <CODE CLASS="code">
+0</CODE>
+ logic states when the <B CLASS="Keyword">
+trireg</B>
+ net is driven to these states by a driver. The third delay shall specify the <I CLASS="Emphasis">
+charge decay time</I>
+ instead of the delay in a transition to the <CODE CLASS="code">
+z</CODE>
+ logic state. The charge decay time specifies the delay between when a <B CLASS="Keyword">
+trireg</B>
+ net's drivers turn off and when its stored charge can no longer be determined.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1671">
+ </A>
+A <B CLASS="Keyword">
+trireg</B>
+ net does not need turn-off delay specification because a <B CLASS="Keyword">
+trireg</B>
+ net never makes a transition to the <CODE CLASS="code">
+z</CODE>
+ logic state. When a <B CLASS="Keyword">
+trireg</B>
+ net's drivers make transitions from the <CODE CLASS="code">
+1</CODE>
+, <CODE CLASS="code">
+0</CODE>
+, or <CODE CLASS="code">
+x</CODE>
+ logic states to off, the <B CLASS="Keyword">
+trireg</B>
+ net shall retain the previous <CODE CLASS="code">
+1</CODE>
+, <CODE CLASS="code">
+0</CODE>
+, or <CODE CLASS="code">
+x</CODE>
+ logic state that was on its drivers. The <CODE CLASS="code">
+z</CODE>
+ value shall not propagate from a <B CLASS="Keyword">
+trireg</B>
+ net's drivers to a <B CLASS="Keyword">
+trireg</B>
+ net. A <B CLASS="Keyword">
+trireg</B>
+ net can only hold a <CODE CLASS="code">
+z</CODE>
+ logic state when <CODE CLASS="code">
+z</CODE>
+ is the <B CLASS="Keyword">
+trireg</B>
+ net's initial logic state or when it is forced to the <CODE CLASS="code">
+z</CODE>
+ state with a <B CLASS="Keyword">
+force</B>
+ statement (see <A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/07/ch09.htm#22168" CLASS="XRef">
+</A>
+).</P>
+<P CLASS="Body">
+<A NAME="pgfId=1672">
+ </A>
+A delay specification for charge decay models a charge storage node that is not ideal--a charge storage node whose charge leaks out through its surrounding devices and connections.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1673">
+ </A>
+The following subsections describe the charge decay process and the delay specification for charge decay.</P>
+<P CLASS="SubSubSect">
+<A NAME="pgfId=1674">
+ </A>
+The charge decay process</P>
+<P CLASS="Body">
+<A NAME="pgfId=1675">
+ </A>
+Charge decay is the cause of transition of a 1 or 0 that is stored in a <B CLASS="Keyword">
+trireg</B>
+ net to an unknown value (<CODE CLASS="code">
+x</CODE>
+) after a specified delay. The charge decay process shall begin when the <B CLASS="Keyword">
+trireg</B>
+ net's drivers turn off and the <B CLASS="Keyword">
+trireg</B>
+ net starts to hold charge. The charge decay process shall end under the following two conditions:</P>
+<OL>
+<P CLASS="NumberedLista">
+<A NAME="pgfId=1676">
+ </A>
+a)	The delay specified by charge decay time elapses and the <B CLASS="Keyword">
+trireg</B>
+ net makes a transition from <CODE CLASS="code">
+1</CODE>
+ or <CODE CLASS="code">
+0</CODE>
+ to <CODE CLASS="code">
+x</CODE>
+.</P>
+<P CLASS="NumberedListb">
+<A NAME="pgfId=1677">
+ </A>
+b)	The <B CLASS="Keyword">
+trireg</B>
+ net's drivers turn on and propagate a <CODE CLASS="code">
+1</CODE>
+, <CODE CLASS="code">
+0</CODE>
+ or <CODE CLASS="code">
+x</CODE>
+ into the <B CLASS="Keyword">
+trireg</B>
+ net.</P>
+</OL>
+<P CLASS="SubSubSect">
+<A NAME="pgfId=1678">
+ </A>
+The delay specification for charge decay time<A NAME="marker=624">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=1679">
+ </A>
+The third delay in a <B CLASS="Keyword">
+trireg</B>
+ net declaration shall specify the charge decay time. A three-valued delay specification in a <B CLASS="Keyword">
+trireg</B>
+ net declaration shall have the following form:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1680"> </A>
+#(d1,&nbsp;d2,&nbsp;d3)							// (rise_delay, fall_delay, charge_decay_time)</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1681">
+ </A>
+The charge decay time specification in a <B CLASS="Keyword">
+trireg</B>
+ net declaration shall be preceded by a rise and a fall delay specification. </P>
+</DIV>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=1055">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=1056">
+ </A>
+The following example shows a specification of the charge decay time in a <B CLASS="Keyword">
+trireg</B>
+ net declaration:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1682"> </A>
+<B CLASS="Keyword">trireg</B>
+ (<B CLASS="Keyword">large</B>
+) #(0,0,50) cap1;</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1683">
+ </A>
+This example declares a <B CLASS="Keyword">
+trireg</B>
+ net named <CODE CLASS="code">
+cap1</CODE>
+. This <B CLASS="Keyword">
+trireg</B>
+ net stores a <B CLASS="Keyword">
+large</B>
+ charge. The delay specifications for the rise delay is 0, the fall delay is 0, and the charge decay time specification is 50 time units.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1684">
+ </A>
+2. Next example presents a source description file that contains a <B CLASS="Keyword">
+trireg</B>
+ net declaration with a charge decay time specification. <A HREF="ch07.f.htm#47134" CLASS="XRef">
+See : Trireg net with capacitance</A>
+ shows an equivalent schematic for the source description.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1685">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch07-38.gif">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=1686">
+ </A>
+Figure&nbsp;7-26<A NAME="47134">
+ </A>
+: Trireg net with capacitance</P>
+<P CLASS="Body">
+<A NAME="pgfId=1687">
+ </A>
+ </P>
+<DIV>
+<IMG SRC="ch07-39.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=1688">
+ </A>
+<A NAME="marker=631">
+ </A>
+</P>
+</DIV>
+<HR><P><A HREF="ch07.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch07.e.htm">Previous&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

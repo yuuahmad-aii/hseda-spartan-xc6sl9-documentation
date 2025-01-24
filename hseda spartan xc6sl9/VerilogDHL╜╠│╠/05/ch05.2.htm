@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch05.css">
+<TITLE> 5.2	Event simulation</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch05.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch05.1.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch05.3.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=105">
+ </A>
+5.2	Event simulation</H1>
+<P CLASS="Body">
+<A NAME="pgfId=106">
+ </A>
+The Verilog HDL is defined in terms of a discrete event execution model. The discrete event simulation is described in more detail to provide a context to describe the meaning and valid interpretation of Verilog HDL constructs. These resulting definitions provide the standard Verilog reference model for simulation, which all compliant simulators must implement. Note, though, that there is a great deal of choice in the definitions which follow, and differences in some details of execution are to be expected between different simulators. In addition, Verilog HDL simulators are free to use different algorithms than those described here, provided the user visible effect is consistent with the reference model.</P>
+<P CLASS="Body">
+<A NAME="pgfId=108">
+ </A>
+A design consists of connected threads of execution or processes. Processes are objects which can be evaluated, which may have state, and can respond to changes on their inputs, producing outputs. Processes include primitives, modules, initial and always procedural blocks, continuous assignments, asynchronous tasks, and procedural assignment statements.</P>
+<P CLASS="Body">
+<A NAME="pgfId=109">
+ </A>
+Every change in value of a net or register in the circuit being simulated, as well as the named event, is considered an <I CLASS="Emphasis">
+update event</I>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=110">
+ </A>
+Processes are sensitive to update events. When an update event is executed, all the processes which are sensitive to that event are evaluated in an arbitrary order. The evaluation of a process is also an event, known as an <I CLASS="Emphasis">
+evaluation event</I>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=111">
+ </A>
+In addition to events, another key aspect of a simulator is time. The term <I CLASS="Emphasis">
+simulation time</I>
+ is used to refer to the time value maintained by the simulator to model the actual time it would take for the circuit being simulated. The term <I CLASS="Emphasis">
+time</I>
+ is used interchangeably with simulation time in the following discussion.</P>
+<P CLASS="Body">
+<A NAME="pgfId=112">
+ </A>
+Events can occur at different times. In order to keep track of the events, and to make sure they are processed in the correct order, the events are kept on an <I CLASS="Emphasis">
+event queue</I>
+, ordered by simulation time. Putting an event on the queue is called <I CLASS="Emphasis">
+scheduling an event</I>
+.</P>
+<HR><P><A HREF="ch05.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch05.1.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch05.3.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

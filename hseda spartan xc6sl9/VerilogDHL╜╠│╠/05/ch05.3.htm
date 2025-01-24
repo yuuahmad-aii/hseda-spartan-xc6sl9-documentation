@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch05.css">
+<TITLE> 5.3	The stratified event queue</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch05.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch05.2.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch05.4.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=87">
+ </A>
+5.3	The stratified event queue</H1>
+<P CLASS="Body">
+<A NAME="pgfId=88">
+ </A>
+The Verilog event queue is logically segmented into five different regions. Events are added to any of the five regions; but are only removed from the <I CLASS="Emphasis">
+active</I>
+ region.</P>
+<OL>
+<P CLASS="NumberedList1">
+<A NAME="pgfId=115">
+ </A>
+1)	Events which occur at the current simulation time and can be processed in any order. These are the <I CLASS="Emphasis">
+active</I>
+ events.</P>
+<P CLASS="NumberedList2">
+<A NAME="pgfId=122">
+ </A>
+2)	Events which occur at the current simulation time, but which must be processed after all the active events are processed. These are the <I CLASS="Emphasis">
+inactive</I>
+ events.</P>
+<P CLASS="NumberedList2">
+<A NAME="pgfId=123">
+ </A>
+3)	Events which have been evaluated during some previous simulation time, but must be assigned at this simulation time after all the active and inactive events are processed. These are the <I CLASS="Emphasis">
+non-blocking assign update</I>
+ events.</P>
+<P CLASS="NumberedList2">
+<A NAME="pgfId=124">
+ </A>
+4)	Events which must be processed after all the active, inactive, and non-blocking assign update events are processed. These are the <I CLASS="Emphasis">
+monitor</I>
+ events.</P>
+<P CLASS="NumberedList2">
+<A NAME="pgfId=125">
+ </A>
+5)	Events which occur at some future simulation time. These are the <I CLASS="Emphasis">
+future</I>
+ events. Future events are divided into <I CLASS="Emphasis">
+future inactive events</I>
+, and <I CLASS="Emphasis">
+future non-blocking assignment update events</I>
+.</P>
+</OL>
+<P CLASS="Body">
+<A NAME="pgfId=126">
+ </A>
+The processing of all the active events is called a <I CLASS="Emphasis">
+simulation cycle</I>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=127">
+ </A>
+The freedom to choose any active event for immediate processing is an essential source of non-determinism in the language.</P>
+<P CLASS="Body">
+<A NAME="pgfId=128">
+ </A>
+An <I CLASS="Emphasis">
+explicit zero delay</I>
+ (#0) requires that the process be suspended and added as an inactive event for the current time so that the process is resumed in the next simulation cycle in the current time. </P>
+<P CLASS="Body">
+<A NAME="pgfId=91">
+ </A>
+A non-blocking assignment (<A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/05/ch09.htm#67945" CLASS="XRef">
+</A>
+) creates a non-blocking assign update event, scheduled for cuurent or a later simulation time.</P>
+<P CLASS="Body">
+<A NAME="pgfId=130">
+ </A>
+The <B CLASS="Keyword">
+$monitor</B>
+ and <B CLASS="Keyword">
+$strobe</B>
+ system tasks (<A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/05/ch14.htm#71682" CLASS="XRef">
+</A>
+) create monitor events for their arguments. These events are continuously re-enabled in every successive time step. The monitor events are unique in that they can not create any other events.</P>
+<P CLASS="Body">
+<A NAME="pgfId=98">
+ </A>
+The call back procedures scheduled with PLI routines such as <CODE CLASS="code">
+tf_synchrnize()</CODE>
+ (<A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/05/ch21.htm#54841" CLASS="XRef">
+</A>
+) or <CODE CLASS="code">
+vpi_register_cb(cb_readwrite)</CODE>
+ (<A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/05/ch23.htm#26301" CLASS="XRef">
+</A>
+) shall be treated as inactive events.</P>
+<HR><P><A HREF="ch05.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch05.2.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch05.4.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

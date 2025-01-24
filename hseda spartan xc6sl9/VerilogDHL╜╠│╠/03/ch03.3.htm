@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Mac">
+  <LINK REL="STYLESHEET" HREF="ch03.css">
+  <TITLE> 3.3&nbsp;&nbsp;&nbsp;Vectors </TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><A NAME="pgfId=434"></A><HR ALIGN=LEFT></P>
+
+<P><A HREF="ch03.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A 
+HREF="ch03.2.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch03.4.htm">Next&nbsp;&nbsp;page</A></P>
+
+<H1>3.3&nbsp;&nbsp;&nbsp;Vectors</H1>
+
+<P><P CLASS="Body"><A NAME="pgfId=436"></A>A net or reg declaration without
+a range specification shall be considered one bit wide and is known as a
+<I>scalar</I> . Multiple bit net and reg data type shall be declared by
+specifying a range, and is known as a <I>vector</I> .</P>
+
+<P><P CLASS="SubSection"><A NAME="pgfId=438"></A>Specifying vectors</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=439"></A>The range specification gives
+addresses to the individual bits in a multi-bit net or register. The most
+significant bit specified by <I>msb</I> constant expression is the left-hand
+value in the range and the least significant bit <I>lsb</I> constant expression
+is the right-hand value in the range.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=442"></A>Both msb constant expression
+and lsb constant expression shall be constant expressions. The msb and lsb
+constant expressions can be any value--positive, negative, or zero, and
+lsb constant expression can be a greater, equal, or lesser value than msb
+constant expression.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=444"></A>Vector nets and registers shall
+obey laws of arithmetic modulo 2 to the power n (2n), where n is the number
+of bits in the vector. Vector nets and registers shall be treated as unsigned
+quantities.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=429"></A>examples:</P>
+
+<PRE><CODE>&nbsp;&nbsp;&nbsp;</CODE> <B>wand</B><CODE> w; // a scalar net of type 'wand'
+&nbsp;&nbsp;&nbsp;</CODE> <B>tri</B><CODE> [15:0] busa; // a tri-state 16-bit bus
+&nbsp;&nbsp;&nbsp;</CODE> <B>trireg</B><CODE> (</CODE> <B>small</B><CODE> ) storeit; // a charge storage node of strength small
+&nbsp;&nbsp;&nbsp;</CODE> <B>reg</B><CODE> a; // a scalar register
+&nbsp;&nbsp;&nbsp;</CODE> <B>reg</B><CODE> [3:0] v; // a 4-bit vector register made up of (from most to 
+&nbsp;&nbsp;&nbsp; // least significant) v[3], v[2], v[1] and v[0]
+&nbsp;&nbsp;&nbsp;</CODE> <B>reg</B><CODE> [-1:4] b; // a 6-bit vector register
+&nbsp;&nbsp;&nbsp;</CODE> <B>wire</B><CODE> w1, w2; // declares 2 wires
+&nbsp;&nbsp;&nbsp;</CODE> <B>reg</B><CODE> [4:0] x, y, z; // declares 3 5-bit registers</CODE></PRE>
+
+<P><P CLASS="Note"><A NAME="pgfId=400"></A>NOTES</P>
+
+<OL>
+  <P><P CLASS="NumberedNote1"><A NAME="pgfId=576"></A>1)&nbsp;&nbsp;&nbsp;--Implementations
+  may set a limit on the maximum length of a vector, but will at least be
+  65536 (216) bits.
+  <P><P CLASS="NumberedNote2"><A NAME="pgfId=443"></A>2)&nbsp;&nbsp;&nbsp;--Implementations
+  do not have to detect overflow of integer operations.
+</OL>
+
+<P><P CLASS="Body"><A NAME="pgfId=446"></A>&nbsp;</P>
+
+<P><P CLASS="SubSection"><A NAME="pgfId=561"></A>Vector net accessibility</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=386"></A><I>Vectored</I> and <I>scalared</I>
+shall be optional advisory keywords to be used in vector net or reg declaration.
+If these keywords are implemented, certain operations on vectors may be
+restricted. If the keyword <B>vectored</B> is used, bit and part selects
+and strength specifications may not be permitted, and the PLI may consider
+the object <I>unexpanded</I> . If the keyword <B>scalared</B> is used, bit
+and part selects of the object shall be permitted and the PLI shall consider
+the object <I>expanded</I> .</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=595"></A>Examples:</P>
+
+<PRE><A NAME="pgfId=569"></A> 
+<B>tri1</B> <B>scalared</B> [63:0] bus64; // a bus that will be expanded
+<B>tri</B> <B>vectored</B> [31:0] data; //a bus that will not be expanded</PRE>
+
+<P><HR ALIGN=LEFT></P>
+
+<P><A HREF="ch03.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A 
+HREF="ch03.2.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch03.4.htm">Next&nbsp;&nbsp;page</A>
+</BODY>
+</HTML>

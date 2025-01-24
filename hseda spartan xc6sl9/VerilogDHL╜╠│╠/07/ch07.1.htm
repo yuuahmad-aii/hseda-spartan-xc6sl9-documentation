@@ -1,0 +1,807 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch07.css">
+<TITLE> 7.1	Gate and switch declaration syntax </TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch07.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch07.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch07.2.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=1189">
+ </A>
+7.1	<A NAME="93218">
+ </A>
+Gate and switch declaration syntax </H1>
+<P CLASS="Body">
+<A NAME="pgfId=1407">
+ </A>
+<A HREF="ch07.1.htm#42180" CLASS="XRef">
+See : Syntax for gate instantiation</A>
+ shows the gate and switch declaration <A NAME="marker=117">
+ </A>
+<A NAME="marker=118">
+ </A>
+<A NAME="marker=119">
+ </A>
+<A NAME="marker=120">
+ </A>
+syntax.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1408">
+ </A>
+A gate or a switch instance declaration shall have the following specifications:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=1163">
+ </A>
+the keyword that names the type of gate or switch primitive </LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=1409">
+ </A>
+an optional <I CLASS="Emphasis">
+drive strength</I>
+ </LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=1359">
+ </A>
+an optional <I CLASS="Emphasis">
+propagation delay</I>
+ </LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=1360">
+ </A>
+an optional identifier that names each gate or switch instance</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=645">
+ </A>
+an optional range for <I CLASS="Emphasis">
+array of instances</I>
+</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=1164">
+ </A>
+the terminal connection list</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=1361">
+ </A>
+Multiple instances of the one type of gate or switch primitive can be declared as a comma separated list. All such instances shall have the same drive strength and the delay specification.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1404">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch07-1.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=1412">
+ </A>
+Syntax&nbsp;7-1<A NAME="42180">
+ </A>
+: Syntax for gate instantiation</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=1413">
+ </A>
+The gate type<A NAME="marker=123">
+ </A>
+ specification</P>
+<P CLASS="Body">
+<A NAME="pgfId=1414">
+ </A>
+A gate or switch instance declaration shall begin with the keyword that specifies the gate or switch primitive being used by the instances that follow in the declaration. <A HREF="ch07.1.htm#85869" CLASS="XRef">
+See : Built-in gates and switches</A>
+ lists the keywords that shall begin a gate or a switch instance declaration.</P>
+<TABLE>
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=1702">
+ </A>
+Table&nbsp;7-1<A NAME="85869">
+ </A>
+: Built-in gates and switches</P>
+</CAPTION>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=1165">
+ </A>
+n_input gates</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=670">
+ </A>
+n_output gates</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=1174">
+ </A>
+tristate gates</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=1192">
+ </A>
+pull gates</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=1194">
+ </A>
+MOS switches</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=1694">
+ </A>
+bidirectional switches</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1140">
+ </A>
+and</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1701">
+ </A>
+buf</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1459">
+ </A>
+bufif0</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1142">
+ </A>
+pulldown</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1143">
+ </A>
+cmos</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1166">
+ </A>
+rtran</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1144">
+ </A>
+nand</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1460">
+ </A>
+not</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1141">
+ </A>
+bufif1 </P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1167">
+ </A>
+pullup</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1422">
+ </A>
+nmos</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1689">
+ </A>
+rtranif0</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1138">
+ </A>
+nor</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1696">
+ </A>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1148">
+ </A>
+notif0</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1146">
+ </A>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1147">
+ </A>
+pmos</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1168">
+ </A>
+rtranif1</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1149">
+ </A>
+or</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1698">
+ </A>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1145">
+ </A>
+notif1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1151">
+ </A>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1152">
+ </A>
+rcmos</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1169">
+ </A>
+tran</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1153">
+ </A>
+xnor</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1699">
+ </A>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1154">
+ </A>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1155">
+ </A>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1156">
+ </A>
+rnmos</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1170">
+ </A>
+tranif0</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1157">
+ </A>
+xor</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1700">
+ </A>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1158">
+ </A>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1159">
+ </A>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1160">
+ </A>
+rpmos</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1171">
+ </A>
+tranif1</P>
+</TD>
+</TR>
+</TABLE>
+<P CLASS="Body">
+<A NAME="pgfId=1415">
+ </A>
+Explanation of the built-in gates and switches shown in <A HREF="ch07.1.htm#85869" CLASS="XRef">
+See : Built-in gates and switches</A>
+ begin in <A HREF="ch07.2.htm#56809" CLASS="XRef">
+See And, nand, nor, or, xor, and xnor gates</A>
+.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=1416">
+ </A>
+The drive strength<A NAME="marker=134">
+ </A>
+ specification</P>
+<P CLASS="Body">
+<A NAME="pgfId=1417">
+ </A>
+An optional drive strength specification shall specify the <I CLASS="Emphasis">
+strength</I>
+<A NAME="marker=135">
+ </A>
+ of the logic values on the output terminals of the gate instance. Only the instances of the gate primitives shown in<A NAME="marker=136">
+ </A>
+ <A HREF="ch07.1.htm#70462" CLASS="XRef">
+See : Valid gate types for strength specifications</A>
+ can have the drive strength specification. </P>
+<TABLE>
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=1178">
+ </A>
+Table&nbsp;7-2<A NAME="70462">
+ </A>
+: Valid gate types for strength specifications</P>
+</CAPTION>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1182">
+ </A>
+and</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1173">
+ </A>
+nand</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1179">
+ </A>
+buf</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1180">
+ </A>
+not</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1697">
+ </A>
+pulldown</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1186">
+ </A>
+or</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1181">
+ </A>
+nor</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1183">
+ </A>
+bufif0</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1184">
+ </A>
+notif0</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1693">
+ </A>
+pullup</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1190">
+ </A>
+xor</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1185">
+ </A>
+xnor</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1187">
+ </A>
+bufif1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1188">
+ </A>
+notif1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1695">
+ </A>
+</P>
+</TD>
+</TR>
+</TABLE>
+<P CLASS="Body">
+<A NAME="pgfId=1042">
+ </A>
+The drive strength specification for a gate instance, with the exception of <B CLASS="Keyword">
+pullup</B>
+ and <B CLASS="Keyword">
+pulldown</B>
+, shall have a <I CLASS="Emphasis">
+strength1</I>
+ specification and a <I CLASS="Emphasis">
+strength0</I>
+ specification.  The strength1 specification shall specify the strength of signals with a logic value  1, and the  strength0 specification shall specify the strength of signals with a logic value  0. The strength specification  shall follow the gate type keyword and precede any delay specification. The strength0 specification can precede or follow the strength1 specification. The strength1 and strength0 specifications shall be separated by comma and enclosed within a pair of parentheses.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1411">
+ </A>
+The <B CLASS="Keyword">
+pullup</B>
+ gate can have only strength1 specification, strength0 specification shall be optional. The <B CLASS="Keyword">
+pulldown</B>
+ gate can have only strength0 specification, strength1 specification shall be optional.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1410">
+ </A>
+The strength1 specification shall be one of the following keywords:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1420"> </A>
+<B CLASS="Keyword">supply1			&nbsp;	strong1			 pull1			 weak1</B>
+<A NAME="marker=144"> </A>
+<A NAME="marker=145"> </A>
+<A NAME="marker=146"> </A>
+<A NAME="marker=147"> </A>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1421">
+ </A>
+The strength0 specification shall be one of the following keywords:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1423"> </A>
+<B CLASS="Keyword">supply0				&nbsp;strong0			&nbsp; pull0			&nbsp;weak0</B>
+<A NAME="marker=149"> </A>
+<A NAME="marker=150"> </A>
+<A NAME="marker=151"> </A>
+<A NAME="marker=152"> </A>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1041">
+ </A>
+Specifying <B CLASS="Keyword">
+highz1</B>
+<A NAME="marker=148">
+ </A>
+ as strength1 shall cause the gate or switch to output a logic value  <CODE CLASS="code">
+z</CODE>
+ in place of a <CODE CLASS="code">
+1</CODE>
+. Specifying <B CLASS="Keyword">
+highz0</B>
+<A NAME="marker=153">
+ </A>
+ shall cause the gate to output a logic value  <CODE CLASS="code">
+z</CODE>
+ in place of a <CODE CLASS="code">
+0</CODE>
+. The strength specifications <B CLASS="Keyword">
+(highz0, highz1)</B>
+ and <B CLASS="Keyword">
+(highz1, highz0)</B>
+  shall be considered invalid.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1418">
+ </A>
+In the absence of a strength specification, the instances shall have the default strengths <B CLASS="Keyword">
+strong1</B>
+ and <B CLASS="Keyword">
+strong0</B>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1424">
+ </A>
+<A NAME="marker=154">
+ </A>
+ </P>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=1425">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=1419">
+ </A>
+The following example shows a drive strength specification in a declaration of an open collector<CODE CLASS="code">
+ </CODE>
+<B CLASS="Keyword">
+nor</B>
+ gate:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1426"> </A>
+<B CLASS="Keyword">nor (highz1,strong0)</B>
+ n1(out1,in1,in2);</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1427">
+ </A>
+In this example, the <B CLASS="Keyword">
+nor</B>
+ gate outputs a <CODE CLASS="code">
+z</CODE>
+ in place of a <CODE CLASS="code">
+1</CODE>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1428">
+ </A>
+Sections <A HREF="ch07.a.htm#22516" CLASS="XRef">
+See Logic strength modeling</A>
+ through <A HREF="ch07.e.htm#83929" CLASS="XRef">
+See Strengths of net types</A>
+ discuss logic strength modeling in more detail.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=1429">
+ </A>
+The delay<A NAME="marker=161">
+ </A>
+ specification</P>
+<P CLASS="Body">
+<A NAME="pgfId=1430">
+ </A>
+An optional delay specification shall specify the propagation <A NAME="marker=162">
+ </A>
+<A NAME="marker=163">
+ </A>
+delay through the gates and switches in a declaration. Gates and switches in declarations with no delay specification shall have no propagation delay. A delay specification can contain up to three delay values, depending on the gate type. The <B CLASS="Keyword">
+pullup</B>
+ and <B CLASS="Keyword">
+pulldown</B>
+ instance declarations shall not include delay specifications.  Section <A HREF="ch07.f.htm#56851" CLASS="XRef">
+See Gate and net delays</A>
+ discusses delays in more detail. </P>
+<P CLASS="SubSection">
+<A NAME="pgfId=1431">
+ </A>
+The primitive instance<A NAME="marker=169">
+ </A>
+ identifier</P>
+<P CLASS="Body">
+<A NAME="pgfId=1432">
+ </A>
+An optional name can be given to a gate or switch instance. If multiple instances are declared as an array of instances, an identifier shall be used to name the instances. </P>
+<P CLASS="SubSection">
+<A NAME="pgfId=1433">
+ </A>
+The range<A NAME="marker=173">
+ </A>
+ specification</P>
+<P CLASS="Body">
+<A NAME="pgfId=1434">
+ </A>
+There are many situations when repetitive instances are required. These instances shall differ from each other only by the index of the vector they are connected to. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1436">
+ </A>
+In order to specify an array of instances, the instance name shall be followed by the range specification. The range shall be specified by two constant expressions, left-hand index (lhi) and right-hand index (rhi), separated by a colon and enclosed within a pair of square brackets. A <CODE CLASS="code">
+[lhi:rhi]</CODE>
+ range specification shall represent an array of <CODE CLASS="code">
+abs(lhi-rhi)+1</CODE>
+ instances. Neither of the two constant expressions are required to be zero, and lhi is not required to be larger than rhi. If both constant expressions are equal, only one instance shall be generated. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1044">
+ </A>
+An array of instances shall have a continuous range. One instance identifier shall be associated with only one range to declare an array of instances. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1045">
+ </A>
+The range specification shall be optional. If no range specification is given, a single instance shall be created.</P>
+</DIV>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=1438">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=1439">
+ </A>
+A declaration shown below is illegal:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1440"> </A>
+<B CLASS="Keyword">nand</B>
+ #2 t_nand[0:3] ( ... ), t_nand[4:7] ( ... );</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1441">
+ </A>
+It could be declared correctly as one array of eight instances, or two arrays with unique names of four elements each</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1690"> </A>
+<B CLASS="Keyword">nand</B>
+ #2 t_nand[0:7]( ... );</PRE>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1691"> </A>
+<B CLASS="Keyword">nand</B>
+ #2 x_nand[0:3] ( ... ), y_nand[4:7] ( ... );</PRE>
+<P CLASS="SubSection">
+<A NAME="pgfId=1443">
+ </A>
+Primitive instance<A NAME="marker=174">
+ </A>
+ connection<A NAME="marker=175">
+ </A>
+ list</P>
+<P CLASS="Body">
+<A NAME="pgfId=1444">
+ </A>
+The terminal list describes how the gate or switch connects to the rest of the model. The gate or switch type can limit these expressions. The connection list shall be enclosed in a pair of parentheses and the terminals shall be separated by comma. The output or bidirectional terminals shall always come first in the terminal list, followed by the input terminals<A NAME="marker=179">
+ </A>
+.<A NAME="marker=180">
+ </A>
+<A NAME="marker=181">
+ </A>
+<A NAME="marker=182">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=1445">
+ </A>
+The terminal connections for an array of instances shall follow these rules:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=1446">
+ </A>
+The bit length of each port in the instance shall be compared with the module or primitive port's definition.</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=1447">
+ </A>
+If the bit lengths are the same, the port expression shall be connected to each instance.</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=1448">
+ </A>
+If bit lengths are different, each instance shall get a part-select of the port expression as specified in the range, starting with the right-hand index.</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=1449">
+ </A>
+A warning message shall be issued if there are too many or too few bits to connect to all the instances. If too few bits are specified, the corresponding ports shall be zero filled.</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=1450">
+ </A>
+An individual instance from an array of instances shall be referenced in the same manner as referencing an element of an array of registers. </P>
+</DIV>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=1435">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=1437">
+ </A>
+1. The following declaration of <CODE CLASS="code">
+nand_array</CODE>
+ declares four instances that can be referenced by nand_array[1], nand_array[2], nand_array[3], and nand_array[4] respectively.</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1442"> </A>
+<B CLASS="Keyword">nand</B>
+ #2 nand_array[1:4]( ... ) ;</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1453">
+ </A>
+2. The two module descriptions shown below are equivalent, and demonstrate the range specification and connection rules for declaring array of instances:</P>
+<P CLASS="Body">
+<A NAME="pgfId=1454">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch07-2.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=1457">
+ </A>
+3. The two module descriptions shown below are equivalent, and demonstrate how different instances within an array of instances are connected when the port sizes do not match. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1458">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch07-3.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=1461">
+ </A>
+4. This example demonstrates how a series of modules can be chained together. <A HREF="ch07.1.htm#18211" CLASS="XRef">
+See : Schematic Diagram of interconnections in array of instances</A>
+shows an equivalent schematic interconnections of DFF instances.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1462">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch07-4.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=1463">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch07-5.gif">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=1464">
+ </A>
+Figure&nbsp;7-1<A NAME="18211">
+ </A>
+: Schematic Diagram of interconnections in array of instances</P>
+</DIV>
+<HR><P><A HREF="ch07.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch07.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch07.2.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

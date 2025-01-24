@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch07.css">
+<TITLE> 7.5	MOS switches</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch07.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch07.4.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch07.6.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=1496">
+ </A>
+7.5	<A NAME="marker=259">
+ </A>
+<A NAME="marker=261">
+ </A>
+<A NAME="marker=262">
+ </A>
+MOS<A NAME="marker=263">
+ </A>
+<A NAME="marker=264">
+ </A>
+<A NAME="marker=265">
+ </A>
+<A NAME="marker=266">
+ </A>
+ <A NAME="marker=267">
+ </A>
+switches</H1>
+<P CLASS="Body">
+<A NAME="pgfId=1010">
+ </A>
+The instance declaration of a MOS switch shall begin with one of the following keywords: </P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1497"> </A>
+<B CLASS="Keyword">cmos				nmos</B>
+ 			<B CLASS="Keyword">	pmos</B>
+			<B CLASS="Keyword">rcmos			rnmos</B>
+ 				<B CLASS="Keyword">rpmos</B>
+ </PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1498">
+ </A>
+The <B CLASS="Keyword">
+cmos</B>
+ and <B CLASS="Keyword">
+rcmos</B>
+ switches are described in <A HREF="ch07.7.htm#57958" CLASS="XRef">
+See Cmos switches</A>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1011">
+ </A>
+The <B CLASS="Keyword">
+pmos</B>
+ keyword stands for PMOS transistor and the <B CLASS="Keyword">
+nmos</B>
+ keyword stands for NMOS transistor. PMOS and NMOS transistors have relatively low impedance between their sources and drains when they conduct. The <B CLASS="Keyword">
+rpmos</B>
+ keyword stands for resistive PMOS transistor and the <B CLASS="Keyword">
+rnmos</B>
+ keyword stands for resistive NMOS transistor. Resistive PMOS and resistive NMOS transistors have significantly higher impedance between their sources and drains when they conduct than PMOS and NMOS transistors have. The load devices in static MOS networks are examples of <B CLASS="Keyword">
+rpmos</B>
+ and <B CLASS="Keyword">
+rnmos</B>
+ transistors. These four switches are <I CLASS="Emphasis">
+unidirectional channels</I>
+ for data similar to the <B CLASS="Keyword">
+bufif</B>
+ gates.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1013">
+ </A>
+The delay specification shall be zero, one, two, or three delays. If the delay specification contains three delays, the first delay shall determine the rise delay, the second delay shall determine the fall delay, the third delay shall determine the delay of transitions to <CODE CLASS="code">
+z</CODE>
+, and the smallest of the three delays shall determine the delay of transitions to <CODE CLASS="code">
+x</CODE>
+. If the specification contains two delays, the first delay shall determine the output rise delay, the second delay shall determine the output fall delay, and the smaller of the two delays shall apply to output transitions to <CODE CLASS="code">
+x</CODE>
+ and <CODE CLASS="code">
+z</CODE>
+. If only one delay is specified, it shall specify the delay for all output transitions. If there is no delay specification, there shall be no propagation delay through the switch.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1012">
+ </A>
+Some combinations of data input values and control input values can cause these switches to output either of two values, without a preference for either value. The logic tables for these switches include two symbols representing such unknown results. The symbol <CODE CLASS="code">
+L</CODE>
+ represents a result which has a value <CODE CLASS="code">
+0</CODE>
+ or <CODE CLASS="code">
+z</CODE>
+. The symbol <CODE CLASS="code">
+H</CODE>
+ represents a result which has a value <CODE CLASS="code">
+1</CODE>
+ or <CODE CLASS="code">
+z</CODE>
+. Delays on transitions to <CODE CLASS="code">
+H</CODE>
+ and <CODE CLASS="code">
+L</CODE>
+ shall be the same as delays on transitions to <CODE CLASS="code">
+x</CODE>
+. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1499">
+ </A>
+These four switches shall have one output, one data input, and one control input. The first terminal in the terminal list shall connect to the output, the second terminal shall connect to the data input, and the third terminal shall connect to the control input. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1500">
+ </A>
+The <B CLASS="Keyword">
+nmos</B>
+ and <B CLASS="Keyword">
+pmos</B>
+ switches shall pass signals from their inputs and through their outputs with a change in the strength of the signal in only one case, as discussed in <A HREF="ch07.c.htm#75600" CLASS="XRef">
+See Strength reduction by non-resistive devices</A>
+. The <B CLASS="Keyword">
+rnmos</B>
+ and <B CLASS="Keyword">
+rpmos</B>
+ switches shall reduce the strength of signals that propagate through them, as discussed in <A HREF="ch07.d.htm#90909" CLASS="XRef">
+See Strength reduction by resistive devices</A>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1501">
+ </A>
+<A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/07/ch07.htm#82937" CLASS="XRef">
+See : Truth tables for MOS switches</A>
+ presents the logic tables for these switches:</P>
+<P CLASS="Body">
+<A NAME="pgfId=1502">
+ </A>
+</P>
+<DIV>
+<MAP NAME="ch07-9">
+</MAP>
+<IMG SRC="ch07-9.gif" USEMAP="#ch07-9">
+</DIV>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=1503">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=1014">
+ </A>
+The following example declares a <B CLASS="Keyword">
+pmos</B>
+ switch:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1504"> </A>
+<B CLASS="Keyword">pmos</B>
+ p1 (out, data, control);</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1505">
+ </A>
+The <A NAME="marker=275">
+ </A>
+output is <CODE CLASS="code">
+out</CODE>
+, the data input is <CODE CLASS="code">
+data</CODE>
+, and the control input is <CODE CLASS="code">
+control</CODE>
+.<A NAME="marker=276">
+ </A>
+<A NAME="marker=277">
+ </A>
+<A NAME="marker=278">
+ </A>
+<A NAME="marker=279">
+ </A>
+ The instance name is <CODE CLASS="code">
+p1</CODE>
+.</P>
+</DIV>
+<HR><P><A HREF="ch07.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch07.4.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch07.6.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

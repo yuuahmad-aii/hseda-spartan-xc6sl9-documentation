@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch05.css">
+<TITLE> 5.4	The verilog simulation reference model</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch05.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch05.3.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch05.5.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=131">
+ </A>
+5.4	The verilog simulation reference model</H1>
+<P CLASS="Body">
+<A NAME="pgfId=132">
+ </A>
+In all the examples which follow, T refers to the current simulation time, and all events are held in the event queue, ordered by simulation time.</P>
+<P CLASS="Body">
+<A NAME="pgfId=92">
+ </A>
+<CODE CLASS="code">
+	while (there are events) {<BR>
+		if (no active events) { <BR>
+			if (there are inactive events) { <BR>
+				activate all inactive events; <BR>
+			} else if (there are non-blocking assign update events) {<BR>
+				activate all non-blocking assign update events; <BR>
+			} else if (there are monitor events) {<BR>
+				activate all monitor events;	<BR>
+			} else { <BR>
+				advance T to the next event time; <BR>
+				activate all inactive events for time T;<BR>
+			} <BR>
+		}<BR>
+		E = any active event;<BR>
+		if (E is an update event) { <BR>
+			update the modified object; <BR>
+			add evaluation events for sensitive processes to event queue; <BR>
+		} else { /* must be an evaluation event */ <BR>
+			evaluate the process; <BR>
+			add update events to the event queue; <BR>
+		} <BR>
+	}</CODE>
+</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=135">
+ </A>
+Determinism</P>
+<P CLASS="Body">
+<A NAME="pgfId=136">
+ </A>
+The Verilog simulation reference standard guarantees certain scheduling order.</P>
+<OL>
+<P CLASS="NumberedList1">
+<A NAME="pgfId=137">
+ </A>
+1)	Statements within a <CODE CLASS="code">
+begin-end</CODE>
+ block shall be executed in the order in which they appear in that <CODE CLASS="code">
+begin-end</CODE>
+ block. Execution of statements in a particular <CODE CLASS="code">
+begin-end</CODE>
+ block can be suspended in favor of other processes in the model; however, in no case shall the statements in a <CODE CLASS="code">
+begin-end</CODE>
+ block be executed in any order other than that they appear in the source.</P>
+<P CLASS="NumberedList2">
+<A NAME="pgfId=138">
+ </A>
+2)	Non-blocking assignments shall be performed in the order the statements were executed. Consider the following example:<BR>
+<BR>
+<BR>
+When this block is executed, there will be two events added to the non-blocking assign update queue. The previous rule requires that they be entered on the queue in source order; this rule requires that they be taken from the queue and performed in source order as well. Hence at the end of time step <CODE CLASS="code">
+1</CODE>
+, the variable <CODE CLASS="code">
+a</CODE>
+ will be assigned <CODE CLASS="code">
+0</CODE>
+, and then <CODE CLASS="code">
+1</CODE>
+.</P>
+</OL>
+<DIV>
+<IMG SRC="ch05-1.gif">
+</DIV>
+<P CLASS="SubSection">
+<A NAME="pgfId=89">
+ </A>
+Non-determinism</P>
+<P CLASS="Body">
+<A NAME="pgfId=114">
+ </A>
+One source of non-determinism is the fact that active events can be taken off the queue and processed in any order. Another source of non-determinism is that statements without time-control constructs in behavioral blocks do not have to be executed as one event. Time control statements are the # expression and @ expression constructs (<A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/05/ch09.htm#39185" CLASS="XRef">
+</A>
+). At any time while evaluating a behavioral statement, the simulator may suspend execution and place the partially completed event as a pending active event on the event queue. The effect of this is to allow the interleaving of process execution. Note that the order of interleaved execution is non-deterministic, and not under control of the user.</P>
+<HR><P><A HREF="ch05.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch05.3.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch05.5.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

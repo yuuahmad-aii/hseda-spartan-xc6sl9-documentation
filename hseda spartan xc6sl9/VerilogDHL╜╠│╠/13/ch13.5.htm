@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch13.css">
+<TITLE> 13.5	Mixing module path delays and distributed delays</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch13.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch13.4.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch13.6.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=307">
+ </A>
+13.5	<A NAME="marker=61">
+ </A>
+Mixing module path delays and distributed delays</H1>
+<P CLASS="Body">
+<A NAME="pgfId=313">
+ </A>
+If a module contains module path delays and distributed delays (delays on primitive instances within the module), the larger of the two delays for each path shall be used.</P>
+<DIV>
+<H3 CLASS="Example">
+<A NAME="pgfId=325">
+ </A>
+</H3>
+<P CLASS="Body">
+<A NAME="pgfId=326">
+ </A>
+<A HREF="ch13.5.htm#internal delays" CLASS="XRef">
+See : Module path delays longer than distributed delays</A>
+ illustrates a simple circuit modeled with a combination of distributed delays and path delays (only the D input to Q output path is illustrated). Here, the delay on the module path from input <CODE CLASS="code">
+D</CODE>
+ to output <CODE CLASS="code">
+Q</CODE>
+ = <CODE CLASS="code">
+22</CODE>
+, while the sum of the distributed delays = <CODE CLASS="code">
+0</CODE>
+ + <CODE CLASS="code">
+1</CODE>
+ = <CODE CLASS="code">
+1</CODE>
+. Therefore, a transition on <CODE CLASS="code">
+Q</CODE>
+ caused by a transition on <CODE CLASS="code">
+D</CODE>
+ will occur <CODE CLASS="code">
+22</CODE>
+ time units after the transition on <CODE CLASS="code">
+D</CODE>
+. </P>
+<P CLASS="Body">
+<A NAME="pgfId=396">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch13-25.gif">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=397">
+ </A>
+Figure&nbsp;13-3<A NAME="internal delays">
+ </A>
+: Module path delays longer than distributed delays</P>
+<P CLASS="Body">
+<A NAME="pgfId=291">
+ </A>
+<BR>
+In <A HREF="ch13.5.htm#16881" CLASS="XRef">
+See : Module path delays shorter than distributed delays</A>
+ below, the delay on the module path from <CODE CLASS="code">
+D</CODE>
+ to <CODE CLASS="code">
+Q</CODE>
+ = <CODE CLASS="code">
+22</CODE>
+, but the distributed delays along that module path now add up to <CODE CLASS="code">
+10</CODE>
+ + <CODE CLASS="code">
+20</CODE>
+ = <CODE CLASS="code">
+30</CODE>
+. Therefore, an event on <CODE CLASS="code">
+Q</CODE>
+ caused by an event on <CODE CLASS="code">
+D</CODE>
+ will occur <CODE CLASS="code">
+30</CODE>
+ time units after the event on <CODE CLASS="code">
+D</CODE>
+.<A NAME="marker=105">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=445">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch13-26.gif">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=460">
+ </A>
+Figure&nbsp;13-4<A NAME="16881">
+ </A>
+: Module path delays shorter than distributed delays</P>
+</DIV>
+<HR><P><A HREF="ch13.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch13.4.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch13.6.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

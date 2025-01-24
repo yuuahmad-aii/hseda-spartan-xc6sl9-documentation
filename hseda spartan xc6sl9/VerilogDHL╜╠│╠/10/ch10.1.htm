@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch10.css">
+<TITLE> 10.1	Distinctions between tasks and functions</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch10.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch10.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch10.2.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=145">
+ </A>
+10.1	Distinctions between tasks and functions</H1>
+<P CLASS="Body">
+<A NAME="pgfId=146">
+ </A>
+The following rules distinguish tasks from functions:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=147">
+ </A>
+A function shall execute in one simulation time unit; a task can contain time-controlling statements.</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=148">
+ </A>
+A function cannot enable a task; a task can enable other tasks and functions.</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=149">
+ </A>
+A function shall have at least one <B CLASS="Keyword">
+input</B>
+ type argument and shall not have an <B CLASS="Keyword">
+output</B>
+ or <B CLASS="Keyword">
+inout</B>
+ type argument; a task can have zero or more arguments of any type.</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=150">
+ </A>
+A function shall return a single value; a task shall not return a value. </LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=151">
+ </A>
+The purpose of a function is to respond to an input value by returning a single value. A task can support multiple goals and can calculate multiple result values. However, only the <B CLASS="Keyword">
+output</B>
+ or <B CLASS="Keyword">
+inout</B>
+ type arguments pass result values back from the invocation of a task. A function is used as an operand in an expression; the value of that operand is the value returned by the function. </P>
+<P CLASS="Body">
+<A NAME="pgfId=144">
+ </A>
+Example:</P>
+<P CLASS="Body">
+<A NAME="pgfId=121">
+ </A>
+Either a task or a function can be defined to switch bytes in a 16-bit word. The task would return the switched word in an output argument, so the source code to enable a task called <CODE CLASS="code">
+switch_bytes</CODE>
+ could look like the following example:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=152"> </A>
+switch_bytes (old_word, new_word);</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=153">
+ </A>
+The task <CODE CLASS="code">
+switch_bytes</CODE>
+ would take the bytes in <CODE CLASS="code">
+old_word</CODE>
+, reverse their order, and place the reversed bytes in <CODE CLASS="code">
+new_word</CODE>
+. </P>
+<P CLASS="Body">
+<A NAME="pgfId=122">
+ </A>
+A word-switching function would return the switched word as the return value of the function. Thus, the function call for the function <CODE CLASS="code">
+switch_bytes</CODE>
+ could look like the following example:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=155"> </A>
+new_word = switch_bytes (old_word);</PRE>
+<HR><P><A HREF="ch10.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch10.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch10.2.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

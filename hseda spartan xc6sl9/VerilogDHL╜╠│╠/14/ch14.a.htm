@@ -1,0 +1,205 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch14.css">
+<TITLE> 14.10	Probabilistic distribution functions </TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch14.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch14.9.htm">Previous&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=1555">
+ </A>
+14.10	<A NAME="42294">
+ </A>
+<A NAME="marker=652">
+ </A>
+<A NAME="marker=653">
+ </A>
+Probabilistic distribution functions </H1>
+<P CLASS="Body">
+<A NAME="pgfId=1556">
+ </A>
+There are a set of <A NAME="marker=654">
+ </A>
+random number generators which return integer values distributed according to standard probabilistic functions. </P>
+<P CLASS="SubSection">
+<A NAME="pgfId=771">
+ </A>
+$random function</P>
+<P CLASS="Body">
+<A NAME="pgfId=1137">
+ </A>
+Syntax:</P>
+<PRE CLASS="BNFDef"><A NAME="pgfId=1242"> </A>
+<B CLASS="Keyword">	$random</B>
+ [ ( seed ) ] ;</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=841">
+ </A>
+The system function <B CLASS="Keyword">
+$random</B>
+ provides a mechanism for generating random numbers. The function returns a new 32-bit random number each time it is called. The random number is a signed integer; it can be positive or negative. For further information on probabilistic random number generators, see <A HREF="ch14.a.htm#42294" CLASS="XRef">
+See Probabilistic distribution functions</A>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=843">
+ </A>
+The <CODE CLASS="code">
+seed</CODE>
+ parameter controls the numbers that <B CLASS="Keyword">
+$random</B>
+ returns. The <CODE CLASS="code">
+seed</CODE>
+ parameter must be either a register, an integer, or a time variable. The seed value should be assigned to this variable prior to calling <B CLASS="Keyword">
+$random</B>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1049">
+ </A>
+Examples: </P>
+<P CLASS="Body">
+<A NAME="pgfId=1050">
+ </A>
+1. Where b &gt; 0 the expression <CODE CLASS="code">
+(</CODE>
+<B CLASS="Keyword">
+$random %</B>
+<CODE CLASS="code">
+ b)</CODE>
+ gives a number in the following range: [<CODE CLASS="code">
+(-b+1): (b-1)</CODE>
+]. The following code fragment shows an example of random number generation between -59 and 59:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1051"> </A>
+<B CLASS="Keyword">reg</B>
+ [23:0] rand;rand = <B CLASS="Keyword">$random</B>
+ % 60;</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1053">
+ </A>
+2. The following example shows how adding the concatenation operator to the preceding example gives <CODE CLASS="code">
+rand</CODE>
+ a positive value from 0 to 59.</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1070"> </A>
+<B CLASS="Keyword">reg</B>
+ [23:0] rand;rand = {<B CLASS="Keyword">$random</B>
+} % 60;</PRE>
+<P CLASS="SubSection">
+<A NAME="pgfId=1147">
+ </A>
+$dist_ functions</P>
+<P CLASS="Body">
+<A NAME="pgfId=1204">
+ </A>
+<A NAME="marker=655">
+ </A>
+<A NAME="marker=656">
+ </A>
+<A NAME="marker=657">
+ </A>
+<A NAME="marker=658">
+ </A>
+<A NAME="marker=659">
+ </A>
+<A NAME="marker=660">
+ </A>
+<A NAME="marker=661">
+ </A>
+Syntax:</P>
+<P CLASS="Body">
+<A NAME="pgfId=1564">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch14-29.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=1565">
+ </A>
+Syntax&nbsp;14-10: Syntax for the probabilistic distribution functions</P>
+<P CLASS="Body">
+<A NAME="pgfId=1566">
+ </A>
+<A NAME="marker=675">
+ </A>
+<A NAME="marker=676">
+ </A>
+All parameters to the system functions are integer values. For the <CODE CLASS="code">
+exponential</CODE>
+, <CODE CLASS="code">
+poisson</CODE>
+, <CODE CLASS="code">
+chi-square</CODE>
+, <CODE CLASS="code">
+t</CODE>
+, and <CODE CLASS="code">
+erlang</CODE>
+ functions, the parameters mean, degree of freedom, and k_stage must be greater than <CODE CLASS="code">
+0</CODE>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1567">
+ </A>
+Each of these functions returns a pseudo-random number whose characteristics are described by the function name. That is, <B CLASS="Keyword">
+$dist_uniform</B>
+ returns random numbers uniformly distributed in the interval specified by its parameters.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1568">
+ </A>
+For each system function, the seed parameter is an in-out parameter; that is, a value is passed to the function and a different value is returned. The system functions will always return the same value given the same <A NAME="marker=677">
+ </A>
+seed. This facilitates debugging by making the operation of the system repeatable. The argument for the seed parameter should be an integer variable that is initialized by the user and only updated by the system function. This will ensure that the desired distribution is achieved. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1569">
+ </A>
+In the <B CLASS="Keyword">
+$dist_uniform</B>
+ function, the start and end parameters are integer inputs which bound the values returned. The start value should be smaller than the end value.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1570">
+ </A>
+The mean parameter, used by <B CLASS="Keyword">
+$dist_normal</B>
+, <B CLASS="Keyword">
+$dist_exponential</B>
+, <B CLASS="Keyword">
+$dist_poisson</B>
+, and <B CLASS="Keyword">
+$dist_erlang</B>
+, is an integer input which causes the average value returned by the function to approach the value specified. </P>
+<P CLASS="Body">
+<A NAME="pgfId=850">
+ </A>
+The standard deviation parameter used with the <B CLASS="Keyword">
+$dist_normal</B>
+ function is an integer input which helps determine the shape of the density function. Larger numbers for standard deviation will spread the returned values over a wider range. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1571">
+ </A>
+The degree of freedom parameter used with the <B CLASS="Keyword">
+$dist_chi_square</B>
+ and <B CLASS="Keyword">
+$dist_t</B>
+ functions is an integer input which helps determine the shape of the density function. Larger numbers will spread the returned values over a wider range. <A NAME="marker=678">
+ </A>
+<A NAME="marker=679">
+ </A>
+<A NAME="marker=680">
+ </A>
+ </P>
+<P CLASS="Body">
+<A NAME="pgfId=815">
+ </A>
+<A NAME="marker=173">
+ </A>
+<A NAME="marker=177">
+ </A>
+<A NAME="marker=178">
+ </A>
+ </P>
+<P CLASS="Body">
+<A NAME="pgfId=1573">
+ </A>
+</P>
+<HR><P><A HREF="ch14.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch14.9.htm">Previous&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

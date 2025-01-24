@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch09.css">
+<TITLE> 9.4	Conditional statement </TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch09.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch09.3.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch09.5.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=591">
+ </A>
+9.4	<A NAME="41614">
+ </A>
+C<A NAME="marker=100">
+ </A>
+onditional statement </H1>
+<P CLASS="Body">
+<A NAME="pgfId=593">
+ </A>
+The <I CLASS="Emphasis">
+conditional statement</I>
+ (or<CODE CLASS="code">
+ </CODE>
+<A NAME="marker=101">
+ </A>
+<I CLASS="Emphasis">
+if-else</I>
+ statement) is used to make a decision as to whether a statement is executed or not. Formally, the <A NAME="marker=102">
+ </A>
+<A NAME="marker=103">
+ </A>
+syntax is as follows:</P>
+<P CLASS="Body">
+<A NAME="pgfId=594">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-14.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=595">
+ </A>
+Syntax&nbsp;9-4: Syntax of if statement</P>
+<P CLASS="Body">
+<A NAME="pgfId=596">
+ </A>
+If the expression evaluates to true (that is, has a non-zero known value), the first statement shall be executed. If it evaluates to false (has a zero value or the value is <CODE CLASS="code">
+x</CODE>
+ or <CODE CLASS="code">
+z</CODE>
+), the first statement shall not execute. If there is an else statement and expression is false, the else statement shall be executed.</P>
+<P CLASS="Body">
+<A NAME="pgfId=597">
+ </A>
+Since the numeric value of the <CODE CLASS="code">
+if</CODE>
+ expression is tested for being zero, certain shortcuts are possible. For example, the following two statements express the same logic:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=598"> </A>
+<B CLASS="Keyword">if</B>
+ (expression)</PRE>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=599"> </A>
+<B CLASS="Keyword">if</B>
+ (expression != 0)</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=600">
+ </A>
+Because the else part of an <A NAME="marker=105">
+ </A>
+if-else is optional, there can be confusion when an else is omitted from a nested if sequence. This is resolved by always associating the else with the closest previous if that lacks an else. In the example below, the else goes with the inner if, as shown by indentation. </P>
+<P CLASS="Body">
+<A NAME="pgfId=601">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-15.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=603">
+ </A>
+If that association is not desired, a <A NAME="marker=111">
+ </A>
+begin-end block statement shall be used to force the proper association, as shown below.</P>
+<P CLASS="Body">
+<A NAME="pgfId=604">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-16.gif">
+</DIV>
+<P CLASS="SubSection">
+<A NAME="pgfId=613">
+ </A>
+If-else-if Construct </P>
+<P CLASS="Body">
+<A NAME="pgfId=615">
+ </A>
+The following&nbsp;<A NAME="marker=127">
+ </A>
+<A NAME="marker=128">
+ </A>
+construction occurs so often that it is worth a brief separate discussion:</P>
+<P CLASS="Body">
+<A NAME="pgfId=616">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-17.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=617">
+ </A>
+Syntax&nbsp;9-5: Syntax of if-else-if construct</P>
+<P CLASS="Body">
+<A NAME="pgfId=618">
+ </A>
+This sequence of if statements (known as an <I CLASS="Emphasis">
+if-else-if</I>
+ construct) is the most general way of writing a <A NAME="marker=130">
+ </A>
+multi-way decision. The expressions shall be evaluated in order; if any expression is true, the statement associated with it shall be executed, and this shall terminate the whole chain. Each statement is either a single statement or a block of statements.</P>
+<P CLASS="Body">
+<A NAME="pgfId=619">
+ </A>
+The last else part of the if-else-if construct handles the none-of-the-above or <A NAME="marker=131">
+ </A>
+default case where none of the other conditions were satisfied. Sometimes there is no explicit action for the default; in that case, the trailing else statement can be omitted or it can be used for error checking to catch an impossible condition.</P>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=621">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=622">
+ </A>
+The <A NAME="marker=112">
+ </A>
+module fragment shown below uses the if-else statement to test the variable <CODE CLASS="code">
+index</CODE>
+ to decide whether one of three <CODE CLASS="code">
+modify_segn</CODE>
+ registers must be added to the memory address, and which increment is to be added to the <CODE CLASS="code">
+index</CODE>
+ register. The first ten lines declare the registers and parameters.</P>
+<P CLASS="Body">
+<A NAME="pgfId=623">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-18.gif">
+</DIV>
+</DIV>
+<HR><P><A HREF="ch09.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch09.3.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch09.5.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

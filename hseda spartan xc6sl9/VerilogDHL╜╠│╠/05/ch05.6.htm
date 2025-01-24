@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch05.css">
+<TITLE> 5.6	Scheduling implication of assignments</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch05.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch05.5.htm">Previous&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=143">
+ </A>
+5.6	Scheduling implication of assignments</H1>
+<P CLASS="Body">
+<A NAME="pgfId=144">
+ </A>
+Assignments are translated into processes and events as follows.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=145">
+ </A>
+Continuous assignment</P>
+<P CLASS="Body">
+<A NAME="pgfId=146">
+ </A>
+A continuous assignment statement (<A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/05/ch06.htm#26312" CLASS="XRef">
+</A>
+) corresponds to a process, sensitive to the source elements in the expression. When the value of the expression changes, it causes an active update event to be added to the event queue, using current values to determine the target.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=147">
+ </A>
+Procedural continuous assignment</P>
+<P CLASS="Body">
+<A NAME="pgfId=95">
+ </A>
+A procedural continuous assignment (which are the <B CLASS="Keyword">
+assign</B>
+ or <B CLASS="Keyword">
+force</B>
+ statements, <A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/05/ch09.htm#43159" CLASS="XRef">
+</A>
+) corresponds to a process which is sensitive to the source elements in the expression. When the value of the expression changes, it causes an active update event to be added to the event queue, using current values to determine the target.</P>
+<P CLASS="Body">
+<A NAME="pgfId=148">
+ </A>
+A <B CLASS="Keyword">
+deassign</B>
+ or a <B CLASS="Keyword">
+release</B>
+ statement deactivates any corresponding <B CLASS="Keyword">
+assign</B>
+ or <B CLASS="Keyword">
+force</B>
+ statement(s).</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=149">
+ </A>
+Blocking assignment</P>
+<P CLASS="Body">
+<A NAME="pgfId=150">
+ </A>
+A blocking assignment statement with a delay computes the right hand side value using the current values, then causes the executing process to be suspended, and scheduled as a future event. If the delay is 0, the process is scheduled as an inactive event for the current time.</P>
+<P CLASS="Body">
+<A NAME="pgfId=151">
+ </A>
+When the process is resumed, (or immediately, were there no delay specified) the process performs the assignment to the left hand side, and enables any events based upon the update of the left hand side. The values at the time the process resumes are used to determine the target(s). Execution may then continue with the next sequential statement, or with other active events.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=152">
+ </A>
+Non-blocking assignment</P>
+<P CLASS="Body">
+<A NAME="pgfId=153">
+ </A>
+A non-blocking assignment statement always computes the updated value and schedules the update as a non-blocking assign update event, either in this time step if the delay is zero, or as a future event if the delay is non-zero. The values in effect when the update is placed on the event queue are used to compute both the right hand value and the left hand target.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=154">
+ </A>
+Switch (transistor) processing</P>
+<P CLASS="Body">
+<A NAME="pgfId=155">
+ </A>
+The event driven simulation algorithm described above depends 	on uni-directional signal flow, and can process each event independently. The inputs are read, the result is computed, and the update is scheduled.</P>
+<P CLASS="Body">
+<A NAME="pgfId=156">
+ </A>
+Verilog HDL provides switch level modeling in addition to behavioral and gate level modeling. Switches provide bi-directional signal flow and require coordinated processing of nodes connected by switches.</P>
+<P CLASS="Body">
+<A NAME="pgfId=157">
+ </A>
+The Verilog HDL source elements which model switches are various forms of transistors, called <B CLASS="Keyword">
+tran</B>
+, <B CLASS="Keyword">
+tranif0</B>
+, <B CLASS="Keyword">
+tranif1</B>
+, <B CLASS="Keyword">
+rtran</B>
+, <B CLASS="Keyword">
+rtranif0</B>
+, and <B CLASS="Keyword">
+rtranif1</B>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=158">
+ </A>
+Switch processing must consider all the devices in a channel connected net, before it can determine the appropriate value for any node on the net, because the inputs and outputs interact. A simulator can do this using a relaxation technique. The simulator can process tran at any time, and can process a subset of tran connected events at a particular time, intermingled with execution of other active events. </P>
+<P CLASS="Body">
+<A NAME="pgfId=159">
+ </A>
+Further refinement is required when some transistors have gate value <CODE CLASS="code">
+x</CODE>
+. A conceptually simple technique is to repeatedly solve the network with these transistors set to all possible combinations of fully conducting and non-conducting. Any node that has a unique logic level in all cases has steady-state response equal to this level. All other nodes have steady-state response <CODE CLASS="code">
+x</CODE>
+.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=160">
+ </A>
+Port connections</P>
+<P CLASS="Body">
+<A NAME="pgfId=161">
+ </A>
+Ports connect processes through implicit continuous assignment statements or implicit bidirectional connections. Bidirectional connections are analogous to an always enabled tran connection between the two nets, however, without any strength reduction. Port connection rules require that a value receiver be a net, or a structural net expression.</P>
+<P CLASS="Body">
+<A NAME="pgfId=162">
+ </A>
+Ports can always be represented as declared objects connected as follows</P>
+<P CLASS="Body">
+<A NAME="pgfId=163">
+ </A>
+	if input port, then a continuous assignment from outside expression to local (input) net</P>
+<P CLASS="Body">
+<A NAME="pgfId=164">
+ </A>
+	if output port, then a continuous assignment from local output expression to outside net</P>
+<P CLASS="Body">
+<A NAME="pgfId=165">
+ </A>
+	if inout, then a non strength reducing transistor connecting local net to outside net</P>
+<P CLASS="Body">
+<A NAME="pgfId=166">
+ </A>
+Port Connection Rules (<A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/05/ch12.htm#SubSection" CLASS="XRef">
+</A>
+) is the definitive section for port connection rules. Modules can have the following declaration:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=167"> </A>
+<B CLASS="Keyword">module</B>
+ foo (.a(p), .b(p));</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=168">
+ </A>
+which makes <CODE CLASS="code">
+a</CODE>
+ and <CODE CLASS="code">
+b</CODE>
+ the external names of the ports, and <CODE CLASS="code">
+p</CODE>
+ the internal name of the port. This means <CODE CLASS="code">
+a</CODE>
+, <CODE CLASS="code">
+b</CODE>
+, and <CODE CLASS="code">
+p</CODE>
+ are connected bidirectionally, and hence always have the same value.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=169">
+ </A>
+Functions and tasks</P>
+<P CLASS="Body">
+<A NAME="pgfId=170">
+ </A>
+Task and function parameter passing is by value, and it is copy in on invocation and copy out on return. The copy out on return behaves in the same manner as does any blocking assignment.</P>
+<HR><P><A HREF="ch05.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch05.5.htm">Previous&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

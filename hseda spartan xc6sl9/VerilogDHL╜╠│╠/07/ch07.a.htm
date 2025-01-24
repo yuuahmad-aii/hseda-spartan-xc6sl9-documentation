@@ -1,0 +1,404 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch07.css">
+<TITLE> 7.10	Logic strength modeling </TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch07.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch07.9.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch07.b.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=1531">
+ </A>
+7.10	<A NAME="22516">
+ </A>
+<A NAME="54904">
+ </A>
+L<A NAME="marker=333">
+ </A>
+ogic strength modeling </H1>
+<P CLASS="Body">
+<A NAME="pgfId=1532">
+ </A>
+The Verilog HDL provides for accurate <A NAME="marker=334">
+ </A>
+modeling of signal contention, bidirectional pass gates, resistive MOS devices, dynamic MOS, charge sharing, and other technology dependent network configurations by allowing scalar net signal values to have a full range of unknown values and different levels of strength or combinations of levels of strength. This multiple level logic strength modeling resolves combinations of signals into known or unknown values to represent the behavior of hardware with improved accuracy.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1533">
+ </A>
+A strength specification shall have two components:</P>
+<OL>
+<P CLASS="NumberedLista">
+<A NAME="pgfId=1534">
+ </A>
+a)	the strength of the 0 portion of the net value, called strength0, designated as one of the following:</P>
+</OL>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1033"> </A>
+<B CLASS="Keyword">supply0</B>
+					<B CLASS="Keyword">strong0</B>
+				<B CLASS="Keyword">pull0</B>
+			<B CLASS="Keyword">weak0</B>
+			<B CLASS="Keyword">highz0</B>
+</PRE>
+<OL>
+<P CLASS="NumberedListb">
+<A NAME="pgfId=1535">
+ </A>
+b)	the strength of the 1 portion of the net value, called strength1, designated as one of the following:</P>
+</OL>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1034"> </A>
+<B CLASS="Keyword">supply1</B>
+					<B CLASS="Keyword">strong1</B>
+				<B CLASS="Keyword">pull1</B>
+			<B CLASS="Keyword">weak1</B>
+			<B CLASS="Keyword">highz1</B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1536">
+ </A>
+The combinations <B CLASS="Keyword">
+(highz0, highz1)</B>
+ and <B CLASS="Keyword">
+(highz1, highz0)</B>
+ shall be considered illegal.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1537">
+ </A>
+Despite this division of the strength specification, it is helpful to consider strength as a property occupying regions of a continuum in order to predict the results of combinations of signals.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1538">
+ </A>
+<A HREF="ch07.a.htm#69850" CLASS="XRef">
+See : Strength levels for scalar net signal values</A>
+ demonstrates the continuum of strengths. The left column lists the keywords used in specifying strengths. The right column gives correlated strength levels:</P>
+<TABLE>
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=1196">
+ </A>
+Table&nbsp;7-7<A NAME="69850">
+ </A>
+: Strength levels for scalar net signal values</P>
+</CAPTION>
+<TR>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=1198">
+ </A>
+<EM CLASS="-">
+strength name</EM>
+</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=1193">
+ </A>
+<EM CLASS="-">
+strength level</EM>
+</P>
+</TH>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1200">
+ </A>
+supply0</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1197">
+ </A>
+7</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1202">
+ </A>
+strong0</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1199">
+ </A>
+6</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1204">
+ </A>
+pull0</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1201">
+ </A>
+5</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1206">
+ </A>
+large0</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1203">
+ </A>
+4</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1208">
+ </A>
+weak0	</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1205">
+ </A>
+3</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1210">
+ </A>
+medium0</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1207">
+ </A>
+2</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1212">
+ </A>
+small0	</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1209">
+ </A>
+1</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1214">
+ </A>
+highz0</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1211">
+ </A>
+0</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1216">
+ </A>
+highz1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1213">
+ </A>
+0</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1218">
+ </A>
+small1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1215">
+ </A>
+1</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1220">
+ </A>
+medium1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1217">
+ </A>
+2</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1222">
+ </A>
+weak1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1219">
+ </A>
+3</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1224">
+ </A>
+large1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1221">
+ </A>
+4</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1226">
+ </A>
+pull1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1223">
+ </A>
+5</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1228">
+ </A>
+strong1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1225">
+ </A>
+6</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1230">
+ </A>
+supply1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1227">
+ </A>
+7</P>
+</TD>
+</TR>
+</TABLE>
+<P CLASS="Body">
+<A NAME="pgfId=1539">
+ </A>
+In the preceding table there are four <I CLASS="Emphasis">
+driving strengths</I>
+<A NAME="marker=342">
+ </A>
+<A NAME="marker=343">
+ </A>
+:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1540"> </A>
+<B CLASS="Keyword">supply 					strong 					pull 					weak </B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1541">
+ </A>
+Signals with driving strengths shall propagate from gate outputs and <A NAME="marker=344">
+ </A>
+continuous assignment outputs.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1542">
+ </A>
+In the preceding table there are three <I CLASS="Emphasis">
+charge storage strengths</I>
+<A NAME="marker=345">
+ </A>
+<A NAME="marker=346">
+ </A>
+:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1543"> </A>
+<B CLASS="Keyword">large 					medium 					small</B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1544">
+ </A>
+Signals with the charge storage strengths shall originate in the <B CLASS="Keyword">
+trireg</B>
+<A NAME="marker=347">
+ </A>
+<A NAME="marker=348">
+ </A>
+ net type.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1545">
+ </A>
+It is possible to think of the strengths of signals in the preceding table as locations on the scale in <A HREF="ch07.a.htm#75920" CLASS="XRef">
+See : Scale of strengths</A>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1546">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch07-11.gif">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=1547">
+ </A>
+Figure&nbsp;7-2<A NAME="75920">
+ </A>
+: Scale <A NAME="marker=354">
+ </A>
+of strengths</P>
+<P CLASS="Body">
+<A NAME="pgfId=1548">
+ </A>
+Discussions of signal combinations later in this section employs graphics similar to <A HREF="ch07.a.htm#75920" CLASS="XRef">
+See : Scale of strengths</A>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1549">
+ </A>
+If the signal value of a net is known, all of its strength levels shall be in either the strength0 part of the scale represented by <A HREF="ch07.a.htm#75920" CLASS="XRef">
+See : Scale of strengths</A>
+, or all strength levels shall be in its strength1 part. If the signal value of a net is unknown, it shall have strength levels in both the strength0 and the strength1 parts. A net with a signal value <CODE CLASS="code">
+z</CODE>
+ shall have a strength level only in one of the 0 subdivisions of the parts of the scale.</P>
+<HR><P><A HREF="ch07.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch07.9.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch07.b.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

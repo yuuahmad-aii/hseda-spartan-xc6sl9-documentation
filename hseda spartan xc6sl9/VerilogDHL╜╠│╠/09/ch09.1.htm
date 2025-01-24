@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch09.css">
+<TITLE> 9.1	Behavioral model overview </TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch09.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch09.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch09.2.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=516">
+ </A>
+9.1	Behavioral model overview </H1>
+<P CLASS="Body">
+<A NAME="pgfId=517">
+ </A>
+Verilog <I CLASS="Emphasis">
+behavioral models</I>
+ contain <I CLASS="Emphasis">
+procedural statements</I>
+<A NAME="marker=13">
+ </A>
+ that control the simulation and manipulate variables of the data types previously described. These statements are contained within procedures. Each procedure has an activity flow associated with it.</P>
+<P CLASS="Body">
+<A NAME="pgfId=518">
+ </A>
+The activity starts at the control constructs <B CLASS="Keyword">
+initial</B>
+<A NAME="marker=14">
+ </A>
+ and <B CLASS="Keyword">
+always</B>
+<A NAME="marker=15">
+ </A>
+. Each <I CLASS="Emphasis">
+initial</I>
+ construct and each <I CLASS="Emphasis">
+always</I>
+ construct starts a separate activity flow. All of the activity flows are <A NAME="marker=16">
+ </A>
+concurrent to model the inherent concurrence of hardware. These constructs are formally described in <A HREF="ch09.9.htm#19982" CLASS="XRef">
+See Structured procedures</A>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=519">
+ </A>
+The following example shows a complete Verilog <A NAME="marker=19">
+ </A>
+behavioral model.</P>
+<P CLASS="Body">
+<A NAME="pgfId=520">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-1.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=522">
+ </A>
+During simulation of this model, all of the flows defined by the <A NAME="marker=22">
+ </A>
+initial and <A NAME="marker=23">
+ </A>
+always constructs start together at simulation time zero. The initial constructs execute once, and the always constructs execute repetitively.</P>
+<P CLASS="Body">
+<A NAME="pgfId=523">
+ </A>
+In this model, the register variables <CODE CLASS="code">
+a</CODE>
+ and b initialize to 1 and 0 respectively at simulation time zero. The initial construct is then complete and does not execute again during this simulation run. This initial construct contains a begin-end block (also called a <I CLASS="Emphasis">
+sequential block</I>
+) of statements. In this begin-end block <CODE CLASS="code">
+a</CODE>
+ is initialized first, followed by <CODE CLASS="code">
+b</CODE>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=524">
+ </A>
+The always constructs also start at time zero, but the values of the variables do not change until the times specified by the delay controls (introduced by #) have elapsed. Thus, register <CODE CLASS="code">
+a</CODE>
+ inverts after 50 time units, and register <CODE CLASS="code">
+b</CODE>
+ inverts after 100 time units. Since the always constructs repeat, this model will produce two square waves. The register <CODE CLASS="code">
+a</CODE>
+ toggles with a period of 100 time units, and register <CODE CLASS="code">
+b</CODE>
+ toggles with a period of 200 time units. The two always constructs proceed concurrently throughout the entire simulation run.</P>
+<HR><P><A HREF="ch09.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch09.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch09.2.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

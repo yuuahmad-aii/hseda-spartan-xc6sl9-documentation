@@ -1,0 +1,1135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch12.css">
+<TITLE> 12.3	Ports</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch12.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch12.2.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch12.4.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=258">
+ </A>
+12.3	<A NAME="34493">
+ </A>
+<A NAME="marker=114">
+ </A>
+Ports<A NAME="Ports (section)">
+ </A>
+</H1>
+<P CLASS="Body">
+<A NAME="pgfId=336">
+ </A>
+Ports provide a means of interconnecting a hardware description consisting of modules, primitives, and macromodules. For example, module A can instantiate module B, using port connections appropriate to module A. These port names can differ from the names of the internal nets and registers specified in the definition of module B. </P>
+<P CLASS="SubSection">
+<A NAME="pgfId=338">
+ </A>
+<A NAME="marker=116">
+ </A>
+Port definition</P>
+<P CLASS="Body">
+<A NAME="pgfId=339">
+ </A>
+The <A NAME="marker=117">
+ </A>
+syntax for a port is given below (this is the completion of the syntax presented in <A HREF="ch12.1.htm#Modules (section)" CLASS="XRef">
+See Modules</A>
+). </P>
+<P CLASS="Body">
+<A NAME="pgfId=340">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch12-7.gif">
+</DIV>
+<DIV>
+<H2 CLASS="BNFCapPage">
+<A NAME="pgfId=341">
+ </A>
+: Definitions for port</H2>
+<P CLASS="Body">
+<A NAME="pgfId=342">
+ </A>
+The port expression in the port definition can be one of the following:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=343">
+ </A>
+a simple identifier</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=344">
+ </A>
+a bit-select of a vector declared within the module</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=345">
+ </A>
+a part-select of a vector declared within the module</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=346">
+ </A>
+a concatenation of any of the above</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=299">
+ </A>
+The two types of module port definitions shall not be mixed; the ports of a particular module definition shall all be defined by order or all by name. The port expression is optional because ports can be defined that do not connect to anything internal to the module.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=347">
+ </A>
+<A NAME="port declarations">
+ </A>
+<A NAME="marker=120">
+ </A>
+Port declarations</P>
+<P CLASS="Body">
+<A NAME="pgfId=300">
+ </A>
+Each port listed in the module definition's list of ports shall be declared in the body of the module as an <B CLASS="Keyword">
+input</B>
+, <B CLASS="Keyword">
+output</B>
+, or <B CLASS="Keyword">
+inout</B>
+ (bidirectional). This is in addition to any other declaration for a particular port-- for example, a <B CLASS="Keyword">
+reg</B>
+, or <B CLASS="Keyword">
+wire</B>
+. The <A NAME="marker=63">
+ </A>
+syntax for port declarations is as follows:</P>
+<P CLASS="Body">
+<A NAME="pgfId=349">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch12-8.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=350">
+ </A>
+Syntax&nbsp;12-4: Definitions for port declarations</P>
+<P CLASS="Body">
+<A NAME="pgfId=384">
+ </A>
+A port can be declared in both a port declaration and a net or register declaration. If a port is declared as a vector, the range specification between the two declarations of a port shall be identical.</P>
+<P CLASS="Note">
+<A NAME="pgfId=270">
+ </A>
+NOTE--Implementations may limit maximum number of ports in a module definition, but will at least be 256.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=352">
+ </A>
+Connecting module ports by ordered list</P>
+<P CLASS="Body">
+<A NAME="pgfId=353">
+ </A>
+One method of making the connection between the ports listed in a module instantiation and the ports defined by the instantiated module is the ordered list--that is, the ports listed for the module instance shall be in the same order as the ports listed in the module definition.</P>
+<DIV>
+<H3 CLASS="Example">
+<A NAME="pgfId=301">
+ </A>
+</H3>
+<P CLASS="Body">
+<A NAME="pgfId=354">
+ </A>
+The example below illustrates a top-level module (<CODE CLASS="code">
+topmod</CODE>
+) that instantiates a second module (<CODE CLASS="code">
+modB</CODE>
+). Module <CODE CLASS="code">
+modB</CODE>
+ has ports that are <A NAME="marker=122">
+ </A>
+<A NAME="marker=123">
+ </A>
+connected by an ordered list. The connections made are as follows:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=355">
+ </A>
+Port <CODE CLASS="code">
+wa</CODE>
+ in the <CODE CLASS="code">
+modB</CODE>
+ definition connects to the bit-select <CODE CLASS="code">
+v[0]</CODE>
+ in the <CODE CLASS="code">
+topmod</CODE>
+ module.</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=356">
+ </A>
+Port <CODE CLASS="code">
+wb</CODE>
+ connects to <CODE CLASS="code">
+v[3]</CODE>
+.</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=357">
+ </A>
+Port <CODE CLASS="code">
+c</CODE>
+ connects to <CODE CLASS="code">
+w</CODE>
+.</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=358">
+ </A>
+Port <CODE CLASS="code">
+d</CODE>
+ connects to <CODE CLASS="code">
+v[4]</CODE>
+. </LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=359">
+ </A>
+In the <CODE CLASS="code">
+modB</CODE>
+ definition, ports <CODE CLASS="code">
+wa</CODE>
+ and <CODE CLASS="code">
+wb</CODE>
+ are declared as <CODE CLASS="code">
+inouts</CODE>
+ while ports <CODE CLASS="code">
+c</CODE>
+ and <CODE CLASS="code">
+d</CODE>
+ are declared as <CODE CLASS="code">
+input</CODE>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=360">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch12-9.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=361">
+ </A>
+During simulation of the <CODE CLASS="code">
+b1</CODE>
+ instance of <CODE CLASS="code">
+modb</CODE>
+, the <B CLASS="Keyword">
+and</B>
+ gate <CODE CLASS="code">
+g2</CODE>
+ activates first to produce a value on <CODE CLASS="code">
+int</CODE>
+. This value triggers the <B CLASS="Keyword">
+not</B>
+ gate <CODE CLASS="code">
+n1</CODE>
+ to produce output on <CODE CLASS="code">
+cinvert</CODE>
+, which then activates the <B CLASS="Keyword">
+tranif1</B>
+ gate <CODE CLASS="code">
+g1</CODE>
+.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=362">
+ </A>
+<A NAME="Connecting module ports by name">
+ </A>
+<A NAME="marker=126">
+ </A>
+<A NAME="marker=127">
+ </A>
+Connecting module ports by name</P>
+<P CLASS="Body">
+<A NAME="pgfId=364">
+ </A>
+The second way to connect module ports consists of explicitly linking the two names for each side of the connection--the name used in the module definition, followed by the name used in the instantiating module. This compound name is then placed in the list of module connections. The name of port shall be the name specified in the module definition. The name of port cannot be a bit select, a part select, or a concatenation of ports.</P>
+<P CLASS="Body">
+<A NAME="pgfId=365">
+ </A>
+The port expression shall be the name used by the instantiating module and can be one of the following:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=366">
+ </A>
+a simple identifier</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=367">
+ </A>
+a bit-select of a vector declared within the module</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=368">
+ </A>
+a part-select of a vector declared within the module</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=369">
+ </A>
+a concatenation of any of the above</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=370">
+ </A>
+The port expression is optional so that the instantiating module can document the existence of the port without connecting it to anything. The parentheses are required. </P>
+<P CLASS="Body">
+<A NAME="pgfId=404">
+ </A>
+The two types of module port connections shall not be mixed; connections to the ports of a particular module instance shall be all by order or all by name. </P>
+</DIV>
+<DIV>
+<H3 CLASS="Example">
+<A NAME="pgfId=302">
+ </A>
+</H3>
+<P CLASS="Body">
+<A NAME="pgfId=371">
+ </A>
+1. In the following example, the instantiating module connects its signals <CODE CLASS="code">
+topA</CODE>
+ and <CODE CLASS="code">
+topB</CODE>
+ to the ports <CODE CLASS="code">
+In1</CODE>
+ and <CODE CLASS="code">
+Out</CODE>
+ defined by the module <CODE CLASS="code">
+ALPHA</CODE>
+. At least one port provided by <CODE CLASS="code">
+ALPHA</CODE>
+ is unused; it is named <CODE CLASS="code">
+In2</CODE>
+. There could be other unused ports not mentioned in the instantiation.</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=372"> </A>
+ALPHA instance1 (.Out(topB),.In1(topA),.In2());</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=373">
+ </A>
+2. The example below defines the modules <CODE CLASS="code">
+modB</CODE>
+ and <CODE CLASS="code">
+topmod</CODE>
+ and then <CODE CLASS="code">
+topmod</CODE>
+ instantiates <CODE CLASS="code">
+modB</CODE>
+ using ports connected by name.</P>
+<P CLASS="Body">
+<A NAME="pgfId=374">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch12-10.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=375">
+ </A>
+Since these connections are made by name, the order in which they appear is irrelevant. <A NAME="marker=129">
+ </A>
+<A NAME="marker=130">
+ </A>
+</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=377">
+ </A>
+<EM CLASS="-">
+</EM>
+<A NAME="marker=131">
+ </A>
+Real numbers in port connections</P>
+<P CLASS="Body">
+<A NAME="pgfId=378">
+ </A>
+<EM CLASS="-">
+The </EM>
+<CODE CLASS="code">
+real</CODE>
+<EM CLASS="-">
+ data type shall not be directly connected to a port. It shall be connected indirectly, as shown below. The system functions </EM>
+<A NAME="marker=132">
+ </A>
+<B CLASS="Keyword">
+$realtobits</B>
+<EM CLASS="-">
+ and </EM>
+<A NAME="marker=133">
+ </A>
+<B CLASS="Keyword">
+$bitstoreal</B>
+<EM CLASS="-">
+ shall be used for passing the bit patterns across module ports. </EM>
+(See <A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/12/ch14.htm#85454" CLASS="XRef">
+</A>
+ for a description of these system tasks.)</P>
+</DIV>
+<DIV>
+<H3 CLASS="Example">
+<A NAME="pgfId=303">
+ </A>
+</H3>
+<P CLASS="Body">
+<A NAME="pgfId=379">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch12-11.gif">
+</DIV>
+<P CLASS="SubSection">
+<A NAME="pgfId=466">
+ </A>
+Connecting dissimilar ports</P>
+<P CLASS="Body">
+<A NAME="pgfId=382">
+ </A>
+A port of a module can be viewed as providing a link or connection between two items (nets, registers, expressions, etc.)--one internal to the module instance and one external to the module instance.</P>
+<P CLASS="Body">
+<A NAME="pgfId=383">
+ </A>
+Examination of the port connection rules described below will show that the item receiving the value through the port (the internal item for inputs, the external item for outputs) must be a structural net expression. The item which provides the value can be any expression.</P>
+<P CLASS="Note">
+<A NAME="pgfId=376">
+ </A>
+NOTE--A port that is declared as input (output) but used as an output (input) or inout may be coerced to inout. If not coerced to inout, a warning must be issued.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=455">
+ </A>
+<A NAME="SubSection">
+ </A>
+<A NAME="17116">
+ </A>
+<A NAME="marker=144">
+ </A>
+<A NAME="marker=145">
+ </A>
+<A NAME="marker=146">
+ </A>
+Port connection rules </P>
+<P CLASS="Body">
+<A NAME="pgfId=386">
+ </A>
+The following rules shall govern the way module ports are declared and the way they are interconnected:</P>
+<P CLASS="SubSubSect">
+<A NAME="pgfId=387">
+ </A>
+Rule 1<A NAME="An input or inout port must be declared as a net type">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=388">
+ </A>
+An input or inout port shall be of type net.</P>
+<P CLASS="SubSubSect">
+<A NAME="pgfId=389">
+ </A>
+Rule 2</P>
+<P CLASS="Body">
+<A NAME="pgfId=391">
+ </A>
+Each port connection shall be a <A NAME="marker=149">
+ </A>
+<A NAME="marker=150">
+ </A>
+continuous assignment of source to sink, where one connected item shall be a signal source and the other shall be a signal sink. The assignment shall be a continuous assignment from source to sink for input or output ports. The assignment is a non-strength reducing transistor connection for inout ports. Only nets or structural net expressions shall be the sinks in an assignment.</P>
+<P CLASS="Body">
+<A NAME="pgfId=415">
+ </A>
+A <I CLASS="Emphasis">
+structural net expression</I>
+ is a port expression whose operands can be the following:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=416">
+ </A>
+a scalar net</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=417">
+ </A>
+a vector net</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=423">
+ </A>
+a constant bit-select of a vector net</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=430">
+ </A>
+a part-select of a vector net</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=431">
+ </A>
+a concatenation of structural net expressions</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=392">
+ </A>
+The following external items shall not be connected to the output or inout ports of modules:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=393">
+ </A>
+registers</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=394">
+ </A>
+expressions other than:</LI>
+<P CLASS="NumberedList1">
+<A NAME="pgfId=395">
+ </A>
+1)	a scalar net </P>
+<P CLASS="NumberedList2">
+<A NAME="pgfId=396">
+ </A>
+2)	a vector net</P>
+<P CLASS="NumberedList2">
+<A NAME="pgfId=397">
+ </A>
+3)	a constant bit select of a vector net</P>
+<P CLASS="NumberedList2">
+<A NAME="pgfId=398">
+ </A>
+4)	a part select of a vector net</P>
+<P CLASS="NumberedList2">
+<A NAME="pgfId=399">
+ </A>
+5)	a concatenation of the expressions listed above</P>
+</UL>
+<P CLASS="SubSection">
+<A NAME="pgfId=530">
+ </A>
+Net types resulting from dissimilar port connections</P>
+<P CLASS="Body">
+<A NAME="pgfId=582">
+ </A>
+When different net types are connected through a module port, the nets on both sides of the port can take on the same type. The resulting net type can be determined as shown in <A HREF="ch12.3.htm#96324" CLASS="XRef">
+See : Net types resulting from dissimilar port connections</A>
+. In the table, <I CLASS="Emphasis">
+external net</I>
+ means the net specified in the module instantiation, and <I CLASS="Emphasis">
+internal net</I>
+ means the net specified in the module definition. The net whose type is used is said to be the <I CLASS="Emphasis">
+dominating net</I>
+. The net whose type is changed is said to be the <I CLASS="Emphasis">
+dominated net</I>
+. It is permissible to merge the dominating and dominated nets into a single net, whose type shall be that of the dominating net. The resulting net is called the <I CLASS="Emphasis">
+simulated net</I>
+, and the dominated net is called a <I CLASS="Emphasis">
+collapsed net</I>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=433">
+ </A>
+The simulated net shall take the delay specified for the dominating net. If the dominating net is of the type <B CLASS="Keyword">
+trireg</B>
+, any strength value specified for the trireg net shall apply to the simulated net.</P>
+<P CLASS="SubSubSect">
+<A NAME="pgfId=405">
+ </A>
+<A NAME="96751">
+ </A>
+Net type resolution rule</P>
+<P CLASS="Body">
+<A NAME="pgfId=406">
+ </A>
+When the two nets connected by a port are of different net type, the resulting single net can be assigned one of the following:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=407">
+ </A>
+the dominating net type if one of the two nets is dominating, or </LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=408">
+ </A>
+the net type external to the module.</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=409">
+ </A>
+When a dominating net type does not exist, the external net type shall be used.<A NAME="marker=157">
+ </A>
+<A NAME="marker=158">
+ </A>
+</P>
+<P CLASS="SubSubSect">
+<A NAME="pgfId=410">
+ </A>
+Net type table</P>
+<P CLASS="Body">
+<A NAME="pgfId=411">
+ </A>
+<A HREF="ch12.3.htm#96324" CLASS="XRef">
+See : Net types resulting from dissimilar port connections</A>
+ shows the net type dictated by net type resolution rule.</P>
+<P CLASS="Body">
+<A NAME="pgfId=412">
+ </A>
+The simulated net shall take the net type specified in the table and the delay specified for that net. If the simulated net selected is a <B CLASS="Keyword">
+trireg</B>
+, any strength value specified for the trireg net applies to the simulated net. </P>
+<TABLE BORDER="1">
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=432">
+ </A>
+Table&nbsp;12-1<A NAME="96324">
+ </A>
+: Net types resulting from dissimilar port connections</P>
+</CAPTION>
+<TR>
+<TH ROWSPAN="2" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=441">
+ </A>
+Internal net</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="8">
+<P CLASS="CellHeading">
+<A NAME="pgfId=449">
+ </A>
+External net</P>
+</TH>
+</TR>
+<TR>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=479">
+ </A>
+wire &amp;<BR>
+ tri</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=480">
+ </A>
+wand &amp;<BR>
+ triand</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=481">
+ </A>
+wor &amp;<BR>
+trior</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=482">
+ </A>
+trireg</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=483">
+ </A>
+tri0</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=484">
+ </A>
+tri1</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=485">
+ </A>
+supply0</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=570">
+ </A>
+supply1</P>
+</TH>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=486">
+ </A>
+wire &amp;<BR>
+tri</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=487">
+ </A>
+ext</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=488">
+ </A>
+ext</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=489">
+ </A>
+ext</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=490">
+ </A>
+ext</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=491">
+ </A>
+ext</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=492">
+ </A>
+ext</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=493">
+ </A>
+ext</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=571">
+ </A>
+ext</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=494">
+ </A>
+wand &amp;<BR>
+triand</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=495">
+ </A>
+int</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=496">
+ </A>
+ext</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=497">
+ </A>
+warn</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=498">
+ </A>
+warn</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=499">
+ </A>
+warn</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=500">
+ </A>
+warn</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=501">
+ </A>
+ext</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=572">
+ </A>
+ext</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=502">
+ </A>
+wor &amp;<BR>
+trior</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=504">
+ </A>
+int</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=505">
+ </A>
+int</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=506">
+ </A>
+ext</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=507">
+ </A>
+warn</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=508">
+ </A>
+warn</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=509">
+ </A>
+warn</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=510">
+ </A>
+ext</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=573">
+ </A>
+ext</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=511">
+ </A>
+trireg<BR>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=512">
+ </A>
+int</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=513">
+ </A>
+int</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=514">
+ </A>
+warn</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=515">
+ </A>
+ext</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=516">
+ </A>
+ext</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=517">
+ </A>
+ext</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=518">
+ </A>
+ext</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=574">
+ </A>
+ext</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=519">
+ </A>
+tri0<BR>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=520">
+ </A>
+int</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=521">
+ </A>
+int</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=522">
+ </A>
+warn</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=523">
+ </A>
+int</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=524">
+ </A>
+ext</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=525">
+ </A>
+warn</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=526">
+ </A>
+ext</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=575">
+ </A>
+ext</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=527">
+ </A>
+tri1<BR>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=528">
+ </A>
+int</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=529">
+ </A>
+int</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=531">
+ </A>
+warn</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=532">
+ </A>
+int</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=533">
+ </A>
+warn</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=534">
+ </A>
+ext</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=535">
+ </A>
+ext</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=576">
+ </A>
+ext</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=536">
+ </A>
+supply0<BR>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=537">
+ </A>
+int</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=538">
+ </A>
+int</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=539">
+ </A>
+int</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=540">
+ </A>
+int</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=541">
+ </A>
+int</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=542">
+ </A>
+int</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=543">
+ </A>
+ext</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=577">
+ </A>
+warn</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=544">
+ </A>
+supply1<BR>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=545">
+ </A>
+int</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=546">
+ </A>
+int</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=547">
+ </A>
+int</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=548">
+ </A>
+int</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=549">
+ </A>
+int</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=550">
+ </A>
+int</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=551">
+ </A>
+warn</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=578">
+ </A>
+ext</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=552">
+ </A>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="4">
+<P CLASS="CellBody">
+<A NAME="pgfId=553">
+ </A>
+ext = the external net type is used</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="4">
+<P CLASS="CellBody">
+<A NAME="pgfId=557">
+ </A>
+int = the internal net type is used</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=560">
+ </A>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="8">
+<P CLASS="CellBody">
+<A NAME="pgfId=561">
+ </A>
+warn = a warning is issued and the external net type is used</P>
+</TD>
+</TR>
+</TABLE>
+</DIV>
+</DIV>
+<HR><P><A HREF="ch12.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch12.2.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch12.4.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

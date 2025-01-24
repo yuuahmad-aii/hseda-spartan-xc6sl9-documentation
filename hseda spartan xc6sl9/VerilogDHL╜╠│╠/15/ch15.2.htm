@@ -1,0 +1,895 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch15.css">
+<TITLE> 15.2	Format of the value change dump file</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch15.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch15.1.htm">Previous&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=250">
+ </A>
+15.2	<A NAME="marker=72">
+ </A>
+Format of the value change dump file</H1>
+<P CLASS="Body">
+<A NAME="pgfId=219">
+ </A>
+The dump file is structured in a free format. White space is used to separate commands and to make the file easily readable by a text editor.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=348">
+ </A>
+Syntax of the value change dump file</P>
+<P CLASS="Body">
+<A NAME="pgfId=224">
+ </A>
+The syntax of the VCD file is as follows:</P>
+<P CLASS="Body">
+<A NAME="pgfId=308">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch15-6.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=408">
+ </A>
+Syntax&nbsp;15-2: Syntax of the output VCD file</P>
+<P CLASS="Body">
+<A NAME="pgfId=210">
+ </A>
+The VCD file starts with header information giving the date, the simulator's version number used for the simulation, and the timescale used. Next, the file contains definitions of the scope and type of variables being dumped, followed by the actual value changes at each simulation time increment. Only the variables that change value during a time increment are listed.</P>
+<P CLASS="Body">
+<A NAME="pgfId=382">
+ </A>
+The simulation time recorded in VCD file is the absolute value of the simulation time for the changes in variable values that follow.</P>
+<P CLASS="Body">
+<A NAME="pgfId=239">
+ </A>
+Value changes for real variables are specified by real numbers.Value changes for all other variables are specified in binary format by <CODE CLASS="code">
+0</CODE>
+, <CODE CLASS="code">
+1</CODE>
+, <CODE CLASS="code">
+x</CODE>
+, or <CODE CLASS="code">
+z</CODE>
+ values. Strength information and memories are not dumped.</P>
+<P CLASS="Body">
+<A NAME="pgfId=434">
+ </A>
+A real number is dumped using a <CODE CLASS="code">
+%.16g printf()</CODE>
+ format. This preserves the precision of that number by outputting all 53 bits in the mantissa of a 64-bit IEEE STD-754 double precision number. Application programs can read a real number using a <CODE CLASS="code">
+%g</CODE>
+ format to <CODE CLASS="code">
+scanf()</CODE>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=249">
+ </A>
+The value change dumper generates character identifier codes to represent variables. The identifier code is a code composed of the printable characters that are in the ASCII character set from ! to ~ (decimal 33 to 126).</P>
+<P CLASS="Note">
+<A NAME="pgfId=255">
+ </A>
+NOTES</P>
+<OL>
+<P CLASS="NumberedNote1">
+<A NAME="pgfId=192">
+ </A>
+1)	--The VCD format does not support a mechanism to dump part of a vector. For example, only bits 8 to 15 (8:15) of a 16-bit vector cannot be dumped in VCD file, instead, the entire vector (0:15) must be dumped. In addition, expressions, such as a + b, cannot be dumped in the VCD file.</P>
+<P CLASS="NumberedNote2">
+<A NAME="pgfId=256">
+ </A>
+2)	-- Data in the VCD file is case sensitive.</P>
+</OL>
+<P CLASS="SubSection">
+<A NAME="pgfId=252">
+ </A>
+<A NAME="marker=82">
+ </A>
+Formats of variable values</P>
+<P CLASS="Body">
+<A NAME="pgfId=265">
+ </A>
+Variables may be either scalars or vectors. Each type is dumped in its own format. Dumps of value changes to scalar variables shall not have any white space between the value and the identifier code.</P>
+<P CLASS="Body">
+<A NAME="pgfId=267">
+ </A>
+Dumps of value changes to vectors shall not have any white space between the base letter and the value digits, but must have one white space between the value digits and the identifier code.</P>
+<P CLASS="Body">
+<A NAME="pgfId=269">
+ </A>
+The output format for each value is right-justified. Vector values appear in the shortest form possible: redundant bit values that result from left-extending values to fill a particular vector size are eliminated. </P>
+<P CLASS="Body">
+<A NAME="pgfId=270">
+ </A>
+The rules for left-extending vector values are as follows:</P>
+<TABLE BORDER="1">
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=257">
+ </A>
+Table&nbsp;15-1: Rules for left-extending vector values</P>
+</CAPTION>
+<TR>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=437">
+ </A>
+When the value is: </P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=438">
+ </A>
+VCD left-extends with:</P>
+</TH>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="Body">
+<A NAME="pgfId=439">
+ </A>
+1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="Body">
+<A NAME="pgfId=440">
+ </A>
+0</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="Body">
+<A NAME="pgfId=441">
+ </A>
+0</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="Body">
+<A NAME="pgfId=442">
+ </A>
+0</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="Body">
+<A NAME="pgfId=443">
+ </A>
+Z</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="Body">
+<A NAME="pgfId=444">
+ </A>
+Z</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="Body">
+<A NAME="pgfId=445">
+ </A>
+X</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="Body">
+<A NAME="pgfId=446">
+ </A>
+X</P>
+</TD>
+</TR>
+</TABLE>
+<P CLASS="Body">
+<A NAME="pgfId=283">
+ </A>
+The following table shows how the VCD may shorten values:</P>
+<TABLE BORDER="1">
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=271">
+ </A>
+Table&nbsp;15-2: How the VCD may shorten values</P>
+</CAPTION>
+<TR>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=273">
+ </A>
+The binary value: </P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=274">
+ </A>
+extends to fill a <BR>
+4-bit register as:</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=285">
+ </A>
+and appears in the <BR>
+VCD file as:</P>
+</TH>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="Body">
+<A NAME="pgfId=275">
+ </A>
+10</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="Body">
+<A NAME="pgfId=276">
+ </A>
+0010</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="Body">
+<A NAME="pgfId=286">
+ </A>
+b10</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="Body">
+<A NAME="pgfId=277">
+ </A>
+X10</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="Body">
+<A NAME="pgfId=278">
+ </A>
+XX10</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="Body">
+<A NAME="pgfId=303">
+ </A>
+bX1</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="Body">
+<A NAME="pgfId=279">
+ </A>
+ZX0</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="Body">
+<A NAME="pgfId=280">
+ </A>
+ZZX0</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="Body">
+<A NAME="pgfId=500">
+ </A>
+bZX0</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="Body">
+<A NAME="pgfId=281">
+ </A>
+0X10</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="Body">
+<A NAME="pgfId=501">
+ </A>
+0X10</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="Body">
+<A NAME="pgfId=282">
+ </A>
+b0X10</P>
+</TD>
+</TR>
+</TABLE>
+<P CLASS="Body">
+<A NAME="pgfId=304">
+ </A>
+Events are dumped in the same format as scalars: for example, 1*%. For events, however, the value (1 in this example) is irrelevant. Only the identifier code (*% in this example) is significant. It appears in the VCD file as a marker to indicate that the event was triggered during the time step.</P>
+<P CLASS="Body">
+<A NAME="pgfId=266">
+ </A>
+Examples:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=367"> </A>
+1*@	     No space between the value 1 and the identifier code *@</PRE>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=369"> </A>
+</PRE>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=404"> </A>
+b1100x01z (k		 					No space between the b and 1100x01z, 							but a space between b1100x01z and (k <A NAME="marker=85"> </A>
+</PRE>
+<P CLASS="SubSection">
+<A NAME="pgfId=287">
+ </A>
+<A NAME="64710">
+ </A>
+Description of keyword commands</P>
+<P CLASS="Body">
+<A NAME="pgfId=306">
+ </A>
+The general information in the VCD file is presented as a series of sections surrounded by keywords. Keyword commands provide a means of inserting information in the VCD file. Keyword commands can be inserted either by the dumper or manually.</P>
+<P CLASS="Body">
+<A NAME="pgfId=172">
+ </A>
+This section deals with the following keyword commands:</P>
+<TABLE BORDER="1">
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=351">
+ </A>
+Table&nbsp;15-3: Keyword Commands</P>
+</CAPTION>
+<TR>
+<TD ROWSPAN="1" COLSPAN="2">
+<P CLASS="CellHeading">
+<A NAME="pgfId=317">
+ </A>
+Declaration Keywords</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=321">
+ </A>
+Simulation Keywords</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=310">
+ </A>
+<B CLASS="Keyword">
+$comment</B>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=311">
+ </A>
+<B CLASS="Keyword">
+$timescale</B>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=312">
+ </A>
+<B CLASS="Keyword">
+$dumpall</B>
+</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=313">
+ </A>
+<B CLASS="Keyword">
+$date</B>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=314">
+ </A>
+<B CLASS="Keyword">
+$upscope</B>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=315">
+ </A>
+<B CLASS="Keyword">
+$dumpoff</B>
+</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=296">
+ </A>
+<B CLASS="Keyword">
+$enddefinitions</B>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=309">
+ </A>
+<B CLASS="Keyword">
+$var</B>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=318">
+ </A>
+<B CLASS="Keyword">
+$dumpon</B>
+</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=319">
+ </A>
+<B CLASS="Keyword">
+$scope</B>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=307">
+ </A>
+<B CLASS="Keyword">
+$version</B>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=316">
+ </A>
+<B CLASS="Keyword">
+$dumpvars</B>
+</P>
+</TD>
+</TR>
+</TABLE>
+<P CLASS="SubSubSect">
+<A NAME="pgfId=323">
+ </A>
+<A NAME="marker=96">
+ </A>
+$comment</P>
+<P CLASS="Body">
+<A NAME="pgfId=324">
+ </A>
+The <B CLASS="Keyword">
+$comment</B>
+ section provides a means of inserting a comment in the VCD file. </P>
+<P CLASS="Body">
+<A NAME="pgfId=325">
+ </A>
+Syntax:</P>
+<PRE CLASS="BNFDef"><A NAME="pgfId=326"> </A>
+	<A NAME="marker=97"> </A>
+<B CLASS="Keyword">$comment</B>
+ <I CLASS="Emphasis">comment_text</I>
+ <B CLASS="Keyword">$end</B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=327">
+ </A>
+Examples:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=328"> </A>
+<B CLASS="Keyword">$comment</B>
+ 	This is a single-line comment	      <B CLASS="Keyword">$end</B>
+ </PRE>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=329"> </A>
+<B CLASS="Keyword">$comment</B>
+ 	This is a 		 multiple-line comment 	   <B CLASS="Keyword">$end</B>
+	</PRE>
+<P CLASS="SubSubSect">
+<A NAME="pgfId=330">
+ </A>
+$date</P>
+<P CLASS="Body">
+<A NAME="pgfId=331">
+ </A>
+The <B CLASS="Keyword">
+$date</B>
+ section indicates the date on which the VCD file was generated.</P>
+<P CLASS="Body">
+<A NAME="pgfId=332">
+ </A>
+Syntax:</P>
+<PRE CLASS="BNFDef"><A NAME="pgfId=333"> </A>
+<B CLASS="Keyword">	$date</B>
+<A NAME="marker=98"> </A>
+ <I CLASS="Emphasis">date_text </I>
+<B CLASS="Keyword">$end </B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=334">
+ </A>
+Example:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=335"> </A>
+<B CLASS="Keyword">$date </B>
+     		June 25, 1989 09:24:35<B CLASS="Keyword">$end</B>
+</PRE>
+<P CLASS="SubSubSect">
+<A NAME="pgfId=322">
+ </A>
+$enddefinitions</P>
+<P CLASS="Body">
+<A NAME="pgfId=349">
+ </A>
+The<CODE CLASS="code">
+ </CODE>
+<B CLASS="Keyword">
+$enddefinitions</B>
+<CODE CLASS="code">
+ section </CODE>
+marks the end of the header information and definitions.</P>
+<P CLASS="Body">
+<A NAME="pgfId=354">
+ </A>
+Syntax:</P>
+<PRE CLASS="BNFDef"><A NAME="pgfId=356"> </A>
+<B CLASS="Keyword">	$enddefinitions $end</B>
+<A NAME="marker=78"> </A>
+</PRE>
+<P CLASS="SubSubSect">
+<A NAME="pgfId=291">
+ </A>
+$scope</P>
+<P CLASS="Body">
+<A NAME="pgfId=292">
+ </A>
+The <B CLASS="Keyword">
+$scope</B>
+ section defines the scope of the variables being dumped.</P>
+<P CLASS="Body">
+<A NAME="pgfId=293">
+ </A>
+Syntax:</P>
+<PRE CLASS="BNFDef"><A NAME="pgfId=294"> </A>
+	<B CLASS="Keyword">$scope</B>
+<A NAME="marker=76"> </A>
+ scope_type <I CLASS="Emphasis">scope</I>
+_identifier <B CLASS="Keyword">	$end</B>
+</PRE>
+<PRE CLASS="BNFDef"><A NAME="pgfId=179"> </A>
+	scope_type ::= <B CLASS="Keyword">module</B>
+ | <B CLASS="Keyword">task</B>
+ | <B CLASS="Keyword">function</B>
+ | <B CLASS="Keyword">begin</B>
+ | <B CLASS="Keyword">fork</B>
+ </PRE>
+<P CLASS="Body">
+<A NAME="pgfId=194">
+ </A>
+The scope type indicates one of the following scopes:</P>
+<P CLASS="Type">
+<A NAME="pgfId=357">
+ </A>
+<I CLASS="Emphasis">
+module</I>
+	 top-level module and module instances<BR>
+<I CLASS="Emphasis">
+task</I>
+	 tasks<BR>
+<I CLASS="Emphasis">
+function</I>
+ 	 functions<BR>
+<I CLASS="Emphasis">
+begin</I>
+ 	 named sequential blocks<BR>
+<I CLASS="Emphasis">
+fork</I>
+ 	 named parallel blocks</P>
+<P CLASS="Body">
+<A NAME="pgfId=361">
+ </A>
+Example:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=362"> </A>
+<B CLASS="Keyword">$scope</B>
+     		<B CLASS="Keyword">module</B>
+ top<B CLASS="Keyword">$end</B>
+</PRE>
+<P CLASS="SubSubSect">
+<A NAME="pgfId=371">
+ </A>
+$timescale</P>
+<P CLASS="Body">
+<A NAME="pgfId=372">
+ </A>
+The <B CLASS="Keyword">
+$timescale</B>
+ keyword specifies what timescale was used for the simulation.</P>
+<P CLASS="Body">
+<A NAME="pgfId=373">
+ </A>
+Syntax: 	 	</P>
+<PRE CLASS="BNFDef"><A NAME="pgfId=374"> </A>
+<B CLASS="Keyword">	$timescale</B>
+<A NAME="marker=80"> </A>
+ number time_unit <B CLASS="Keyword">$end</B>
+number ::= <B CLASS="Keyword">1</B>
+ | <B CLASS="Keyword">10</B>
+ | <B CLASS="Keyword">100</B>
+time_unit ::= <B CLASS="Keyword">s</B>
+ | <B CLASS="Keyword">ms</B>
+ | <B CLASS="Keyword">us</B>
+ | <B CLASS="Keyword">ns</B>
+ | <B CLASS="Keyword">ps</B>
+ | <B CLASS="Keyword">fs</B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=375">
+ </A>
+Example:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=376"> </A>
+<B CLASS="Keyword">$timescale</B>
+  10  ns  <B CLASS="Keyword">$end</B>
+</PRE>
+<P CLASS="SubSubSect">
+<A NAME="pgfId=363">
+ </A>
+$upscope</P>
+<P CLASS="Body">
+<A NAME="pgfId=364">
+ </A>
+The <B CLASS="Keyword">
+$upscope</B>
+ section indicates a change of scope to the next higher level in the design hierarchy.</P>
+<P CLASS="Body">
+<A NAME="pgfId=365">
+ </A>
+Syntax:</P>
+<PRE CLASS="BNFDef"><A NAME="pgfId=366"> </A>
+<B CLASS="Keyword">	$upscope $end</B>
+<A NAME="marker=79"> </A>
+</PRE>
+<P CLASS="SubSubSect">
+<A NAME="pgfId=336">
+ </A>
+<A NAME="marker=99">
+ </A>
+$version</P>
+<P CLASS="Body">
+<A NAME="pgfId=337">
+ </A>
+The <B CLASS="Keyword">
+$version</B>
+ section indicates which version of the VCD writer was used to produce the VCD file.</P>
+<P CLASS="Body">
+<A NAME="pgfId=338">
+ </A>
+Syntax:</P>
+<PRE CLASS="BNFDef"><A NAME="pgfId=339"> </A>
+<B CLASS="Keyword">	$version</B>
+<A NAME="marker=100"> </A>
+ <I CLASS="Emphasis">version_text </I>
+<B CLASS="Keyword">$end</B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=340">
+ </A>
+Example:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=341"> </A>
+<B CLASS="Keyword">$version</B>
+      VERILOG-SIMULATOR 1.0a <B CLASS="Keyword">$end</B>
+</PRE>
+<P CLASS="SubSubSect">
+<A NAME="pgfId=342">
+ </A>
+$var</P>
+<P CLASS="Body">
+<A NAME="pgfId=343">
+ </A>
+The<B CLASS="Keyword">
+ $var</B>
+ section prints the names and identifier codes of the variables being dumped.</P>
+<P CLASS="Body">
+<A NAME="pgfId=344">
+ </A>
+Syntax:</P>
+<PRE CLASS="BNFDef"><A NAME="pgfId=345"> </A>
+<B CLASS="Keyword">$var </B>
+<A NAME="marker=101"> </A>
+var_type size identifier_code reference<B CLASS="Keyword"> $end</B>
+</PRE>
+<PRE CLASS="BNFDef"><A NAME="pgfId=245"> </A>
+</PRE>
+<PRE CLASS="BNFDef"><A NAME="pgfId=289"> </A>
+var_type ::= <B CLASS="Keyword">event</B>
+ | <B CLASS="Keyword">integer</B>
+ | <B CLASS="Keyword">parameter </B>
+|<B CLASS="Keyword"> real</B>
+ | <B CLASS="Keyword">reg</B>
+ | <B CLASS="Keyword">supply0</B>
+ | <B CLASS="Keyword">supply1</B>
+ | <B CLASS="Keyword">time</B>
+ | <B CLASS="Keyword">tri</B>
+ | <B CLASS="Keyword">triand</B>
+ | <B CLASS="Keyword">trior</B>
+ | <B CLASS="Keyword">trireg</B>
+ | <B CLASS="Keyword">tri0</B>
+ | <B CLASS="Keyword">tri1</B>
+ | <B CLASS="Keyword">wand</B>
+ | <B CLASS="Keyword">wire</B>
+ | <B CLASS="Keyword">wor</B>
+</PRE>
+<PRE CLASS="BNFDef"><A NAME="pgfId=347"> </A>
+size ::= decimal_number</PRE>
+<PRE CLASS="BNFDef"><A NAME="pgfId=355"> </A>
+reference ::= identifier| identifier [ <I CLASS="Emphasis">bit_select</I>
+_index ]| identifier [ <I CLASS="Emphasis">msb</I>
+_index : <I CLASS="Emphasis">lsb</I>
+_index ]</PRE>
+<PRE CLASS="BNFDef"><A NAME="pgfId=290"> </A>
+index ::= decimal_number</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=368">
+ </A>
+Size specifies how many bits are in the variable.</P>
+<P CLASS="Body">
+<A NAME="pgfId=350">
+ </A>
+The identifier code specifies the name of the variable using printable ASCII characters, as previously described.</P>
+<OL>
+<P CLASS="NumberedLista">
+<A NAME="pgfId=358">
+ </A>
+a)	The msb index indicates the most significant index;  lsb index indicates the least significant index.</P>
+<P CLASS="NumberedListb">
+<A NAME="pgfId=359">
+ </A>
+b)	More than one reference name may be mapped to the same identifier code. For example, net10 and net15 may be interconnected in the circuit, and therefore may have the same identifier code.</P>
+<P CLASS="NumberedListb">
+<A NAME="pgfId=360">
+ </A>
+c)	The individual bits of vector nets may be dumped individually. </P>
+<P CLASS="NumberedListb">
+<A NAME="pgfId=190">
+ </A>
+d)	The identifier is the name of the variable being dumped in the model .</P>
+</OL>
+<P CLASS="Body">
+<A NAME="pgfId=234">
+ </A>
+Example:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=259"> </A>
+<B CLASS="Keyword">$var </B>
+		     <B CLASS="Keyword">integer</B>
+ 32 (2 index 	 <B CLASS="Keyword">$end</B>
+</PRE>
+<P CLASS="SubSubSect">
+<A NAME="pgfId=384">
+ </A>
+$dumpall</P>
+<P CLASS="Body">
+<A NAME="pgfId=385">
+ </A>
+<CODE CLASS="code">
+The</CODE>
+ <B CLASS="Keyword">
+$dumpall</B>
+ keyword specifies current values of all variables dumped.</P>
+<P CLASS="Body">
+<A NAME="pgfId=386">
+ </A>
+Syntax:</P>
+<PRE CLASS="BNFDef"><A NAME="pgfId=186"> </A>
+<B CLASS="Keyword">	$dumpall </B>
+<A NAME="marker=103"> </A>
+{ value_changes }<B CLASS="Keyword"> $end</B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=388">
+ </A>
+<A NAME="marker=102">
+ </A>
+Example:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=389"> </A>
+<B CLASS="Keyword">$dumpall</B>
+   1*@  x*#   0*$   bx   (k   <B CLASS="Keyword">$end </B>
+		</PRE>
+<P CLASS="SubSubSect">
+<A NAME="pgfId=390">
+ </A>
+$dumpoff</P>
+<P CLASS="Body">
+<A NAME="pgfId=391">
+ </A>
+<CODE CLASS="code">
+The</CODE>
+ <B CLASS="Keyword">
+$dumpoff</B>
+ keyword indicates all variables dumped with X values.</P>
+<P CLASS="Body">
+<A NAME="pgfId=392">
+ </A>
+Syntax:</P>
+<PRE CLASS="BNFDef"><A NAME="pgfId=393"> </A>
+<B CLASS="Keyword">	$dumpoff </B>
+<A NAME="marker=104"> </A>
+<A NAME="marker=105"> </A>
+<A NAME="marker=106"> </A>
+{ value_changes }<B CLASS="Keyword"> $end</B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=394">
+ </A>
+Example:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=395"> </A>
+$dumpoff  x*@  x*#   x*$   bx   (k   $end 		</PRE>
+<P CLASS="SubSubSect">
+<A NAME="pgfId=396">
+ </A>
+$dumpon</P>
+<P CLASS="Body">
+<A NAME="pgfId=397">
+ </A>
+<CODE CLASS="code">
+The</CODE>
+ <B CLASS="Keyword">
+$dumpon</B>
+ keyword indicates resuming of dumping and lists current values of all variables dumped.</P>
+<P CLASS="Body">
+<A NAME="pgfId=398">
+ </A>
+Syntax:</P>
+<PRE CLASS="BNFDef"><A NAME="pgfId=399"> </A>
+<B CLASS="Keyword">	$dumpon </B>
+<A NAME="marker=107"> </A>
+<A NAME="marker=108"> </A>
+{ value_changes }<B CLASS="Keyword"> $end</B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=400">
+ </A>
+Example:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=401"> </A>
+<B CLASS="Keyword">$dumpon</B>
+   x*@  0*#   x*$   b1   (k   <B CLASS="Keyword">$end</B>
+ 		</PRE>
+<P CLASS="SubSubSect">
+<A NAME="pgfId=346">
+ </A>
+$dumpvars</P>
+<PRE CLASS="BNFDef"><A NAME="pgfId=377"> </A>
+The section beginning with <B CLASS="Keyword">$dumpvars</B>
+ keyword lists initial values of all variables dumped.</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=378">
+ </A>
+Syntax:</P>
+<PRE CLASS="BNFDef"><A NAME="pgfId=379"> </A>
+<B CLASS="Keyword">	$dumpvars</B>
+<A NAME="marker=81"> </A>
+<A NAME="marker=84"> </A>
+  { value_changes } <B CLASS="Keyword">$end</B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=380">
+ </A>
+Example:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=381"> </A>
+<B CLASS="Keyword">$dumpvars</B>
+   x*@   z*$   b0   (k   <B CLASS="Keyword">$end</B>
+</PRE>
+<P CLASS="SubSection">
+<A NAME="pgfId=247">
+ </A>
+Value change dump file format example</P>
+<P CLASS="Body">
+<A NAME="pgfId=228">
+ </A>
+The following example illustrates the format of the value change dump file. </P>
+<DIV>
+<MAP NAME="ch15-7">
+</MAP>
+<IMG SRC="ch15-7.gif" USEMAP="#ch15-7">
+</DIV>
+<HR><P><A HREF="ch15.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch15.1.htm">Previous&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

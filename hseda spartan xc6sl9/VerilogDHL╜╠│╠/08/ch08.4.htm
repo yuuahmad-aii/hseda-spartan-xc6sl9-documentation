@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch08.css">
+<TITLE> 8.4	Edge-sensitive sequential UDPs </TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch08.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch08.3.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch08.5.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=353">
+ </A>
+8.4	<A NAME="edge-sensitive UDPs">
+ </A>
+E<A NAME="marker=107">
+ </A>
+<A NAME="marker=108">
+ </A>
+<A NAME="marker=109">
+ </A>
+dge-sensitive sequential UDPs </H1>
+<P CLASS="Body">
+<A NAME="pgfId=354">
+ </A>
+In <A NAME="marker=110">
+ </A>
+<A NAME="marker=111">
+ </A>
+level-sensitive behavior, the values of the inputs and the current state are sufficient to determine the output value. Edge sensitive behavior differs in that changes in the output are triggered by specific transitions of the inputs. This makes the state table a transition table.</P>
+<P CLASS="Body">
+<A NAME="pgfId=307">
+ </A>
+Each table entry can have a transition specification on at most one input. A transition is specified by a pair of values in parenthesis such as <CODE CLASS="code">
+(01)</CODE>
+ or a transition symbol such as <CODE CLASS="code">
+r</CODE>
+. Entries such as the one shown below are illegal: </P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=358"> </A>
+(01)(01)0&nbsp;:&nbsp;0&nbsp;:&nbsp;1 ;</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=359">
+ </A>
+All transitions that do not affect the output must be explicitly specified. Otherwise, such transitions cause the value of the output to change to <CODE CLASS="code">
+x</CODE>
+. <EM CLASS="-">
+All unspecified transitions default to the output value </EM>
+<A NAME="marker=121">
+ </A>
+<A NAME="marker=122">
+ </A>
+<CODE CLASS="code">
+x</CODE>
+<EM CLASS="-">
+. </EM>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=441">
+ </A>
+If the behavior of the UDP is sensitive to edges of any input, the desired output state must be specified for <I CLASS="Emphasis">
+all</I>
+ edges of <I CLASS="Emphasis">
+all</I>
+ inputs<A NAME="marker=124">
+ </A>
+<A NAME="marker=125">
+ </A>
+.<A NAME="marker=126">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=355">
+ </A>
+Example:</P>
+<P CLASS="Body">
+<A NAME="pgfId=350">
+ </A>
+The example below describes a rising edge D flip-flop:</P>
+<P CLASS="Body">
+<A NAME="pgfId=440">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch08-5.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=356">
+ </A>
+The terms such as <CODE CLASS="code">
+(01)</CODE>
+<A NAME="marker=252">
+ </A>
+<A NAME="marker=253">
+ </A>
+ represent transitions of the input values. Specifically, <CODE CLASS="code">
+(01)</CODE>
+ represents a transition from <CODE CLASS="code">
+0</CODE>
+ to <CODE CLASS="code">
+1</CODE>
+. The first line in the table of the above UDP definition is interpreted as follows: when clock changes value from <CODE CLASS="code">
+0</CODE>
+ to <CODE CLASS="code">
+1</CODE>
+, and data equals <CODE CLASS="code">
+0</CODE>
+, the output goes to <CODE CLASS="code">
+0</CODE>
+ no matter what the current stat<A NAME="marker=120">
+ </A>
+e</P>
+<P CLASS="Body">
+<A NAME="pgfId=472">
+ </A>
+<EM CLASS="-">
+The transition of clock from </EM>
+<CODE CLASS="code">
+0</CODE>
+<EM CLASS="-">
+ to </EM>
+<A NAME="marker=123">
+ </A>
+<CODE CLASS="code">
+x</CODE>
+<EM CLASS="-">
+ with data equal to </EM>
+<CODE CLASS="code">
+0</CODE>
+<EM CLASS="-">
+ and current state equal to </EM>
+<CODE CLASS="code">
+1</CODE>
+ <CODE CLASS="code">
+w</CODE>
+<EM CLASS="-">
+ill result in the output </EM>
+<CODE CLASS="code">
+q</CODE>
+<EM CLASS="-">
+ going to </EM>
+<CODE CLASS="code">
+x</CODE>
+<EM CLASS="-">
+.</EM>
+</P>
+<HR><P><A HREF="ch08.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch08.3.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch08.5.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch16.css">
+<TITLE> 16.2	`default_nettype</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch16.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch16.1.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch16.3.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=170">
+ </A>
+16.2	<A NAME="44855">
+ </A>
+<A NAME="49267">
+ </A>
+`<A NAME="marker=42">
+ </A>
+default_nettype</H1>
+<P CLASS="Body">
+<A NAME="pgfId=171">
+ </A>
+The directive <B CLASS="Keyword">
+`default_nettype</B>
+ controls the net type created for <A NAME="marker=43">
+ </A>
+implicit net declarations (see <A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/16/ch03.htm#48381" CLASS="XRef">
+</A>
+). It can be used only outside of module definitions. It affects all modules that follow the directive, even across source file boundaries. Multiple <B CLASS="Keyword">
+`default_nettype</B>
+ directives are allowed. The latest occurence of this directive in the source controls the type of nets that will be implicitly declared. <EM CLASS="-">
+The following is the syntax of the directive:</EM>
+</P>
+<PRE CLASS="BNFDef"><A NAME="pgfId=172"> </A>
+<B CLASS="Keyword">	`default_nettype</B>
+<A NAME="marker=44"> </A>
+<A NAME="marker=45"> </A>
+<EM CLASS="-"> net_type</EM>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=175">
+ </A>
+The following are the keywords for the net types that can be specified as arguments for the directive:</P>
+<PRE CLASS="BNF"><A NAME="pgfId=185"> </A>
+<B CLASS="codebold">    wire      tri         tri0</B>
+</PRE>
+<PRE CLASS="BNF"><A NAME="pgfId=186"> </A>
+<B CLASS="codebold">    wand      triand      tri1</B>
+</PRE>
+<PRE CLASS="BNF"><A NAME="pgfId=187"> </A>
+<B CLASS="codebold">    wor       trior       trireg</B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=188">
+ </A>
+<EM CLASS="-">
+When no </EM>
+<B CLASS="Keyword">
+`default_nettype</B>
+<EM CLASS="-">
+ directive is present, implicit nets are of type </EM>
+<B CLASS="Keyword">
+wire</B>
+<EM CLASS="-">
+.</EM>
+<A NAME="marker=56">
+ </A>
+<A NAME="marker=73">
+ </A>
+</P>
+<HR><P><A HREF="ch16.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch16.1.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch16.3.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

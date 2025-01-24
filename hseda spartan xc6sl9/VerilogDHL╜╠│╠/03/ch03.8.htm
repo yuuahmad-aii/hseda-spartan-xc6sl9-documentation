@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Mac">
+  <LINK REL="STYLESHEET" HREF="ch03.css">
+  <TITLE> 3.8&nbsp;&nbsp;&nbsp;Memories </TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><A NAME="pgfId=536"></A><HR ALIGN=LEFT></P>
+
+<P><A HREF="ch03.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A 
+HREF="ch03.7.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch03.9.htm">Next&nbsp;&nbsp;page</A></P>
+
+<H1>3.8&nbsp;&nbsp;&nbsp;Memories</H1>
+
+<P><P CLASS="Body"><A NAME="pgfId=538"></A>An array of registers can be
+used to model read-only memories (ROMs), random access memories (RAMs),
+and register files. Each register in the array is known as an element or
+word and is addressed by a single array index. There shall be no arrays
+with multiple dimensions.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=596"></A>Memories shall be declared in
+register declaration statements by specifying the element address range
+after the declared identifier. See 3.2.2. The expressions that specify the
+indices of the array shall be constant expressions. The value of the constant
+expression can be a positive integer, a negative integer, or zero.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=373"></A>One declaration statement can
+be used for declaring both registers and memories This makes it convenient
+to declare both a memory and some registers that will hold data to be read
+from and written to the memory in the same declaration statement.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=549"></A>An n-bit register can be assigned
+a value in a single assignment, but a complete memory cannot. To assign
+a value to a memory element, an index shall be specified. The index can
+be an expression. This option provides a mechanism to reference different
+memory elements, depending on the value of other registers and nets in the
+circuit. For example, a program counter register could be used to index
+into a RAM.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=637"></A>Examples:</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=544"></A>1. Memory declaration:</P>
+
+<PRE><A NAME="pgfId=1369"></A> 
+<B>reg</B> [7:0] mema[0:255]; // declares a memory <CODE>mema</CODE> of 256 eight-bit
+// registers. The indices are <CODE>0</CODE> to <CODE>255</CODE>
+<B>parameter</B>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+//&nbsp;parameters&nbsp;are run-time constants&nbsp;-&nbsp;see&nbsp;3.10
+wordsize&nbsp;=&nbsp;16,
+memsize&nbsp;=&nbsp;256;
+// Declare 256 words of 16-bit memory plus two regs
+<B>reg</B> [wordsize-1:0] writereg, //&nbsp;equivalent&nbsp;to&nbsp;[15:0]
+readreg,
+mem [memsize-1:0];//&nbsp;equivalent&nbsp;to&nbsp;[255:0]</PRE>
+
+<P><P CLASS="Body"><A NAME="pgfId=638"></A>2. A memory of <CODE>n</CODE>
+1-bit registers is different from an <CODE>n</CODE> -bit vector register</P>
+
+<PRE><A NAME="pgfId=1381"></A> 
+<B>reg</B> [1:n] rega; // An n-bit register is not the same
+<B>reg</B> mema [1:n]; // as a memory of n 1-bit registers</PRE>
+
+<P><P CLASS="Body"><A NAME="pgfId=510"></A>3. Assignment to memory elements</P>
+
+<PRE><A NAME="pgfId=1391"></A> 
+rega = 0; // Legal Syntax
+mema = 0; // Illegal Syntax
+mema[1] = 0; // Assigns 0 to the first element of mema</PRE>
+
+<P><P CLASS="Note"><A NAME="pgfId=636"></A>NOTE--Implementations may limit
+the maximum size of a register array, but will at least be 16777216 (224).</P>
+
+<P><HR ALIGN=LEFT></P>
+
+<P><A HREF="ch03.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A 
+HREF="ch03.7.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch03.9.htm">Next&nbsp;&nbsp;page</A>
+</BODY>
+</HTML>

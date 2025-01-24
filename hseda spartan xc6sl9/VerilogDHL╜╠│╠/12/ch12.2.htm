@@ -1,0 +1,187 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch12.css">
+<TITLE> 12.2	Overriding module parameter values </TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch12.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch12.1.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch12.3.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=306">
+ </A>
+12.2	<A NAME="34326">
+ </A>
+<A NAME="79340">
+ </A>
+O<A NAME="marker=77">
+ </A>
+<A NAME="marker=78">
+ </A>
+<A NAME="marker=79">
+ </A>
+verriding module parameter values </H1>
+<P CLASS="Body">
+<A NAME="pgfId=308">
+ </A>
+When one module instantiates another module, it can alter the values of any parameters declared within the instantiated module. There are two ways to alter parameter values: the <I CLASS="Emphasis">
+defparam statement</I>
+, which allows assignment to parameters using their hierarchical names, and <I CLASS="Emphasis">
+module instance parameter value assignment</I>
+, which allows values to be assigned inline during module instantiation. The next two sections describe these two methods.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=310">
+ </A>
+<A NAME="marker=80">
+ </A>
+<A NAME="marker=81">
+ </A>
+Defparam statement</P>
+<P CLASS="Body">
+<A NAME="pgfId=311">
+ </A>
+Using the <I CLASS="Emphasis">
+defparam statement</I>
+, parameter values can be changed in any module instance throughout the design using the hierarchical name of the parameter. See <A HREF="ch12.4.htm#71439" CLASS="XRef">
+See Hierarchical names</A>
+ for hierarchical names.</P>
+<P CLASS="Body">
+<A NAME="pgfId=260">
+ </A>
+The expression on the right-hand side of the defparam assignments shall be a constant expression involving only numbers and references to parameters. The referenced parameters (on the right-hand side of the <B CLASS="Keyword">
+defparam</B>
+) shall be declared in the same module as the defparam statement. </P>
+<P CLASS="Body">
+<A NAME="pgfId=241">
+ </A>
+The defparam statement is particularly useful for grouping all of the parameter value override assignments together in one module. </P>
+<DIV>
+<H3 CLASS="Example">
+<A NAME="pgfId=239">
+ </A>
+</H3>
+<P CLASS="Body">
+<A NAME="pgfId=294">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch12-5.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=314">
+ </A>
+The module <CODE CLASS="code">
+annotate</CODE>
+ has the defparam statement which overrides <CODE CLASS="code">
+size</CODE>
+ and <CODE CLASS="code">
+delay</CODE>
+ parameter values for instances <CODE CLASS="code">
+m1</CODE>
+ and <CODE CLASS="code">
+m2</CODE>
+ in the top level module <CODE CLASS="code">
+top</CODE>
+. The modules <CODE CLASS="code">
+top</CODE>
+ and <CODE CLASS="code">
+annotate</CODE>
+ would both be considered top-level modules.<A NAME="marker=88">
+ </A>
+</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=316">
+ </A>
+M<A NAME="marker=89">
+ </A>
+<A NAME="marker=90">
+ </A>
+odule instance parameter value assignment</P>
+<P CLASS="Body">
+<A NAME="pgfId=317">
+ </A>
+An alternative method for assigning values to parameters within module instances is similar in appearance to the assignment of delay values to gate instances. It supplies values for particular instances of a module to any parameters that have been specified in the definition of that module.</P>
+<P CLASS="Body">
+<A NAME="pgfId=271">
+ </A>
+The order of the assignments in module instance parameter value assignment shall follow the order of declaration of the parameters within the module. It is not necessary to assign values to all of the parameters within a module when using this method. However, it is not possible to skip over a parameter. Therefore, to assign values to a subset of the parameters declared within a module, the declarations of the parameters that make up this subset shall precede the declarations of the remaining parameters. An alternative is to assign values to all of the parameters, but use the default value (the same value assigned in the declaration of the parameter within the module definition) for those parameters that do not need new values</P>
+</DIV>
+<DIV>
+<H3 CLASS="Example">
+<A NAME="pgfId=262">
+ </A>
+</H3>
+<P CLASS="Body">
+<A NAME="pgfId=318">
+ </A>
+Consider the following example, where the parameters within module instance <CODE CLASS="code">
+mod_a</CODE>
+ are changed during instantiation. </P>
+<P CLASS="Body">
+<A NAME="pgfId=319">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch12-6.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=280">
+ </A>
+In the example above, the name of the module being instantiated is <CODE CLASS="code">
+vdff</CODE>
+. The construct <CODE CLASS="code">
+#(10,15)</CODE>
+ assigns values to parameters used in the <CODE CLASS="code">
+mod_a</CODE>
+ instance of <CODE CLASS="code">
+vdff</CODE>
+. The parameter <CODE CLASS="code">
+size</CODE>
+ is assigned the value 10 and the parameter <CODE CLASS="code">
+delay </CODE>
+is assigned the value 15 for the instance of module <CODE CLASS="code">
+vdff</CODE>
+ called <CODE CLASS="code">
+mod_a</CODE>
+. <A NAME="marker=97">
+ </A>
+<A NAME="marker=98">
+ </A>
+<A NAME="marker=99">
+ </A>
+ </P>
+<P CLASS="SubSection">
+<A NAME="pgfId=295">
+ </A>
+<A NAME="marker=56">
+ </A>
+<A NAME="marker=59">
+ </A>
+Parameter dependence</P>
+<P CLASS="Body">
+<A NAME="pgfId=296">
+ </A>
+A parameter (for example, <CODE CLASS="code">
+memory_size</CODE>
+) can be defined with an expression containing another parameter (for example, <CODE CLASS="code">
+word_size</CODE>
+). Since <CODE CLASS="code">
+memory_size</CODE>
+ depends on the value of <CODE CLASS="code">
+word_size</CODE>
+, a modification of <CODE CLASS="code">
+word_size</CODE>
+ changes the value of <CODE CLASS="code">
+memory_size</CODE>
+. For example, in the following parameter declaration, an update of <CODE CLASS="code">
+word_size</CODE>
+, whether by defparam statement or in an instantiation statement for the module that defined these parameters, automatically updates <CODE CLASS="code">
+memory_size</CODE>
+.</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=247"> </A>
+<B CLASS="Keyword">parameter</B>
+<CODE CLASS="code">    word_size = 32,    memory_size = word_size * 4096;</CODE>
+</PRE>
+</DIV>
+<HR><P><A HREF="ch12.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch12.1.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch12.3.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

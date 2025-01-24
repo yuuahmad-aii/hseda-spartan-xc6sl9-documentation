@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch12.css">
+<TITLE> 12.5	Scope rules </TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch12.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch12.4.htm">Previous&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=254">
+ </A>
+12.5	<A NAME="91529">
+ </A>
+S<A NAME="marker=194">
+ </A>
+<A NAME="marker=195">
+ </A>
+cope rules <A NAME="scope rules">
+ </A>
+</H1>
+<P CLASS="Body">
+<A NAME="pgfId=442">
+ </A>
+The following four elements define a new scope in Verilog: </P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=443">
+ </A>
+modules</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=444">
+ </A>
+<A NAME="marker=197">
+ </A>
+tasks</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=445">
+ </A>
+<A NAME="marker=198">
+ </A>
+functions</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=446">
+ </A>
+<A NAME="marker=199">
+ </A>
+named blocks </LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=447">
+ </A>
+An identifier shall be used to declare only one item within a scope. This rule means it is illegal to declare two or more variables that have the same name, or to name a task the same as a variable within the same module, or to give a gate instance the same name as the name of the net connected to its output.</P>
+<P CLASS="Body">
+<A NAME="pgfId=448">
+ </A>
+If an identifier is referenced directly (without a hierarchical path) within a task, function, or named block, it shall be declared either locally within the task, function, or named block, or within a module, task or named block that is higher in the same branch of the name tree that contains the task, function, or named block. If it is declared locally, then the local item shall be used; if not, the search shall continue upward until an item by that name is found or until a module boundary is encountered. The search shall cross named block, task, and function boundaries, but not module boundaries. This fact means that tasks and functions can use and modify the variables within the containing module by name, without going through their ports.</P>
+<P CLASS="Body">
+<A NAME="pgfId=320">
+ </A>
+Because of the upward searching, path names that are not strictly on a downward path can be used.</P>
+<DIV>
+<H3 CLASS="Example">
+<A NAME="pgfId=309">
+ </A>
+</H3>
+<P CLASS="Body">
+<A NAME="pgfId=450">
+ </A>
+1. In <A HREF="ch12.5.htm#scope available for direct referencing" CLASS="XRef">
+See : Scopes available to upward name referencing</A>
+, each rectangle represents a local scope. The scope available to upward searching extends outward to all containing rectangles--with the boundary of the module A as the outer limit. Thus block G can directly reference identifiers in F, E, and A; it cannot directly reference identifiers in H, B, C, and D.</P>
+<P CLASS="Body">
+<A NAME="pgfId=451">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch12-18.gif">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=452">
+ </A>
+Figure&nbsp;12-3<A NAME="scope available for direct referencing">
+ </A>
+: Scopes available to upward name referencing</P>
+<P CLASS="Body">
+<A NAME="pgfId=312">
+ </A>
+2. The example below shows an incompletely defined downward reference that can be accessed. <A NAME="marker=203">
+ </A>
+<A NAME="marker=204">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=453">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch12-19.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=244">
+ </A>
+<A NAME="marker=155">
+ </A>
+ </P>
+<P CLASS="Body">
+<A NAME="pgfId=456">
+ </A>
+</P>
+</DIV>
+<HR><P><A HREF="ch12.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch12.4.htm">Previous&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

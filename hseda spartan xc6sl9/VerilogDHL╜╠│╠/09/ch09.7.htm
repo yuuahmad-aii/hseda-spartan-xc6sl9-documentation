@@ -1,0 +1,1000 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch09.css">
+<TITLE> 9.7	Procedural timing controls </TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch09.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch09.6.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch09.8.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=685">
+ </A>
+9.7	<A NAME="39185">
+ </A>
+<A NAME="marker=180">
+ </A>
+Procedural timing controls </H1>
+<P CLASS="Body">
+<A NAME="pgfId=686">
+ </A>
+The Verilog HDL has two types of explicit timing control over when procedural statements can occur. The first type is a <I CLASS="Emphasis">
+delay control</I>
+<A NAME="marker=181">
+ </A>
+ in which an expression specifies the time duration between initially encountering the statement and when the statement actually executes. The delay expression can be a dynamic function of the state of the circuit, but can be a simple number that separates statement executions in time. The delay control is an important feature when specifying stimulus waveform descriptions. It is described in sections <A HREF="ch09.7.htm#41281" CLASS="XRef">
+See Delay control</A>
+, and <A HREF="ch09.7.htm#26871" CLASS="XRef">
+See Intra-assignment timing controls</A>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=687">
+ </A>
+The second type of <A NAME="marker=188">
+ </A>
+timing control is the <I CLASS="Emphasis">
+event expression</I>
+<A NAME="marker=189">
+ </A>
+, which allows statement execution to be delayed until the occurrence of some simulation event occurring in a procedure executing concurrently with this procedure. A simulation event can be a change of value on a net or register (an <A NAME="marker=190">
+ </A>
+implicit <A NAME="marker=191">
+ </A>
+event), or the occurrence of an explicitly named event that is triggered from other procedures (an <A NAME="marker=192">
+ </A>
+explicit <A NAME="marker=193">
+ </A>
+event). Most often, an <A NAME="marker=194">
+ </A>
+event control is a positive or negative edge on a clock signal. Sections <A HREF="ch09.7.htm#92814" CLASS="XRef">
+See Event control</A>
+ through <A HREF="ch09.7.htm#26871" CLASS="XRef">
+See Intra-assignment timing controls</A>
+ discuss event control.</P>
+<P CLASS="Body">
+<A NAME="pgfId=688">
+ </A>
+The procedural statements encountered so far all execute without advancing simulation time. Simulation time can advance by one of the following three methods:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=689">
+ </A>
+a<CODE CLASS="code">
+ </CODE>
+<B CLASS="codebold">
+delay</B>
+ control, which is introduced by the symbol #</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=690">
+ </A>
+an <B CLASS="codebold">
+event</B>
+ control, which is introduced by the symbol @</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=418">
+ </A>
+the<CODE CLASS="code">
+ </CODE>
+<B CLASS="codebold">
+wait</B>
+<A NAME="marker=115">
+ </A>
+ statement, which operates like a combination of the event control and the while loop</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=419">
+ </A>
+The following syntax describes timing control in procedural statements:</P>
+<P CLASS="Body">
+<A NAME="pgfId=564">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-31.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=566">
+ </A>
+Syntax&nbsp;9-8: Syntax for procedural timing control</P>
+<P CLASS="Body">
+<A NAME="pgfId=464">
+ </A>
+The gate and net delays also advance simulation time as discussed in <A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/09/ch06.htm#26312" CLASS="XRef">
+</A>
+. The next subsections discuss the three procedural timing control methods.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=420">
+ </A>
+<A NAME="41281">
+ </A>
+<A NAME="marker=117">
+ </A>
+Delay control</P>
+<P CLASS="Body">
+<A NAME="pgfId=691">
+ </A>
+A procedur<A NAME="marker=122">
+ </A>
+al statement following the delay control shall be delayed in its execution with respect to the procedural statement preceding the delay control by the specified delay. If the delay expression evaluates to an unknown or high impedance value, it shall be interpreted as zero delay. If the delay expression evaluates to a negative value, it shall be interpreted as a two's complement unsigned integer of the same size as a time variable.</P>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=397">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=414">
+ </A>
+1. The following example delays the execution of the assignment by 10 time units:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=692"> </A>
+#10 rega = regb;</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=526">
+ </A>
+2. The next three examples provide an expression following the number sign (#). Execution of the assignment is delayed by the amount of simulation time specified by the value of the expression.</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=553"> </A>
+#d rega = regb;									// d is defined as a parameter#((d+e)/2) rega = regb;// delay is average of d and e#regr regr = regr + 1;									// delay is the value in regr</PRE>
+<P CLASS="SubSection">
+<A NAME="pgfId=694">
+ </A>
+<A NAME="92814">
+ </A>
+<A NAME="78422">
+ </A>
+<A NAME="marker=203">
+ </A>
+Event control </P>
+<P CLASS="Body">
+<A NAME="pgfId=696">
+ </A>
+The execution of a procedural statement can be synchronized with a value change on a net or register, or the occurrence of a declared event. The value changes on nets and registers can be used as events to trigger the execution of a statement. This is known as detecting<I CLASS="Emphasis">
+ an implicit event</I>
+. The event can also be based on the direction of the change--that is, toward the value 1 (<B CLASS="Keyword">
+posedge</B>
+) or toward the value 0 (<B CLASS="Keyword">
+negedge</B>
+). The behavior of posedge and negedge event is shown in <A HREF="ch09.7.htm#95856" CLASS="XRef">
+See : Detecting posedge and negedge</A>
+ and can be described as follows: </P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=697">
+ </A>
+a <I CLASS="Emphasis">
+negedge</I>
+ shall be detected on the transition from <CODE CLASS="code">
+1</CODE>
+ to <CODE CLASS="code">
+x</CODE>
+, <CODE CLASS="code">
+z</CODE>
+, or <CODE CLASS="code">
+0</CODE>
+, and from <CODE CLASS="code">
+x</CODE>
+ or <CODE CLASS="code">
+z</CODE>
+ to <CODE CLASS="code">
+0</CODE>
+</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=698">
+ </A>
+a <I CLASS="Emphasis">
+posedge</I>
+ shall be detected on the transition from <CODE CLASS="code">
+0</CODE>
+ to <CODE CLASS="code">
+x</CODE>
+, <CODE CLASS="code">
+z</CODE>
+, or <CODE CLASS="code">
+1</CODE>
+, and from <CODE CLASS="code">
+x</CODE>
+ or <CODE CLASS="code">
+z</CODE>
+ to <CODE CLASS="code">
+1</CODE>
+</LI>
+<TABLE BORDER="1">
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=398">
+ </A>
+Table&nbsp;9-1<A NAME="95856">
+ </A>
+: Detecting posedge and negedge</P>
+</CAPTION>
+<TR>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=860">
+ </A>
+</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=872">
+ </A>
+To</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=861">
+ </A>
+0</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=862">
+ </A>
+1</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=868">
+ </A>
+x</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=871">
+ </A>
+z</P>
+</TH>
+</TR>
+<TR>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=819">
+ </A>
+From</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=855">
+ </A>
+</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=820">
+ </A>
+</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=821">
+ </A>
+</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=822">
+ </A>
+</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=823">
+ </A>
+</P>
+</TH>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=824">
+ </A>
+0</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=856">
+ </A>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=825">
+ </A>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=826">
+ </A>
+posedge</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=827">
+ </A>
+posedge</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=828">
+ </A>
+posedge</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=829">
+ </A>
+1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=857">
+ </A>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=830">
+ </A>
+negedge</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=831">
+ </A>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=832">
+ </A>
+negedge</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=833">
+ </A>
+negedge</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=834">
+ </A>
+x</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=858">
+ </A>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=836">
+ </A>
+negedge</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=846">
+ </A>
+posedge</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=847">
+ </A>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=848">
+ </A>
+</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=849">
+ </A>
+z</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=859">
+ </A>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=850">
+ </A>
+negedge</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=851">
+ </A>
+posedge</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=852">
+ </A>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=853">
+ </A>
+</P>
+</TD>
+</TR>
+</TABLE>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=699">
+ </A>
+If the expression evaluates to more than one bit result, the edge transition shall be detected on the least significant bit of the result. The change of value in any of the operands without a change in the value of the least significant bit of the expression result shall not be detected as an edge.</P>
+</DIV>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=490">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=450">
+ </A>
+The example below shows illustrations of edge controlled statements.</P>
+<P CLASS="Body">
+<A NAME="pgfId=700">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-32.gif">
+</DIV>
+<P CLASS="SubSection">
+<A NAME="pgfId=702">
+ </A>
+<A NAME="40970">
+ </A>
+<A NAME="marker=205">
+ </A>
+<A NAME="marker=206">
+ </A>
+Named events </P>
+<P CLASS="Body">
+<A NAME="pgfId=703">
+ </A>
+A new data type, in addition to net and register, called event can be declared. An identifier declared as an event data type is called a n<A NAME="marker=123">
+ </A>
+amed event. A named event can be triggered explicitly, and can be used in an event expression to control the execution of procedural statements in the same manner as event control described in the previous section. Named events can be made to occur from a procedure. This allows control over the enabling of multiple actions in other procedures. </P>
+<P CLASS="Body">
+<A NAME="pgfId=704">
+ </A>
+An event name shall be declared explicitly before it is used. The following is the <A NAME="marker=207">
+ </A>
+<A NAME="marker=208">
+ </A>
+syntax for <A NAME="marker=209">
+ </A>
+declaring events.</P>
+<P CLASS="Body">
+<A NAME="pgfId=705">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-33.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=706">
+ </A>
+Syntax&nbsp;9-9: Syntax for event declaration</P>
+<P CLASS="Body">
+<A NAME="pgfId=707">
+ </A>
+An event shall not hold any data. The following are the characteristics of a named event:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=708">
+ </A>
+it can be made to occur at any particular time </LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=709">
+ </A>
+it has no time duration</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=710">
+ </A>
+its occurrence can be recognized by using the event control syntax described in <A HREF="ch09.7.htm#78422" CLASS="XRef">
+See Event control</A>
+</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=576">
+ </A>
+A declared event is made to occur by the activation of an <A NAME="marker=214">
+ </A>
+event triggering statement of the following <A NAME="marker=215">
+ </A>
+syntax:</P>
+<P CLASS="Body">
+<A NAME="pgfId=388">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-34.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=711">
+ </A>
+Syntax&nbsp;9-10: Syntax for event trigger</P>
+<P CLASS="Body">
+<A NAME="pgfId=556">
+ </A>
+An event controlled statement (for example, 	<CODE CLASS="code">
+@trig rega = regb;</CODE>
+) shall cause simulation of its containing procedure to wait until some other procedure executes the appropriate event triggering statement (for example, <BR>
+<CODE CLASS="code">
+-&gt; trig</CODE>
+).</P>
+<P CLASS="Body">
+<A NAME="pgfId=422">
+ </A>
+Named events and event control give a powerful and efficient means of describing the communication between, and synchronization of, two or more concurrently active processes. A basic example of this is a small waveform clock generator that synchronizes control of a synchronous circuit by signalling the occurrence of an explicit event periodically while the circuit waits for the event to occur. <CODE CLASS="code">
+</CODE>
+<A NAME="marker=124">
+ </A>
+ <A NAME="marker=125">
+ </A>
+</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=583">
+ </A>
+<A NAME="marker=216">
+ </A>
+Event OR operator </P>
+<P CLASS="Body">
+<A NAME="pgfId=715">
+ </A>
+The ORing of any number of events can be expressed such that the occurrence of any one of the events trigger the execution of the procedural statement that follows it. The keyword <B CLASS="Keyword">
+or</B>
+ is used as an event OR operator.</P>
+</DIV>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=579">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=582">
+ </A>
+The next two <A NAME="marker=220">
+ </A>
+examples show the ORing of two and three events respectively.</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=717"> </A>
+@(trig or enable) rega = regb;													// controlled by trig or enable@(<B CLASS="Keyword">posedge</B>
+ clk_a or <B CLASS="Keyword">posedge</B>
+ clk_b or trig) rega = regb;</PRE>
+<P CLASS="SubSection">
+<A NAME="pgfId=719">
+ </A>
+<A NAME="60223">
+ </A>
+<A NAME="marker=222">
+ </A>
+<A NAME="marker=223">
+ </A>
+Level-sensitive event control </P>
+<P CLASS="Body">
+<A NAME="pgfId=721">
+ </A>
+The execution of a procedural statement can also be delayed until a condition becomes true. This is accomplished using the <I CLASS="Emphasis">
+wait</I>
+<A NAME="marker=224">
+ </A>
+ statement, which is a special form of event control. The nature of the wait statement is level-sensitive, as opposed to basic event control (specified by the <CODE CLASS="code">
+@</CODE>
+ character), which is edge-sensitive. </P>
+<P CLASS="Body">
+<A NAME="pgfId=584">
+ </A>
+The <A NAME="marker=225">
+ </A>
+<A NAME="marker=226">
+ </A>
+wait statement shall evaluate a condition, and, if it is false, the procedural statements following the wait statement shall remain blocked until that condition becomes true before continuing. The wait statement has the following form:</P>
+<P CLASS="Body">
+<A NAME="pgfId=867">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-35.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=631">
+ </A>
+Syntax&nbsp;9-11: Syntax for wait statement</P>
+</DIV>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=723">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=498">
+ </A>
+The example below shows the use of the wait statement to accomplish level-sensitive event control.</P>
+<P CLASS="Body">
+<A NAME="pgfId=724">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-36.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=725">
+ </A>
+If the value of <CODE CLASS="code">
+enable</CODE>
+<A NAME="marker=228">
+ </A>
+ is <CODE CLASS="code">
+1</CODE>
+ when the block is entered, the wait statement will delay the evaluation of the next statement (<CODE CLASS="code">
+#10 a = b;</CODE>
+) until the value of <CODE CLASS="code">
+enable</CODE>
+ changes to <CODE CLASS="code">
+0</CODE>
+. If <CODE CLASS="code">
+enable</CODE>
+ is already <CODE CLASS="code">
+0</CODE>
+ when the <CODE CLASS="code">
+begin-end </CODE>
+block is entered, then the next statement is evaluated immediately and no delay occurs.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=726">
+ </A>
+<A NAME="26871">
+ </A>
+<A NAME="marker=230">
+ </A>
+<A NAME="marker=231">
+ </A>
+Intra-assignment timing controls </P>
+<P CLASS="Body">
+<A NAME="pgfId=574">
+ </A>
+The delay and event control constructs previously described precede a statement and delay its execution. In contrast, the <I CLASS="Emphasis">
+intra-assignment delay</I>
+ <I CLASS="Emphasis">
+and event controls</I>
+ are contained within an assignment statement and modify the flow of activity in a different way. This section describes the purpose of intra-assignment timing controls and the repeat timing control that can be used in intra-assignment delays.</P>
+<P CLASS="Body">
+<A NAME="pgfId=727">
+ </A>
+An intra-assignment delay or event control shall delay the assignment of the new value to the left-hand side, but the right-hand-side expression shall be evaluated before the delay, instead of after the delay. The syntax for intra-assignment delay and event control is shown below:</P>
+<P CLASS="Body">
+<A NAME="pgfId=633">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-37.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=639">
+ </A>
+Syntax&nbsp;9-12<A NAME="33037">
+ </A>
+: Syntax for intra-assignment delay and event control</P>
+<P CLASS="Body">
+<A NAME="pgfId=642">
+ </A>
+The intra-assignment delay and event control can be applied to both blocking assignments and non-blocking assignments. The event expression shall be resolved to a one bit value. T<A NAME="marker=132">
+ </A>
+he <I CLASS="Emphasis">
+repe</I>
+<A NAME="marker=133">
+ </A>
+<I CLASS="Emphasis">
+at</I>
+ event control shall specify an intra-assignment delay of a specified number of occurrences of an event. This construct is convenient when events must be synchronized with counts of clock signals.</P>
+</DIV>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=611">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=612">
+ </A>
+<A HREF="ch09.7.htm#82943" CLASS="XRef">
+See : Intra-assignment timing control equivalence</A>
+ illustrates the philosophy of intra-assignment timing controls by showing the code that could accomplish the same timing effect without using intra-assignment.</P>
+<TABLE BORDER="1">
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=499">
+ </A>
+Table&nbsp;9-2<A NAME="82943">
+ </A>
+: Intra-assignment timing control equivalence</P>
+</CAPTION>
+<TR>
+<TH ROWSPAN="1" COLSPAN="2">
+<P CLASS="CellHeading">
+<A NAME="pgfId=586">
+ </A>
+<I CLASS="Emphasis">
+Intra-assignment timing control</I>
+</P>
+</TH>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=588">
+ </A>
+with intra-assignment construct</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=589">
+ </A>
+without intra-assignment construct</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=590">
+ </A>
+<BR>
+a = #5 b;</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=592">
+ </A>
+<B CLASS="Keyword">
+begin<BR>
+</B>
+	temp = b;<BR>
+	#5 a = temp;<BR>
+<B CLASS="Keyword">
+end</B>
+</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=602">
+ </A>
+<BR>
+a = @(<B CLASS="Keyword">
+posedge</B>
+ clk) b;</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=605">
+ </A>
+<B CLASS="Keyword">
+begin<BR>
+</B>
+	temp = b;<BR>
+	@(<B CLASS="Keyword">
+posedge</B>
+ clk) a = temp; <BR>
+<B CLASS="Keyword">
+end</B>
+</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<PRE CLASS="CodeText"><A NAME="pgfId=606"> </A>
+a = <B CLASS="Keyword">repeat</B>
+(3)</PRE>
+<P CLASS="CellBody">
+<A NAME="pgfId=607">
+ </A>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@(<B CLASS="Keyword">
+posedge</B>
+ clk) b;</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=608">
+ </A>
+<B CLASS="Keyword">
+begin<BR>
+</B>
+	temp = b;<BR>
+	@(<B CLASS="Keyword">
+posedge</B>
+ clk);<BR>
+	@(<B CLASS="Keyword">
+posedge</B>
+ clk);<BR>
+	@(<B CLASS="Keyword">
+posedge</B>
+ clk) a = temp; <BR>
+<B CLASS="Keyword">
+end</B>
+</P>
+</TD>
+</TR>
+</TABLE>
+<P CLASS="Body">
+<A NAME="pgfId=610">
+ </A>
+The next three examples use the fork-join behavioral construct. All statements between the keywords <B CLASS="Keyword">
+fork</B>
+ and <B CLASS="Keyword">
+join</B>
+ execute concurrently. The <A HREF="ch09.8.htm#47887" CLASS="XRef">
+See Parallel blocks</A>
+ describes this construct in more detail.</P>
+<P CLASS="Body">
+<A NAME="pgfId=728">
+ </A>
+The following example shows a race condition that could be prevented by using intra-assignment timing control: <A NAME="marker=233">
+ </A>
+</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=729"> </A>
+<B CLASS="Keyword">fork</B>
+ <A NAME="marker=234"> </A>
+   			#5 a = b; 			#5 b = a;<B CLASS="Keyword">join</B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=730">
+ </A>
+The code in the example above samples and sets the values of both <CODE CLASS="code">
+a</CODE>
+ and <CODE CLASS="code">
+b</CODE>
+ at the same simulation time, thereby creating a race condition. The intra-assignment form of timing control used in the example below prevents this race condition:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=731"> </A>
+<B CLASS="Keyword">fork</B>
+<A NAME="marker=235"> </A>
+ 							// data swap 			a = #5 b;			b = #5 a; <B CLASS="Keyword">join</B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=732">
+ </A>
+Intra-assignment timing control works because the intra-assignment delay causes the values of <CODE CLASS="code">
+a</CODE>
+ and <CODE CLASS="code">
+b</CODE>
+ to be evaluated before the delay, and the assignments to be made after the delay. Some existing tools that implement intra-assignment timing control use temporary storage in evaluating each expression on the right-hand side.</P>
+<P CLASS="Body">
+<A NAME="pgfId=733">
+ </A>
+Intra-assignment waiting for events is also effective. In the example below, the right-hand-side expressions are evaluated when the assignment statements are encountered, but the assignments are delayed until the rising edge of the clock signal.</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=734"> </A>
+<B CLASS="Keyword">fork</B>
+ 										// data shift			a = @(<B CLASS="Keyword">posedge</B>
+ clk) b;			b = @(<B CLASS="Keyword">posedge</B>
+ clk) c;<B CLASS="Keyword">join</B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=735">
+ </A>
+The following is an example of a repeat event control as the intra-assignment delay of a non-blocking assignment:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=736"> </A>
+a &lt;= <B CLASS="Keyword">repeat</B>
+(5) @(<B CLASS="Keyword">posedge</B>
+ clk) data;</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=737">
+ </A>
+<A HREF="ch09.7.htm#99476" CLASS="XRef">
+See : Repeat event control utilizing a clock edge</A>
+ illustrates the activities that result from this <CODE CLASS="code">
+repeat </CODE>
+event control:</P>
+<P CLASS="Body">
+<A NAME="pgfId=620">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-38.gif">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=739">
+ </A>
+Figure&nbsp;9-1<A NAME="99476">
+ </A>
+: Repeat event control utilizing a clock edge<A NAME="marker=241">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=740">
+ </A>
+In this example, the value of <CODE CLASS="code">
+data</CODE>
+ is evaluated when the assignment is encountered. After five occurrences of<CODE CLASS="code">
+ </CODE>
+<B CLASS="Keyword">
+posedge</B>
+<CODE CLASS="code">
+ clk</CODE>
+, <CODE CLASS="code">
+a </CODE>
+is assigned the value of <CODE CLASS="code">
+data</CODE>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=741">
+ </A>
+The following is an example of a repeat event control as the intra-assignment delay of a procedural assignment:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=742"> </A>
+a = <B CLASS="Keyword">repeat</B>
+(num) @(clk) data;</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=743">
+ </A>
+In this example, the value of <CODE CLASS="code">
+data</CODE>
+ is evaluated when the assignment is encountered. After the number of transitions of <CODE CLASS="code">
+clk</CODE>
+ equals the value of <CODE CLASS="code">
+num</CODE>
+, <CODE CLASS="code">
+a</CODE>
+ is assigned the value of <CODE CLASS="code">
+data</CODE>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=744">
+ </A>
+The following is an example of a repeat event control with expressions containing operations to specify both the number of event occurrences and the event that is counted:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=745"> </A>
+a &lt;= <B CLASS="Keyword">repeat</B>
+(a+b) @(<B CLASS="Keyword">posedge</B>
+ phi1 or <B CLASS="Keyword">negedge</B>
+ phi2) data;</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=746">
+ </A>
+In the example above, the value of <CODE CLASS="code">
+data</CODE>
+ is evaluated when the assignment is encountered. After the sum of the positive edges of<CODE CLASS="code">
+ phi1</CODE>
+ and the negative edges of<CODE CLASS="code">
+ phi2</CODE>
+ equals the sum of <CODE CLASS="code">
+a</CODE>
+ and <CODE CLASS="code">
+b</CODE>
+, <CODE CLASS="code">
+a</CODE>
+ is assigned the value of <CODE CLASS="code">
+data</CODE>
+. Even if <B CLASS="Keyword">
+posedge</B>
+<CODE CLASS="code">
+ phi1</CODE>
+ and <B CLASS="Keyword">
+negedge</B>
+<CODE CLASS="code">
+ phi2</CODE>
+ occurred at the same simulation time, each will be detected separately. <A NAME="marker=242">
+ </A>
+<A NAME="marker=243">
+ </A>
+<A NAME="marker=244">
+ </A>
+<A NAME="marker=245">
+ </A>
+</P>
+</DIV>
+<HR><P><A HREF="ch09.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch09.6.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch09.8.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

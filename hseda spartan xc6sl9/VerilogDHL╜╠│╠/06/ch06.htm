@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch06.css">
+<TITLE> Section 6</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="none">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch06.1.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<DIV>
+<H1 CLASS="Chapter">
+<A NAME="pgfId=114">
+ </A>
+Section 6<A NAME="26312">
+ </A>
+</H1>
+<H1 CLASS="ChapterTitle">
+<A NAME="pgfId=108">
+ </A>
+<A NAME="marker=17">
+ </A>
+Assignments</H1>
+<P CLASS="Body">
+<A NAME="pgfId=109">
+ </A>
+The assignment is the basic mechanism for getting values into nets and registers. There are two basic forms of the assignments:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=110">
+ </A>
+the continuous assignment, which assigns values to nets</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=111">
+ </A>
+the procedural assignment, which assigns values to registers</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=169">
+ </A>
+There are two additional forms of assignments, called <I CLASS="Emphasis">
+procedural continuous assignments</I>
+, described in <A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/06/ch09.htm#43159" CLASS="XRef">
+</A>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=112">
+ </A>
+An assignment consists of two parts, a left-hand side<A NAME="marker=18">
+ </A>
+ and a right-hand side<A NAME="marker=19">
+ </A>
+, separated by the equal (<A NAME="marker=20">
+ </A>
+<A NAME="marker=21">
+ </A>
+=) character. The right-hand side can be any expression that evaluates to a value. The left-hand side indicates the variable that the right-hand side is to be assigned to. <A NAME="marker=22">
+ </A>
+The left-hand side can take one of the following forms, depending on whether the assignment is a continuous assignment or a <A NAME="marker=23">
+ </A>
+procedural assignment.</P>
+<P CLASS="Body">
+<A NAME="pgfId=171">
+ </A>
+</P>
+<TABLE BORDER="1">
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=187">
+ </A>
+Table&nbsp;6-1Legal left-hand side forms in assignment statements</P>
+</CAPTION>
+<TR>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=176">
+ </A>
+Statement Type</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=177">
+ </A>
+Left-hand Side (LHS)</P>
+</TH>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=178">
+ </A>
+continuous assignment</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=179">
+ </A>
+net (vector or scalar)</P>
+<P CLASS="CellBody">
+<A NAME="pgfId=175">
+ </A>
+constant bit select of a vector net</P>
+<P CLASS="CellBody">
+<A NAME="pgfId=174">
+ </A>
+constant part select of a vector net</P>
+<P CLASS="CellBody">
+<A NAME="pgfId=183">
+ </A>
+concatenation of any of the above three lhs</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=180">
+ </A>
+procedural assignment</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=181">
+ </A>
+register (vector or scalar)</P>
+<P CLASS="CellBody">
+<A NAME="pgfId=184">
+ </A>
+bit select of a vector register</P>
+<P CLASS="CellBody">
+<A NAME="pgfId=185">
+ </A>
+constant part select of a vector register</P>
+<P CLASS="CellBody">
+<A NAME="pgfId=186">
+ </A>
+memory element</P>
+<P CLASS="CellBody">
+<A NAME="pgfId=101">
+ </A>
+concatenation of any of the above four lhs</P>
+</TD>
+</TR>
+</TABLE>
+<H2 CLASS="SectionTOC">
+<A HREF="ch06.1.htm#pgfId=116" CLASS="Hypertext">
+6.1	Continuous assignments </A>
+</H2>
+<H2 CLASS="SectionTOC">
+<A HREF="ch06.2.htm#pgfId=165" CLASS="Hypertext">
+6.2	Procedural assignments </A>
+</H2>
+</DIV>
+<HR><P><A HREF="none">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch06.1.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

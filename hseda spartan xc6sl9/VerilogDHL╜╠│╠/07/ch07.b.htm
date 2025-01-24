@@ -1,0 +1,888 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch07.css">
+<TITLE> 7.11	Strengths and values of combined signals</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch07.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch07.a.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch07.c.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=1550">
+ </A>
+7.11	<A NAME="marker=361">
+ </A>
+<A NAME="marker=362">
+ </A>
+S<A NAME="marker=363">
+ </A>
+<A NAME="marker=364">
+ </A>
+trengths and values of combined signals</H1>
+<P CLASS="Body">
+<A NAME="pgfId=1551">
+ </A>
+In addition to a signal value, a net shall have either a single unambiguous strength level or an ambiguous strength, consisting of more than one level. When signals combine, their strengths and values shall determine the strength and value of the resulting signal in accordance with the principles in the four subsections that follow.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=1552">
+ </A>
+Combined signals of unambiguous strength</P>
+<P CLASS="Body">
+<A NAME="pgfId=1553">
+ </A>
+This subsection deals with combinations of signals in which each signal has a known value and a single strength level.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1036">
+ </A>
+If two or more signals of unequal strength combine in a wired net configuration, the stronger signal shall dominate all the weaker drivers and determine the result. The combination of two or more signals of like value shall result in the same value with the greater of all the strengths. The combination of signals identical in strength and value shall result in the same signal.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1037">
+ </A>
+The combination of signals with unlike values and the same strength can have three possible results. Two of the results occur in the presence of wired logic and the third occurs in its absence. Section <A HREF="ch07.b.htm#12436" CLASS="XRef">
+See Wired logic net types</A>
+ discusses wired logic. The result in the absence of wired logic is the subject of the first figure in the next subsection.</P>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=1035">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=1554">
+ </A>
+ </P>
+<DIV>
+<IMG SRC="ch07-12.gif">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=1555">
+ </A>
+Figure&nbsp;7-3<A NAME="65091">
+ </A>
+: Combining unequal strengths</P>
+<P CLASS="Body">
+<A NAME="pgfId=1556">
+ </A>
+In <A HREF="ch07.b.htm#65091" CLASS="XRef">
+See : Combining unequal strengths</A>
+, the numbers in parentheses indicate the relative strengths of the signals. The combination of a <B CLASS="Keyword">
+pull </B>
+<CODE CLASS="code">
+1</CODE>
+ and a <B CLASS="Keyword">
+strong</B>
+ <CODE CLASS="code">
+0</CODE>
+ results in a <B CLASS="Keyword">
+strong</B>
+ <CODE CLASS="code">
+0</CODE>
+, which is the stronger of the two signals. </P>
+<P CLASS="SubSection">
+<A NAME="pgfId=1557">
+ </A>
+<A NAME="48463">
+ </A>
+A<A NAME="marker=374">
+ </A>
+mbiguous s<A NAME="marker=375">
+ </A>
+trengths: sources and combinations</P>
+<P CLASS="Body">
+<A NAME="pgfId=1558">
+ </A>
+There are several classifications of signals possessing ambiguous strengths:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=1559">
+ </A>
+signals with known values and multiple strength levels</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=1560">
+ </A>
+signals with a value <CODE CLASS="code">
+x</CODE>
+, which have strength levels consisting of subdivisions of both the strength1 and the strength0 parts of the scale of strengths in <A HREF="ch07.a.htm#75920" CLASS="XRef">
+See : Scale of strengths</A>
+</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=1561">
+ </A>
+signals with a value <CODE CLASS="code">
+L</CODE>
+, which have strength levels that consist of high impedance joined with strength levels in the strength0 part of the scale of strengths in <A HREF="ch07.a.htm#75920" CLASS="XRef">
+See : Scale of strengths</A>
+</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=1562">
+ </A>
+signals with a value <CODE CLASS="code">
+H</CODE>
+, which have strength levels that consist of high impedance joined with strength levels in the strength1 part of the scale of strengths in <A HREF="ch07.a.htm#75920" CLASS="XRef">
+See : Scale of strengths</A>
+</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=1563">
+ </A>
+Many configurations can produce signals of ambiguous strength. When two signals of equal strength and opposite value combine, the result shall be a value <CODE CLASS="code">
+x</CODE>
+ and the strength levels of both signals and all the smaller strength levels. </P>
+</DIV>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=1038">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=1039">
+ </A>
+<A HREF="ch07.b.htm#49828" CLASS="XRef">
+See : Combination of signals of equal strength and opposite values</A>
+ shows the combination of a <B CLASS="Keyword">
+weak</B>
+ signal with a value <CODE CLASS="code">
+1</CODE>
+ and a <B CLASS="Keyword">
+weak</B>
+ signal with a value <CODE CLASS="code">
+0</CODE>
+ yielding a signal with <B CLASS="Keyword">
+weak</B>
+ strength and a value <CODE CLASS="code">
+x</CODE>
+. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1564">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch07-13.gif">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=1565">
+ </A>
+Figure&nbsp;7-4: Combination of signals of equal strength and opposite values<A NAME="49828">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=1566">
+ </A>
+This signal is described in <A HREF="ch07.b.htm#19451" CLASS="XRef">
+See : Weak x signal strength</A>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1567">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch07-14.gif">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=1568">
+ </A>
+Figure&nbsp;7-5<A NAME="19451">
+ </A>
+: Weak x signal strength</P>
+<P CLASS="Body">
+<A NAME="pgfId=1569">
+ </A>
+An ambiguous signal strength can be a range of possible values<A NAME="marker=395">
+ </A>
+. An example is the strength of the output from the tristate drivers with unknown control inputs as shown in <A HREF="ch07.b.htm#26201" CLASS="XRef">
+See : Bufifs with control inputs of x</A>
+. </P>
+<P CLASS="Body">
+<A NAME="pgfId=1570">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch07-15.gif">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=1571">
+ </A>
+Figure&nbsp;7-6<A NAME="26201">
+ </A>
+: Bufifs with control inputs of x</P>
+<P CLASS="Body">
+<A NAME="pgfId=1572">
+ </A>
+The output of the <B CLASS="Keyword">
+bufif1</B>
+ in <A HREF="ch07.b.htm#26201" CLASS="XRef">
+See : Bufifs with control inputs of x</A>
+ is a <B CLASS="Keyword">
+strong</B>
+ <CODE CLASS="code">
+H</CODE>
+, composed of the range of values described in <A HREF="ch07.b.htm#76790" CLASS="XRef">
+See : Strong H range of values</A>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1573">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch07-16.gif">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=1574">
+ </A>
+Figure&nbsp;7-7<A NAME="76790">
+ </A>
+: Strong H range of values</P>
+<P CLASS="Body">
+<A NAME="pgfId=1575">
+ </A>
+The output of the <B CLASS="Keyword">
+bufif0</B>
+ in <A HREF="ch07.b.htm#26201" CLASS="XRef">
+See : Bufifs with control inputs of x</A>
+ is a <B CLASS="Keyword">
+weak</B>
+ <CODE CLASS="code">
+L</CODE>
+, composed of the range of values described in <A HREF="ch07.b.htm#90949" CLASS="XRef">
+See : Weak L range of values</A>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1576">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch07-17.gif">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=1577">
+ </A>
+Figure&nbsp;7-8<A NAME="90949">
+ </A>
+: Weak L range of values</P>
+<P CLASS="Body">
+<A NAME="pgfId=1578">
+ </A>
+The combination of two signals of ambiguous strength shall result in a signal of ambiguous strength. The resulting signal shall have a range of strength levels that includes the strength levels in its component signals. The combination of outputs from two tristate drivers with unknown control inputs, shown in <A HREF="ch07.b.htm#86500" CLASS="XRef">
+See : Combined signals of ambiguous strength</A>
+, is an example.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1579">
+ </A>
+<EM CLASS="-">
+</EM>
+</P>
+<DIV>
+<IMG SRC="ch07-18.gif">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=1580">
+ </A>
+Figure&nbsp;7-9<EM CLASS="-">
+: Combined signals of ambiguous strength</EM>
+<A NAME="86500">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=1581">
+ </A>
+<EM CLASS="-">
+In </EM>
+<A HREF="ch07.b.htm#86500" CLASS="XRef">
+See : Combined signals of ambiguous strength</A>
+<EM CLASS="-">
+, the combination of signals of ambiguous strengths produces a range which includes the extremes of the signals and all the strengths between them, as described in <A HREF="ch07.b.htm#72440" CLASS="XRef">
+See : An unknown signal's range of strengths</A>
+.</EM>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=1582">
+ </A>
+<EM CLASS="-">
+</EM>
+</P>
+<DIV>
+<IMG SRC="ch07-19.gif">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=1583">
+ </A>
+Figure&nbsp;7-10<A NAME="72440">
+ </A>
+: An unknown signal's range of strengths</P>
+<P CLASS="Body">
+<A NAME="pgfId=1584">
+ </A>
+<EM CLASS="-">
+The result is a value </EM>
+<CODE CLASS="code">
+x</CODE>
+<EM CLASS="-">
+ because its range includes the values </EM>
+<CODE CLASS="code">
+1</CODE>
+<EM CLASS="-">
+ and </EM>
+<CODE CLASS="code">
+0</CODE>
+<EM CLASS="-">
+. The number </EM>
+<CODE CLASS="code">
+35</CODE>
+<EM CLASS="-">
+, which precedes the </EM>
+<CODE CLASS="code">
+x</CODE>
+<EM CLASS="-">
+, is a concatenation of two digits. The first is the digit 3, which corresponds to the highest strength0 level for the result. The second digit, 5, corresponds to the highest strength1 level for the result. </EM>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=1585">
+ </A>
+Switch networks can produce a ranges of strengths of the same value, such as the signals from the upper and lower configurations in <A HREF="ch07.b.htm#15003" CLASS="XRef">
+See : Ambiguous strengths from switch networks</A>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1586">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch07-20.gif">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=1587">
+ </A>
+Figure&nbsp;7-11<A NAME="15003">
+ </A>
+: Ambiguous strengths from switch networks</P>
+<P CLASS="Body">
+<A NAME="pgfId=1588">
+ </A>
+In <A HREF="ch07.b.htm#15003" CLASS="XRef">
+See : Ambiguous strengths from switch networks</A>
+, the upper combination of a register, a gate controlled by a register of unspecified value, and a pullup produces a signal with a value of 1 and a range of strengths (651) described in <A HREF="ch07.b.htm#32362" CLASS="XRef">
+See : Range of two strengths of a defined value</A>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1589">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch07-21.gif">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=1590">
+ </A>
+Figure&nbsp;7-12<A NAME="32362">
+ </A>
+: Range of two strengths of a defined value</P>
+<P CLASS="Body">
+<A NAME="pgfId=1591">
+ </A>
+In <A HREF="ch07.b.htm#15003" CLASS="XRef">
+See : Ambiguous strengths from switch networks</A>
+ the lower combination of a <B CLASS="Keyword">
+pulldown</B>
+, a gate controlled by a register of unspecified value, and an <B CLASS="Keyword">
+and</B>
+ gate produces a signal with a value <CODE CLASS="code">
+0</CODE>
+ and a range of strengths (<CODE CLASS="code">
+53</CODE>
+ <CODE CLASS="code">
+0</CODE>
+) described in <A HREF="ch07.b.htm#78053" CLASS="XRef">
+See : Range of three strengths of a defined value</A>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1592">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch07-22.gif">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=1593">
+ </A>
+Figure&nbsp;7-13<A NAME="78053">
+ </A>
+: Range of three strengths of a defined value</P>
+<P CLASS="Body">
+<A NAME="pgfId=1594">
+ </A>
+When the signals from the upper and lower configurations in <A HREF="ch07.b.htm#15003" CLASS="XRef">
+See : Ambiguous strengths from switch networks</A>
+ combine, the result is an unknown with a range (<CODE CLASS="code">
+56x</CODE>
+) determined by the extremes of the two signals shown in <A HREF="ch07.b.htm#89362" CLASS="XRef">
+See : Unknown value with a range of strengths</A>
+<A HREF="ch07.b.htm#98318" CLASS="XRef">
+See </A>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1595">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch07-23.gif">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=1596">
+ </A>
+Figure&nbsp;7-14<A NAME="89362">
+ </A>
+: Unknown value with a range of strengths</P>
+<P CLASS="Body">
+<A NAME="pgfId=1597">
+ </A>
+In <A HREF="ch07.b.htm#15003" CLASS="XRef">
+See : Ambiguous strengths from switch networks</A>
+, replacing the<CODE CLASS="code">
+ </CODE>
+<B CLASS="Keyword">
+pulldown</B>
+ in the lower configuration with a <B CLASS="Keyword">
+supply0</B>
+ would change the range of the result to the range (<CODE CLASS="code">
+StX</CODE>
+) described in <A HREF="ch07.b.htm#24186" CLASS="XRef">
+See : Strong X range</A>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1598">
+ </A>
+The range in <A HREF="ch07.b.htm#24186" CLASS="XRef">
+See : Strong X range</A>
+ is <B CLASS="Keyword">
+strong</B>
+ <CODE CLASS="code">
+x</CODE>
+, because it is unknown and both of its components' extremes are <B CLASS="Keyword">
+strong</B>
+. The extreme of the output of the lower configuration is <B CLASS="Keyword">
+strong</B>
+ because the lower <B CLASS="Keyword">
+pmos</B>
+ reduces the strength of the <B CLASS="Keyword">
+supply0</B>
+ signal. Section <A HREF="ch07.c.htm#75600" CLASS="XRef">
+See Strength reduction by non-resistive devices</A>
+ discusses this modeling feature.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1599">
+ </A>
+<A NAME="98318">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch07-24.gif">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=1600">
+ </A>
+Figure&nbsp;7-15: Strong X range<A NAME="24186">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=1601">
+ </A>
+Logic gates produce results with ambiguous strengths as well as tristate drivers. Such a case appears in <A HREF="ch07.b.htm#92076" CLASS="XRef">
+See : Ambiguous strength from gates</A>
+. The <B CLASS="Keyword">
+and</B>
+ gate <CODE CLASS="code">
+N1</CODE>
+ is declared with <B CLASS="Keyword">
+highz0</B>
+ strength, and <CODE CLASS="code">
+N2</CODE>
+ is declared with <B CLASS="Keyword">
+weak0</B>
+ strength.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1602">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch07-25.gif">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=1603">
+ </A>
+Figure&nbsp;7-16<A NAME="92076">
+ </A>
+: Ambiguous strength from gates</P>
+<P CLASS="Body">
+<A NAME="pgfId=1604">
+ </A>
+In <A HREF="ch07.b.htm#92076" CLASS="XRef">
+See : Ambiguous strength from gates</A>
+, register <CODE CLASS="code">
+b</CODE>
+ has an unspecified<EM CLASS="-">
+ value, so input to the upper </EM>
+<B CLASS="Keyword">
+and</B>
+<EM CLASS="-">
+ gate is </EM>
+<B CLASS="Keyword">
+strong</B>
+<EM CLASS="-">
+ </EM>
+<CODE CLASS="code">
+x</CODE>
+<EM CLASS="-">
+. The upper </EM>
+<B CLASS="Keyword">
+and</B>
+<EM CLASS="-">
+ gate has a strength specification including </EM>
+<B CLASS="Keyword">
+highz0</B>
+<EM CLASS="-">
+. The signal from the upper </EM>
+<B CLASS="Keyword">
+and</B>
+<EM CLASS="-">
+ gate is a </EM>
+<B CLASS="Keyword">
+strong</B>
+<EM CLASS="-">
+ </EM>
+<CODE CLASS="code">
+H</CODE>
+<EM CLASS="-">
+ composed of the values as described in <A HREF="ch07.b.htm#78170" CLASS="XRef">
+See : Ambiguous strength signal from a gate</A>
+.</EM>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=1605">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch07-26.gif">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=1606">
+ </A>
+Figure&nbsp;7-17<A NAME="78170">
+ </A>
+: Ambiguous strength signal from a gate</P>
+<P CLASS="Body">
+<A NAME="pgfId=1607">
+ </A>
+<CODE CLASS="code">
+HiZ0</CODE>
+<EM CLASS="-">
+ is part of the result, because the strength specification for the gate in question specified that strength for an output with a value </EM>
+<CODE CLASS="code">
+0</CODE>
+<EM CLASS="-">
+. A strength specification other than high impedance for the </EM>
+<CODE CLASS="code">
+0</CODE>
+<EM CLASS="-">
+ value output results in a gate output value </EM>
+<CODE CLASS="code">
+x</CODE>
+<EM CLASS="-">
+. The output of the lower </EM>
+<B CLASS="Keyword">
+and</B>
+<EM CLASS="-">
+ gate is a </EM>
+<B CLASS="Keyword">
+weak</B>
+<EM CLASS="-">
+ </EM>
+<CODE CLASS="code">
+0</CODE>
+<EM CLASS="-">
+ as described in <A HREF="ch07.b.htm#31272" CLASS="XRef">
+See : Weak 0</A>
+.</EM>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=1608">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch07-27.gif">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=1609">
+ </A>
+Figure&nbsp;7-18<A NAME="31272">
+ </A>
+: Weak 0</P>
+<P CLASS="Body">
+<A NAME="pgfId=1610">
+ </A>
+<EM CLASS="-">
+When the signals combine, the result is the range (</EM>
+<CODE CLASS="code">
+36x</CODE>
+<EM CLASS="-">
+) as described in <A HREF="ch07.b.htm#25868" CLASS="XRef">
+See : Ambiguous strength in combined gate signals</A>
+.</EM>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=1611">
+ </A>
+<EM CLASS="-">
+</EM>
+</P>
+<DIV>
+<IMG SRC="ch07-28.gif">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=1612">
+ </A>
+Figure&nbsp;7-19<A NAME="25868">
+ </A>
+: Ambiguous strength in combined gate signals</P>
+<P CLASS="Body">
+<A NAME="pgfId=1613">
+ </A>
+This figure presents the combination of an ambiguous signal and an unambiguous signal. Such combinations are the topic of the next subsection.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=1614">
+ </A>
+Ambiguous strength signals and unambiguous signals</P>
+<P CLASS="Body">
+<A NAME="pgfId=1615">
+ </A>
+The combination of a signal with unambiguous strength and known value with another signal of ambiguous strength presents several possible cases. To understand a set of rules governing this type of combination, it is necessary to consider the strength levels of the ambiguous strength signal separately from each other and relative to the unambiguous strength signal. When a signal of known value and unambiguous strength combines with a component of a signal of ambiguous strength, these shall be the effects:</P>
+<OL>
+<P CLASS="NumberedLista">
+<A NAME="pgfId=1616">
+ </A>
+a)	The strength levels of the ambiguous strength signal that are greater than the strength level of the unambiguous signal shall remain in the result.</P>
+<P CLASS="NumberedListb">
+<A NAME="pgfId=1617">
+ </A>
+b)	The strength levels of the ambiguous strength signal that are smaller than or equal to the strength level of the unambiguous signal shall disappear from the result, subject to rule c.</P>
+<P CLASS="NumberedListb">
+<A NAME="pgfId=1618">
+ </A>
+c)	If the operation of rule a and rule b results in a gap in strength levels because the signals are of opposite value, the signals in the gap shall be part of the result.</P>
+</OL>
+<P CLASS="Body">
+<A NAME="pgfId=1619">
+ </A>
+The following figures show some applications of the rules.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1620">
+ </A>
+</P>
+<DIV>
+<MAP NAME="ch07-29">
+</MAP>
+<IMG SRC="ch07-29.gif" USEMAP="#ch07-29">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=1621">
+ </A>
+Figure&nbsp;7-20<A NAME="56639">
+ </A>
+: Elimination of strength levels</P>
+<P CLASS="Body">
+<A NAME="pgfId=1622">
+ </A>
+In <A HREF="ch07.b.htm#56639" CLASS="XRef">
+See : Elimination of strength levels</A>
+, the strength levels in the ambiguous strength signal that are smaller than or equal to the strength level of the unambiguous strength signal disappear from the result, demonstrating rule b.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1623">
+ </A>
+</P>
+<DIV>
+<MAP NAME="ch07-30">
+</MAP>
+<IMG SRC="ch07-30.gif" USEMAP="#ch07-30">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=1624">
+ </A>
+Figure&nbsp;7-21<A NAME="83116">
+ </A>
+: Result demonstrating a range and the elimination<BR>
+ of strength levels of two values</P>
+<P CLASS="Body">
+<A NAME="pgfId=1625">
+ </A>
+In <A HREF="ch07.b.htm#83116" CLASS="XRef">
+See : Result demonstrating a range and the elimination of strength levels of two values</A>
+, rules a, b, and c apply. The strength levels of the ambiguous strength signal that are of opposite value and lesser strength than the unambiguous strength signal disappear from the result. The strength levels in the ambiguous strength signal that are less than the strength level of the unambiguous strength signal, and of the same value, disappear from the result. The strength level of the unambiguous strength signal and the greater extreme of the ambiguous strength signal define a range in the result.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1626">
+ </A>
+</P>
+<DIV>
+<MAP NAME="ch07-31">
+</MAP>
+<IMG SRC="ch07-31.gif" USEMAP="#ch07-31">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=1627">
+ </A>
+Figure&nbsp;7-22<A NAME="12338">
+ </A>
+: Result demonstrating a range and the elimination<BR>
+ of strength levels of one value</P>
+<P CLASS="Body">
+<A NAME="pgfId=1628">
+ </A>
+In <A HREF="ch07.b.htm#12338" CLASS="XRef">
+See : Result demonstrating a range and the elimination of strength levels of one value</A>
+, rules a and b apply. The strength levels in the ambiguous strength signal that are less than the strength level of the unambiguous strength signal disappear from the result. The strength level of the unambiguous strength signal and the strength level at the greater extreme of the ambiguous strength signal define a range in the result.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1629">
+ </A>
+</P>
+<DIV>
+<MAP NAME="ch07-32">
+</MAP>
+<IMG SRC="ch07-32.gif" USEMAP="#ch07-32">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=1630">
+ </A>
+Figure&nbsp;7-23<A NAME="50715">
+ </A>
+: A range of both values</P>
+<P CLASS="Body">
+<A NAME="pgfId=1631">
+ </A>
+In <A HREF="ch07.b.htm#50715" CLASS="XRef">
+See : A range of both values</A>
+, rules a, b, and c apply. The greater extreme of the range of strengths for the ambiguous strength signal is larger than the strength level of the unambiguous strength signal. The result is a range defined by the greatest strength in the range of the ambiguous strength signal and by the strength level of the unambiguous strength signal.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=1632">
+ </A>
+<EM CLASS="-">
+</EM>
+<A NAME="12436">
+ </A>
+W<A NAME="marker=523">
+ </A>
+<A NAME="marker=524">
+ </A>
+<A NAME="marker=525">
+ </A>
+ired logic net types </P>
+<P CLASS="Body">
+<A NAME="pgfId=1633">
+ </A>
+<EM CLASS="-">
+The net types </EM>
+<B CLASS="Keyword">
+triand</B>
+<EM CLASS="-">
+, </EM>
+<B CLASS="Keyword">
+wand</B>
+<EM CLASS="-">
+, </EM>
+<B CLASS="Keyword">
+trior</B>
+, and<EM CLASS="-">
+ </EM>
+<B CLASS="Keyword">
+wor</B>
+<A NAME="marker=526">
+ </A>
+ <EM CLASS="-">
+shall resolve conflicts when multiple drivers have the same strength. These net types shall resolve signal values by treating signals </EM>
+<A NAME="marker=527">
+ </A>
+as<EM CLASS="-">
+ inputs of logic functions. </EM>
+</P>
+</DIV>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=1634">
+ </A>
+<EM CLASS="-">
+</EM>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=1040">
+ </A>
+<EM CLASS="-">
+Consider the combination of two signals of unambiguous strength in <A HREF="ch07.b.htm#18033" CLASS="XRef">
+See : Wired logic with unambiguous strength signals</A>
+.</EM>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=1635">
+ </A>
+</P>
+<DIV>
+<MAP NAME="ch07-33">
+</MAP>
+<IMG SRC="ch07-33.gif" USEMAP="#ch07-33">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=1636">
+ </A>
+Figure&nbsp;7-24<A NAME="18033">
+ </A>
+: Wired logic with unambiguous strength signals</P>
+<P CLASS="Body">
+<A NAME="pgfId=1637">
+ </A>
+The combination of the signals in <A HREF="ch07.b.htm#18033" CLASS="XRef">
+See : Wired logic with unambiguous strength signals</A>
+, using <I CLASS="Emphasis">
+wired and</I>
+ logic, produces a result with the same value as the result produced by an <B CLASS="Keyword">
+and</B>
+ gate with the value of the two signals as its inputs. The combination of signals using <I CLASS="Emphasis">
+wired or</I>
+ logic produces a result with the same value as the result produced by an <B CLASS="Keyword">
+or</B>
+ gate with the values of the two signals as its inputs. The strength of the result is the same as the strength of the combined signals in both cases. If the value of the upper signal changes so that both signals in <A HREF="ch07.b.htm#18033" CLASS="XRef">
+See : Wired logic with unambiguous strength signals</A>
+ possess a value <CODE CLASS="code">
+1</CODE>
+, then the results of both types of logic have a value <CODE CLASS="code">
+1</CODE>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1638">
+ </A>
+When ambiguous strength signals combine in wired logic, it is necessary to consider the results of all combinations of each of the strength levels in the first signal with each of the strength levels in the second signal, as shown in <A HREF="ch07.b.htm#36385" CLASS="XRef">
+See : Wired logic and ambiguous strengths</A>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1639">
+ </A>
+</P>
+<DIV>
+<MAP NAME="ch07-34">
+</MAP>
+<IMG SRC="ch07-34.gif" USEMAP="#ch07-34">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=1640">
+ </A>
+Figure&nbsp;7-25<A NAME="36385">
+ </A>
+: Wired <A NAME="marker=544">
+ </A>
+logic<A NAME="marker=545">
+ </A>
+ and<A NAME="marker=546">
+ </A>
+ ambiguous<A NAME="marker=547">
+ </A>
+<A NAME="marker=548">
+ </A>
+<A NAME="marker=549">
+ </A>
+ strengths</P>
+</DIV>
+<HR><P><A HREF="ch07.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch07.a.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch07.c.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

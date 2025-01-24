@@ -1,0 +1,136 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Mac">
+  <LINK REL="STYLESHEET" HREF="ch03.css">
+  <TITLE> 3.9&nbsp;&nbsp;&nbsp;Integers, reals, times and realtimes</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><A NAME="pgfId=552"></A><HR ALIGN=LEFT></P>
+
+<P><A HREF="ch03.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A 
+HREF="ch03.8.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch03.a.htm">Next&nbsp;&nbsp;page</A></P>
+
+<H1>3.9&nbsp;&nbsp;&nbsp;Integers, reals, times and realtimes</H1>
+
+<P><P CLASS="Body"><A NAME="pgfId=554"></A>In addition to modeling hardware,
+there are other uses for registers in an HDL model. Although reg variables
+can be used for general purposes such as counting the number of times a
+particular net changes value, the <I>integer</I> and <I>time</I> register
+data types are provided for convenience and to make the description more
+self-documenting.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=555"></A>The syntax for declaring <B>integer</B>,
+<B>time</B>, <B>real</B> and <B>realtime</B> registers is as follows (from
+Syntax&nbsp;3-2):</P>
+
+<PRE><A NAME="pgfId=1401"></A> 
+integer_declaration ::= <B>integer</B>  list_of_register_identifiers <B>;</B>
+<A NAME="pgfId=1402"></A> 
+time_declaration ::= <B>time</B>   list_of_register_identifiers <B>;</B>
+<A NAME="pgfId=1403"></A> 
+real_declaration ::= <B>real</B> real_identifier { <B>,</B> real_identifier } <B>;</B>
+<A NAME="pgfId=1404"></A> 
+realtime_declaration ::= <B>realtime</B> real_identifier { <B>,</B> real_identifier } <B>;</B></PRE>
+
+<P><P CLASS="BNFCapBody"><A NAME="pgfId=365"></A>Syntax&nbsp;3-3: Syntax
+for Integer, time, real and realtime declarations</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=427"></A>The syntax for list of register
+variables is defined in section&nbsp;3.2.2.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=520"></A>An <I>integer</I> is a general
+purpose register used for manipulating quantities that are not regarded
+as hardware registers.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=559"></A>A <I>time</I> register is used
+for storing and manipulating simulation time quantities in situations where
+timing checks are required and for diagnostics and debugging purposes. This
+data type is typically used in conjunction with the <B>$time </B>system
+function (see Section 14).</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=521"></A>Arrays of integer and time registers
+shall be declared in the same manner as arrays of reg type (section&nbsp;3.8).</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=563"></A>The integer and time registers
+shall be assigned values in the same manner as reg. Procedural assignments
+shall be used to trigger their value changes.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=564"></A>The time registers shall behave
+the same as a register of at least 64 bits. They shall be unsigned quantities,
+and unsigned arithmetic shall be performed on them. In contrast, integer
+registers shall be treated as signed quantities. Arithmetic operations performed
+on integer registers shall produce 2's complement results.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=567"></A>The Verilog HDL supports <I>real</I>
+number constants and real register data type in addition to integer and
+time register data types. Except for the following restrictions, registers
+declared as real can be used in the same places that integers and time registers
+are used:</P>
+
+<UL>
+  <LI><A NAME="pgfId=532"></A>Not all Verilog HDL operators can be used with
+  real number values. See Table&nbsp;4-3 in section&nbsp;4.1 for lists of
+  valid and invalid operators for real numbers and real registers.
+  <LI><A NAME="pgfId=570"></A>Real registers shall not use range in the declaration
+  <LI><A NAME="pgfId=627"></A>Real registers shall default to an initial
+  value of zero.
+</UL>
+
+<P><P CLASS="Body"><A NAME="pgfId=560"></A>The <I>realtime</I> declarations
+shall be treated synonymous with real declarations, and can be used interchangeably.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=372"></A>Examples:</P>
+
+<PRE><A NAME="pgfId=522"></A> 
+<B>integer</B> a[1:64]; // an array of 64 integer values
+<B>time</B> chng_hist[1:1000]; // an array of 1000 time values
+<A NAME="pgfId=476"></A> 
+<B>real</B> float ; // a register to store real value
+<A NAME="pgfId=509"></A> 
+<B>realtime</B> rtime ; // a register to store time as a real value</PRE>
+
+<P><P CLASS="Note"><A NAME="pgfId=543"></A>NOTE--Implementations may limit
+the maximum size of an <B>integer</B> variable, but shall at least be 32
+bits.</P>
+
+<P><P CLASS="SubSection"><A NAME="pgfId=580"></A>Operators and real numbers</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=582"></A>The result of using logical or
+relational operators on real numbers and real registers is a single-bit
+scalar value. Not all Verilog HDL operators can be used with expression
+involving real numbers and real registers. Table&nbsp;4-3 in 4.1 lists the
+valid operators for use with real numbers and real registers. Real number
+constants and real registers are also prohibited in the following cases:</P>
+
+<UL>
+  <LI><A NAME="pgfId=583"></A>edge descriptors (posedge, negedge) applied
+  to real registers
+  <LI><A NAME="pgfId=584"></A>bit-select or part-select references of variables
+  declared as <CODE>real</CODE>
+  <LI><A NAME="pgfId=585"></A>real number index expressions of bit-select
+  or part-select references of vectors
+  <LI><A NAME="pgfId=586"></A>declaration of memories (arrays of real registers)
+</UL>
+
+<P><P CLASS="SubSection"><A NAME="pgfId=519"></A>Conversion</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=573"></A>Real numbers shall be converted
+to integers by rounding the real number to the nearest integer, rather than
+by truncating it. Implicit conversion shall take place when a real number
+is assigned to an integer. The ties shall be rounded away from zero.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=578"></A>Implicit conversion shall take
+place when a net or register is assigned to a real. Individual bits that
+are <CODE>x</CODE> or <CODE>z</CODE> in the net or the register shall be
+treated as zero upon conversion.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=579"></A>See Section 14 for a discussion
+of system tasks that perform explicit conversion.</P>
+
+<P><HR ALIGN=LEFT></P>
+
+<P><A HREF="ch03.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A 
+HREF="ch03.8.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch03.a.htm">Next&nbsp;&nbsp;page</A>
+</BODY>
+</HTML>

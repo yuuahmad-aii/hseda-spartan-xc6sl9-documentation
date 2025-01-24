@@ -1,0 +1,402 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch15.css">
+<TITLE> 15.1	Creating the value change dump file</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch15.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch15.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch15.2.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=174">
+ </A>
+15.1	<A NAME="marker=17">
+ </A>
+Creating the value change dump file</H1>
+<P CLASS="Body">
+<A NAME="pgfId=175">
+ </A>
+The steps involved in creating the VCD file are listed below and illustrated in <A HREF="ch15.1.htm#87073" CLASS="XRef">
+See : Creating the value change dump file</A>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=176">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch15-1.gif">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=177">
+ </A>
+Figure&nbsp;15-1<A NAME="87073">
+ </A>
+: Creating the value change dump file</P>
+<OL>
+<P CLASS="NumberedLista">
+<A NAME="pgfId=178">
+ </A>
+a)	Insert the VCD system tasks in the Verilog source file to define the dump file name and to specify the variables to be dumped. </P>
+<P CLASS="NumberedListb">
+<A NAME="pgfId=170">
+ </A>
+b)	Run the simulation.</P>
+</OL>
+<P CLASS="Body">
+<A NAME="pgfId=180">
+ </A>
+A VCD file is an ASCII file that contains header information, variable definitions, and the value changes for all variables specified in the task calls.</P>
+<P CLASS="Body">
+<A NAME="pgfId=181">
+ </A>
+Several system tasks can be inserted in the source description to create and control the VCD file.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=173">
+ </A>
+<A NAME="marker=30">
+ </A>
+<A NAME="marker=31">
+ </A>
+<A NAME="marker=32">
+ </A>
+Specifying the name of the dump file ($dumpfile)</P>
+<P CLASS="Body">
+<A NAME="pgfId=187">
+ </A>
+The <B CLASS="Keyword">
+$dumpfile</B>
+ task shall be used to specify the name of the VCD file. The syntax for the task is as follows:</P>
+<PRE CLASS="BNFDef"><A NAME="pgfId=406"> </A>
+<B CLASS="Keyword">	$dumpfile (</B>
+<I CLASS="Emphasis"> filename</I>
+<B CLASS="Keyword"> ) ;</B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=189">
+ </A>
+The <I CLASS="Emphasis">
+filename</I>
+ is optional. </P>
+<P CLASS="Body">
+<A NAME="pgfId=405">
+ </A>
+Example:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=188"> </A>
+<B CLASS="Keyword">initial</B>
+  <B CLASS="Keyword">$dumpfile </B>
+(&quot;module1.dump&quot;) ;</PRE>
+<P CLASS="SubSection">
+<A NAME="pgfId=185">
+ </A>
+<A NAME="marker=33">
+ </A>
+<A NAME="marker=34">
+ </A>
+<A NAME="marker=35">
+ </A>
+Specifying the variables to be dumped ($dumpvars)</P>
+<P CLASS="Body">
+<A NAME="pgfId=193">
+ </A>
+The <B CLASS="Keyword">
+$dumpvars</B>
+ task shall be used to list which variables to dump into the file specified by <B CLASS="Keyword">
+$dumpfile</B>
+. The <B CLASS="Keyword">
+$dumpvars</B>
+ task may be invoked as often as desired throughout the model (for example, within various blocks), but the execution of all the <B CLASS="Keyword">
+$dumpvars</B>
+ tasks must be at the same simulation time. </P>
+<P CLASS="Body">
+<A NAME="pgfId=171">
+ </A>
+The <B CLASS="Keyword">
+$dumpvars</B>
+ task may be used with or without arguments. The syntax for the task without arguments is as follows:</P>
+<PRE CLASS="BNFDef"><A NAME="pgfId=195"> </A>
+<B CLASS="Keyword">	$dumpvars ;</B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=196">
+ </A>
+When invoked with no arguments, <B CLASS="Keyword">
+$dumpvars</B>
+ task dumps all the variables in the model to the VCD file.</P>
+<P CLASS="Body">
+<A NAME="pgfId=197">
+ </A>
+The syntax for the task with arguments is as follows:</P>
+<P CLASS="Body">
+<A NAME="pgfId=383">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch15-2.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=403">
+ </A>
+Syntax&nbsp;15-1: Syntax for $dumpvars system task</P>
+<P CLASS="Body">
+<A NAME="pgfId=198">
+ </A>
+When the <B CLASS="Keyword">
+$dumpvars</B>
+ task is specified with arguments, the first argument indicates how many <I CLASS="Emphasis">
+levels</I>
+ of the hierarchy below each specified module instance to dump to the VCD file. Subsequent arguments specify which scopes of the model to dump to the VCD file. These arguments may specify entire modules or individual variables within a module. </P>
+<P CLASS="Body">
+<A NAME="pgfId=202">
+ </A>
+Setting the first argument to <CODE CLASS="code">
+0</CODE>
+ causes a dump of all variables in the specified module and in all module instances below the specified module. The argument <CODE CLASS="code">
+0</CODE>
+ applies only to subsequent arguments that specify module instances, and not to individual variables.</P>
+<P CLASS="Body">
+<A NAME="pgfId=407">
+ </A>
+Examples:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=200"> </A>
+<B CLASS="Keyword">$dumpvars</B>
+ (1, top);</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=201">
+ </A>
+Because the first argument is a 1, this invocation dumps all variables within the module <CODE CLASS="code">
+top</CODE>
+; it does not dump variables in any of the modules instantiated by module <CODE CLASS="code">
+top</CODE>
+.</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=182"> </A>
+<B CLASS="Keyword">$dumpvars</B>
+ (0, top);</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=203">
+ </A>
+In this example, the <B CLASS="Keyword">
+$dumpvars</B>
+ task will dump all variables in the module <CODE CLASS="code">
+top</CODE>
+ and in all module instances below module <CODE CLASS="code">
+top</CODE>
+ in the hierarchy:</P>
+<P CLASS="Body">
+<A NAME="pgfId=205">
+ </A>
+The next example shows how the <B CLASS="Keyword">
+$dumpvars</B>
+ task can specify both modules and individual variables:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=206"> </A>
+<B CLASS="Keyword">$dumpvars</B>
+ (0, top.mod1, top.mod2.net1);</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=207">
+ </A>
+This call will dump all variables in module <CODE CLASS="code">
+mod1</CODE>
+ and in all module instances below <CODE CLASS="code">
+mod1</CODE>
+, along with variable <CODE CLASS="code">
+net1</CODE>
+ in module <CODE CLASS="code">
+mod2</CODE>
+. The argument 0 applies only to the module instance <CODE CLASS="code">
+top.mod1</CODE>
+, and not to the individual variable <CODE CLASS="code">
+top.mod2.net1</CODE>
+.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=191">
+ </A>
+<A NAME="marker=41">
+ </A>
+<A NAME="marker=42">
+ </A>
+<A NAME="marker=46">
+ </A>
+<A NAME="marker=47">
+ </A>
+Stopping and resuming the dump ($dumpoff/$dumpon)</P>
+<P CLASS="Body">
+<A NAME="pgfId=211">
+ </A>
+Executing the <B CLASS="Keyword">
+$dumpvars</B>
+ task causes the value change dumping to start at the end of the current simulation time unit. To suspend the dump, the <B CLASS="Keyword">
+$dumpoff</B>
+ task may be invoked. To resume the dump, the <B CLASS="Keyword">
+$dumpon</B>
+ task may be invoked. The syntax of these two tasks is as follows:</P>
+<PRE CLASS="BNFDef"><A NAME="pgfId=183"> </A>
+<B CLASS="Keyword">	$dumpoff ;</B>
+</PRE>
+<PRE CLASS="BNFDef"><A NAME="pgfId=184"> </A>
+<B CLASS="Keyword">	$dumpon ;</B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=212">
+ </A>
+When <B CLASS="Keyword">
+$dumpoff</B>
+ task is executed, a checkpoint is made in which every selected variable is dumped as an <CODE CLASS="code">
+x</CODE>
+ value. When <B CLASS="Keyword">
+$dumpon</B>
+ task is later executed, each variable is dumped with its value at that time. In the interval between <B CLASS="Keyword">
+$dumpoff </B>
+and <B CLASS="Keyword">
+$dumpon</B>
+, no value changes are dumped.</P>
+<P CLASS="Body">
+<A NAME="pgfId=213">
+ </A>
+The <B CLASS="Keyword">
+$dumpoff</B>
+ and <B CLASS="Keyword">
+$dumpon</B>
+ tasks provide the mechanism to control the simulation period during which the dump will take place. </P>
+<P CLASS="Body">
+<A NAME="pgfId=204">
+ </A>
+Example:</P>
+<P CLASS="Body">
+<A NAME="pgfId=215">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch15-3.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=217">
+ </A>
+This example starts the value change dump after 10 time units, stops it 200 time units later (at time 210), restarts it again 800 time units later (at time 1010) and stops it 900 time units later (at time 1910).<A NAME="marker=49">
+ </A>
+<A NAME="marker=50">
+ </A>
+<A NAME="marker=51">
+ </A>
+<A NAME="marker=52">
+ </A>
+<A NAME="marker=53">
+ </A>
+<A NAME="marker=54">
+ </A>
+</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=209">
+ </A>
+<A NAME="marker=55">
+ </A>
+<A NAME="marker=56">
+ </A>
+<A NAME="marker=57">
+ </A>
+Generating a checkpoint ($dumpall)</P>
+<P CLASS="Body">
+<A NAME="pgfId=220">
+ </A>
+The <B CLASS="Keyword">
+$dumpall</B>
+ task creates a checkpoint in the VCD file that shows the current value of all selected variables. The syntax is as follows:</P>
+<PRE CLASS="BNFDef"><A NAME="pgfId=409"> </A>
+<B CLASS="Keyword">	$dumpall ;</B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=221">
+ </A>
+When dumping is enabled, the value change dumper records the values of the variables that change during each time increment. Values of variables that do not change during a time increment are not dumped.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=222">
+ </A>
+<A NAME="marker=58">
+ </A>
+<A NAME="marker=59">
+ </A>
+<A NAME="marker=60">
+ </A>
+Limiting the size of the dump file ($dumplimit)</P>
+<P CLASS="Body">
+<A NAME="pgfId=223">
+ </A>
+The <B CLASS="Keyword">
+$dumplimit</B>
+ task may be used to set the size of the VCD file. The syntax for this task is as follows:</P>
+<PRE CLASS="BNFDef"><A NAME="pgfId=226"> </A>
+<B CLASS="Keyword">	$dumplimit ( </B>
+<I CLASS="Emphasis">filesize</I>
+<B CLASS="Keyword"> ) ;</B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=227">
+ </A>
+The <I CLASS="Emphasis">
+filesize</I>
+ argument that specifies the maximum size of the VCD file in bytes. When the size of VCD file reaches this number of bytes, the dumping stops and a comment is inserted in the VCD file indicating that the dump limit was reached.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=225">
+ </A>
+<A NAME="marker=61">
+ </A>
+<A NAME="marker=62">
+ </A>
+<A NAME="marker=63">
+ </A>
+Reading the dump file during simulation ($dumpflush)</P>
+<P CLASS="Body">
+<A NAME="pgfId=230">
+ </A>
+The <B CLASS="Keyword">
+$dumpflush</B>
+ task may be used to empty the operating system's VCD file buffer to ensure that all the data in that buffer is stored in the VCD file. After executing a <B CLASS="Keyword">
+$dumpflush</B>
+ task,  dumping is resumed as before, so that no value changes are lost. The syntax is as follows:</P>
+<PRE CLASS="BNFDef"><A NAME="pgfId=436"> </A>
+<B CLASS="Keyword">	$dumpflush ;</B>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=231">
+ </A>
+A common application is to call <B CLASS="Keyword">
+$dumpflush</B>
+ to update the dump file so that an application program can read the VCD file during a simulation. </P>
+<P CLASS="Body">
+<A NAME="pgfId=216">
+ </A>
+Examples:</P>
+<P CLASS="Body">
+<A NAME="pgfId=435">
+ </A>
+1. This example shows how the <B CLASS="Keyword">
+$dumpflush</B>
+ task may be used in a Verilog HDL source file:</P>
+<P CLASS="Body">
+<A NAME="pgfId=233">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch15-4.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=241">
+ </A>
+2. Following is a simple source description example to produce a VCD file.</P>
+<P CLASS="Body">
+<A NAME="pgfId=242">
+ </A>
+In this example, the name of the dump file is <CODE CLASS="code">
+verilog.dump</CODE>
+. It dumps value changes for all variables in the model. Dumping begins when an event <CODE CLASS="code">
+do_dump</CODE>
+ occurs. The dumping continues for 500 clock cycles, then stops and waits for the event <CODE CLASS="code">
+do_dump</CODE>
+ to be triggered again. At every 10000 time steps, the current values of all VCD variables are dumped.</P>
+<P CLASS="Body">
+<A NAME="pgfId=244">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch15-5.gif">
+</DIV>
+<HR><P><A HREF="ch15.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch15.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch15.2.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

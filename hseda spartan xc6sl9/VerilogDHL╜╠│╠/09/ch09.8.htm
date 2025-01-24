@@ -1,0 +1,392 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch09.css">
+<TITLE> 9.8	Block statements </TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch09.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch09.7.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch09.9.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=747">
+ </A>
+9.8	<A NAME="16349">
+ </A>
+<A NAME="marker=247">
+ </A>
+Block statements </H1>
+<P CLASS="Body">
+<A NAME="pgfId=748">
+ </A>
+The <I CLASS="Emphasis">
+block statements</I>
+<A NAME="marker=248">
+ </A>
+ are a means of grouping two or more statements together so that they act syntactically like a single statement. There are two types of blocks in Verilog HDL:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=609">
+ </A>
+<I CLASS="Emphasis">
+sequential block</I>
+, also called <I CLASS="Emphasis">
+begin-end block</I>
+</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=614">
+ </A>
+<I CLASS="Emphasis">
+parallel block</I>
+, also call<A NAME="marker=52">
+ </A>
+ed <I CLASS="Emphasis">
+fork-join block</I>
+<A NAME="marker=50">
+ </A>
+</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=646">
+ </A>
+The sequential <A NAME="marker=249">
+ </A>
+block shall be delimited by the keywords <B CLASS="Keyword">
+begin</B>
+ and <B CLASS="Keyword">
+end</B>
+. The procedural statements in sequential block shall be executed sequentially in the given order.</P>
+<P CLASS="Body">
+<A NAME="pgfId=652">
+ </A>
+The parallel bl<A NAME="marker=140">
+ </A>
+ock shall be delimited by the keywords <B CLASS="Keyword">
+fork</B>
+ and <B CLASS="Keyword">
+join</B>
+. The procedural statements in parallel block shall be executed concurrently.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=749">
+ </A>
+<A NAME="46319">
+ </A>
+<A NAME="60444">
+ </A>
+<A NAME="marker=252">
+ </A>
+<A NAME="marker=253">
+ </A>
+<A NAME="marker=254">
+ </A>
+Sequential blocks</P>
+<P CLASS="Body">
+<A NAME="pgfId=750">
+ </A>
+A <I CLASS="Emphasis">
+sequential block</I>
+ shall have the following characteristics:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=751">
+ </A>
+statements shall be executed in sequence, one after another</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=752">
+ </A>
+delay values for each statement shall be treated relative to the simulation time of the execution of the previous statement</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=753">
+ </A>
+control shall pass out of the block after the last statement executes</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=754">
+ </A>
+The following is the formal <A NAME="marker=255">
+ </A>
+syntax for a <A NAME="marker=256">
+ </A>
+sequential block:</P>
+<P CLASS="Body">
+<A NAME="pgfId=755">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-39.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=756">
+ </A>
+Syntax&nbsp;9-13: Syntax for the sequential block</P>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=757">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=394">
+ </A>
+1. A sequential block enables the following two assignments to have a deterministic result:<A NAME="marker=258">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=630">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-40.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=758">
+ </A>
+The first assignment is performed and <CODE CLASS="code">
+areg</CODE>
+ is updated before control passes to the second assignment.</P>
+<P CLASS="Body">
+<A NAME="pgfId=654">
+ </A>
+2. Delay control can be used in a sequential block to separate the two assignments in time.</P>
+<P CLASS="Body">
+<A NAME="pgfId=673">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-41.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=759">
+ </A>
+3. The following example shows how the combination of the sequential block and delay control can be used to specify a <A NAME="marker=259">
+ </A>
+time-sequenced waveform.</P>
+<P CLASS="Body">
+<A NAME="pgfId=760">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-42.gif">
+</DIV>
+<P CLASS="SubSection">
+<A NAME="pgfId=761">
+ </A>
+<A NAME="47887">
+ </A>
+<A NAME="53916">
+ </A>
+Parallel blocks</P>
+<P CLASS="Body">
+<A NAME="pgfId=763">
+ </A>
+A <I CLASS="Emphasis">
+parallel block</I>
+ shall have the following characteristics:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=764">
+ </A>
+statements shall execute concurrently</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=765">
+ </A>
+delay values for each statement shall be considered relative to the simulation time of entering the block</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=766">
+ </A>
+delay control can be used to provide time-ordering for assignments</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=767">
+ </A>
+control shall pass out of the block when the last time-ordered statement executes</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=768">
+ </A>
+<A HREF="ch09.8.htm#74596" CLASS="XRef">
+See : Syntax for the parallel block</A>
+ gives the formal <A NAME="marker=266">
+ </A>
+syntax for a <A NAME="marker=267">
+ </A>
+parallel block.</P>
+<P CLASS="Body">
+<A NAME="pgfId=769">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-43.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=770">
+ </A>
+Syntax&nbsp;9-14<A NAME="74596">
+ </A>
+: Syntax for the parallel block</P>
+<P CLASS="Body">
+<A NAME="pgfId=674">
+ </A>
+The <A NAME="marker=147">
+ </A>
+timing controls in a fork-join block do not have to be ordered sequentially in time. </P>
+</DIV>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=771">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=392">
+ </A>
+The following example codes the waveform description shown above by using a parallel block instead of a sequential block. The waveform produced on the register is exactly the same for both implementations.</P>
+<P CLASS="Body">
+<A NAME="pgfId=772">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-44.gif">
+</DIV>
+<P CLASS="SubSection">
+<A NAME="pgfId=774">
+ </A>
+<A NAME="marker=271">
+ </A>
+<A NAME="marker=272">
+ </A>
+Block names</P>
+<P CLASS="Body">
+<A NAME="pgfId=775">
+ </A>
+Both sequential and parallel blocks can be named by adding<B CLASS="Keyword">
+: </B>
+name_of_bloc<B CLASS="Keyword">
+k</B>
+ after the keywords <B CLASS="Keyword">
+begin</B>
+ or <B CLASS="Keyword">
+fork</B>
+. The naming of blocks serves several purposes:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=776">
+ </A>
+It allows local registers to be declared for the block.</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=777">
+ </A>
+It allows the block to be referenced in statements such as the disable statement (<A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/09/ch11.htm#74699" CLASS="XRef">
+</A>
+).</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=778">
+ </A>
+<EM CLASS="--">
+All registers shall be static--that is, a unique location exists for all registers and leaving or entering blocks shall not affect the values stored in them.</EM>
+ </P>
+<P CLASS="Body">
+<A NAME="pgfId=779">
+ </A>
+<EM CLASS="-">
+The block names give a means of uniquely identifying all registers at any simulation time. </EM>
+<A NAME="marker=275">
+ </A>
+<A NAME="marker=276">
+ </A>
+</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=781">
+ </A>
+<A NAME="marker=277">
+ </A>
+Start and finish times</P>
+<P CLASS="Body">
+<A NAME="pgfId=782">
+ </A>
+Both sequential and procedural blocks have the notion of a start and finish time. For <A NAME="marker=278">
+ </A>
+<A NAME="marker=279">
+ </A>
+sequential blocks, the <A NAME="marker=280">
+ </A>
+start time is when the first statement is executed, and the <A NAME="marker=281">
+ </A>
+finish time is when the last statement has been executed. For <A NAME="marker=282">
+ </A>
+<A NAME="marker=283">
+ </A>
+parallel blocks, the <A NAME="marker=284">
+ </A>
+start time is the same for all the statements, and the <A NAME="marker=285">
+ </A>
+finish time is when the last time-ordered statement has been executed. </P>
+<P CLASS="Body">
+<A NAME="pgfId=659">
+ </A>
+Sequential and parallel blocks can be embedded within each other allowing complex control structures to be expressed easily and with a high degree of structure. When <A NAME="marker=286">
+ </A>
+blocks are embedded within each other, the timing of when a block starts and finishes is important. Execution shall not continue to the statement following a block until the finish time for the block has been reached--that is, until the block has completely finished executing.</P>
+</DIV>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=521">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=525">
+ </A>
+1. The following example shows the statements from previous example written in the reverse order and still producing the same waveform.</P>
+<P CLASS="Body">
+<A NAME="pgfId=783">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-45.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=784">
+ </A>
+2. When an assignment is to be made after two separate events have occurred, known as the <I CLASS="Emphasis">
+joining of events</I>
+, a <CODE CLASS="code">
+fork-join</CODE>
+ block can be useful.</P>
+<P CLASS="Body">
+<A NAME="pgfId=785">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-46.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=786">
+ </A>
+The two events can occur in any order (or even at the same simulation time) and the <CODE CLASS="code">
+fork-join</CODE>
+ block will complete and the assignment will be made. In contrast to this, if the <CODE CLASS="code">
+fork-join</CODE>
+ block was a <CODE CLASS="code">
+begin-end</CODE>
+ block and the <CODE CLASS="code">
+Bevent</CODE>
+ occurred before the <CODE CLASS="code">
+Aevent</CODE>
+, then the block would be waiting for the next <CODE CLASS="code">
+Bevent</CODE>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=787">
+ </A>
+3. This example shows two sequential blocks, each of which will execute when its controlling event occurs. Because the event controls are within a <CODE CLASS="code">
+fork-join</CODE>
+ block, they execute in parallel and the sequential blocks can therefore also execute in parallel. <A NAME="marker=289">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=788">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch09-47.gif">
+</DIV>
+</DIV>
+<HR><P><A HREF="ch09.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch09.7.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch09.9.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

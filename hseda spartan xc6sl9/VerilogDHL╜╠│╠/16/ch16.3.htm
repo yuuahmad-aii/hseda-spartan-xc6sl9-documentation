@@ -1,0 +1,299 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch16.css">
+<TITLE> 16.3	`define and `undef</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch16.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch16.2.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch16.4.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=173">
+ </A>
+16.3	<A NAME="99540">
+ </A>
+<A NAME="marker=21">
+ </A>
+`define and `undef<A NAME="marker=22">
+ </A>
+</H1>
+<P CLASS="Body">
+<A NAME="pgfId=180">
+ </A>
+<EM CLASS="-">
+A text macro substitution facility has been provided so that meaningful names can be used to represent commonly used pieces of text. For example, in the situation where a constant number is repetitively used throughout a description, a text macro would be useful in that only one place in the source description would need to be altered if the value of the constant needed to be changed.</EM>
+</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=164">
+ </A>
+`de<EM CLASS="-">
+</EM>
+fine<A NAME="marker=85">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=149">
+ </A>
+The directive <B CLASS="Keyword">
+`define</B>
+ creates a <A NAME="marker=10">
+ </A>
+macro for <A NAME="marker=11">
+ </A>
+text substitution. This directive can be used both inside and outside module definitions. After a text macro is defined, it can be used in the source description by using the (`) character, followed by the macro name. The compiler shall substitute the text of the macro for the string <CODE CLASS="code">
+`macro_name</CODE>
+. All compiler directives shall be considered pre-defined macro names; it shall be illegal to re-define a compiler directive as a macro name.</P>
+<P CLASS="Body">
+<A NAME="pgfId=181">
+ </A>
+<EM CLASS="-">
+A text macro can be defined with arguments. This allows the macro to be customized for each use individually.</EM>
+<A NAME="marker=89">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=182">
+ </A>
+<EM CLASS="-">
+The syntax for text macro definitions is as follows: </EM>
+<A NAME="marker=90">
+ </A>
+<A NAME="marker=92">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=190">
+ </A>
+<EM CLASS="-">
+</EM>
+</P>
+<DIV>
+<IMG SRC="ch16-1.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=191">
+ </A>
+Syntax&nbsp;16-1<A NAME="Syntax for text macro definition">
+ </A>
+: Syntax for text macro definition</P>
+<P CLASS="Body">
+<A NAME="pgfId=192">
+ </A>
+<EM CLASS="-">
+The macro text can be any arbitrary text specified on the same line as the text macro name. If more than one line is necessary to specify the text, the newline shall be preceded by a backslash (\). The first newline not preceded by a backslash shall end the macro text. The newline preceded by a backslash shall be replaced in the expanded macro with a newline (but without the preceding backslash character).</EM>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=193">
+ </A>
+When formal arguments are used to define a text macro, the scope of the formal argument shall extend up to the end of the macro text. A formal argument can be used in the macro text in the same manner as an identifier.</P>
+<P CLASS="Body">
+<A NAME="pgfId=194">
+ </A>
+<EM CLASS="-">
+If a one-line comment (that is, a comment specified with the characters //) is included in the text, then the comment shall not become part of the text substituted. The macro text can be blank, in which case the text macro is defined to be empty and no text is substituted when the macro is used. </EM>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=195">
+ </A>
+<EM CLASS="-">
+The syntax for using a text macro is as follows:</EM>
+<A NAME="marker=99">
+ </A>
+<A NAME="marker=106">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=199">
+ </A>
+<EM CLASS="-">
+</EM>
+</P>
+<DIV>
+<IMG SRC="ch16-2.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=201">
+ </A>
+Syntax&nbsp;16-2<EM CLASS="-">
+: Syntax for text macro usage</EM>
+<A NAME="Syntax for text macro usage">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=202">
+ </A>
+<EM CLASS="-">
+For an argument-less macro, the text shall be substituted &quot;as is&quot; for every occurrence of `text_macro. However, a text macro with one or more arguments shall be expanded by substituting each formal argument with the expression used as the actual argument in the macro usage.</EM>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=176">
+ </A>
+<EM CLASS="-">
+Once a text macro name has been defined, it can be used anywhere in a source description; that is, there are no scope restrictions. </EM>
+Text macros can be defined and used interactively<EM CLASS="-">
+.</EM>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=217">
+ </A>
+<EM CLASS="-">
+The text specified for macro text shall not be split across the following lexical tokens:</EM>
+</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=222">
+ </A>
+<EM CLASS="-">
+comments</EM>
+</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=223">
+ </A>
+<EM CLASS="-">
+numbers</EM>
+</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=228">
+ </A>
+<EM CLASS="-">
+strings&nbsp;</EM>
+</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=245">
+ </A>
+<EM CLASS="-">
+identifiers</EM>
+</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=252">
+ </A>
+<EM CLASS="-">
+keywords</EM>
+</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=253">
+ </A>
+<EM CLASS="-">
+operators</EM>
+</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=255">
+ </A>
+Examples: <EM CLASS="-">
+</EM>
+</P>
+<DIV>
+<IMG SRC="ch16-3.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=257">
+ </A>
+<EM CLASS="-">
+The following is illegal syntax because it is split across a string:</EM>
+</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=258"> </A>
+<B CLASS="Keyword">`define</B>
+&nbsp;first_half&nbsp;&quot;start&nbsp;of&nbsp;string<B CLASS="Keyword">$display</B>
+(`first_half&nbsp;end&nbsp;of&nbsp;string&quot;);</PRE>
+<P CLASS="Note">
+<A NAME="pgfId=261">
+ </A>
+<EM CLASS="-">
+NOTE</EM>
+S</P>
+<OL>
+<P CLASS="NumberedNote1">
+<A NAME="pgfId=268">
+ </A>
+1)	--<EM CLASS="-">
+Each actual argument is substituted for the corresponding formal argument literally. Therefore, when an expression is used as an actual argument, the expression will be substituted in its entirety. This may cause an expression to be evaluated more than once if the formal argument was used more than once in the macro text. For example,</EM>
+</P>
+</OL>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=271"> </A>
+<B CLASS="Keyword">	`define</B>
+ max(a,b)	((a) &gt; (b) ? (a) : (b))</PRE>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=288"> </A>
+	n = <B CLASS="Keyword">`</B>
+max(p+q, r+s) ;</PRE>
+<P CLASS="Note">
+<A NAME="pgfId=293">
+ </A>
+	will expand as </P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=297"> </A>
+	n = ((p+q) &gt; (r+s)) ? (p+q) : (r+s) ;</PRE>
+<P CLASS="Note">
+<A NAME="pgfId=298">
+ </A>
+<EM CLASS="-">
+	</EM>
+Here, the larger of the two expressions p+q and r+s will be evaluated twice. </P>
+<OL>
+<P CLASS="NumberedNote2">
+<A NAME="pgfId=301">
+ </A>
+2)	--The word <A NAME="marker=121">
+ </A>
+define is known as a compiler directive keyword, and is not part of the normal set of keywords. Thus, normal identifiers in a Verilog HDL source description can be the same as compiler directive keywords (though this is not recommended). Be aware of the following pitfalls:</P>
+</OL>
+<P CLASS="Note">
+<A NAME="pgfId=305">
+ </A>
+Text macro names may not be the same as compiler directive keywords.</P>
+<P CLASS="Note">
+<A NAME="pgfId=306">
+ </A>
+<EM CLASS="-">
+Text macro names can re-use names being used as ordinary identifiers. For example, </EM>
+<CODE CLASS="code">
+signal_name</CODE>
+<EM CLASS="-">
+ and </EM>
+<CODE CLASS="code">
+`signal_name</CODE>
+<EM CLASS="-">
+ are different. </EM>
+</P>
+<P CLASS="Note">
+<A NAME="pgfId=307">
+ </A>
+<EM CLASS="-">
+Redefinition of text macros is allowed; the latest definition of a particular text macro read by the compiler prevails when the macro name is encountered in the source text. </EM>
+<A NAME="marker=124">
+ </A>
+<A NAME="marker=125">
+ </A>
+<A NAME="marker=130">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=163">
+ </A>
+</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=135">
+ </A>
+`undef</P>
+<P CLASS="Body">
+<A NAME="pgfId=134">
+ </A>
+The directive <B CLASS="Keyword">
+`undef</B>
+ shall undefine a previously defined text macro. An attempt to undefine a text macro that was not previously defined using a <B CLASS="Keyword">
+`define</B>
+ compiler directive can result in a warning. The syntax for <B CLASS="Keyword">
+`undef</B>
+ compiler directive is as follows:</P>
+<PRE CLASS="BNFDef"><A NAME="pgfId=304"> </A>
+<B CLASS="Keyword">	`undef</B>
+ text_macro_name</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=143">
+ </A>
+An undefined text macro has no value. .<A NAME="marker=6">
+ </A>
+ <A NAME="marker=25">
+ </A>
+</P>
+<HR><P><A HREF="ch16.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch16.2.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch16.4.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

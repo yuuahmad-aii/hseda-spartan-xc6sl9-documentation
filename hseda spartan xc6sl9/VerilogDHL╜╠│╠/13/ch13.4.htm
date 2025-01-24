@@ -1,0 +1,958 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch13.css">
+<TITLE> 13.4	Assigning delays to module paths</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch13.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch13.3.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch13.5.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=512">
+ </A>
+13.4	<A NAME="27453">
+ </A>
+<A NAME="marker=219">
+ </A>
+Assigning delays to module paths</H1>
+<P CLASS="Body">
+<A NAME="pgfId=514">
+ </A>
+The delays that occur at the module outputs where paths terminate shall be specified by assigning delay values to the module path descriptions. The syntax for specifying delay values is shown below:</P>
+<P CLASS="Body">
+<A NAME="pgfId=706">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch13-22.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=711">
+ </A>
+Syntax&nbsp;13-7<A NAME="99423">
+ </A>
+: Syntax for path delay value</P>
+<P CLASS="Body">
+<A NAME="pgfId=478">
+ </A>
+In module path delay assignments, a module path description (<A HREF="ch13.3.htm#45352" CLASS="XRef">
+See Module path declarations</A>
+) is specified on the left-hand side, and one or more delay values are specified on the right-hand side. The delay values may be optionally enclosed in a pair of parentheses. There may be one, two, three, six, or twelve delay values assigned to a module path as described in <A HREF="ch13.4.htm#98773" CLASS="XRef">
+See Specifying transition delays on module paths</A>
+. The delay values shall be constant expressions containing literals or specparams, and may be a delay expression of the form <CODE CLASS="code">
+min:typ:max</CODE>
+. </P>
+<DIV>
+<H3 CLASS="Example">
+<A NAME="pgfId=425">
+ </A>
+</H3>
+<P CLASS="Body">
+<A NAME="pgfId=521">
+ </A>
+</P>
+<DIV>
+<MAP NAME="ch13-23">
+</MAP>
+<IMG SRC="ch13-23.gif" USEMAP="#ch13-23">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=523">
+ </A>
+In the example above, the specify parameters declared following the <B CLASS="Keyword">
+specparam</B>
+ keyword specify values for the module path delays. The module path assignments assign those module path delays to the module paths.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=524">
+ </A>
+<A NAME="98773">
+ </A>
+<A NAME="marker=222">
+ </A>
+Specifying transition delays on module paths</P>
+<P CLASS="Body">
+<A NAME="pgfId=515">
+ </A>
+Each path delay expression may be a single value--representing the typical delay--or a colon-separated list of three values--representing a <A NAME="marker=217">
+ </A>
+minimum, typical, and maximum delay, in that order. If path delay expression results in a negative value, it shall be treated as zero. <A HREF="ch13.4.htm#75554" CLASS="XRef">
+See : Associating path delay expressions with transitions</A>
+ describes how different path delay values shall be associated with various transitions. The path delay expression names refer to the names used in <A HREF="ch13.4.htm#99423" CLASS="XRef">
+See : Syntax for path delay value</A>
+. </P>
+<P CLASS="Body">
+<A NAME="pgfId=516">
+ </A>
+</P>
+<TABLE BORDER="1">
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=528">
+ </A>
+Table&nbsp;13-3<A NAME="75554">
+ </A>
+: Associating path delay expressions with transitions</P>
+</CAPTION>
+<TR>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=695">
+ </A>
+</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="5">
+<P CLASS="CellHeading">
+<A NAME="pgfId=696">
+ </A>
+Number of path delay expressions specified</P>
+</TH>
+</TR>
+<TR>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=701">
+ </A>
+transitions</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=702">
+ </A>
+1</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=703">
+ </A>
+2</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=704">
+ </A>
+3</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=705">
+ </A>
+6</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=712">
+ </A>
+12</P>
+</TH>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=713">
+ </A>
+0 -&gt; 1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=714">
+ </A>
+t</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=715">
+ </A>
+trise</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=716">
+ </A>
+trise</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=717">
+ </A>
+t01</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=718">
+ </A>
+t01</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=719">
+ </A>
+1 -&gt; 0</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=720">
+ </A>
+t</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=721">
+ </A>
+tfall</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=722">
+ </A>
+tfall</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=723">
+ </A>
+t10</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=724">
+ </A>
+t10</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=725">
+ </A>
+0 -&gt; z</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=726">
+ </A>
+t</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=727">
+ </A>
+trise</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=728">
+ </A>
+tz</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=729">
+ </A>
+t0z</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=730">
+ </A>
+t0z</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=744">
+ </A>
+z -&gt; 1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=745">
+ </A>
+t</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=746">
+ </A>
+trise</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=747">
+ </A>
+trise</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=748">
+ </A>
+tz1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=749">
+ </A>
+tz1</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=738">
+ </A>
+1 -&gt; z</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=739">
+ </A>
+t</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=740">
+ </A>
+tfall</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=741">
+ </A>
+tz</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=742">
+ </A>
+t1z</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=743">
+ </A>
+t1z</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=731">
+ </A>
+z -&gt; 0</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=732">
+ </A>
+t</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=733">
+ </A>
+tfall</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=735">
+ </A>
+tfall</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=736">
+ </A>
+tz0</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=737">
+ </A>
+tz0</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=750">
+ </A>
+0 -&gt; x</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=751">
+ </A>
+*</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=752">
+ </A>
+*</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=753">
+ </A>
+*</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=754">
+ </A>
+*</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=755">
+ </A>
+t0x</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=768">
+ </A>
+x -&gt; 1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=769">
+ </A>
+*</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=770">
+ </A>
+*</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=771">
+ </A>
+*</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=772">
+ </A>
+*</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=773">
+ </A>
+tx1</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=762">
+ </A>
+1 -&gt; x</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=763">
+ </A>
+*</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=764">
+ </A>
+*</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=765">
+ </A>
+*</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=766">
+ </A>
+*</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=767">
+ </A>
+t1x</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=756">
+ </A>
+x -&gt; 0</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=757">
+ </A>
+*</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=758">
+ </A>
+*</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=759">
+ </A>
+*</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=760">
+ </A>
+*</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=761">
+ </A>
+tx0</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=780">
+ </A>
+x -&gt; z</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=781">
+ </A>
+*</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=782">
+ </A>
+*</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=783">
+ </A>
+*</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=784">
+ </A>
+*</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=785">
+ </A>
+txz</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=774">
+ </A>
+z -&gt; x</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=775">
+ </A>
+*</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=776">
+ </A>
+*</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=777">
+ </A>
+*</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=778">
+ </A>
+*</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=779">
+ </A>
+tzx</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=786">
+ </A>
+</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="5">
+<P CLASS="CellBody">
+<A NAME="pgfId=791">
+ </A>
+* See <A HREF="ch13.4.htm#57065" CLASS="XRef">
+See Specifying x transition delays</A>
+</P>
+</TD>
+</TR>
+</TABLE>
+</DIV>
+<DIV>
+<H3 CLASS="Example">
+<A NAME="pgfId=527">
+ </A>
+</H3>
+<P CLASS="Body">
+<A NAME="pgfId=644">
+ </A>
+<A NAME="marker=197">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch13-24.gif">
+</DIV>
+<P CLASS="SubSection">
+<A NAME="pgfId=542">
+ </A>
+<A NAME="57065">
+ </A>
+<A NAME="marker=226">
+ </A>
+Specifying x transition delays</P>
+<P CLASS="Body">
+<A NAME="pgfId=544">
+ </A>
+If the x transition delays are not explicitly specified, the calculation of delay values for x transitions is based on the following two pessimistic rules:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=549">
+ </A>
+Transitions from a known state to <CODE CLASS="code">
+x</CODE>
+ shall occur as quickly as possible--that is, the shortest possible delay shall be used for any transition from <CODE CLASS="code">
+x</CODE>
+.</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=436">
+ </A>
+Transitions from <CODE CLASS="code">
+x</CODE>
+ to a known state shall take as long as possible--that is, the longest possible delay shall be used for any transition to <CODE CLASS="code">
+x</CODE>
+.</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=545">
+ </A>
+<A HREF="ch13.4.htm#21396" CLASS="XRef">
+See : Calculating delays for x transitions</A>
+<A NAME="marker=230">
+ </A>
+ <A NAME="marker=231">
+ </A>
+presents the general algorithm for calculating delay values for x transitions, along with specific examples. The following two groups of x transitions are represented in the table:</P>
+<OL>
+<P CLASS="NumberedLista">
+<A NAME="pgfId=546">
+ </A>
+a)	transition from a known state <CODE CLASS="code">
+s</CODE>
+ to <CODE CLASS="code">
+x</CODE>
+:  <CODE CLASS="code">
+s</CODE>
+ ' <CODE CLASS="code">
+x</CODE>
+</P>
+<P CLASS="NumberedListb">
+<A NAME="pgfId=577">
+ </A>
+b)	transition from <CODE CLASS="code">
+x</CODE>
+ to a known state <CODE CLASS="code">
+s</CODE>
+:  <CODE CLASS="code">
+x</CODE>
+ ' <CODE CLASS="code">
+s</CODE>
+</P>
+</OL>
+<P CLASS="Body">
+<A NAME="pgfId=432">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=483">
+ </A>
+ </P>
+<TABLE BORDER="1">
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=306">
+ </A>
+Table&nbsp;13-4<A NAME="21396">
+ </A>
+: Calculating delays for x transitions<A NAME="marker=237">
+ </A>
+</P>
+</CAPTION>
+<TR>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=448">
+ </A>
+X transition</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=449">
+ </A>
+Delay Value</P>
+</TH>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="2">
+<P CLASS="CellHeading">
+<A NAME="pgfId=455">
+ </A>
+general algorithm</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=465">
+ </A>
+s ' x</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=487">
+ </A>
+minimum ( s ' other known signals )</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=488">
+ </A>
+x ' s</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=489">
+ </A>
+maximum ( other known signals ' s )</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="2">
+<P CLASS="CellHeading">
+<A NAME="pgfId=490">
+ </A>
+specific transitions</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=582">
+ </A>
+0 ' x</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=493">
+ </A>
+minimum ( 0 ' z delay, 0 ' 1 delay )</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=492">
+ </A>
+1 ' x</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=497">
+ </A>
+minimum ( 1 ' z delay, 1 ' 0 delay )</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=498">
+ </A>
+z ' x</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=499">
+ </A>
+minimum ( z ' 1 delay, z ' 0 delay )</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=500">
+ </A>
+x ' 0</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=501">
+ </A>
+maximum ( z ' 0 delay, 1 ' 0 delay )</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=503">
+ </A>
+x ' 1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=511">
+ </A>
+maximum ( z ' 1 delay, 0 ' 1 delay )</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=513">
+ </A>
+x ' z</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=525">
+ </A>
+maximum ( 1 ' z delay, 0 ' z delay )</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="2">
+<P CLASS="CellHeading">
+<A NAME="pgfId=548">
+ </A>
+usage:     (C =&gt; Q)  =  (5, 12, 17, 10, 6, 22) ;</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=543">
+ </A>
+0 ' x</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=552">
+ </A>
+minimum ( 17, 5 ) = 5</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=551">
+ </A>
+1 ' x</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=554">
+ </A>
+minimum ( 6, 12 ) = 6</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=553">
+ </A>
+z ' x</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=569">
+ </A>
+minimum ( 10, 22 ) = 10</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=555">
+ </A>
+x ' 0</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=572">
+ </A>
+maximum ( 22, 12 ) = 22</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=570">
+ </A>
+x ' 1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=574">
+ </A>
+maximum ( 10, 5 ) = 10</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=573">
+ </A>
+x ' z</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=576">
+ </A>
+maximum ( 6, 17 ) = 17</P>
+</TD>
+</TR>
+</TABLE>
+</DIV>
+<HR><P><A HREF="ch13.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch13.3.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch13.5.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

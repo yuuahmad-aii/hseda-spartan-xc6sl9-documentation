@@ -1,0 +1,1480 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch14.css">
+<TITLE> 14.1	Display system tasks</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch14.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch14.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch14.2.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=1200">
+ </A>
+14.1	<A NAME="71682">
+ </A>
+Display system tasks</H1>
+<P CLASS="Body">
+<A NAME="pgfId=1225">
+ </A>
+The display group of system tasks are divided into three categories: the display and write tasks, strobed monitoring tasks, and continuous monitoring tasks.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=844">
+ </A>
+<A NAME="18128">
+ </A>
+<A NAME="marker=26">
+ </A>
+<A NAME="marker=27">
+ </A>
+The display and write tasks </P>
+<DIV>
+<H2 CLASS="Syntax">
+<A NAME="pgfId=846">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=1254">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch14-2.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=849">
+ </A>
+Syntax&nbsp;14-1: Syntax for $display and $write system asks</P>
+<P CLASS="Body">
+<A NAME="pgfId=768">
+ </A>
+These are the main system task routines for displaying information. The two sets of tasks are identical except that <A NAME="marker=34">
+ </A>
+<B CLASS="Keyword">
+$display</B>
+ automatically adds a newline character to the end of its output, whereas <A NAME="marker=35">
+ </A>
+the <B CLASS="Keyword">
+$write</B>
+ task does not. </P>
+<P CLASS="Body">
+<A NAME="pgfId=835">
+ </A>
+The <B CLASS="Keyword">
+$display</B>
+ and <B CLASS="Keyword">
+$write</B>
+ tasks display their arguments in the same order they appear in the argument list. Each argument can be a quoted string, an expression that returns a value, or a null argument.</P>
+<P CLASS="Body">
+<A NAME="pgfId=851">
+ </A>
+The contents of string arguments are output literally except when certain <A NAME="marker=36">
+ </A>
+escape sequences are inserted to display special characters or specify the display format for a subsequent expression.</P>
+<P CLASS="Body">
+<A NAME="pgfId=852">
+ </A>
+Escape sequences are inserted into a string in three ways: </P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=853">
+ </A>
+The special character <A NAME="marker=37">
+ </A>
+\ indicates that the character to follow is a literal or non-printable character (see <A HREF="ch14.1.htm#11706" CLASS="XRef">
+See : Escape sequences for printing special characters</A>
+). </LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=854">
+ </A>
+The special character <A NAME="marker=41">
+ </A>
+<CODE CLASS="code">
+%</CODE>
+ indicates that the next character should be interpreted as a format specification that establishes the display format for a subsequent expression argument (<A HREF="ch14.1.htm#30946" CLASS="XRef">
+See : Escape sequences for format specifications</A>
+). For each <CODE CLASS="code">
+%</CODE>
+ character that appears in a string, a corresponding expression argument must be supplied after the string<A NAME="marker=45">
+ </A>
+.</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=855">
+ </A>
+The special character string <CODE CLASS="code">
+%%</CODE>
+ indicates the display of the percent sign character <CODE CLASS="code">
+%</CODE>
+ (see <A HREF="ch14.1.htm#11706" CLASS="XRef">
+See : Escape sequences for printing special characters</A>
+). </LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=856">
+ </A>
+Any <A NAME="marker=49">
+ </A>
+null argument produces a single space character in the display. (A null argument is characterized by two adjacent commas<A NAME="marker=50">
+ </A>
+ in the argument list.)</P>
+<P CLASS="Body">
+<A NAME="pgfId=857">
+ </A>
+The <B CLASS="Keyword">
+$display</B>
+ task, when invoked without arguments, simply prints a newline character. A <B CLASS="Keyword">
+$write</B>
+ task supplied without parameters prints nothing at all.</P>
+<P CLASS="SubSubSect">
+<A NAME="pgfId=859">
+ </A>
+<A NAME="marker=51">
+ </A>
+<A NAME="marker=52">
+ </A>
+E<A NAME="marker=53">
+ </A>
+scape sequences for special characters</P>
+<P CLASS="Body">
+<A NAME="pgfId=861">
+ </A>
+The following escape sequences, when included in a string argument, cause special characters to be displayed:</P>
+<TABLE>
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=845">
+ </A>
+Table&nbsp;14-1<A NAME="11706">
+ </A>
+:   Escape sequences for printing special characters</P>
+</CAPTION>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1274">
+ </A>
+\n</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=804">
+ </A>
+is the <A NAME="marker=400">
+ </A>
+newline character</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1276">
+ </A>
+\t</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1228">
+ </A>
+is the tab character</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1278">
+ </A>
+\\</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1229">
+ </A>
+is the \ character</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1280">
+ </A>
+\&quot;</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1230">
+ </A>
+is the &quot; character</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1282">
+ </A>
+\o</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1231">
+ </A>
+is a character specified in 1-3 octal digits </P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1260">
+ </A>
+%%</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1271">
+ </A>
+is the % character</P>
+</TD>
+</TR>
+</TABLE>
+</DIV>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=865">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=864">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch14-3.gif">
+</DIV>
+<P CLASS="SubSubSect">
+<A NAME="pgfId=868">
+ </A>
+<A NAME="marker=61">
+ </A>
+<A NAME="marker=62">
+ </A>
+F<A NAME="marker=63">
+ </A>
+ormat specifications </P>
+<P CLASS="Body">
+<A NAME="pgfId=869">
+ </A>
+<A HREF="ch14.1.htm#30946" CLASS="XRef">
+See : Escape sequences for format specifications</A>
+ shows the escape sequences used for format specifications. Each escape sequence, when included in a string argument, specifies the display format for a subsequent expression. For each <CODE CLASS="code">
+%</CODE>
+ character (except <CODE CLASS="code">
+%m</CODE>
+) that appears in a string, a corresponding expression must follow the string in the argument list. The value of the expression replaces the format specification when the string is displayed.</P>
+<P CLASS="Body">
+<A NAME="pgfId=690">
+ </A>
+Any expression argument that has no corresponding format specification is displayed using the default decimal format in <B CLASS="Keyword">
+$display</B>
+ and <B CLASS="Keyword">
+$write</B>
+, binary format in <B CLASS="Keyword">
+$displayb</B>
+ and <B CLASS="Keyword">
+$writeb</B>
+, octal format in <B CLASS="Keyword">
+$displayo</B>
+ and <B CLASS="Keyword">
+$writeo</B>
+, and hexadecimal format in <B CLASS="Keyword">
+$displayh</B>
+ and <B CLASS="Keyword">
+$writeh</B>
+. </P>
+<TABLE>
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=693">
+ </A>
+Table&nbsp;14-2<A NAME="30946">
+ </A>
+:   Escape sequences for format specifications</P>
+</CAPTION>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=822">
+ </A>
+%<A NAME="marker=68">
+ </A>
+<A NAME="marker=69">
+ </A>
+h or %H</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=823">
+ </A>
+display in hexadecimal format</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=824">
+ </A>
+%<A NAME="marker=70">
+ </A>
+<A NAME="marker=401">
+ </A>
+d or %D</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=825">
+ </A>
+display in decimal format</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=826">
+ </A>
+%<A NAME="marker=402">
+ </A>
+<A NAME="marker=403">
+ </A>
+o or %O</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=862">
+ </A>
+display in octal format</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=863">
+ </A>
+%<A NAME="marker=404">
+ </A>
+<A NAME="marker=405">
+ </A>
+b or %B</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=867">
+ </A>
+display in binary format</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=870">
+ </A>
+%<A NAME="marker=406">
+ </A>
+<A NAME="marker=407">
+ </A>
+c or %C</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=871">
+ </A>
+display in ASCII character format</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=872">
+ </A>
+%<A NAME="marker=408">
+ </A>
+<A NAME="marker=409">
+ </A>
+v or %V</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=873">
+ </A>
+display net signal strength</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1232">
+ </A>
+%<A NAME="marker=410">
+ </A>
+<A NAME="marker=411">
+ </A>
+m or %M</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1244">
+ </A>
+display <A NAME="marker=412">
+ </A>
+hierarchical name</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1245">
+ </A>
+%<A NAME="marker=413">
+ </A>
+<A NAME="marker=414">
+ </A>
+s or %S</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1246">
+ </A>
+display as <A NAME="marker=415">
+ </A>
+a string</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1247">
+ </A>
+%<A NAME="marker=416">
+ </A>
+<A NAME="marker=417">
+ </A>
+t or %T</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1248">
+ </A>
+display in current time format</P>
+</TD>
+</TR>
+</TABLE>
+<P CLASS="Body">
+<A NAME="pgfId=706">
+ </A>
+<A NAME="marker=56">
+ </A>
+The format specifications in <A HREF="ch14.1.htm#22396" CLASS="XRef">
+See : Format specifications for real numbers</A>
+ are used with real numbers and have the full formatting capabilities available in the C language. For example, the format specification <CODE CLASS="code">
+%10.3g</CODE>
+ specifies a minimum field width of 10 with 3 fractional digits. </P>
+<TABLE>
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=803">
+ </A>
+Table&nbsp;14-3:   <A NAME="22396">
+ </A>
+Format specifications for real numbers</P>
+</CAPTION>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=875">
+ </A>
+%e or %E</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=876">
+ </A>
+display `real' in an exponential format</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=877">
+ </A>
+%f or %F</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=880">
+ </A>
+display `real' in a decimal format</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1249">
+ </A>
+%g or %G</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1250">
+ </A>
+display `real' in exponential or decimal format, whichever format results in the shorter printed output</P>
+</TD>
+</TR>
+</TABLE>
+<P CLASS="Body">
+<A NAME="pgfId=1251">
+ </A>
+The net signal strength, hierarchical name, and string format specifications are described in sections <A HREF="ch14.1.htm#91588" CLASS="XRef">
+See Strength format</A>
+ through <A HREF="ch14.1.htm#23449" CLASS="XRef">
+See String format</A>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=1252">
+ </A>
+The <A NAME="marker=82">
+ </A>
+<A NAME="marker=83">
+ </A>
+<A NAME="marker=84">
+ </A>
+<CODE CLASS="code">
+%t</CODE>
+ format specification works with the <B CLASS="Keyword">
+$timeformat</B>
+ system task to specify a uniform time unit, time precision, and format for reporting timing information from various modules that use different time units and precisions. The <B CLASS="Keyword">
+$timeformat</B>
+ task is described in <A HREF="ch14.3.htm#73834" CLASS="XRef">
+See $timeformat</A>
+.</P>
+</DIV>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=1307">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=874">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch14-4.gif">
+</DIV>
+<P CLASS="SubSubSect">
+<A NAME="pgfId=881">
+ </A>
+S<A NAME="marker=91">
+ </A>
+<A NAME="marker=92">
+ </A>
+<A NAME="marker=93">
+ </A>
+ize of displayed data</P>
+<P CLASS="Body">
+<A NAME="pgfId=883">
+ </A>
+For expression arguments, the values written to the output file (or terminal) are sized automatically. </P>
+<P CLASS="Body">
+<A NAME="pgfId=836">
+ </A>
+For example, the result of a 12-bit expression would be allocated three characters when displayed in hexadecimal format and four characters when displayed in decimal format, since the expression's largest possible value is FFF (hexadecimal) and 4095 (decimal).</P>
+<P CLASS="Body">
+<A NAME="pgfId=885">
+ </A>
+When displaying decimal values, leading zeros are suppressed and replaced by spaces. In other radices, leading zeros are always displayed.</P>
+<P CLASS="Body">
+<A NAME="pgfId=886">
+ </A>
+The automatic sizing of displayed data may be overridden by inserting a <A NAME="marker=94">
+ </A>
+zero between the <A NAME="marker=95">
+ </A>
+<CODE CLASS="code">
+%</CODE>
+ character and the letter that indicates the radix, as shown below:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=887"> </A>
+ <B CLASS="Keyword">$display</B>
+(&quot;d=%0h a=%0h&quot;, data, addr); </PRE>
+</DIV>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=889">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=890">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch14-5.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=892">
+ </A>
+In this example, the result of a 12-bit expression is displayed. The first call to <B CLASS="Keyword">
+$display</B>
+ uses the standard format specifier syntax and produces results requiring four and three columns for the decimal and hexadecimal radices, respectively. The second <B CLASS="Keyword">
+$display</B>
+ call uses the <CODE CLASS="code">
+%0</CODE>
+ form of the format specifier syntax and produces results requiring two columns and one column, respectively.<A NAME="marker=97">
+ </A>
+<A NAME="marker=98">
+ </A>
+<A NAME="marker=99">
+ </A>
+</P>
+<P CLASS="SubSubSect">
+<A NAME="pgfId=893">
+ </A>
+U<A NAME="marker=101">
+ </A>
+nknown and <A NAME="marker=102">
+ </A>
+high impedance values</P>
+<P CLASS="Body">
+<A NAME="pgfId=895">
+ </A>
+When the result of an expression contains an unknown or high impedance value, the following rules apply to displaying that value.</P>
+<P CLASS="Body">
+<A NAME="pgfId=896">
+ </A>
+In <A NAME="marker=103">
+ </A>
+<A NAME="marker=104">
+ </A>
+decimal (<CODE CLASS="code">
+%d</CODE>
+) format:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=897">
+ </A>
+If all bits are at the unknown value, a single lowercase `<A NAME="marker=105">
+ </A>
+x' character is displayed. </LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=898">
+ </A>
+If all bits are at the high impedance value, a single lowercase `<A NAME="marker=106">
+ </A>
+z' character is displayed. </LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=899">
+ </A>
+If some, but not all, bits are at the unknown value, the uppercase `<A NAME="marker=107">
+ </A>
+X' character is displayed. </LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=900">
+ </A>
+If some, but not all, bits are at the high impedance value, the uppercase `<A NAME="marker=108">
+ </A>
+Z' character is displayed.</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=901">
+ </A>
+<A NAME="marker=109">
+ </A>
+Decimal numerals always appear right-justified in a fixed-width field. </LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=837">
+ </A>
+In <A NAME="marker=111">
+ </A>
+<A NAME="marker=112">
+ </A>
+hexadecimal (<CODE CLASS="code">
+%h</CODE>
+) and octal (<CODE CLASS="code">
+%o</CODE>
+) formats:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=903">
+ </A>
+Each group of 4 bits is represented as a single hexadecimal digit; each group of 3 bits is represented as a single octal digit. </LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=904">
+ </A>
+If all bits in a group are at the unknown value, a lowercase `x' is displayed for that digit.</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=905">
+ </A>
+If all bits in a group are at a high impedance state, a lowercase `z' is printed for that digit. </LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=906">
+ </A>
+If some, but not all, bits in a group are unknown, an uppercase `X' is displayed for that digit.</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=907">
+ </A>
+If some, but not all, bits in a group are at a high impedance state, then an uppercase `Z' is displayed for that digit.</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=908">
+ </A>
+In <A NAME="marker=113">
+ </A>
+<A NAME="marker=114">
+ </A>
+binary (<CODE CLASS="code">
+%b</CODE>
+) format, each bit is printed separately using the characters 0, 1, x, and z.</P>
+</DIV>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=910">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=909">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch14-6.gif">
+</DIV>
+<P CLASS="SubSubSect">
+<A NAME="pgfId=912">
+ </A>
+<A NAME="91588">
+ </A>
+<A NAME="marker=120">
+ </A>
+S<A NAME="marker=121">
+ </A>
+trength format</P>
+<P CLASS="Body">
+<A NAME="pgfId=914">
+ </A>
+The <CODE CLASS="code">
+%v</CODE>
+ format specification is used to display the strength of scalar nets. For each <CODE CLASS="code">
+%v</CODE>
+ specification that appears in a string, a corresponding scalar reference must follow the string in the argument list.</P>
+<P CLASS="Body">
+<A NAME="pgfId=915">
+ </A>
+The strength of a scalar net is reported in a three-character format. The first two characters indicate the strength. The third character indicates the scalar's current logic value and may be any one of the following:</P>
+<TABLE>
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=878">
+ </A>
+Table&nbsp;14-4: Logic value component of strength format</P>
+</CAPTION>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=882">
+ </A>
+<A NAME="marker=432">
+ </A>
+<A NAME="marker=433">
+ </A>
+0</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=785">
+ </A>
+for a logic 0 value</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=913">
+ </A>
+<A NAME="marker=434">
+ </A>
+1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=894">
+ </A>
+for a logic 1 value</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1256">
+ </A>
+<A NAME="marker=435">
+ </A>
+X</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1255">
+ </A>
+for an unknown value</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1258">
+ </A>
+<A NAME="marker=436">
+ </A>
+Z</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1257">
+ </A>
+for a high impedance value</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1275">
+ </A>
+<A NAME="marker=419">
+ </A>
+L</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1259">
+ </A>
+for a logic 0 or high impedance value</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1281">
+ </A>
+<A NAME="marker=78">
+ </A>
+H</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1277">
+ </A>
+for a logic 1 or high impedance value</P>
+</TD>
+</TR>
+</TABLE>
+<P CLASS="Body">
+<A NAME="pgfId=918">
+ </A>
+The first two characters--the strength characters--are either a two-letter mnemonic or a pair of decimal digits. Usually, a mnemonic is used to indicate strength information; however, in less typical cases, a pair of decimal digits may be used to indicate a range of strength levels. <A HREF="ch14.1.htm#57185" CLASS="XRef">
+See : Mnemonics for strength levels</A>
+ shows the mnemonics used to represent the various strength levels.</P>
+<TABLE>
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=784">
+ </A>
+Table&nbsp;14-5<A NAME="57185">
+ </A>
+:   Mnemonics for strength levels</P>
+</CAPTION>
+<TR>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=1279">
+ </A>
+Mnemonic</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=1283">
+ </A>
+Strength Name</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=1284">
+ </A>
+Strength Level</P>
+</TH>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="Body">
+<A NAME="pgfId=1285">
+ </A>
+<A NAME="marker=438">
+ </A>
+<A NAME="marker=577">
+ </A>
+Su</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1286">
+ </A>
+Supply drive</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1287">
+ </A>
+7</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="Body">
+<A NAME="pgfId=1288">
+ </A>
+<A NAME="marker=578">
+ </A>
+<A NAME="marker=579">
+ </A>
+St</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1289">
+ </A>
+Strong drive	</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1290">
+ </A>
+6</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="Body">
+<A NAME="pgfId=1306">
+ </A>
+<A NAME="marker=580">
+ </A>
+<A NAME="marker=582">
+ </A>
+Pu</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1308">
+ </A>
+Pull drive</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1309">
+ </A>
+5</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="Body">
+<A NAME="pgfId=1310">
+ </A>
+<A NAME="marker=583">
+ </A>
+<A NAME="marker=584">
+ </A>
+La</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1311">
+ </A>
+Large capacitor</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1312">
+ </A>
+4</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="Body">
+<A NAME="pgfId=1313">
+ </A>
+<A NAME="marker=585">
+ </A>
+<A NAME="marker=586">
+ </A>
+We</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1314">
+ </A>
+Weak drive</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1315">
+ </A>
+3</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="Body">
+<A NAME="pgfId=1316">
+ </A>
+<A NAME="marker=587">
+ </A>
+<A NAME="marker=589">
+ </A>
+Me</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1317">
+ </A>
+Medium capacitor</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1318">
+ </A>
+2</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="Body">
+<A NAME="pgfId=1319">
+ </A>
+<A NAME="marker=590">
+ </A>
+<A NAME="marker=591">
+ </A>
+Sm</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1320">
+ </A>
+Small capacitor</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1321">
+ </A>
+1</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="Body">
+<A NAME="pgfId=1330">
+ </A>
+<A NAME="marker=592">
+ </A>
+<A NAME="marker=593">
+ </A>
+Hi</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1331">
+ </A>
+H<A NAME="marker=594">
+ </A>
+igh impedance</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1339">
+ </A>
+0</P>
+</TD>
+</TR>
+</TABLE>
+<P CLASS="Body">
+<A NAME="pgfId=921">
+ </A>
+Note that there are four <A NAME="marker=128">
+ </A>
+driving strengths, and three charge storage strengths. The driving strengths are associated with gate outputs and <A NAME="marker=129">
+ </A>
+continuous assignment outputs. The charge storage strengths are associated with the <B CLASS="Keyword">
+trireg</B>
+<A NAME="marker=130">
+ </A>
+ type net. (See <A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/14/ch07.htm#36723" CLASS="XRef">
+</A>
+ for strength modeling.)</P>
+<P CLASS="Body">
+<A NAME="pgfId=922">
+ </A>
+For the logic values 0 and 1, a mnemonic is used when there is no range of strengths in the signal. Otherwise, the logic value is preceded by two decimal digits, which indicate the maximum and minimum strength levels.</P>
+<P CLASS="Body">
+<A NAME="pgfId=923">
+ </A>
+For the unknown value, a mnemonic is used when both the 0 and 1 strength components are at the same strength level. Otherwise, the unknown value X is preceded by two decimal digits, which indicate the 0 and 1 strength levels respectively.</P>
+<P CLASS="Body">
+<A NAME="pgfId=924">
+ </A>
+The high impedance strength can not have a known logic value; the only logic value allowed for this level is Z.</P>
+<P CLASS="Body">
+<A NAME="pgfId=925">
+ </A>
+For the values L and H, a mnemonic is always used to indicate the strength level.</P>
+</DIV>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=927">
+ </A>
+</H2>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=911"> </A>
+<B CLASS="Keyword">always</B>
+ 	#15 <B CLASS="Keyword">$display</B>
+(<B CLASS="Keyword">$time</B>
+,,&quot;group=%b signals=%v %v %v&quot;,{s1,s2,s3}, s1, s2, s3);</PRE>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=926"> </A>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=928">
+ </A>
+The example below shows the output that might result from such a call, while <A HREF="ch14.1.htm#35222" CLASS="XRef">
+See : Explanation of strength formats</A>
+ explains the various strength formats that appear in the output.</P>
+<P CLASS="Body">
+<A NAME="pgfId=929">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch14-7.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=930">
+ </A>
+</P>
+<TABLE>
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=786">
+ </A>
+Table&nbsp;14-6<A NAME="35222">
+ </A>
+:   Explanation of strength formats</P>
+</CAPTION>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=920">
+ </A>
+St1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1355">
+ </A>
+means a strong driving 1 value</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1340">
+ </A>
+Pu0</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1322">
+ </A>
+means a pull driving 0 value</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1342">
+ </A>
+HiZ</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1341">
+ </A>
+means the high impedance state</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1344">
+ </A>
+Me0</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1343">
+ </A>
+means a 0 charge storage of medium capacitor strength</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1347">
+ </A>
+StX</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1345">
+ </A>
+means a strong driving unknown value</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1349">
+ </A>
+PuH</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1348">
+ </A>
+means a pull driving 1 or high impedance</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1351">
+ </A>
+65X</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1350">
+ </A>
+means an unknown value with a strong driving 0 component and a pull driving 1 component</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1353">
+ </A>
+520</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=1352">
+ </A>
+means an 0 value with a range of possible strength from pull driving to medium capacitor<A NAME="marker=441">
+ </A>
+<A NAME="marker=442">
+ </A>
+</P>
+</TD>
+</TR>
+</TABLE>
+<P CLASS="SubSubSect">
+<A NAME="pgfId=933">
+ </A>
+Hierarchical name format </P>
+<P CLASS="Body">
+<A NAME="pgfId=935">
+ </A>
+The <CODE CLASS="code">
+%m</CODE>
+ format specifier does not accept an argument. Instead, it causes the display task to print the hierarchical name of the module, task, function, or named block that invokes the system task containing the format specifier. This is useful when there are many instances of the module that calls the system task. One obvious application is timing check messages in a flip-flop or latch module; the <CODE CLASS="code">
+%m</CODE>
+ format specifier will pinpoint the module instance responsible for generating the timing check message.</P>
+<P CLASS="SubSubSect">
+<A NAME="pgfId=936">
+ </A>
+<A NAME="23449">
+ </A>
+<A NAME="marker=153">
+ </A>
+<A NAME="marker=154">
+ </A>
+String format</P>
+<P CLASS="Body">
+<A NAME="pgfId=938">
+ </A>
+The<A NAME="marker=155">
+ </A>
+ <CODE CLASS="code">
+%s</CODE>
+ format specifier is used to print ASCII codes as characters. For each <CODE CLASS="code">
+%s</CODE>
+ specification that appears in a string, a corresponding parameter must follow the string in the argument list. The associated argument is interpreted as a sequence of 8-bit hexadecimal ASCII codes, with each 8 bits representing a single character. If the argument is a variable, its value should be right-justified so that the right-most bit of the value is the least-significant bit of the last character in the string. No termination character or value is required at the end of a string, and leading zeros are never printed<A NAME="marker=156">
+ </A>
+<A NAME="marker=157">
+ </A>
+.<A NAME="marker=158">
+ </A>
+<A NAME="marker=159">
+ </A>
+</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=939">
+ </A>
+<A NAME="66824">
+ </A>
+<A NAME="marker=160">
+ </A>
+<A NAME="marker=162">
+ </A>
+Strobed monitoring </P>
+</DIV>
+<DIV>
+<H2 CLASS="Syntax">
+<A NAME="pgfId=941">
+ </A>
+</H2>
+<PRE CLASS="BNFDef"><A NAME="pgfId=709"> </A>
+</PRE>
+<DIV>
+<IMG SRC="ch14-8.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=943">
+ </A>
+Syntax&nbsp;14-2: Syntax for $strobe system tasks</P>
+<P CLASS="Body">
+<A NAME="pgfId=942">
+ </A>
+The system task <A NAME="marker=166">
+ </A>
+<B CLASS="Keyword">
+$strobe</B>
+ provides the ability to display simulation data at a selected time, but at the end of the current simulation time, when all the simulation events that have occurred for that simulation time, just before simulation time is advanced. The arguments for this task are specified in exactly the same manner as for the <B CLASS="Keyword">
+$display</B>
+<A NAME="marker=167">
+ </A>
+<A NAME="marker=168">
+ </A>
+ system task--including the use of escape sequences for special characters and format specifications (see <A HREF="ch14.1.htm#18128" CLASS="XRef">
+See The display and write tasks</A>
+).</P>
+</DIV>
+<DIV>
+<H2 CLASS="Example">
+<A NAME="pgfId=946">
+ </A>
+</H2>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=727"> </A>
+<B CLASS="Keyword">forever</B>
+<A NAME="marker=172"> </A>
+ @(<B CLASS="Keyword">negedge</B>
+ clock) <B CLASS="Keyword">	$strobe</B>
+ (&quot;At time %d, data is %h&quot;,<B CLASS="Keyword">$time</B>
+,data);</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=947">
+ </A>
+In this example, <B CLASS="Keyword">
+$strobe</B>
+ will write the time and data information to the standard output and the log file at each negative edge of the clock. The action will occur just before simulation time is advanced, after all other events at that time have occurred, so that the data written is sure to be the correct data for that simulation time.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=949">
+ </A>
+<A NAME="36458">
+ </A>
+<A NAME="marker=175">
+ </A>
+<A NAME="marker=176">
+ </A>
+Continuous monitoring </P>
+</DIV>
+<DIV>
+<H2 CLASS="Syntax">
+<A NAME="pgfId=951">
+ </A>
+</H2>
+<P CLASS="Body">
+<A NAME="pgfId=1303">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch14-9.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=944">
+ </A>
+Syntax&nbsp;14-3: Syntax for $monitor system tasks</P>
+<P CLASS="Body">
+<A NAME="pgfId=1218">
+ </A>
+The <B CLASS="Keyword">
+$monitor</B>
+ task provides the ability to monitor and display the values of any variables or expressions specified as arguments to the task. The arguments for this task are specified in exactly the same manner as for the <A NAME="marker=188">
+ </A>
+<A NAME="marker=189">
+ </A>
+<B CLASS="Keyword">
+$display</B>
+ system task--including the use of escape sequences for special characters and format specifications (see <A HREF="ch14.1.htm#18128" CLASS="XRef">
+See The display and write tasks</A>
+).</P>
+<P CLASS="Body">
+<A NAME="pgfId=954">
+ </A>
+When a <B CLASS="Keyword">
+$monitor</B>
+ task is invoked with one or more arguments, the simulator sets up a mechanism whereby each time a variable or an expression in the argument list changes value-with the exception of the <B CLASS="Keyword">
+$time</B>
+, <B CLASS="Keyword">
+$stime</B>
+ or <B CLASS="Keyword">
+$realtime</B>
+ system functions-the entire argument list is displayed at the end of the time step as if reported by the <B CLASS="Keyword">
+$display</B>
+ task. If two or more arguments change value at the same time, only one display is produced that shows the new values.</P>
+<P CLASS="Body">
+<A NAME="pgfId=955">
+ </A>
+Only one <B CLASS="Keyword">
+$monitor</B>
+ display list can be active at any one time; however, a new <B CLASS="Keyword">
+$monitor</B>
+ task with a new display list may be issued any number of times during simulation</P>
+<P CLASS="Body">
+<A NAME="pgfId=707">
+ </A>
+<A NAME="marker=201">
+ </A>
+The <B CLASS="Keyword">
+$monitoron</B>
+ and <B CLASS="Keyword">
+$monitoroff</B>
+ tasks control a <A NAME="marker=202">
+ </A>
+monitor flag that enables and disables the monitoring. Use <B CLASS="Keyword">
+$monitoroff</B>
+ to turn off the flag and disable monitoring. The <B CLASS="Keyword">
+$monitoron</B>
+ system task can be used to turn on the flag so that monitoring is enabled and the most recent call to <B CLASS="Keyword">
+$monitor </B>
+can resume its display. A call to <B CLASS="Keyword">
+$monitoron</B>
+ shall produce a display immediately after it is invoked, regardless of whether a value change has taken place; this is used to establish the initial values at the beginning of a monitoring session. By default, the monitor flag is turned on at the beginning of simulation.</P>
+<P CLASS="Body">
+<A NAME="pgfId=956">
+ </A>
+<A NAME="marker=195">
+ </A>
+<A NAME="marker=196">
+ </A>
+<A NAME="marker=197">
+ </A>
+</P>
+</DIV>
+<HR><P><A HREF="ch14.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch14.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch14.2.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

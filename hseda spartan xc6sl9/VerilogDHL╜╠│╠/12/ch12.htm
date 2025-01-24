@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch12.css">
+<TITLE> Section 12</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="none">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch12.1.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<DIV>
+<H1 CLASS="Chapter">
+<A NAME="pgfId=226">
+ </A>
+Section 12<A NAME="61975">
+ </A>
+<A NAME="72146">
+ </A>
+</H1>
+<H1 CLASS="ChapterTitle">
+<A NAME="pgfId=275">
+ </A>
+Hierarchical<A NAME="marker=10">
+ </A>
+ structures</H1>
+<P CLASS="Body">
+<A NAME="pgfId=276">
+ </A>
+The Verilog HDL supports a hierarchical hardware description structure by allowing modules to be <A NAME="marker=12">
+ </A>
+embedded within other modules. Higher-level modules create <A NAME="marker=13">
+ </A>
+instances of lower-level modules and communicate with them through input, output, and bidirectional ports. These module input/output ports can be scalar or vector.</P>
+<P CLASS="Body">
+<A NAME="pgfId=277">
+ </A>
+As an example of a <A NAME="marker=14">
+ </A>
+module <A NAME="marker=15">
+ </A>
+hierarchy, consider a system consisting of printed circuit boards. The system would be represented as the top-level module and would create instances of modules that represent the boards. The board modules would, in turn, create instances of modules that represent ICs, and the ICs could, in turn, create instances of modules such as flip-flops, mux's, and alu's.</P>
+<P CLASS="Body">
+<A NAME="pgfId=278">
+ </A>
+To describe a hierarchy of modules, the user provides textual definitions of the various modules. Each module definition stands alone; the definitions are not nested. Statements within the module definitions create instances of other modules, thus describing the hierarchy.</P>
+<H2 CLASS="SectionTOC">
+<A HREF="ch12.1.htm#pgfId=279" CLASS="Hypertext">
+12.1	Modules</A>
+</H2>
+<H2 CLASS="SectionTOC">
+<A HREF="ch12.2.htm#pgfId=306" CLASS="Hypertext">
+12.2	Overriding module parameter values </A>
+</H2>
+<H2 CLASS="SectionTOC">
+<A HREF="ch12.3.htm#pgfId=258" CLASS="Hypertext">
+12.3	Ports</A>
+</H2>
+<H2 CLASS="SectionTOC">
+<A HREF="ch12.4.htm#pgfId=315" CLASS="Hypertext">
+12.4	Hierarchical names </A>
+</H2>
+<H2 CLASS="SectionTOC">
+<A HREF="ch12.5.htm#pgfId=254" CLASS="Hypertext">
+12.5	Scope rules </A>
+</H2>
+</DIV>
+<HR><P><A HREF="none">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch12.1.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

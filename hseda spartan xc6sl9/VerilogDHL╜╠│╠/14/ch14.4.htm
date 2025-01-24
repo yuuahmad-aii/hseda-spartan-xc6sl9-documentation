@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch14.css">
+<TITLE> 14.4	Simulation control system tasks</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch14.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch14.3.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch14.5.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=795">
+ </A>
+14.4	<A NAME="79333">
+ </A>
+Simulation control system tasks</H1>
+<P CLASS="Body">
+<A NAME="pgfId=1004">
+ </A>
+There are two simulation control system tasks</P>
+<OL>
+<P CLASS="NumberedLista">
+<A NAME="pgfId=1401">
+ </A>
+a)		<B CLASS="Keyword">
+$finish</B>
+</P>
+<P CLASS="NumberedListb">
+<A NAME="pgfId=1574">
+ </A>
+b)		<B CLASS="Keyword">
+$stop</B>
+</P>
+</OL>
+<P CLASS="SubSection">
+<A NAME="pgfId=997">
+ </A>
+$<A NAME="97575">
+ </A>
+<A NAME="marker=250">
+ </A>
+finish</P>
+<P CLASS="Body">
+<A NAME="pgfId=819">
+ </A>
+Syntax:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=820"> </A>
+<B CLASS="Keyword">$finish</B>
+<A NAME="marker=254"> </A>
+ [(n)] ;</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=842">
+ </A>
+The <B CLASS="Keyword">
+$finish</B>
+ system task simply makes the simulator <A NAME="marker=257">
+ </A>
+exit and pass control back to the host operating system. If an expression is supplied to this task, then its value determines the <A NAME="marker=258">
+ </A>
+diagnostic messages that are printed before the prompt is issued. If no argument is supplied, then a value of 1 is taken as the default.</P>
+<TABLE>
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=774">
+ </A>
+Table&nbsp;14-9<A NAME="64521">
+ </A>
+: Diagnostic messages for $stop and $finish</P>
+</CAPTION>
+<TR>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=776">
+ </A>
+Parameter Value</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=777">
+ </A>
+Diagnostic Message</P>
+</TH>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=778">
+ </A>
+0</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=779">
+ </A>
+prints nothing</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=780">
+ </A>
+1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=781">
+ </A>
+prints simulation time and location</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=782">
+ </A>
+2</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=791">
+ </A>
+prints simulation time, location, and statistics about the memory and CPU time used in simulation</P>
+</TD>
+</TR>
+</TABLE>
+<P CLASS="SubSection">
+<A NAME="pgfId=1299">
+ </A>
+<A NAME="24159">
+ </A>
+$st<A NAME="marker=502">
+ </A>
+op</P>
+<P CLASS="Body">
+<A NAME="pgfId=1301">
+ </A>
+Syntax:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=1302"> </A>
+<A NAME="marker=28"> </A>
+<B CLASS="Keyword">$stop</B>
+ [(n)] ;</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=1304">
+ </A>
+The <B CLASS="Keyword">
+$stop</B>
+ system task causes simulation to be suspended . This task takes an optional expression argument (0, 1, or 2) that determines what type of diagnostic message is printed. The amount of diagnostic messages output increases with the value of the optional argument passed to <B CLASS="Keyword">
+$stop</B>
+.</P>
+<HR><P><A HREF="ch14.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch14.3.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch14.5.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

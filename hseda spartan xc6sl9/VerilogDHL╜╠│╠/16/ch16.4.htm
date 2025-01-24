@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch16.css">
+<TITLE> 16.4	`ifdef, `else, `endif</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch16.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch16.3.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch16.5.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=144">
+ </A>
+16.4	<A NAME="80302">
+ </A>
+`ifdef, `else, `endif</H1>
+<P CLASS="Body">
+<A NAME="pgfId=156">
+ </A>
+These conditional compilation compiler directives are used to optionally include lines of a Verilog HDL source description during compilation. The <B CLASS="Keyword">
+`ifdef</B>
+ compiler directive checks for the definition of a variable name. If the variable name is defined then the lines following the <B CLASS="Keyword">
+`ifdef</B>
+ directive are included. If the variable name is not defined and an <B CLASS="Keyword">
+`else</B>
+ directive exists then this source is compiled.</P>
+<P CLASS="Body">
+<A NAME="pgfId=204">
+ </A>
+These directives may appear anywhere in the source description.</P>
+<P CLASS="Body">
+<A NAME="pgfId=205">
+ </A>
+Situations where the <B CLASS="Keyword">
+`ifdef</B>
+, <B CLASS="Keyword">
+`else</B>
+, and <B CLASS="Keyword">
+`endif</B>
+ compiler directives may be useful include:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=206">
+ </A>
+selecting different representations of a module such as behavioral, structural, or switch level</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=207">
+ </A>
+choosing different timing or structural information</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=208">
+ </A>
+selecting different stimulus for a given run of a tool</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=209">
+ </A>
+The <B CLASS="Keyword">
+`ifdef</B>
+, <B CLASS="Keyword">
+`else</B>
+, and <B CLASS="Keyword">
+`endif</B>
+ compiler directives have the following syntax:</P>
+<PRE CLASS="BNFDef"><A NAME="pgfId=210"> </A>
+<CODE CLASS="code">	</CODE>
+<B CLASS="Keyword">`ifdef</B>
+<CODE CLASS="code"> text_macro_name first_group_of_lines</CODE>
+[<B CLASS="Keyword"> `else</B>
+<CODE CLASS="code">second_group_of_lines</CODE>
+<B CLASS="Keyword">`endif</B>
+ ] </PRE>
+<P CLASS="Body">
+<A NAME="pgfId=213">
+ </A>
+The text macro name is a Verilog HDL identifier. The first group of lines and the second group of lines are any parts of a Verilog HDL source description. The<B CLASS="Keyword">
+ `else</B>
+ compiler directive and the second group of lines are optional. </P>
+<P CLASS="Body">
+<A NAME="pgfId=214">
+ </A>
+The <B CLASS="Keyword">
+`ifdef</B>
+, <B CLASS="Keyword">
+`else</B>
+, and <B CLASS="Keyword">
+`endif</B>
+ compiler directives work in the following manner:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=215">
+ </A>
+When an <B CLASS="Keyword">
+`ifdef</B>
+ is encountered, the text macro name is tested to see if it is defined as a text macro name using <B CLASS="Keyword">
+`define</B>
+ within the Verilog HDL source description.</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=216">
+ </A>
+If the text macro name is defined, the first group_of_lines is compiled as part of the description. If there is an <B CLASS="Keyword">
+`else</B>
+ compiler directive, the second group of lines is ignored.</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=218">
+ </A>
+If the text macro name has not been defined, the first group of lines is ignored. If there is an <B CLASS="Keyword">
+`else</B>
+ compiler directive the second group of lines is compiled.</LI>
+</UL>
+<P CLASS="Note">
+<A NAME="pgfId=211">
+ </A>
+NOTES</P>
+<OL>
+<P CLASS="NumberedNote1">
+<A NAME="pgfId=256">
+ </A>
+1)	--Any group of lines that the compiler ignores still must follow the Verilog HDL lexical conventions for white space, comments, numbers, strings, identifiers, keywords, and operators.</P>
+<P CLASS="NumberedNote2">
+<A NAME="pgfId=212">
+ </A>
+2)	--These compiler directives<CODE CLASS="code">
+ </CODE>
+may be nested.</P>
+</OL>
+<P CLASS="Body">
+<A NAME="pgfId=220">
+ </A>
+Examples:</P>
+<P CLASS="Body">
+<A NAME="pgfId=303">
+ </A>
+1. The example below shows a simple usage of `ifdef directive for conditional copilation. If the identifier <CODE CLASS="code">
+behavioral</CODE>
+ is defined, a continuous net assignment will be compiled in, else an <B CLASS="Keyword">
+and</B>
+ gate will be instantiated.</P>
+<P CLASS="Body">
+<A NAME="pgfId=236">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch16-4.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=267">
+ </A>
+2. The following example shows usage of nested conditional compilation directives.</P>
+<P CLASS="Body">
+<A NAME="pgfId=308">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch16-5.gif">
+</DIV>
+<HR><P><A HREF="ch16.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch16.3.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch16.5.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

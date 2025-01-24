@@ -1,0 +1,1110 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Mac">
+  <LINK REL="STYLESHEET" HREF="ch04.css">
+  <TITLE> 4.1	Operators </TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><A NAME="pgfId=539"></A><HR ALIGN=LEFT></P>
+
+<P><A HREF="ch04.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A 
+HREF="ch04.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch04.2.htm">Next&nbsp;&nbsp;page</A></P>
+
+<H1>4.1 Operators</H1>
+
+<P><P CLASS="Body"><A NAME="pgfId=466"></A>The symbols for the Verilog HDL
+operators are similar to those in the C programming language. Table&nbsp;4-1
+lists these operators.</P>
+
+<P><TABLE BORDER="1" CELLSPACING="2" CELLPADDING="2">
+<CAPTION ALIGN="TOP"><P CLASS="TableTitle"><A NAME="pgfId=473"></A>Table&nbsp;4-1: Operators
+in Verilog HDL</CAPTION>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=522"></A>{}, {{}}</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=540"></A>concatenation, replication</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=549"></A>+ &nbsp;&nbsp;&nbsp;- &nbsp;&nbsp;&nbsp;*
+&nbsp;&nbsp;&nbsp;/</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=551"></A>arithmetic</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=552"></A>%</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=583"></A>modulus</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=613"></A>&gt; &nbsp;&nbsp;&gt;= &nbsp;&nbsp;&lt;
+&nbsp;&nbsp;&lt;=</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=616"></A>relational</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=620"></A>!</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=736"></A>logical&nbsp;negation</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=737"></A>&amp;&amp;</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=738"></A>logical&nbsp;and</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=740"></A>||</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=741"></A>logical&nbsp;or</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=751"></A>==</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=756"></A>logical&nbsp;equality</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=757"></A>!=</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=758"></A>logical&nbsp;inequality</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=759"></A>===</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=760"></A>case&nbsp;equality</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=761"></A>!==</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=762"></A>case&nbsp;inequality</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=763"></A>~</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=773"></A>bit-wise&nbsp;negation</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=806"></A>&amp;</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=810"></A>bit-wise&nbsp;and</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=811"></A>|</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=812"></A>bit-wise&nbsp;inclusive&nbsp;or</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=813"></A>^</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=814"></A>bit-wise&nbsp;exclusive&nbsp;or</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=815"></A>^~&nbsp;or&nbsp;~^</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=819"></A>bit-wise&nbsp;equivalence</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=820"></A>&amp;</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=823"></A>reduction&nbsp;and</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=824"></A>~&amp;</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=825"></A>reduction&nbsp;nand</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=838"></A>|</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=839"></A>reduction&nbsp;or</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=855"></A>~|</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=856"></A>reduction&nbsp;nor</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=857"></A>^</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=858"></A>reduction&nbsp;xor</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=859"></A>~^&nbsp;or&nbsp;^~</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=860"></A>reduction&nbsp;xnor</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=861"></A>&lt;&lt;</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=863"></A>left&nbsp;shift</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=869"></A>&gt;&gt;</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=871"></A>right&nbsp;shift</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=897"></A>?&nbsp;:</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=898"></A>conditional</TD></TR>
+</TABLE>
+<P CLASS="SubSection"><A NAME="pgfId=899"></A>Operators with real operands</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=931"></A>The operators shown in <A HREF=
+"#pgfId=904">Table&nbsp;4-2</A> shall be legal when applied to real operands.
+All other operators shall be considered illegal when used with real operands.</P>
+
+<P><TABLE BORDER="1" CELLSPACING="2" CELLPADDING="2">
+<CAPTION ALIGN="TOP"><P CLASS="TableTitle"><A NAME="pgfId=904"></A>Table&nbsp;4-2: Legal operators
+for use in real expressions</CAPTION>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=915"></A>unary + unary -</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=916"></A>unary operators</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=917"></A>+ - * /</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=918"></A>arithmetic</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=919"></A>&gt; &gt;= &lt; &lt;=</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=920"></A>relational</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=921"></A>! &amp;&amp; ||</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=924"></A>logical</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=925"></A>== !=</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=926"></A>logical equality</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=927"></A>?:</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=928"></A>conditional</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=929"></A>or</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=930"></A>event</TD></TR>
+</TABLE>
+<P CLASS="Body"><A NAME="pgfId=934"></A>The result of using logical or relational
+operators on real numbers is a single-bit scalar value.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=803"></A><A HREF="#pgfId=514">Table&nbsp;4-3</A>
+lists operators that shall not be used to operate on real numbers.</P>
+
+<P><TABLE BORDER="1" CELLSPACING="2" CELLPADDING="2">
+<CAPTION ALIGN="TOP"><P CLASS="TableTitle"><A NAME="pgfId=514"></A>Table&nbsp;4-3: Operators
+not allowed for real expressions</CAPTION>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=541"></A>{}, {{}}</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=542"></A>concatenate, replicate</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=543"></A>%</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=544"></A>modulus</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=545"></A>=== !==</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=546"></A>case equality</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=579"></A>~ &amp; | <BR>
+^ ^~ ~^</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=774"></A>bit-wise</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=797"></A>^ ^~ ~^<BR>
+&amp; ~&amp; | ~|</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=798"></A>reduction</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=799"></A>&lt;&lt; &gt;&gt;</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=800"></A>shift</TD></TR>
+</TABLE>
+<P CLASS="Body"><A NAME="pgfId=550"></A>See section&nbsp;3.9.1 for more
+information on use of real numbers.</P>
+
+<P><P CLASS="SubSection"><A NAME="pgfId=548"></A>Binary operator precedence</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=497"></A>The precedence order of <I>binary
+operators</I> and the <I>conditional operator</I> (<B> ?:</B> ) is shown
+below in <A HREF="#pgfId=553">Table&nbsp;4-4</A>. Verilog HDL has two equality
+operators. They are discussed in section&nbsp;4.1.8.</P>
+
+<P><TABLE BORDER="1" CELLSPACING="2" CELLPADDING="2">
+<CAPTION ALIGN="TOP"><P CLASS="TableTitle"><A NAME="pgfId=553"></A>Table&nbsp;4-4: Precedence
+rules for operators</CAPTION>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=801"></A>+ - !&nbsp;~ (unary)</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=802"></A>highest&nbsp;precedence</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=804"></A>*&nbsp;&nbsp;/&nbsp;&nbsp;%</TD>
+<TD ROWSPAN="10"><P><P CLASS="CellBody"><A NAME="pgfId=809"></A>&nbsp;</P>
+
+<P><IMG SRC="ch04-1.gif" WIDTH="13" HEIGHT="106" NATURALSIZEFLAG="3" ALIGN=
+"BOTTOM"></TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=808"></A>+&nbsp;&nbsp;- (binary)</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=816"></A>&lt;&lt;&nbsp;&nbsp;&gt;&gt;</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=818"></A>&lt;&nbsp;&nbsp;&lt;=&nbsp;&nbsp;&gt;&nbsp;&nbsp;&gt;=</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=901"></A>&nbsp;==&nbsp;&nbsp;!=&nbsp;&nbsp;===&nbsp;&nbsp;!==</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=903"></A>&nbsp;&amp; &nbsp;~&amp;</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1022"></A>&nbsp;^&nbsp;&nbsp;^~</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1038"></A>&nbsp;| &nbsp;~|</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1040"></A>&nbsp;&amp;&amp;</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1042"></A>&nbsp;||</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1044"></A>&nbsp;?: (conditional operator)</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1045"></A>lowest&nbsp;precedence</TD></TR>
+</TABLE>
+<P CLASS="Body"><A NAME="pgfId=556"></A>Operators shown on the same row
+in <A HREF="#pgfId=553">Table&nbsp;4-4</A> shall have the same precedence.
+Rows are arranged in order of decreasing precedence for the operators. For
+example,<B> </B>*, /, and % all have the same precedence, which is higher
+than that of the binary + and - operators.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=557"></A>All operators shall associate
+left to right with the exception of the conditional operator which shall
+associate right to left. Associativity refers to the order in which the
+operators having the same precedence are evaluated. Thus, in the following
+example <CODE>B</CODE> is added to <CODE>A</CODE> and then <CODE>C</CODE>
+is subtracted from the result of <CODE>A+B</CODE> .</P>
+
+<PRE> 
+A + B - C</PRE>
+
+<P><P CLASS="Body"><A NAME="pgfId=559"></A>When operators differ in precedence,
+the operators with higher precedence shall associate first. In the following
+example, <CODE>B</CODE> is divided by <CODE>C</CODE> (division has higher
+precedence than addition) and then the result is added to <CODE>A</CODE>
+.</P>
+
+<PRE> 
+A + B / C</PRE>
+
+<P><P CLASS="Body"><A NAME="pgfId=561"></A>Parentheses can be used to change
+the operator precedence.</P>
+
+<PRE> 
+(A + B) / C // not the same as A + B / C</PRE>
+
+<P><P CLASS="SubSection"><A NAME="pgfId=563"></A>Using integer numbers in
+expressions</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=906"></A>Integer numbers can be used as
+operands in expressions. An integer number can be expressed as</P>
+
+<UL>
+  <LI><A NAME="pgfId=907"></A>an unsized, unbased integer (e.g. 12)
+  <LI><A NAME="pgfId=908"></A>an unsized, based integer (e.g. `d12)
+  <LI><A NAME="pgfId=502"></A>a sized, based integer (e.g. 16'd12)
+</UL>
+
+<P><P CLASS="Body"><A NAME="pgfId=530"></A>A negative value for an integer
+with no base specifier shall be interpreted differently than for an integer
+with a base specifier. An integer with no base specifier shall be interpreted
+as a signed value in two's complement form. An integer with a base specifier
+shall be interpreted as an unsigned value in two's complement form.</P>
+
+<H2>&nbsp;</H2>
+
+<P><P CLASS="Body"><A NAME="pgfId=937"></A>This example shows two ways to
+write the expression &quot;minus 12 divided by 3&quot;. Note that <CODE>-12</CODE>
+and <CODE>-'d12</CODE> both evaluate to the same two's complement bit pattern
+but in an expression, the <CODE>-'d12</CODE> loses its identity as a signed
+negative number.</P>
+
+<PRE><B>integer</B> IntA;
+IntA = -12 / 3; // The result is -4
+IntA = -'d 12 / 3; // The result is 1431655761.</PRE>
+
+<P><P CLASS="SubSection"><A NAME="pgfId=564"></A>Expression evaluation order</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=715"></A>The operators shall follow the
+associativity rules while evaluating an expression as described in section&nbsp;4.1.2.
+However, if the final result of an expression can be determined early, the
+entire expression need not be evaluated. This is called <I>short-circuiting</I>
+an expression evaluation.</P>
+
+<PRE><B>reg</B> regA, regB, regC, result ;
+result = regA &amp; (regB | regC) ;</PRE>
+
+<P><P CLASS="Body"><A NAME="pgfId=788"></A>If regA is known to be zero,
+the result of the expression can be determined as zero without evaluating
+the sub-expression <CODE>regB | regC</CODE> .</P>
+
+<P><P CLASS="SubSection"><A NAME="pgfId=711"></A>Arithmetic operators</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=568"></A>The binary arithmetic operators
+are the following:</P>
+
+<P><TABLE BORDER="1" CELLSPACING="2" CELLPADDING="2">
+<CAPTION ALIGN="TOP"><P CLASS="TableTitle"><A NAME="pgfId=775"></A>Table&nbsp;4-5: Arithmetic
+operators defined</CAPTION>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=841"></A><CODE>a + b</CODE></TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=842"></A>a plus b</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=972"></A>a<CODE> - </CODE>b</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=973"></A>a minus b</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=974"></A>a<CODE> * b</CODE></TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=975"></A>a multiply by b</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=976"></A><CODE>a / b</CODE></TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=977"></A>a divide by b</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=978"></A><CODE>a % b</CODE></TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=979"></A>a modulo b</TD></TR>
+</TABLE>
+<P CLASS="Body"><A NAME="pgfId=572"></A>The integer division shall truncate
+any fractional part. The modulus operator, for example <CODE>y % z</CODE>
+, gives the remainder when the first operand is divided by the second, and
+thus is zero when <CODE>z</CODE> divides <CODE>y</CODE> exactly. The result
+of a modulus operation shall take the sign of the first operand.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=576"></A>The unary arithmetic operators
+shall take precedence over the binary operators. The unary operators are
+the following:</P>
+
+<P><TABLE BORDER="1" CELLSPACING="2" CELLPADDING="2">
+<CAPTION ALIGN="TOP"><P CLASS="TableTitle"><A NAME="pgfId=571"></A>Table&nbsp;4-6: Unary operators
+defined</CAPTION>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=840"></A>+m</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=980"></A>unary plus m (same as m)</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=981"></A>-m</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=982"></A>unary minus m</TD></TR>
+</TABLE>
+<P CLASS="Body"><A NAME="pgfId=575"></A>For the arithmetic operators, if
+any operand bit value is the unknown value <CODE>x</CODE> , or high impedance
+value <CODE>z</CODE> , then the entire result value shall be <CODE>x</CODE>
+.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=952"></A><A HREF="#pgfId=555">Table&nbsp;4-7</A>
+gives examples of modulus operations.</P>
+
+<P><TABLE BORDER="1" CELLSPACING="2" CELLPADDING="2">
+<CAPTION ALIGN="TOP"><P CLASS="TableTitle"><A NAME="pgfId=555"></A>Table&nbsp;4-7: Examples of
+modulus operations</CAPTION>
+<TR>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=1046"></A>Modulus Expression</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=1047"></A>Result</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=1048"></A>Comments</TH></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1049"></A>10 % 3</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1050"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1051"></A>10/3 yields a remainder of
+1</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1052"></A>11 % 3</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1053"></A>2</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1054"></A>11/3 yields a remainder of
+2</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1055"></A>12 % 3</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1056"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1057"></A>12/3 yields no remainder</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1058"></A>-10 % 3</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1059"></A>-1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1060"></A>the result takes the sign of
+the first operand</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1061"></A>11 % -3</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1062"></A>2</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1067"></A>the result takes the sign of
+the first operand</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1064"></A>-4'd12 % 3</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1065"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1066"></A>-4'd12 is seen as a large,
+positive number that leaves a remainder of 1 when divided by 3</TD></TR>
+</TABLE>
+<P CLASS="SubSection"><A NAME="pgfId=520"></A>Arithmetic expressions with
+registers and integers</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=942"></A>An arithmetic operation on a
+reg type register shall be treated differently than an arithmetic operation
+on an integer data type. A reg data type shall be treated as an <I>unsigned</I>
+value and an integer data type shall be treated as a <I>signed</I> value.
+Thus, if a sized constant with a negative value is stored in a reg type
+register, a positive constant which is a two's complement of the sized constant
+shall be the value stored in the reg type register. When this register is
+used in an arithmetic expression, the positive constant shall be used as
+the value of the register. In contrast, if a sized constant with a negative
+value is stored in an integer type register and used in an arithmetic expression,
+the expression shall evaluate using signed arithmetic.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=933"></A><A HREF="#pgfId=939">Table&nbsp;4-8</A>
+lists how arithmetic operators interpret each data type</P>
+
+<P><TABLE BORDER="1" CELLSPACING="2" CELLPADDING="2">
+<CAPTION ALIGN="TOP"><P CLASS="TableTitle"><A NAME="pgfId=939"></A>Table&nbsp;4-8: Data type
+interpretation by arithmetic operators</CAPTION>
+<TR>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=1290"></A>Data Type</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=1291"></A>Interpretation</TH></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1292"></A>net</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1293"></A>unsigned</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1294"></A>reg</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1302"></A>unsigned</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1296"></A>integer</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1303"></A>signed, two's complement</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1298"></A>time</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1304"></A>unsigned</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1300"></A>real, realtime</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1305"></A>signed, floating point</TD></TR>
+</TABLE>
+</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=971"></A>The example below shows various
+ways to divide<I> </I>&quot;minus twelve by three&quot;--using <B>integer</B>
+and <B>reg</B> data types in expressions.</P>
+
+<PRE><B>integer</B> intA;
+<B>reg</B> [15:0] regA;
+
+intA = -4'd12;
+regA = intA / 3;   // expression result is -4,
+                   // intA is an integer data type
+
+regA = -4'd12;     // regA is 65524
+
+intA = regA / 3;   // expression result is 21841,
+                   // regA is a reg data type.
+
+intA = -4'd12 / 3; // expression result is 1431655761.
+                   // -4'd12 is effectively a reg data type
+
+regA = -12 / 3;    // expression result is -4, -12 is effectively
+                   // an integer data type. regA is 65532</PRE>
+
+<P><P CLASS="SubSection"><A NAME="pgfId=584"></A>Relational operators</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=574"></A><A HREF="#pgfId=499">Table&nbsp;4-9</A>
+lists and defines the relational operators.</P>
+
+<P><TABLE BORDER="1" CELLSPACING="2" CELLPADDING="2">
+<CAPTION ALIGN="TOP"><P CLASS="TableTitle"><A NAME="pgfId=499"></A>Table&nbsp;4-9: The relational
+operators defined</CAPTION>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=501"></A>a&nbsp;&lt;&nbsp;b</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=504"></A>a&nbsp;less&nbsp;than&nbsp;b</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=516"></A>a&nbsp;&gt;&nbsp;b</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=517"></A>a&nbsp;greater&nbsp;than&nbsp;b</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=518"></A>a&nbsp;&lt;=&nbsp;b</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=519"></A>a&nbsp;less&nbsp;than&nbsp;or&nbsp;equal&nbsp;to&nbsp;b</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=521"></A>a&nbsp;&gt;=&nbsp;b</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=573"></A>a&nbsp;greater&nbsp;than&nbsp;or&nbsp;equal&nbsp;to&nbsp;b</TD></TR>
+</TABLE>
+<P CLASS="Body"><A NAME="pgfId=1068"></A>An expression using these <I>relational
+operators</I> shall yield the scalar value <CODE>0</CODE> if the specified
+relation is <I>false</I> , or the value <CODE>1</CODE> if it is <I>true</I>
+. If, due to unknown or high impedance bits in the operands, the relation
+is <I>ambiguous</I> , then the result shall be one bit unknown value <CODE>(x)</CODE>
+.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=914"></A>When two operands of unequal
+bit-lengths are used, the smaller operand shall be zero filled on the most
+significant bit side to extend to the size of the larger operand.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=589"></A>All the relational operators
+shall have the same precedence. Relational operators shall have lower precedence
+than arithmetic operators.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=764"></A>The following examples illustrate
+the implications of this precedence rule:</P>
+
+<PRE>a&nbsp;&lt;&nbsp;foo - 1   // this expression is the same as
+a&nbsp;&lt;&nbsp;(foo - 1) // this expression, but . . .
+foo&nbsp;-&nbsp;(1&nbsp;&lt;&nbsp;a) // this one is not the same as 
+foo&nbsp;-&nbsp;1&nbsp;&lt;&nbsp;a   // this expression</PRE>
+
+<P><P CLASS="Body"><A NAME="pgfId=591"></A>When <CODE>foo - (1 &lt; a)</CODE>
+evaluates, the relational expression evaluates first and then either zero
+or one is subtracted from <CODE>foo</CODE> . When <CODE>foo - 1 &lt; a</CODE>
+evaluates, the value of <CODE>foo</CODE> operand is reduced by one and then
+compared with <CODE>a</CODE> .</P>
+
+<P><P CLASS="SubSection"><A NAME="pgfId=593"></A>Equality operators</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=1072"></A>The <I>equality operators</I>
+shall rank lower in precedence than the relational operators. <A HREF="#pgfId=585">Table&nbsp;4-10</A>
+lists and defines the equality operators.</P>
+
+<P><TABLE BORDER="1" CELLSPACING="2" CELLPADDING="2">
+<CAPTION ALIGN="TOP"><P CLASS="TableTitle"><A NAME="pgfId=585"></A>Table&nbsp;4-10: The equality
+operators defined</CAPTION>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=587"></A>a&nbsp;=== b</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=588"></A>a&nbsp;equal&nbsp;to&nbsp;b,&nbsp;including&nbsp;x&nbsp;and&nbsp;z</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=592"></A>a&nbsp;!== b</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=868"></A>a&nbsp;not&nbsp;equal&nbsp;to&nbsp;b,&nbsp;including&nbsp;x&nbsp;and&nbsp;z</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1063"></A>a&nbsp;&nbsp;== b</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1069"></A>a&nbsp;equal&nbsp;to&nbsp;b,&nbsp;result&nbsp;may
+be&nbsp;unknown</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1070"></A>a&nbsp;&nbsp;!= b</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1071"></A>a&nbsp;not&nbsp;equal&nbsp;to&nbsp;b,&nbsp;result&nbsp;may
+be&nbsp;unknown</TD></TR>
+</TABLE>
+<P CLASS="Body"><A NAME="pgfId=597"></A>All four equality operators shall
+have the same precedence. These four operators compare operands bit for
+bit, with zero filling if the two operands are of unequal bit-length. As
+with the relational operators, the result shall be <CODE>0</CODE> if comparison
+fails, 1 if it succeeds.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=598"></A>For the<I> logical equality</I>
+and <I>logical inequality</I> operators (<CODE> ==</CODE> and <CODE>!=</CODE>
+), if either operand contains an <CODE>x</CODE> or a <CODE>z</CODE> , then
+the result shall be the unknown value (<CODE> x</CODE> ).</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=599"></A>For the <I>case equality</I>
+and <I>case inequality</I> operators(<CODE> ===</CODE> and <CODE>!==</CODE>
+), the comparison shall be done just as it is in the procedural case statement
+(see 9.5). Bits which are <CODE>x</CODE> or <CODE>z</CODE> shall be included
+in the comparison and must match for the result to be true. The result of
+these operators shall always be a known value, either <CODE>1</CODE> or
+<CODE>0</CODE> .</P>
+
+<P><P CLASS="SubSection"><A NAME="pgfId=601"></A>Logical operators</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=602"></A>The operators <I>logical and</I>
+(<CODE> &amp;&amp;</CODE> ) and <I>logical or</I> (||) are logical connectives.
+The result of the evaluation of a logical comparison shall be <CODE>1</CODE>
+(defined as true), <CODE>0</CODE> (defined as false), or, if the result
+is ambiguous, then the result shall be the unknown value (<CODE> x</CODE>
+). The precedence of <CODE>&amp;&amp;</CODE> is greater than that of <CODE>||</CODE>
+, and both are lower than relational and equality operators.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=984"></A>A third logical operator is the
+unary <I>logical negation</I> operator <CODE>!</CODE> . The negation operator
+converts a non-zero or true operand into <CODE>0</CODE> and a zero or false
+operand into <CODE>1</CODE> . An ambiguous truth value remains as <CODE>x</CODE>
+.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=983"></A>1. If register <CODE>alpha</CODE>
+holds the integer value 237 and <CODE>beta</CODE> holds the value zero,
+then the following examples perform as described:</P>
+
+<PRE>regA = alpha &amp;&amp; beta; // regA is set to 0
+regB&nbsp;=&nbsp;alpha || beta; // regB is set to 1</PRE>
+
+<P><P CLASS="Body"><A NAME="pgfId=604"></A>2. The following expression performs
+a logical and of three sub-expressions without needing any parentheses:</P>
+
+<PRE>a&nbsp;&lt;&nbsp;size-1&nbsp;&amp;&amp;&nbsp;b&nbsp;!=&nbsp;c&nbsp;&amp;&amp;&nbsp;index&nbsp;!=&nbsp;lastone</PRE>
+
+<P><P CLASS="Body"><A NAME="pgfId=606"></A>However, it is recommended for
+readability purposes that parentheses be used to show very clearly the precedence
+intended, as in the following rewrite of the above example:</P>
+
+<PRE>(a&nbsp;&lt;&nbsp;size-1)&nbsp;&amp;&amp;&nbsp;(b&nbsp;!=&nbsp;c)&nbsp;&amp;&amp;&nbsp;(index&nbsp;!=&nbsp;lastone)</PRE>
+
+<P><P CLASS="Body"><A NAME="pgfId=608"></A>3. A common use of <CODE>!</CODE>
+is in constructions like the following:</P>
+
+<PRE><B>if</B> (!inword)</PRE>
+
+<P><P CLASS="Body"><A NAME="pgfId=610"></A>In some cases, the preceding
+construct makes more sense to someone reading the code than the equivalent
+construct shown below:</P>
+
+<PRE><B>if</B> (inword&nbsp;==&nbsp;0)</PRE>
+
+<P><P CLASS="Body"><A NAME="pgfId=612"></A>Constructs like <CODE>if</CODE>
+(<CODE> !</CODE> <CODE>inword</CODE> ) read quite nicely (if not inword),
+but more complicated ones can be hard to understand.</P>
+
+<P><P CLASS="SubSection"><A NAME="pgfId=615"></A>Bit-wise operators</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=463"></A>The <I>bit-wise operators</I>
+shall perform bit-wise manipulations on the operands--that is, the operator
+shall combine a bit in one operand with its corresponding bit in the other
+operand to calculate one bit for the result. The logic tables below show
+the results for each possible calculation.</P>
+
+<P><TABLE BORDER="1" CELLSPACING="2" CELLPADDING="2">
+<CAPTION ALIGN="TOP"><P CLASS="TableTitle"><A NAME="pgfId=7791"></A>Table&nbsp;4-11: Bit-wise
+binary and operator</CAPTION>
+<TR>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=7801"></A>&amp;</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=7803"></A>0</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=7805"></A>1</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=7807"></A>x</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=7809"></A>z</TH></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7811"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7813"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7815"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7817"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7819"></A>0</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7821"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7823"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7825"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7827"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7829"></A>x</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7831"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7833"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7835"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7837"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7839"></A>x</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7841"></A>z</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7843"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7845"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7847"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7849"></A>x</TD></TR>
+</TABLE>
+</P>
+
+<P><TABLE BORDER="1" CELLSPACING="2" CELLPADDING="2">
+<CAPTION ALIGN="TOP"><P CLASS="TableTitle"><A NAME="pgfId=7857"></A>Table&nbsp;4-12: Bit-wise
+binary exclusive or operator</CAPTION>
+<TR>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=7867"></A>^</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=7869"></A>0</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=7871"></A>1</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=7873"></A>x</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=7875"></A>z</TH></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7877"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7879"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7881"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7883"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7885"></A>x</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7887"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7889"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7891"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7893"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7895"></A>x</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7897"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7899"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7901"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7903"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7905"></A>x</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7907"></A>z</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7909"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7911"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7913"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7915"></A>x</TD></TR>
+</TABLE>
+</P>
+
+<P><TABLE BORDER="1" CELLSPACING="2" CELLPADDING="2">
+<CAPTION ALIGN="TOP"><P CLASS="TableTitle"><A NAME="pgfId=7922"></A>Table&nbsp;4-13: Bit-wise
+binary exclusive or operator</CAPTION>
+<TR>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=7932"></A>^</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=7934"></A>0</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=7936"></A>1</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=7938"></A>x</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=7940"></A>z</TH></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7942"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7944"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7946"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7948"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7950"></A>x</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7952"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7954"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7956"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7958"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7960"></A>x</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7962"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7964"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7966"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7968"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7970"></A>x</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7972"></A>z</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7974"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7976"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7978"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=7980"></A>x</TD></TR>
+</TABLE>
+</P>
+
+<P><TABLE BORDER="1" CELLSPACING="2" CELLPADDING="2">
+<CAPTION ALIGN="TOP"><P CLASS="TableTitle"><A NAME="pgfId=7987"></A>Table&nbsp;4-14: Bit-wise
+binary exclusive nor operator</CAPTION>
+<TR>
+<TH><P><P CLASS="CellHeading"><A NAME="pgfId=7997"></A>^~</P>
+
+<P><P CLASS="CellHeading"><A NAME="pgfId=7998"></A>~^</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=8000"></A>0</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=8002"></A>1</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=8004"></A>x</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=8006"></A>z</TH></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8008"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8010"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8012"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8014"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8016"></A>x</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8018"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8020"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8022"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8024"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8026"></A>x</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8028"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8030"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8032"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8034"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8036"></A>x</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8038"></A>z</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8040"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8042"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8044"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8046"></A>x</TD></TR>
+</TABLE>
+</P>
+
+<P><TABLE BORDER="1" CELLSPACING="2" CELLPADDING="2">
+<CAPTION ALIGN="TOP"><P CLASS="TableTitle"><A NAME="pgfId=1134"></A>Table&nbsp;4-15: Bit-wise
+unary negation operator</CAPTION>
+<TR>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=1136"></A>~</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=1137"></A>&nbsp;</TH></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1138"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1139"></A>1</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1140"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1141"></A>0</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1142"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1143"></A>x</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1144"></A>z</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1145"></A>x</TD></TR>
+</TABLE>
+<P CLASS="Body"><A NAME="pgfId=1133"></A>When the operands are of unequal
+bit length, the shorter operand is zero-filled in the most significant bit
+positions.</P>
+
+<P><P CLASS="SubSection"><A NAME="pgfId=1132"></A>Reduction operators</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=622"></A>The <I>unary reduction operators</I>
+shall perform a bit-wise operation on a single operand to produce a single
+bit result. The first step of the operation shall apply the operator between
+the first bit of the operand and the second--using the logic tables shown
+below. The second and subsequent steps shall apply the operator between
+the one-bit result of the prior step and the next bit of the operand using
+the same logic table.</P>
+
+<P>&nbsp;</P>
+
+<P><TABLE BORDER="1" CELLSPACING="2" CELLPADDING="2">
+<CAPTION ALIGN="TOP"><P CLASS="TableTitle"><A NAME="pgfId=8059"></A>Table&nbsp;4-16: Reduction&nbsp;unary
+and operator</CAPTION>
+<TR>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=8069"></A>&amp;</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=8071"></A>0</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=8073"></A>1</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=8075"></A>x</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=8077"></A>z</TH></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8079"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8081"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8083"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8085"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8087"></A>0</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8089"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8091"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8093"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8095"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8097"></A>x</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8099"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8101"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8103"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8105"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8107"></A>x</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8109"></A>z</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8111"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8113"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8115"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8117"></A>x</TD></TR>
+</TABLE>
+</P>
+
+<P><TABLE BORDER="1" CELLSPACING="2" CELLPADDING="2">
+<CAPTION ALIGN="TOP"><P CLASS="TableTitle"><A NAME="pgfId=8124"></A>Table&nbsp;4-17: Reduction
+unary &nbsp;or operator</CAPTION>
+<TR>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=8134"></A>|</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=8136"></A>0</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=8138"></A>1</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=8140"></A>x</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=8142"></A>z</TH></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8144"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8146"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8148"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8150"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8152"></A>x</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8154"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8156"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8158"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8160"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8162"></A>1</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8164"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8166"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8168"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8170"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8172"></A>x</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8174"></A>z</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8176"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8178"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8180"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8182"></A>x</TD></TR>
+</TABLE>
+</P>
+
+<P><TABLE BORDER="1" CELLSPACING="2" CELLPADDING="2">
+<CAPTION ALIGN="TOP"><P CLASS="TableTitle"><A NAME="pgfId=8190"></A>Table&nbsp;4-18: Reduction&nbsp;unary
+nand operator</CAPTION>
+<TR>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=8200"></A>&amp;</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=8202"></A>0</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=8204"></A>1</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=8206"></A>x</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=8208"></A>z</TH></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8210"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8212"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8214"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8216"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8218"></A>1</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8220"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8222"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8224"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8226"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8228"></A>x</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8230"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8232"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8234"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8236"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8238"></A>x</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8240"></A>z</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8242"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8244"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8246"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8248"></A>x</TD></TR>
+</TABLE>
+</P>
+
+<P><TABLE BORDER="1" CELLSPACING="2" CELLPADDING="2">
+<CAPTION ALIGN="TOP"><P CLASS="TableTitle"><A NAME="pgfId=8255"></A>Table&nbsp;4-19: Reduction
+unary &nbsp;exclusive nor operator</CAPTION>
+<TR>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=8265"></A>|</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=8267"></A>0</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=8269"></A>1</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=8271"></A>x</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=8273"></A>z</TH></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8275"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8277"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8279"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8281"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8283"></A>x</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8285"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8287"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8289"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8291"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8293"></A>1</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8295"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8297"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8299"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8301"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8303"></A>x</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8305"></A>z</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8307"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8309"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8311"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=8313"></A>x</TD></TR>
+</TABLE>
+</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=1077"></A><A HREF="#pgfId=632">Table&nbsp;4-23</A>
+shows the results of applying reduction operators on different operands.</P>
+
+<P><TABLE BORDER="1" CELLSPACING="2" CELLPADDING="2">
+<CAPTION ALIGN="TOP"><P CLASS="TableTitle"><A NAME="pgfId=632"></A>Table&nbsp;4-23: Results of
+unary reduction operations</CAPTION>
+<TR>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=701"></A>Operand</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=832"></A>&amp;</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=1241"></A>~&amp;</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=1242"></A>|</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=1243"></A>~|</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=1244"></A>^</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=1245"></A>~^</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=833"></A>comments</TH></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=834"></A>4'b0000</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=835"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1246"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1247"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1248"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1249"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1250"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=836"></A>No bits set</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=837"></A>4'b1111</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=866"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1251"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1252"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1253"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1254"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1255"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1261"></A>all bits set</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=889"></A>4'b0110</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=890"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1256"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1257"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1258"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1259"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1260"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=891"></A>even number of bits set</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=867"></A>4'b1000</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1262"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1263"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1264"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1265"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1266"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1267"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1268"></A>odd number of bits set</TD></TR>
+</TABLE>
+<P CLASS="SubSection"><A NAME="pgfId=638"></A>Shift operators</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=639"></A>The <I>shift operators</I> ,
+&lt;&lt; and &gt;&gt;, shall perform left and right shifts of their left
+operand by the number of bit positions given by the right operand. Both
+shift operators shall fill the vacated bit positions with zeroes. If the
+right operand has an unknown or high impedance value then the result shall
+be unknown. If the right operand is negative, the result shall remain the
+same as the left operand--that is, the left operand shall not be shifted.</P>
+
+<PRE><B>module</B> shift;
+<B>reg</B> [3:0] start, result;
+<B>initial begin</B>
+	start = 1;	
+    result = (start &lt;&lt; 2);
+<B>end</B>
+<B>endmodule</B></PRE>
+
+<P><P CLASS="Body"><A NAME="pgfId=642"></A>In this example, the register
+<CODE>result</CODE> is assigned the binary value <CODE>0100</CODE> , which
+is <CODE>0001</CODE> shifted to the left two positions and zero filled.</P>
+
+<P><P CLASS="SubSection"><A NAME="pgfId=644"></A>Conditional operator</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=645"></A>The <I>conditional operator</I>
+, also known as <I>ternary operator</I> , shall be right associative and
+shall be constructed using three operands separated by two operators in
+the following format:</P>
+
+<PRE>conditional_expression ::= expression1 <B>?</B> expression2 <B>:</B> expression3</PRE>
+
+<P><P CLASS="BNFCapBody"><A NAME="pgfId=957"></A>Syntax&nbsp;4-1: Syntax
+for conditional expression</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=647"></A>The evaluation of a conditional
+expression shall begin with the evaluation of expression1. If expression1
+evaluates to false (0), then expression3 shall be evaluated and used as
+the result of the conditional expression. If expression1 evaluates to true
+(known value other than 0), then expression2 is evaluated and used as the
+result. If expression1 evaluates to ambiguous value (<CODE> x</CODE> or
+<CODE>z</CODE> ), then both expression2 and expression3 shall be evaluated
+and their results shall be combined, bit by bit, using <A HREF="#pgfId=1281">Table&nbsp;4-24</A>
+to calculate the final result. If the lengths of the operands are different,
+the shorter operand shall be lengthened to match the longer and zero filled
+from the left (the high-order end).</P>
+
+<P><TABLE BORDER="1" CELLSPACING="2" CELLPADDING="2">
+<CAPTION ALIGN="TOP"><P CLASS="TableTitle"><A NAME="pgfId=1281"></A>Table&nbsp;4-24: Ambiguous
+condition results for conditional operator</CAPTION>
+<TR>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=495"></A>?:</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=636"></A>0</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=637"></A>1</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=643"></A>x</TH>
+<TH><P CLASS="CellHeading"><A NAME="pgfId=646"></A>z</TH></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=653"></A><B>0</B></TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=664"></A>0</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=958"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=959"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=960"></A>x</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=665"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=666"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=961"></A>1</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=965"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=966"></A>x</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=667"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=827"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=967"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1073"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1074"></A>x</TD></TR>
+<TR>
+<TD><P CLASS="CellBody"><A NAME="pgfId=828"></A>z</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=829"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1075"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1269"></A>x</TD>
+<TD><P CLASS="CellBody"><A NAME="pgfId=1270"></A>x</TD></TR>
+</TABLE>
+</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=830"></A>The following example of a tri-state
+output bus illustrates a common use of the conditional operator.</P>
+
+<PRE><B>wire</B> [15:0]&nbsp;busa&nbsp;=&nbsp;drive_busa&nbsp;?&nbsp;data&nbsp;:&nbsp;16'bz;</PRE>
+
+<P><P CLASS="Body"><A NAME="pgfId=652"></A>The bus called <CODE>data</CODE>
+is driven onto <CODE>busa</CODE> when <CODE>drive_busa</CODE> is <CODE>1</CODE>
+. If <CODE>drive_busa</CODE> is unknown, then an unknown value is driven
+onto <CODE>busa</CODE> . Otherwise, <CODE>busa</CODE> is not driven.</P>
+
+<P><P CLASS="SubSection"><A NAME="pgfId=654"></A>Concatenations</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=655"></A>A concatenation is the joining
+together of bits resulting from two or more expressions. The concatenation
+shall be expressed using the brace characters { and }, with commas separating
+the expressions within.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=659"></A>Unsized constant numbers shall
+not be allowed in concatenations. This is because the size of each operand
+in the concatenation is needed to calculate the complete size of the concatenation.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=1271"></A>The next example concatenates
+four expressions:</P>
+
+<PRE>{a,&nbsp;b[3:0],&nbsp;w,&nbsp;3'b101}</PRE>
+
+<P><P CLASS="Body"><A NAME="pgfId=657"></A>and it is equivalent to the following
+example:</P>
+
+<PRE>{a,&nbsp;b[3],&nbsp;b[2],&nbsp;b[1],&nbsp;b[0],&nbsp;w,&nbsp;1'b1,&nbsp;1'b0,&nbsp;1'b1}</PRE>
+
+<P><P CLASS="Body"><A NAME="pgfId=660"></A>Concatenations can be expressed
+using a repetition multiplier as shown in the next example.</P>
+
+<PRE>{4{w}} // This is equivalent to {w,&nbsp;w,&nbsp;w,&nbsp;w}</PRE>
+
+<P><P CLASS="Body"><A NAME="pgfId=662"></A>If a repetition multiplier is
+used on a function call operand, the function need not be evaluated multiple
+times. For example,</P>
+
+<PRE>result = {4{func(w)}}</PRE>
+
+<P><P CLASS="Body"><A NAME="pgfId=1280"></A>may be computed as</P>
+
+<PRE>result = {func(w), func(w), func(w), func(w)}</PRE>
+
+<P><P CLASS="Body"><A NAME="pgfId=1287"></A>or</P>
+
+<PRE>y = func(w) ;result = {y, y, y, y}</PRE>
+
+<P><P CLASS="Body"><A NAME="pgfId=1279"></A>This is another form of expression
+evaluation short-circuiting.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=789"></A>The next example illustrates
+nested concatenations.</P>
+
+<PRE>{b,&nbsp;{3{a,&nbsp;b}}} // This is equivalent to {b,&nbsp;a,&nbsp;b,&nbsp;a,&nbsp;b,&nbsp;a,&nbsp;b}</PRE>
+
+<P><P CLASS="Body"><A NAME="pgfId=485"></A>The repetition multiplier must
+be a constant expression.</P>
+
+<P><HR ALIGN=LEFT></P>
+
+<P><A HREF="ch04.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A 
+HREF="ch04.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch04.2.htm">Next&nbsp;&nbsp;page</A>
+</BODY>
+</HTML>

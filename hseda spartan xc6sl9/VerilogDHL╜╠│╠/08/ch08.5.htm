@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch08.css">
+<TITLE> 8.5	Sequential UDP initialization</TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch08.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch08.4.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch08.6.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=361">
+ </A>
+8.5	Sequential UDP initialization<A NAME="marker=127">
+ </A>
+<A NAME="marker=128">
+ </A>
+</H1>
+<P CLASS="Body">
+<A NAME="pgfId=362">
+ </A>
+The initial value on the output port of a sequential UDP can be specified with an initial statement that provides a procedural assignment. The initial statement is optional. </P>
+<P CLASS="Body">
+<A NAME="pgfId=363">
+ </A>
+Like initial statements in modules, the initial statement in UDPs begin with the keyword <B CLASS="Keyword">
+initial</B>
+. The valid contents of initial statements in UDPs and the valid left and right hand sides of their procedural assignment statements differ from initial statements in modules. A partial list of differences between these two types of initial statements is described in <A HREF="ch08.5.htm#96104" CLASS="XRef">
+See : initial statements in UDPs and modules</A>
+.</P>
+<TABLE BORDER="1">
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=266">
+ </A>
+Table&nbsp;8-2<A NAME="96104">
+ </A>
+: initial statements in UDPs and modules</P>
+</CAPTION>
+<TR>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=315">
+ </A>
+initial statements in UDPs</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=360">
+ </A>
+initial statements in modules</P>
+</TH>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=326">
+ </A>
+contents limited to one procedural assignment statement</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=329">
+ </A>
+contents can be one procedural statement of any type or a block statement that contains more than one procedural statement</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=333">
+ </A>
+the procedural assignment statement must assign a value to a reg whose identifier matches the identifier of an output terminal</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=341">
+ </A>
+procedural assignment statements in initial statements can assign values to a reg whose identifier does not match the identifier of an output terminal</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=320">
+ </A>
+the procedural assignment statement must assign one of the following values: 1`b1, 1'b0, 1'bx, 1, 0</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=404">
+ </A>
+procedural assignment statements can assign values of any size, radix, and value</P>
+</TD>
+</TR>
+</TABLE>
+<P CLASS="Body">
+<A NAME="pgfId=364">
+ </A>
+Examples:</P>
+<P CLASS="Body">
+<A NAME="pgfId=471">
+ </A>
+1. Example below shows a sequential UDP that contains an initial statement.</P>
+<P CLASS="Body">
+<A NAME="pgfId=365">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch08-6.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=366">
+ </A>
+The output <CODE CLASS="code">
+q</CODE>
+ has an initial value of 1 at the start of the simulation; a delay specification on an instantiated UDP does not delay the simulation time of the assignment of this initial value to the output. When simulation starts, this value is the current state in the state table. Delays are not permitted in a UDP initial statement.</P>
+<P CLASS="Body">
+<A NAME="pgfId=357">
+ </A>
+2. The following example and figure show how values are applied in a module that instantiates a sequential UDP with an initial statement. </P>
+<P CLASS="Body">
+<A NAME="pgfId=367">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch08-7.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=275">
+ </A>
+The UDP <CODE CLASS="code">
+dff1</CODE>
+ contains an initial statement that sets the initial value of its output to 1. The module <CODE CLASS="code">
+dff</CODE>
+ contains an instance of UDP <CODE CLASS="code">
+dff1</CODE>
+. </P>
+<P CLASS="Body">
+<A NAME="pgfId=324">
+ </A>
+<A HREF="ch08.5.htm#61706" CLASS="XRef">
+See : Module schematic and the simulation times of initial value propagation</A>
+shows the schematic of the module described above and the simulation propagation times of the initial value of the UDP output.</P>
+<P CLASS="Body">
+<A NAME="pgfId=368">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch08-8.gif">
+</DIV>
+<P CLASS="FigCapBody">
+<A NAME="pgfId=369">
+ </A>
+Figure&nbsp;8-1<A NAME="61706">
+ </A>
+: Module schematic and the simulation times of initial value propagation</P>
+<P CLASS="Body">
+<A NAME="pgfId=370">
+ </A>
+In <A HREF="ch08.5.htm#61706" CLASS="XRef">
+See : Module schematic and the simulation times of initial value propagation</A>
+, the fanout from the UDP output <CODE CLASS="code">
+qi</CODE>
+ includes nets <CODE CLASS="code">
+q</CODE>
+ and <CODE CLASS="code">
+qb</CODE>
+. At simulation time 0, <CODE CLASS="code">
+qi</CODE>
+ changes value to 1. That initial value of <CODE CLASS="code">
+qi</CODE>
+ does not propagate to net <CODE CLASS="code">
+q</CODE>
+ until simulation time 3, and does not propagate to net <CODE CLASS="code">
+qb</CODE>
+ until simulation time 5.<A NAME="marker=142">
+ </A>
+<A NAME="marker=143">
+ </A>
+</P>
+<HR><P><A HREF="ch08.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch08.4.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch08.6.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

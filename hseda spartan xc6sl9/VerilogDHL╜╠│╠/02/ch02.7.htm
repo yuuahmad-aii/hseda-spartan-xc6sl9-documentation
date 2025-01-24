@@ -1,0 +1,157 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Mac">
+  <LINK REL="STYLESHEET" HREF="ch02.css">
+  <TITLE> 2.7	Identifiers, keywords, and system names </TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><A NAME="pgfId=262"></A><HR ALIGN=LEFT></P>
+
+<P><A HREF="ch02.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A 
+HREF="ch02.6.htm">Previous&nbsp;&nbsp;page</A></P>
+
+<H1>2.7 Identifiers, keywords, and system names</H1>
+
+<P><P CLASS="Body"><A NAME="pgfId=264"></A>An <I>identifier</I> is used
+to give an object a unique name so it can be referenced. An identifier shall
+be any sequence of letters, digits, dollar signs (<CODE> $</CODE> ), and
+the underscore characters (<CODE> _</CODE> ).</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=265"></A>The first character of an identifier
+shall not be a digit or <CODE>$</CODE> ; it can be a letter or an underscore.
+Identifiers shall be case sensitive.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=267"></A>Examples:</P>
+
+<PRE><A NAME="pgfId=268"></A> 
+shiftreg_abusa_index error_condition merge_ab_bus3n$657</PRE>
+
+<P><P CLASS="Note"><A NAME="pgfId=247"></A>NOTE--Implementations may set
+a limit on the maximum length of identifiers, but shall at least be 1024
+characters. If an identifier exceeds implementation specified length limit,
+an error shall be reported.</P>
+
+<P><P CLASS="SubSection"><A NAME="pgfId=271"></A>Escaped identifiers</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=188"></A><I>Escaped identifiers</I> shall
+start with the backslash character (<CODE> \</CODE> ) and end with white
+space (space, tab, newline). They provide a means of including any of the
+printable ASCII characters in an identifier (the decimal values 33 through
+126, or 21 through 7E in hexadecimal).</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=246"></A>Neither the leading back-slash
+character nor the terminating white space is considered to be part of the
+identifier.<EM> Therefore, an escaped identifier</EM> <CODE>\cpu3</CODE>
+is treated same as a non-escaped identifier <CODE>cpu3</CODE> .</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=329"></A>Examples:</P>
+
+<PRE><A NAME="pgfId=273"></A> 
+\busa+index\-clock\***error-condition***\net1/\net2\{a,b}\a*(b+c)</PRE>
+
+<P><P CLASS="SubSection"><A NAME="pgfId=280"></A>Keywords</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=178"></A><I>Keywords</I> are predefined
+non-escaped identifiers that are used to define the language constructs.
+A Verilog HDL keyword preceded by an escape character is not interpreted
+as a keyword.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=228"></A>All keywords are defined in lowercase
+only. Annex B gives a list of all keywords defined.</P>
+
+<P><P CLASS="SubSection"><A NAME="pgfId=230"></A>The $keyword construct</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=285"></A>The <B>$</B> character introduces
+a language construct that enables development of user-defined tasks and
+functions. A name following the <B>$</B> is interpreted as a <I>system task</I>
+or a <I>system function</I> .</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=244"></A>The syntax for a system task
+or function is as follows:</P>
+
+<PRE><A NAME="pgfId=5373"></A> 
+system_task_or_function ::=
+<A NAME="pgfId=5375"></A> 
+<B>$</B><I>system_task_</I>
+identifier<B> </B>[<B> (</B> list_of_arguments <B>)</B> ] <B>;</B>
+<A NAME="pgfId=5377"></A> 
+| <B>$</B><I>system_function_</I>
+identifier<B> </B>[<B> (</B> list_of_arguments <B>)</B> ] <B>;</B>
+<A NAME="pgfId=5379"></A> 
+list_of_arguments ::=
+<A NAME="pgfId=5381"></A> 
+argument { <B>,</B> [ argument ] }
+<A NAME="pgfId=5383"></A> 
+argument ::=
+<A NAME="pgfId=5385"></A> 
+expression
+<A NAME="pgfId=287"></A></PRE>
+
+<P><P CLASS="BNFCapBody">Syntax&nbsp;2-2: Syntax for system tasks and functions</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=174"></A>The $identifier system task or
+function may be defined in three places:</P>
+
+<UL>
+  <LI><A NAME="pgfId=183"></A>A standard set of $identifier system tasks
+  and functions as defined in Section 14.
+  <LI><A NAME="pgfId=187"></A>Additional $identifier system tasks and functions
+  defined using the Programming Language Interface, as described in Section
+  17.
+  <LI><A NAME="pgfId=248"></A>Additional $identifier system tasks and functions
+  defined by software implementations.
+</UL>
+
+<P><P CLASS="Body"><A NAME="pgfId=254"></A>Any valid identifier, including
+keywords already in use in contexts other than this construct can be used
+as a system task or function name. The system tasks and functions described
+in Section 14 are part of the IEEE 1364 Verilog HDL standard. Additional
+system tasks and functions with the $identifier construct are not part of
+the Verilog HDL standard.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=288"></A>Examples:</P>
+
+<PRE><A NAME="pgfId=289"></A> 
+<B>$display</B> (&quot;display&nbsp;a&nbsp;message&quot;);<B>$finish</B>;</PRE>
+
+<P><P CLASS="SubSection"><A NAME="pgfId=290"></A>The `keyword construct</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=292"></A>The <B>`</B> character (the ASCII
+value 60, called open quote or accent grave) introduces a language construct
+used to implement compiler directives. The compiler behavior dictated by
+a compiler directive shall take effect as soon as the compiler reads the
+directive. The directive shall remain in effect for the rest of the compilation
+unless a different compiler directive specifies otherwise. A compiler directive
+in one description file can therefore control compilation behavior in multiple
+description files.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=179"></A>The `identifier compiler directive
+construct may be defined in two places:</P>
+
+<UL>
+  <LI><A NAME="pgfId=186"></A>A standard set of `identifier compiler directives
+  defined in Section 16.
+  <LI><A NAME="pgfId=241"></A>Additional `identifier compiler directives
+  defined by software implementations.
+</UL>
+
+<P><P CLASS="Body"><A NAME="pgfId=250"></A>Any valid identifier, including
+keywords already in use in contexts other than this construct can be used
+as a compiler directive name. The compiler directives described in Section
+16 are part of the IEEE 1364 Verilog HDL standard. Additional compiler directives
+with the `identifier construct are not part of theVerilog HDL standard.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=293"></A>Example:</P>
+
+<PRE><A NAME="pgfId=294"></A> 
+<B>`define</B> wordsize 8</PRE>
+
+<P><P CLASS="Body"><A NAME="pgfId=305"></A>&nbsp;</P>
+
+<P><HR ALIGN=LEFT></P>
+
+<P><A HREF="ch02.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A 
+HREF="ch02.6.htm">Previous&nbsp;&nbsp;page</A>
+</BODY>
+</HTML>

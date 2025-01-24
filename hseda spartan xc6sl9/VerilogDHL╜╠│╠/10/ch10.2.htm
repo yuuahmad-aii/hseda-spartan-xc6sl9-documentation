@@ -1,0 +1,284 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch10.css">
+<TITLE> 10.2	Tasks and task enabling </TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch10.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch10.1.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch10.3.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=156">
+ </A>
+10.2	<A NAME="17612">
+ </A>
+<A NAME="marker=27">
+ </A>
+<A NAME="marker=28">
+ </A>
+Tasks and task enabling </H1>
+<P CLASS="Body">
+<A NAME="pgfId=157">
+ </A>
+A <A NAME="marker=29">
+ </A>
+task shall be enabled from a statement that defines the argument values to be passed to the task and the variables that receive the results. Control shall be passed back to the enabling process after the task has completed. Thus, if a task has timing controls inside it, then the time of enabling a task can be different from the time at which the control is returned. A task can enable other tasks, which in turn can enable still other tasks--with no limit on the number of tasks enabled. Regardless of how many tasks have been enabled, control shall not return until all enabled tasks have completed.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=158">
+ </A>
+<A NAME="71346">
+ </A>
+Defining a task</P>
+<P CLASS="Body">
+<A NAME="pgfId=160">
+ </A>
+The following is the <A NAME="marker=31">
+ </A>
+syntax for defining <A NAME="marker=32">
+ </A>
+tasks:</P>
+<P CLASS="Body">
+<A NAME="pgfId=161">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch10-1.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=162">
+ </A>
+Syntax&nbsp;10-1: Syntax for task declaration</P>
+<P CLASS="Body">
+<A NAME="pgfId=154">
+ </A>
+The task declaration shall begin with the keyword <B CLASS="Keyword">
+task</B>
+ followed by a name for the task and a semicolon, and end with the keyword <B CLASS="Keyword">
+endtask</B>
+. Task item declarations can specify the following:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=166">
+ </A>
+input arguments</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=124">
+ </A>
+output arguments</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=116">
+ </A>
+inout arguments</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=167">
+ </A>
+all data types that can be declared in a procedural block</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=168">
+ </A>
+These declarations have the same syntax as for the corresponding declarations in a module definition (see <A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/10/ch12.htm#61975" CLASS="XRef">
+</A>
+). The task declaration shall not declare a net dat type. The body of the task shall contain zero or more behavioral statements (see <A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/10/ch09.htm#73702" CLASS="XRef">
+</A>
+)</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=170">
+ </A>
+<A NAME="marker=34">
+ </A>
+<A NAME="marker=35">
+ </A>
+Task enabling and argument passing</P>
+<P CLASS="Body">
+<A NAME="pgfId=171">
+ </A>
+The task enabling statement shall pass arguments as a comma-separated list of expressions enclosed in parentheses. The following is the formal <A NAME="marker=36">
+ </A>
+<A NAME="marker=37">
+ </A>
+syntax of the task enabling statement:</P>
+<P CLASS="Body">
+<A NAME="pgfId=172">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch10-2.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=173">
+ </A>
+Syntax&nbsp;10-2: Syntax of the task enabling statement</P>
+<P CLASS="Body">
+<A NAME="pgfId=174">
+ </A>
+The list of arguments for a task enabling statement shall be optional. If the list of arguments is provided, the list shall be an ordered list of expressions that must match the order of the list of arguments<A NAME="marker=39">
+ </A>
+<A NAME="marker=40">
+ </A>
+ in the task definition.</P>
+<P CLASS="Body">
+<A NAME="pgfId=175">
+ </A>
+If an argument in the task is declared as an <B CLASS="Keyword">
+input</B>
+, then the corresponding expression can be any expression. The order of evaluation of the expressions in the argument list is undefined. If the argument is declared as an <B CLASS="Keyword">
+output</B>
+ or an <B CLASS="Keyword">
+inout</B>
+, then the expression shall be restricted to an expression that is valid on the left-hand side of a procedural assignment (see <A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/10/ch09.htm#12062" CLASS="XRef">
+</A>
+). The following items satisfy this requirement:</P>
+<UL>
+<LI CLASS="DashedList">
+<A NAME="pgfId=176">
+ </A>
+reg, integer, real, realtime, and time variables</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=177">
+ </A>
+memory references</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=178">
+ </A>
+concatenations of reg, integer, real, realtime and time variables</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=179">
+ </A>
+concatenations of memory references</LI>
+<LI CLASS="DashedList">
+<A NAME="pgfId=180">
+ </A>
+bit-selects and part-selects of reg, integer, and time variables</LI>
+</UL>
+<P CLASS="Body">
+<A NAME="pgfId=181">
+ </A>
+The execution of the task enabling statement shall pass input values from the variables listed in the enabling statement to the arguments specified within the task. Execution of the return from the task shall pass values from the task <B CLASS="Keyword">
+output</B>
+ and <B CLASS="Keyword">
+inout</B>
+ type arguments to the corresponding variables in the task enabling statement. All arguments to the task shall be passed by <I CLASS="Emphasis">
+value</I>
+ rather than by reference (that is, a <I CLASS="Emphasis">
+pointer</I>
+ to the value).</P>
+<P CLASS="Body">
+<A NAME="pgfId=182">
+ </A>
+Examples:</P>
+<P CLASS="Body">
+<A NAME="pgfId=126">
+ </A>
+1. The following example illustrates the basic structure of a task definition with five arguments.</P>
+<P CLASS="Body">
+<A NAME="pgfId=183">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch10-3.gif">
+</DIV>
+<P CLASS="Body">
+<A NAME="pgfId=185">
+ </A>
+The following statement enables the task:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=186"> </A>
+my_task (v, w, x, y, z);</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=115">
+ </A>
+The task enabling arguments (<CODE CLASS="code">
+v</CODE>
+, <CODE CLASS="code">
+w</CODE>
+, <CODE CLASS="code">
+x</CODE>
+, <CODE CLASS="code">
+y</CODE>
+, <CODE CLASS="code">
+z</CODE>
+) correspond to the arguments (<CODE CLASS="code">
+a</CODE>
+, <CODE CLASS="code">
+b</CODE>
+, <CODE CLASS="code">
+c</CODE>
+, <CODE CLASS="code">
+d</CODE>
+, <CODE CLASS="code">
+e</CODE>
+) defined by the task. At task enabling time, the <B CLASS="Keyword">
+input</B>
+ and <B CLASS="Keyword">
+inout</B>
+ type arguments (<CODE CLASS="code">
+a</CODE>
+, <CODE CLASS="code">
+b</CODE>
+, and <CODE CLASS="code">
+c</CODE>
+) receive the values passed in <CODE CLASS="code">
+v</CODE>
+, <CODE CLASS="code">
+w</CODE>
+, and <CODE CLASS="code">
+x</CODE>
+. Thus, execution of the task enabling call effectively causes the following assignments:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=188"> </A>
+a = v; b = w; c = x;</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=189">
+ </A>
+As part of the processing of the task, the task definition for <CODE CLASS="code">
+my_task</CODE>
+ must place the computed result values into <CODE CLASS="code">
+c</CODE>
+, <CODE CLASS="code">
+d</CODE>
+, and <CODE CLASS="code">
+e</CODE>
+. When the task completes, the following assignments to return the computed values to the calling process are performed:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=190"> </A>
+x = c; y = d; z = e;<A NAME="marker=48"> </A>
+<A NAME="marker=49"> </A>
+<A NAME="marker=50"> </A>
+</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=119">
+ </A>
+2. The example below illustrates the use of tasks by redescribing the traffic light sequencer that was introduced in <A HREF="/Humuhumu/Files/Prof_Smith/Academic/ASICs/Web/ASICs/HTML/Verilog/LRM/HTML/10/ch09.htm#19982" CLASS="XRef">
+</A>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=192">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch10-4.gif">
+</DIV>
+<P CLASS="SubSection">
+<A NAME="pgfId=224">
+ </A>
+Task memory usage and concurrent activation</P>
+<P CLASS="Body">
+<A NAME="pgfId=225">
+ </A>
+A task may be enabled more than once concurrently. A task (or function) may contain the definition of local variables of type <B CLASS="Keyword">
+reg</B>
+, <B CLASS="Keyword">
+integer</B>
+, <B CLASS="Keyword">
+time</B>
+, <B CLASS="Keyword">
+real</B>
+, <B CLASS="Keyword">
+realtime</B>
+, or <B CLASS="Keyword">
+event</B>
+. These variables shall be static in that there shall be a single variable corresponding to each declared local variable, regardless of the number of concurrent activations of the task. Thus, if a task is enabled more than once concurrently, all instances of the task would share the same local variables.</P>
+<P CLASS="Body">
+<A NAME="pgfId=226">
+ </A>
+Because tasks can have non-zero time duration, each active task has a point of control. This point of control is unique to each active task instance. Thus, it is possible to write a recursive task (or function), but all local data shall remain static.</P>
+<HR><P><A HREF="ch10.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch10.1.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch10.3.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>

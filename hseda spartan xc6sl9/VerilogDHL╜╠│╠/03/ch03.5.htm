@@ -1,0 +1,35 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Mac">
+  <LINK REL="STYLESHEET" HREF="ch03.css">
+  <TITLE> 3.5&nbsp;&nbsp;&nbsp;Implicit declarations </TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><A NAME="pgfId=473"></A><HR ALIGN=LEFT></P>
+
+<P><A HREF="ch03.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A 
+HREF="ch03.4.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch03.6.htm">Next&nbsp;&nbsp;page</A></P>
+
+<H1>3.5&nbsp;&nbsp;&nbsp;Implicit declarations</H1>
+
+<P><P CLASS="Body"><A NAME="pgfId=431"></A>The syntax shown in 3.2 shall
+be used to explicitly declare nets and registers. In the absence of an explicit
+declaration of a net or a register, statements for gate, user-defined primitive,
+and module instantiations shall assume an implicit net declaration. This
+happens when a name is used in the terminal list of an instance of a gate,
+a user-defined primitive, or a module that has not been explicitly declared
+previously in one of the declaration statements of the instantiating module.
+See 7.9.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=475"></A>These implicitly declared nets
+shall be treated as scalar nets of type <B>wire</B>. See Section 16 for
+a discussion of control of the type for implicitly declared nets with the
+<B>`default_nettype</B> compiler directive.</P>
+
+<P><HR ALIGN=LEFT></P>
+
+<P><A HREF="ch03.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A 
+HREF="ch03.4.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch03.6.htm">Next&nbsp;&nbsp;page</A>
+</BODY>
+</HTML>

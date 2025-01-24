@@ -1,0 +1,49 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Mac">
+  <LINK REL="STYLESHEET" HREF="ch03.css">
+  <TITLE> 3.1&nbsp;&nbsp;&nbsp;Value set </TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><A NAME="pgfId=401"></A><HR ALIGN=LEFT></P>
+
+<P><A HREF="ch03.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A 
+HREF="ch03.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch03.2.htm">Next&nbsp;&nbsp;page</A></P>
+
+<H1>3.1&nbsp;&nbsp;&nbsp;Value set</H1>
+
+<P><P CLASS="Body"><A NAME="pgfId=402"></A>The Verilog HDL value set consists
+of four basic values:</P>
+
+<PRE><A NAME="pgfId=403"></A> 
+<CODE>0 </CODE>- represents a logic zero, or false condition
+<CODE>1 </CODE>- represents a logic one, or true condition
+<CODE>x</CODE> - represents an unknown logic value
+<CODE>z</CODE> - represents a high-impedance state</PRE>
+
+<P><P CLASS="Body"><A NAME="pgfId=404"></A>The values <CODE>0</CODE> and
+<CODE>1</CODE> are logical complements of one another.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=405"></A>When the <CODE>z</CODE> value
+is present at the input of a gate, or when it is encountered in an expression,
+the effect is usually the same as an <CODE>x</CODE> value. Notable exceptions
+are the MOS primitives, which can pass the <CODE>z</CODE> value.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=406"></A>Almost all of the data types
+in the Verilog HDL store all four basic values. The exceptions are the <I>event</I>
+type (see section&nbsp;9.7.3), which has no storage, and the <B>trireg</B><CODE>
+</CODE>net data type (see 3.7.3), which retains its first state when all
+of its drivers go to the high impedance value (<CODE> z</CODE> ). All bits
+of vectors can be independently set to one of the four basic values.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=407"></A>The language includes <I>strength</I>
+information in addition to the basic value information for net variables.
+This is described in detail in Section 7.</P>
+
+<P><HR ALIGN=LEFT></P>
+
+<P><A HREF="ch03.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A 
+HREF="ch03.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch03.2.htm">Next&nbsp;&nbsp;page</A>
+</BODY>
+</HTML>

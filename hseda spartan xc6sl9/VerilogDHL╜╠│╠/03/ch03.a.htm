@@ -1,0 +1,61 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Mac">
+  <LINK REL="STYLESHEET" HREF="ch03.css">
+  <TITLE> 3.10&nbsp;&nbsp;&nbsp;Parameters </TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><A NAME="pgfId=588"></A><HR ALIGN=LEFT></P>
+
+<P><A HREF="ch03.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A 
+HREF="ch03.9.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch03.b.htm">Next&nbsp;&nbsp;page</A></P>
+
+<H1>3.10&nbsp;&nbsp;&nbsp;Parameters</H1>
+
+<P><P CLASS="Body"><A NAME="pgfId=591"></A>Verilog HDL parameters do not
+belong to either the register or the net group. Parameters are not variables,
+they are constants.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=626"></A>The syntax for parameter declarations
+is as follows:</P>
+
+<PRE><A NAME="pgfId=1413"></A> 
+parameter_declaration ::= <B>parameter</B> list_of_param_assignments <B>;</B>
+<A NAME="pgfId=1414"></A> 
+list_of_param_assignments ::= param_assignment  { <B>,</B> param_assignment }
+<A NAME="pgfId=1415"></A> 
+param_assignment ::= parameter_identifier  <B>=</B>  constant_expression</PRE>
+
+<P><P CLASS="BNFCapBody"><A NAME="pgfId=593"></A>Syntax&nbsp;3-4: Syntax
+for parameter_declaration</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=594"></A>The list of param assignments
+shall be a comma-separated list of assignments, where the right-hand side
+of the assignment shall be a constant expression, that is, an expression
+containing only constant numbers and previously defined parameters.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=634"></A>Parameters represent constants,
+hence it is illegal to modify their value at runtime. However, parameters
+can be modified at compilation time to have values that are different from
+those specified in the declaration assignment. This allows customization
+of module instances. A parameter can be modified with the <B>defparam</B>
+statement, or in the module instance statement. Typical uses of parameters
+are to specify delays and width of variables. See Section 12, for details
+on parameter value assignment.</P>
+
+<P><P CLASS="Body"><A NAME="pgfId=545"></A>Examples:</P>
+
+<PRE><A NAME="pgfId=635"></A> 
+<B>	parameter</B> msb = 7; // defines msb as a constant value 7
+<B>	parameter</B> e = 25, f = 9; // defines two constant numbers
+<B>	parameter</B> r = 5.7; // declares r as a real parameter
+<B>	parameter</B> byte_size = 8, byte_mask = byte_size - 1;
+<B>	parameter</B> average_delay = (r + f) / 2;</PRE>
+
+<P><HR ALIGN=LEFT></P>
+
+<P><A HREF="ch03.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A 
+HREF="ch03.9.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch03.b.htm">Next&nbsp;&nbsp;page</A>
+</BODY>
+</HTML>

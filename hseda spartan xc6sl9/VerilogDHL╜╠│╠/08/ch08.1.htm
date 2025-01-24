@@ -1,0 +1,636 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML EXPERIMENTAL 970324//EN">
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" CONTENT="Adobe FrameMaker 5.5/HTML Export Filter">
+<LINK REL="STYLESHEET" HREF="ch08.css">
+<TITLE> 8.1	UDP definition </TITLE></HEAD>
+<BODY BGCOLOR="#ffffff">
+<DIV>
+<HR><P><A HREF="ch08.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch08.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch08.2.htm">Next&nbsp;&nbsp;page</A></P></DIV>
+<H1 CLASS="Section">
+<A NAME="pgfId=316">
+ </A>
+8.1	<A NAME="31347">
+ </A>
+UDP <A NAME="marker=39">
+ </A>
+d<A NAME="marker=40">
+ </A>
+efinition </H1>
+<P CLASS="Body">
+<A NAME="pgfId=317">
+ </A>
+UDP definitions are independent of <A NAME="marker=182">
+ </A>
+modules; they are at the same level as module definitions in the syntax hierarchy. They can appear anywhere in the source text, either before or after they are instantiated inside a module. They shall not appear between the keywords <B CLASS="Keyword">
+module</B>
+ and <B CLASS="Keyword">
+endmodule</B>
+.</P>
+<P CLASS="Note">
+<A NAME="pgfId=325">
+ </A>
+NOTE--Implementations may limit the maximum number of UDP definitions in a model , but shall allow at least 256.</P>
+<P CLASS="Body">
+<A NAME="pgfId=310">
+ </A>
+The forma<A NAME="marker=30">
+ </A>
+l&nbsp;<A NAME="marker=31">
+ </A>
+<A NAME="marker=32">
+ </A>
+<A NAME="marker=33">
+ </A>
+syntax of the UDP definition is as follows:</P>
+<P CLASS="Body">
+<A NAME="pgfId=311">
+ </A>
+</P>
+<DIV>
+<IMG SRC="ch08-1.gif">
+</DIV>
+<P CLASS="BNFCapBody">
+<A NAME="pgfId=312">
+ </A>
+Syntax&nbsp;8-1: Syntax for user-defined primitives<A NAME="marker=28">
+ </A>
+ </P>
+<P CLASS="SubSection">
+<A NAME="pgfId=321">
+ </A>
+UDP<A NAME="marker=43">
+ </A>
+ header</P>
+<P CLASS="Body">
+<A NAME="pgfId=318">
+ </A>
+A UDP definition must begin with the keyword <B CLASS="Keyword">
+primitive</B>
+<A NAME="marker=41">
+ </A>
+, followed by an identifier, which is the name of the UDP. This in turn is followed by a comma separated list of ports enclosed in parentheses, which is followed by a semicolon. The UDP definition header is followed by port declarations and a state table. The UDP definition must be terminated by the keyword <B CLASS="Keyword">
+endprimitive</B>
+<A NAME="marker=42">
+ </A>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=282">
+ </A>
+UDPs have multiple input ports and exactly one output port; bidirectional inout ports are not permitted on UDPs. All ports of a UDP must be scalar; vectors ports are not permitted.</P>
+<P CLASS="Body">
+<A NAME="pgfId=288">
+ </A>
+The output port must be the first port in the port list.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=289">
+ </A>
+UDP port declarations</P>
+<P CLASS="Body">
+<A NAME="pgfId=327">
+ </A>
+UDPs must contain input and output port declarations. The output port declaration begins with the keyword <B CLASS="Keyword">
+output</B>
+, followed by one output port name. The input port declaration begins with the keyword <B CLASS="Keyword">
+input</B>
+, followed by one or more input port names.</P>
+<P CLASS="Body">
+<A NAME="pgfId=328">
+ </A>
+Sequential UDPs must contain a <B CLASS="Keyword">
+reg</B>
+ declaration for the output port. Combinational UDPs cannot contain a <B CLASS="Keyword">
+reg</B>
+ declaration. The initial value of the output port can be specified in an <B CLASS="Keyword">
+initial</B>
+ statement in a sequential UDP (see <A HREF="ch08.1.htm#58062" CLASS="XRef">
+See Sequential UDP initial statement</A>
+).</P>
+<P CLASS="Note">
+<A NAME="pgfId=447">
+ </A>
+NOTE--<EM CLASS="-">
+Implementations may limit the maximum number of inputs to a UDP, but shall allow at least 9 inputs for sequential UDPs and 10 inputs for combinational UDPs.</EM>
+</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=330">
+ </A>
+<A NAME="58062">
+ </A>
+Sequential UDP initial statement</P>
+<P CLASS="Body">
+<A NAME="pgfId=331">
+ </A>
+The sequential UDP initial statement specifies the value of the output port when simulation begins. This statement begins with the keyword <B CLASS="Keyword">
+initial</B>
+. The statement that follows must be an assignment statement that assigns a single bit literal value to the output port. </P>
+<P CLASS="SubSection">
+<A NAME="pgfId=332">
+ </A>
+<A NAME="74408">
+ </A>
+UDP<A NAME="marker=48">
+ </A>
+ <A NAME="marker=49">
+ </A>
+state table</P>
+<P CLASS="Body">
+<A NAME="pgfId=268">
+ </A>
+The state table defines the behavior of a UDP. It begins with the keyword <B CLASS="Keyword">
+table</B>
+<A NAME="marker=50">
+ </A>
+ and is terminated with the keyword <B CLASS="Keyword">
+endtable</B>
+<A NAME="marker=51">
+ </A>
+. <EM CLASS="-">
+E</EM>
+ach row of the table is terminated by a semicolon.<A NAME="marker=47">
+ </A>
+<A NAME="marker=213">
+ </A>
+<A NAME="marker=214">
+ </A>
+<A NAME="marker=215">
+ </A>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=334">
+ </A>
+Each row of the table is created using a variety of characters (see <A HREF="ch08.1.htm#62691" CLASS="XRef">
+See : UDP table symbols</A>
+) which indicate input values and output state. Three states--<CODE CLASS="code">
+0</CODE>
+, <CODE CLASS="code">
+1</CODE>
+, and <CODE CLASS="code">
+x</CODE>
+--are supported. The <CODE CLASS="code">
+z</CODE>
+ state is explicitly excluded from consideration in user-defined primitives. A number of special characters are defined to represent certain combinations of state possibilities. These are described in <A HREF="ch08.1.htm#62691" CLASS="XRef">
+See : UDP table symbols</A>
+.</P>
+<P CLASS="Body">
+<A NAME="pgfId=335">
+ </A>
+The order of the input state fields of each row of the state table is taken directly from the port list in the UDP definition header. It is not related to the order of the input port declarations.</P>
+<P CLASS="Body">
+<A NAME="pgfId=336">
+ </A>
+C<A NAME="marker=57">
+ </A>
+ombinational UDPs have one field per input and one field for the output. The input fields are separated from the output field by a colon (:). Each row defines the output for a particular combination of the input values (see <A HREF="ch08.2.htm#89140" CLASS="XRef">
+See Combinational UDPs</A>
+).</P>
+<P CLASS="Body">
+<A NAME="pgfId=337">
+ </A>
+S<A NAME="marker=58">
+ </A>
+equential UDPs have an additional field inserted between the input fields and the output field. This additional field represents the current state of the UDP and is considered equivalent to the current output value. It is delimited by colons. Each row defines the output based on the current state, particular combinations of input values and at most one input transition (see <A HREF="ch08.4.htm#edge-sensitive UDPs" CLASS="XRef">
+See Edge-sensitive sequential UDPs</A>
+). A row such as the one shown below is illegal:</P>
+<PRE CLASS="CodeIndent"><A NAME="pgfId=439"> </A>
+(01) (10) 0 : 0 : 1 ;</PRE>
+<P CLASS="Body">
+<A NAME="pgfId=444">
+ </A>
+<EM CLASS="-">
+If all input values are specified as </EM>
+<CODE CLASS="code">
+x</CODE>
+, then the output state must be specified as <CODE CLASS="code">
+x</CODE>
+.<EM CLASS="-">
+ </EM>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=445">
+ </A>
+It is not necessary to explicitly specify every possible input combination. <EM CLASS="-">
+All combinations of input values that are not explicitly specified result in a default output state of </EM>
+<CODE CLASS="code">
+x</CODE>
+<A NAME="marker=59">
+ </A>
+<A NAME="marker=60">
+ </A>
+<EM CLASS="-">
+. </EM>
+</P>
+<P CLASS="Body">
+<A NAME="pgfId=338">
+ </A>
+It is illegal to have the same combination of inputs, including edges, specified for different outputs.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=443">
+ </A>
+Z values in UDP</P>
+<P CLASS="Body">
+<A NAME="pgfId=448">
+ </A>
+The <CODE CLASS="code">
+z</CODE>
+ value in a table entry is not supported, and is considered illegal. The z values passed to UDP inputs shall be treated the same as <CODE CLASS="code">
+x</CODE>
+ values.</P>
+<P CLASS="SubSection">
+<A NAME="pgfId=389">
+ </A>
+S<A NAME="marker=70">
+ </A>
+<A NAME="marker=162">
+ </A>
+u<A NAME="marker=163">
+ </A>
+mmary of symbols </P>
+<P CLASS="Body">
+<A NAME="pgfId=388">
+ </A>
+To improve the readability and to ease writing of the state table, several special symbols are provided. <A HREF="ch08.1.htm#62691" CLASS="XRef">
+See : UDP table symbols</A>
+ summarizes the meaning of all the value symbols that are valid in the table part of a UDP definition.</P>
+<TABLE>
+<CAPTION>
+<P CLASS="TableTitle">
+<A NAME="pgfId=392">
+ </A>
+Table&nbsp;8-1<A NAME="62691">
+ </A>
+: UDP table symbols</P>
+</CAPTION>
+<TR>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=413">
+ </A>
+Symbol</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=414">
+ </A>
+Interpretation</P>
+</TH>
+<TH ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellHeading">
+<A NAME="pgfId=415">
+ </A>
+Comments</P>
+</TH>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=416">
+ </A>
+<A NAME="marker=167">
+ </A>
+<A NAME="marker=168">
+ </A>
+<A NAME="marker=169">
+ </A>
+0</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=417">
+ </A>
+logic&nbsp;0</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=418">
+ </A>
+</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=419">
+ </A>
+<A NAME="marker=170">
+ </A>
+<A NAME="marker=171">
+ </A>
+<A NAME="marker=172">
+ </A>
+1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=420">
+ </A>
+logic&nbsp;1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=421">
+ </A>
+</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=422">
+ </A>
+<A NAME="marker=196">
+ </A>
+<A NAME="marker=197">
+ </A>
+<A NAME="marker=198">
+ </A>
+<A NAME="marker=199">
+ </A>
+x</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=423">
+ </A>
+unknown</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=424">
+ </A>
+permitted in the input fields of all UDPs and in the current state field of sequential UDPs. Not permitted in the output field.</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=425">
+ </A>
+<A NAME="marker=200">
+ </A>
+<A NAME="marker=201">
+ </A>
+<A NAME="marker=202">
+ </A>
+?</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=426">
+ </A>
+iteration&nbsp;of 0,&nbsp;1,&nbsp;and&nbsp;x</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=427">
+ </A>
+not permitted in output field.</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=428">
+ </A>
+<A NAME="marker=203">
+ </A>
+<A NAME="marker=204">
+ </A>
+<A NAME="marker=205">
+ </A>
+b</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=442">
+ </A>
+iteration&nbsp;of 0 and&nbsp;1</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=449">
+ </A>
+permitted in the input fields of all UDPs and in the current state field of sequential UDPs. Not permitted in the output field.</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=450">
+ </A>
+<A NAME="marker=206">
+ </A>
+<A NAME="marker=207">
+ </A>
+<A NAME="marker=208">
+ </A>
+-</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=451">
+ </A>
+no&nbsp;change</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=452">
+ </A>
+permitted only in the output field of a sequential UDP.</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=453">
+ </A>
+<A NAME="marker=209">
+ </A>
+<A NAME="marker=210">
+ </A>
+<A NAME="marker=211">
+ </A>
+(vw)</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=454">
+ </A>
+value&nbsp;change from&nbsp;v&nbsp;to&nbsp;w</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=455">
+ </A>
+v&nbsp;and&nbsp;w&nbsp;can&nbsp;be&nbsp;any&nbsp;one&nbsp;of&nbsp;0, 1,&nbsp;x,&nbsp;?&nbsp;or&nbsp;b, and is only permitted in the input field</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=456">
+ </A>
+<A NAME="marker=216">
+ </A>
+<A NAME="marker=217">
+ </A>
+<A NAME="marker=218">
+ </A>
+*</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=457">
+ </A>
+same&nbsp;as&nbsp;<A NAME="marker=219">
+ </A>
+<A NAME="marker=220">
+ </A>
+<A NAME="marker=221">
+ </A>
+(??)</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=458">
+ </A>
+any&nbsp;value&nbsp;change&nbsp;on&nbsp;input</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=459">
+ </A>
+<A NAME="marker=222">
+ </A>
+<A NAME="marker=223">
+ </A>
+<A NAME="marker=224">
+ </A>
+r</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=460">
+ </A>
+same&nbsp;as&nbsp;<A NAME="marker=225">
+ </A>
+<A NAME="marker=226">
+ </A>
+<A NAME="marker=227">
+ </A>
+(01)</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=461">
+ </A>
+rising&nbsp;edge&nbsp;on&nbsp;input</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=462">
+ </A>
+<A NAME="marker=228">
+ </A>
+<A NAME="marker=229">
+ </A>
+<A NAME="marker=230">
+ </A>
+f</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=463">
+ </A>
+same&nbsp;as&nbsp;<A NAME="marker=231">
+ </A>
+<A NAME="marker=232">
+ </A>
+<A NAME="marker=233">
+ </A>
+(10)</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=464">
+ </A>
+falling&nbsp;edge&nbsp;on&nbsp;input</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=465">
+ </A>
+<A NAME="marker=234">
+ </A>
+<A NAME="marker=235">
+ </A>
+<A NAME="marker=236">
+ </A>
+p</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=466">
+ </A>
+iteration&nbsp;of (01),&nbsp;<A NAME="marker=237">
+ </A>
+<A NAME="marker=238">
+ </A>
+<A NAME="marker=239">
+ </A>
+(0 x) and&nbsp;<A NAME="marker=240">
+ </A>
+<A NAME="marker=241">
+ </A>
+<A NAME="marker=242">
+ </A>
+(x1)</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=467">
+ </A>
+potential&nbsp;positive&nbsp;edge&nbsp;on&nbsp;the input</P>
+</TD>
+</TR>
+<TR>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=468">
+ </A>
+<A NAME="marker=243">
+ </A>
+<A NAME="marker=244">
+ </A>
+<A NAME="marker=245">
+ </A>
+n</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=469">
+ </A>
+iteration&nbsp;of (10),&nbsp;<A NAME="marker=246">
+ </A>
+<A NAME="marker=247">
+ </A>
+<A NAME="marker=248">
+ </A>
+(1x)and (x0</P>
+</TD>
+<TD ROWSPAN="1" COLSPAN="1">
+<P CLASS="CellBody">
+<A NAME="pgfId=470">
+ </A>
+potential&nbsp;negative&nbsp;edge&nbsp;on&nbsp;the input</P>
+</TD>
+</TR>
+</TABLE>
+<HR><P><A HREF="ch08.htm">Chapter&nbsp;&nbsp;start</A>&nbsp;&nbsp;&nbsp;<A HREF="ch08.htm">Previous&nbsp;&nbsp;page</A>&nbsp;&nbsp;<A HREF="ch08.2.htm">Next&nbsp;&nbsp;page</A></P></BODY>
+</HTML>
